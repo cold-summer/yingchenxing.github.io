@@ -1,0 +1,93 @@
+<p>title: 计组：数据的表示、运算和校验<br>date: 2021-08-30 19:28:35<br>tags: [计算机组成原理]</p>
+<hr>
+<h1 id="数值型数据"><a href="#数值型数据" class="headerlink" title="数值型数据"></a>数值型数据</h1><h2 id="不同进制的写法："><a href="#不同进制的写法：" class="headerlink" title="不同进制的写法："></a>不同进制的写法：</h2><p><img src="%E8%AE%A1%E7%BB%84%EF%BC%9A%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA%E3%80%81%E8%BF%90%E7%AE%97%E5%92%8C%E6%A0%A1%E9%AA%8C/1.png"></p>
+<h2 id="进位计数："><a href="#进位计数：" class="headerlink" title="进位计数："></a>进位计数：</h2><p>基数：每位数中所允许的最大数值加1（十进制的基数是10）</p>
+<p>权：基数的n次方</p>
+<p>两个相邻的权值比是基数</p>
+<h1 id="带符号数表示："><a href="#带符号数表示：" class="headerlink" title="带符号数表示："></a>带符号数表示：</h1><h2 id="真值："><a href="#真值：" class="headerlink" title="真值："></a>真值：</h2><p>正负号加绝对值</p>
+<h2 id="机器数："><a href="#机器数：" class="headerlink" title="机器数："></a>机器数：</h2><h3 id="特征："><a href="#特征：" class="headerlink" title="特征："></a>特征：</h3><ol>
+<li>只能采用二进制</li>
+<li>四种编码制：原码，补码，反码，移码</li>
+<li>符号位数值化：0表示正，1表示负</li>
+<li>组成：符号位+有效数值</li>
+</ol>
+<br/>
+
+<h1 id="四种编码制"><a href="#四种编码制" class="headerlink" title="四种编码制"></a>四种编码制</h1><h2 id="原码表示法："><a href="#原码表示法：" class="headerlink" title="原码表示法："></a>原码表示法：</h2><h3 id="整数："><a href="#整数：" class="headerlink" title="整数："></a>整数：</h3><p><img src="%E8%AE%A1%E7%BB%84%EF%BC%9A%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA%E3%80%81%E8%BF%90%E7%AE%97%E5%92%8C%E6%A0%A1%E9%AA%8C/2.png"></p>
+<p>Eg：</p>
+<p>+1100-&gt;0,1100(0表示正数）</p>
+<p>-1100 -&gt; 2^4-(-1100) -&gt; 2^4+1100=1,1100(1表示负数）</p>
+<h3 id="小数："><a href="#小数：" class="headerlink" title="小数："></a>小数：</h3><p><img src="%E8%AE%A1%E7%BB%84%EF%BC%9A%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA%E3%80%81%E8%BF%90%E7%AE%97%E5%92%8C%E6%A0%A1%E9%AA%8C/3.png"></p>
+<p>Eg：<br>+0.1100-&gt;0.1100(第一个0表示正数）</p>
+<p>-0.1100 -&gt;1-(-0.1100)-&gt;1.1100(第一个1表示负数）</p>
+<p>简单方法：</p>
+<p>（1）取真值的绝对值的2进制表示。</p>
+<p>（2）左边第一位添加符号。  </p>
+<br/>
+
+<h2 id="反码表示法"><a href="#反码表示法" class="headerlink" title="反码表示法"></a>反码表示法</h2><p><strong>正数：</strong></p>
+<p>反码和原码相同</p>
+<p><strong>负数：</strong></p>
+<p>符号位不变，原码其余各个位取反</p>
+<br/>
+
+<p>Eg:</p>
+<p>[+127]原=0111 1111, [+127]反=0111 1111,</p>
+<p>[-127]原=1111 1111, [-127]反=1000 0000。</p>
+<p>[+0]原=0000 0000, [+0]反=0000 0000,</p>
+<p>[-0]原=1000 0000, [-0]反=1111 1111。</p>
+<br/>
+
+<h2 id="补码表示法"><a href="#补码表示法" class="headerlink" title="补码表示法"></a>补码表示法</h2><p><strong>正数：</strong></p>
+<p>补码与原码一样</p>
+<p><strong>负数：</strong></p>
+<p>反码末尾+1</p>
+<p>Eg:</p>
+<p>[+127]原=0111 1111, [+127]反=0111 1111,[+127]补=0111 1111</p>
+<p>[-127]原=1111 1111, [-127]反=1000 0000，[-127]补=1000 0001</p>
+<p>[+0]原=0000 0000, [+0]反=0000 0000,[+0]补=0000 0000,</p>
+<p>[-0]原=1000 0000, [-0]反=1111 1111，[-0]补=0000 0000。</p>
+<br/>
+
+<h2 id="移码（增码）表示法"><a href="#移码（增码）表示法" class="headerlink" title="移码（增码）表示法"></a>移码（增码）表示法</h2><p>将补码符号位取反即可</p>
+<h3 id="特征：-1"><a href="#特征：-1" class="headerlink" title="特征："></a>特征：</h3><ol>
+<li>符号位与原码，补码相反</li>
+<li>让X从－128逐渐增至+127，相应地X移从00…00逐渐增至11……11，呈递增状。可见采用移码能更直观地比较正负阶码的大小。</li>
+</ol>
+<p>tips:</p>
+<p>标准移码：沿x轴平移2^(n-1) </p>
+<p>IEEE754非标准移码：2^(n-1)-1</p>
+<p>其中n为字长</p>
+<br/>
+
+<h1 id="定点数与浮点数"><a href="#定点数与浮点数" class="headerlink" title="定点数与浮点数"></a>定点数与浮点数</h1><h3 id="1-定点表示法："><a href="#1-定点表示法：" class="headerlink" title="1.定点表示法："></a>1.定点表示法：</h3><p><strong>特征：</strong>小数点位置不变</p>
+<p><strong>类别：</strong></p>
+<ol>
+<li>无符号定点整数：略去符号位的正整数</li>
+<li>带符号定点整数：小数点在最低位之后，最高位为符号位</li>
+<li>带符号定点小数：纯小数，原码或补码表示</li>
+</ol>
+<h3 id="2-浮点数表示法："><a href="#2-浮点数表示法：" class="headerlink" title="2.浮点数表示法："></a>2.浮点数表示法：</h3><p><strong>特征：</strong>浮点数是一种小数点位置不固定，可随需要浮动的数</p>
+<p><strong>格式：</strong></p>
+<p><img src="%E8%AE%A1%E7%BB%84%EF%BC%9A%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA%E3%80%81%E8%BF%90%E7%AE%97%E5%92%8C%E6%A0%A1%E9%AA%8C/4.png"></p>
+<p><img src="%E8%AE%A1%E7%BB%84%EF%BC%9A%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA%E3%80%81%E8%BF%90%E7%AE%97%E5%92%8C%E6%A0%A1%E9%AA%8C/5.png"></p>
+<br/>
+
+<p><strong>R是阶码的底：</strong>一般约定为基数</p>
+<p><strong>E是阶码</strong></p>
+<p><strong>M是尾数：</strong>带符号定点小数，可用补码或原码表示</p>
+<br/>
+
+<h2 id="IEEE754标准浮点格式"><a href="#IEEE754标准浮点格式" class="headerlink" title="IEEE754标准浮点格式"></a>IEEE754标准浮点格式</h2><h3 id="3种浮点表示格式："><a href="#3种浮点表示格式：" class="headerlink" title="3种浮点表示格式："></a>3种浮点表示格式：</h3><p><img src="%E8%AE%A1%E7%BB%84%EF%BC%9A%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA%E3%80%81%E8%BF%90%E7%AE%97%E5%92%8C%E6%A0%A1%E9%AA%8C/6.png"></p>
+<p><strong>注意：</strong></p>
+<p>短浮点数又称为单精度浮点数，长浮点数又称为双精度浮点数，它们都采用<strong>隐含尾数最高数位</strong></p>
+<p>（2^0）的方法。因此，<strong>相应地尾数真值实际上等于1+（23位尾数数值或52位尾数数值）</strong></p>
+<h3 id="如何用浮点数形式表示："><a href="#如何用浮点数形式表示：" class="headerlink" title="如何用浮点数形式表示："></a>如何用浮点数形式表示：</h3><p><strong>阶码是以移码形式存储的，存储浮点数阶码部分之前，偏置值先要加到阶码真值上。</strong></p>
+<p><img src="%E8%AE%A1%E7%BB%84%EF%BC%9A%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA%E3%80%81%E8%BF%90%E7%AE%97%E5%92%8C%E6%A0%A1%E9%AA%8C/7.png"></p>
+<p>tips:</p>
+<p>阶码真值：科学计数法后小数退的位数</p>
+<p>偏置值：2^(n-1)-1</p>
+<p><strong>举例：</strong></p>
+<p><img src="%E8%AE%A1%E7%BB%84%EF%BC%9A%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA%E3%80%81%E8%BF%90%E7%AE%97%E5%92%8C%E6%A0%A1%E9%AA%8C/8.png"></p>
+<p><img src="%E8%AE%A1%E7%BB%84%EF%BC%9A%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA%E3%80%81%E8%BF%90%E7%AE%97%E5%92%8C%E6%A0%A1%E9%AA%8C/9.png"></p>
+<p>参考网站：<a href="https://www.cnblogs.com/bruce81/p/3536596.html">https://www.cnblogs.com/bruce81/p/3536596.html</a></p>

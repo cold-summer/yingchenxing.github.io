@@ -6,7 +6,7 @@
   <link href="https://yingchenxing.github.io/atom.xml" rel="self"/>
   
   <link href="https://yingchenxing.github.io/"/>
-  <updated>2021-09-03T02:06:04.250Z</updated>
+  <updated>2021-09-03T03:11:19.630Z</updated>
   <id>https://yingchenxing.github.io/</id>
   
   <author>
@@ -18,10 +18,10 @@
   
   <entry>
     <title>计组：数字逻辑基础知识（时序逻辑电路）</title>
-    <link href="https://yingchenxing.github.io/2021/09/03/%E8%AE%A1%E7%BB%84%EF%BC%9A%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%EF%BC%88%E6%97%B6%E5%BA%8F%E9%80%BB%E8%BE%91%E7%94%B5%E8%B7%AF%EF%BC%89/"/>
-    <id>https://yingchenxing.github.io/2021/09/03/%E8%AE%A1%E7%BB%84%EF%BC%9A%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%EF%BC%88%E6%97%B6%E5%BA%8F%E9%80%BB%E8%BE%91%E7%94%B5%E8%B7%AF%EF%BC%89/</id>
-    <published>2021-09-03T02:04:07.000Z</published>
-    <updated>2021-09-03T02:06:04.250Z</updated>
+    <link href="https://yingchenxing.github.io/2021/09/03/Sequential-logic-circuit/"/>
+    <id>https://yingchenxing.github.io/2021/09/03/Sequential-logic-circuit/</id>
+    <published>2021-09-03T03:10:03.000Z</published>
+    <updated>2021-09-03T03:11:19.630Z</updated>
     
     
     
@@ -29,7 +29,7 @@
     <category term="计算机组成原理" scheme="https://yingchenxing.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/"/>
     
     
-    <category term="计算机组成原理" scheme="https://yingchenxing.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/"/>
+    <category term="计算机组成原理，逻辑电路" scheme="https://yingchenxing.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%EF%BC%8C%E9%80%BB%E8%BE%91%E7%94%B5%E8%B7%AF/"/>
     
   </entry>
   
@@ -38,7 +38,7 @@
     <link href="https://yingchenxing.github.io/2021/09/01/%E8%AE%A1%E7%BB%84%EF%BC%9A%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
     <id>https://yingchenxing.github.io/2021/09/01/%E8%AE%A1%E7%BB%84%EF%BC%9A%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</id>
     <published>2021-09-01T12:28:45.000Z</published>
-    <updated>2021-09-03T02:50:57.005Z</updated>
+    <updated>2021-09-03T03:05:18.522Z</updated>
     
     
       
@@ -86,7 +86,7 @@
     <link href="https://yingchenxing.github.io/2021/08/30/%E5%BB%BA%E7%AB%8B%E5%8D%9A%E5%AE%A2%E9%81%87%E5%88%B0%E9%97%AE%E9%A2%98/"/>
     <id>https://yingchenxing.github.io/2021/08/30/%E5%BB%BA%E7%AB%8B%E5%8D%9A%E5%AE%A2%E9%81%87%E5%88%B0%E9%97%AE%E9%A2%98/</id>
     <published>2021-08-30T09:52:36.000Z</published>
-    <updated>2021-09-02T09:11:54.614Z</updated>
+    <updated>2021-09-03T03:06:20.215Z</updated>
     
     
       

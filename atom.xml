@@ -6,7 +6,7 @@
   <link href="https://yingchenxing.github.io/atom.xml" rel="self"/>
   
   <link href="https://yingchenxing.github.io/"/>
-  <updated>2021-09-04T06:51:57.327Z</updated>
+  <updated>2021-09-04T07:42:55.118Z</updated>
   <id>https://yingchenxing.github.io/</id>
   
   <author>
@@ -17,11 +17,32 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>安卓开发（一）通过XML和Java控制UI界面</title>
+    <link href="https://yingchenxing.github.io/2021/09/04/AndroidDevelopment03/"/>
+    <id>https://yingchenxing.github.io/2021/09/04/AndroidDevelopment03/</id>
+    <published>2021-09-04T07:09:37.000Z</published>
+    <updated>2021-09-04T07:42:55.118Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;使用XML布局文件控制UI界面&quot;&gt;&lt;a href=&quot;#使用XML布局文件控制UI界面&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
     <title>安卓开发（二）UI组件—组件</title>
     <link href="https://yingchenxing.github.io/2021/09/03/AndroidDevelopment02/"/>
     <id>https://yingchenxing.github.io/2021/09/03/AndroidDevelopment02/</id>
     <published>2021-09-03T12:40:45.000Z</published>
-    <updated>2021-09-04T06:51:57.327Z</updated>
+    <updated>2021-09-04T17:00:21.254Z</updated>
     
     
       

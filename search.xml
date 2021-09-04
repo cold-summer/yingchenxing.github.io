@@ -34,13 +34,44 @@
     <url>/2021/09/03/AndroidDevelopment02/</url>
     <content><![CDATA[<h1 id="TextView"><a href="#TextView" class="headerlink" title="TextView"></a>TextView</h1><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">TextView</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">&quot;@+id/tv_1&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">&quot;wrap_content&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">&quot;wrap_content&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:maxLength</span>=<span class="string">&quot;10&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:text</span>=<span class="string">&quot;Hello World&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:drawableRight</span>=<span class="string">&quot;@drawable/wechat&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:drawablePadding</span>=<span class="string">&quot;5dp&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:textColor</span>=<span class="string">&quot;@color/black&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:textSize</span>=<span class="string">&quot;24sp&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_marginTop</span>=<span class="string">&quot;10dp&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:singleLine</span>=<span class="string">&quot;true&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:ellipsize</span>=<span class="string">&quot;marquee&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:focusableInTouchMode</span>=<span class="string">&quot;true&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure>
 
-<p>drawableRight：右边显示图片</p>
-<p>drawablePadding：图片间隔</p>
-<p>textColor：文字颜色</p>
-<p>textSize：文字大小</p>
-<p>singleLine：在一行显示</p>
-<p>ellipsize：跑马灯</p>
-<p>focusableInTouchMode：可触摸</p>
+
+
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>drawableRight</td>
+<td>右边显示图片</td>
+</tr>
+<tr>
+<td>drawablePadding</td>
+<td>图片间隔</td>
+</tr>
+<tr>
+<td>textColor</td>
+<td>文字颜色</td>
+</tr>
+<tr>
+<td>textSize</td>
+<td>文字大小</td>
+</tr>
+<tr>
+<td>singleLine</td>
+<td>在一行显示</td>
+</tr>
+<tr>
+<td>ellipsize</td>
+<td>跑马灯</td>
+</tr>
+<tr>
+<td>focusableInTouchMode</td>
+<td>可触摸</td>
+</tr>
+</tbody></table>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestViewActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> TextView mTv1;</span><br><span class="line">    <span class="keyword">private</span> TextView mTv2;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_test_view);</span><br><span class="line">        mTv1 = findViewById(R.id.tv_1);</span><br><span class="line">        mTv1.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);<span class="comment">//中划线</span></span><br><span class="line">        mTv1.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG);<span class="comment">//下划线</span></span><br><span class="line">        mTv1.getPaint().setAntiAlias(<span class="keyword">true</span>);<span class="comment">//去除锯齿</span></span><br><span class="line">        mTv2 = findViewById(R.id.tv_2);</span><br><span class="line">        mTv2.setSelected(<span class="keyword">true</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h1 id="Intent类"><a href="#Intent类" class="headerlink" title="Intent类"></a>Intent类</h1><p>通常用于活动中的跳转</p>
@@ -70,6 +101,67 @@
 <p>改为</p>
 <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">name</span>=<span class="string">&quot;Theme.Button&quot;</span> <span class="attr">parent</span>=<span class="string">&quot;Theme.MaterialComponents.DayNight.DarkActionBar.Bridge&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
+<h2 id="实现点击变色功能"><a href="#实现点击变色功能" class="headerlink" title="实现点击变色功能"></a>实现点击变色功能</h2><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">selector</span> <span class="attr">xmlns:android</span>=<span class="string">&quot;http://schemas.android.com/apk/res/android&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">android:state_pressed</span>=<span class="string">&quot;true&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">shape</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">solid</span> <span class="attr">android:color</span>=<span class="string">&quot;#FF5346&quot;</span>/&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">corners</span> <span class="attr">android:radius</span>=<span class="string">&quot;5dp&quot;</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">shape</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">item</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">android:state_pressed</span>=<span class="string">&quot;false&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">shape</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">solid</span> <span class="attr">android:color</span>=<span class="string">&quot;#64FFBF&quot;</span>/&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">corners</span> <span class="attr">android:radius</span>=<span class="string">&quot;5dp&quot;</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">shape</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">item</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">selector</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>radius</td>
+<td>圆角</td>
+</tr>
+<tr>
+<td>state_pressed</td>
+<td>Button状态</td>
+</tr>
+<tr>
+<td>solid</td>
+<td>填充</td>
+</tr>
+</tbody></table>
+<h1 id="EditText"><a href="#EditText" class="headerlink" title="EditText"></a>EditText</h1><h2 id="常用属性"><a href="#常用属性" class="headerlink" title="常用属性"></a>常用属性</h2><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">EditText</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:id</span>=<span class="string">&quot;@+id/et_2&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_height</span>=<span class="string">&quot;50dp&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:textSize</span>=<span class="string">&quot;16sp&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:textColor</span>=<span class="string">&quot;#FFAD33&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_below</span>=<span class="string">&quot;@+id/et_1&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_margin</span>=<span class="string">&quot;20dp&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:inputType</span>=<span class="string">&quot;textPassword&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:paddingLeft</span>=<span class="string">&quot;10dp&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:hint</span>=<span class="string">&quot;密码&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:drawableLeft</span>=<span class="string">&quot;@drawable/we&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>inputType</td>
+<td>输入类型（textpassword：以*代替）</td>
+</tr>
+<tr>
+<td>hint</td>
+<td>输入提示</td>
+</tr>
+</tbody></table>
+<h2 id="事件监听"><a href="#事件监听" class="headerlink" title="事件监听"></a>事件监听</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">mEtUserName.addTextChangedListener(<span class="keyword">new</span> TextWatcher() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">beforeTextChanged</span><span class="params">(CharSequence charSequence, <span class="keyword">int</span> i, <span class="keyword">int</span> i1, <span class="keyword">int</span> i2)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onTextChanged</span><span class="params">(CharSequence charSequence, <span class="keyword">int</span> i, <span class="keyword">int</span> i1, <span class="keyword">int</span> i2)</span> </span>&#123;</span><br><span class="line">        Log.d(<span class="string">&quot;edittext&quot;</span>, charSequence.toString());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">afterTextChanged</span><span class="params">(Editable editable)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>Log.d ( tag, msg ):</strong></p>
+<p>​    tag: 打印信息的标签</p>
+<p>​    msg: 要打印的信息</p>
+<h1 id="通过类管理多个控件"><a href="#通过类管理多个控件" class="headerlink" title="通过类管理多个控件"></a>通过类管理多个控件</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">OnClick</span> <span class="keyword">implements</span> <span class="title">View</span>.<span class="title">OnClickListener</span></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span></span>&#123;</span><br><span class="line">        Intent intent = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">switch</span> (v.getId())&#123;</span><br><span class="line">            <span class="keyword">case</span> R.id.btn_radiobutton:</span><br><span class="line">                intent = <span class="keyword">new</span> Intent(MainActivity.<span class="keyword">this</span>,RadioButtonActivity.class);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="RadioButton"><a href="#RadioButton" class="headerlink" title="RadioButton"></a>RadioButton</h1><h2 id="常用属性-1"><a href="#常用属性-1" class="headerlink" title="常用属性"></a>常用属性</h2><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">RadioGroup</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:id</span>=<span class="string">&quot;@+id/rg_1&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">&quot;wrap_content&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_height</span>=<span class="string">&quot;wrap_content&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:orientation</span>=<span class="string">&quot;vertical&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">RadioButton</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">&quot;@+id/rb_1&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">&quot;wrap_content&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:text</span>=<span class="string">&quot;man&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:checked</span>=<span class="string">&quot;true&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:textColor</span>=<span class="string">&quot;#64FFBF&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:textSize</span>=<span class="string">&quot;16sp&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">RadioButton</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">&quot;@+id/rb_2&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">&quot;wrap_content&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">&quot;wrap_content&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:text</span>=<span class="string">&quot;woman&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:textColor</span>=<span class="string">&quot;#64FFBF&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:textSize</span>=<span class="string">&quot;16sp&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">RadioGroup</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>checked</th>
+<th>初始化按钮是否选中</th>
+</tr>
+</thead>
+</table>
+<p>监听是否选中的方法</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">android:state_checked=&quot;true&quot;</span><br></pre></td></tr></table></figure>
+
+<h2 id="事件监听-1"><a href="#事件监听-1" class="headerlink" title="事件监听"></a>事件监听</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">mRg1 = findViewById(R.id.rg_1);</span><br><span class="line">mRg1.setOnCheckedChangeListener(<span class="keyword">new</span> RadioGroup.OnCheckedChangeListener() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCheckedChanged</span><span class="params">(RadioGroup radioGroup, <span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">        RadioButton radioButton = radioGroup.findViewById(i);</span><br><span class="line">        Toast.makeText(RadioButtonActivity.<span class="keyword">this</span>, radioButton.getText(), Toast.LENGTH_SHORT).show();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>Android</category>
@@ -78,6 +170,32 @@
         <tag>Android</tag>
         <tag>UI</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>安卓开发（一）通过XML和Java控制UI界面</title>
+    <url>/2021/09/04/AndroidDevelopment03/</url>
+    <content><![CDATA[<h1 id="使用XML布局文件控制UI界面"><a href="#使用XML布局文件控制UI界面" class="headerlink" title="使用XML布局文件控制UI界面"></a>使用XML布局文件控制UI界面</h1><ol>
+<li>在Android应用的res/layout目录下编写XML文件</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">RelativeLayout</span> <span class="attr">xmlns:android</span>=<span class="string">&quot;http://schemas.android.com/apk/res/android&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_height</span>=<span class="string">&quot;match_parent&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">Button</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">&quot;@+id/btn_1&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">&quot;wrap_content&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:text</span>=<span class="string">&quot;按钮1&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:textSize</span>=<span class="string">&quot;20sp&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:textColor</span>=<span class="string">&quot;#0066FF&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:backgroundTint</span>=<span class="string">&quot;#FFFFFF&quot;</span>/&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">RelativeLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>在Activity中使用以下Java代码显示XML文件中布局的内容</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">setContentView(R.layout.activity_main);</span><br></pre></td></tr></table></figure>
+
+<p><strong>该代码在创建时会自动生成</strong></p>
+<h1 id="在Java代码中控制UI界面"><a href="#在Java代码中控制UI界面" class="headerlink" title="在Java代码中控制UI界面"></a>在Java代码中控制UI界面</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">FrameLayout frameLayout = <span class="keyword">new</span> FrameLayout(<span class="keyword">this</span>);</span><br><span class="line">frameLayout.setBackgroundResource(R.drawable.chen);</span><br><span class="line">setContentView(frameLayout);</span><br><span class="line">TextView tv = <span class="keyword">new</span> TextView(<span class="keyword">this</span>);</span><br><span class="line">tv.setText(<span class="string">&quot;begin&quot;</span>);</span><br><span class="line">tv.setTextSize(TypedValue.COMPLEX_UNIT_SP,<span class="number">20</span>);</span><br></pre></td></tr></table></figure>
+
+<h1 id="使用XML和Java代码混合控制UI界面"><a href="#使用XML和Java代码混合控制UI界面" class="headerlink" title="使用XML和Java代码混合控制UI界面"></a>使用XML和Java代码混合控制UI界面</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Button mBtnTextView;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line">        mBtnTextView = findViewById(R.id.btn_textview);</span><br><span class="line">        mBtnTextView.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View view)</span> </span>&#123;</span><br><span class="line">                <span class="comment">//跳转到TextView演示界面</span></span><br><span class="line">                Intent intent = <span class="keyword">new</span> Intent(MainActivity.<span class="keyword">this</span>,TestViewActivity.class);</span><br><span class="line">                startActivity(intent);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">LinearLayout</span> <span class="attr">xmlns:android</span>=<span class="string">&quot;http://schemas.android.com/apk/res/android&quot;</span></span></span><br><span class="line"><span class="tag"></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_height</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:orientation</span>=<span class="string">&quot;vertical&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">Button</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">&quot;@+id/btn_textview&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">&quot;wrap_content&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:text</span>=<span class="string">&quot;TextView&quot;</span>/&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+]]></content>
   </entry>
   <entry>
     <title>计组：数字逻辑基础知识（时序逻辑电路）</title>

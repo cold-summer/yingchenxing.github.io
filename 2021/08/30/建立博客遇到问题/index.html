@@ -30,7 +30,8 @@
     <script src="/libs/jquery/jquery.min.js"></script>
 
 <meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="cold fish" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 
 
@@ -475,7 +476,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    674
+                    672
                 </div>
                 
 
@@ -499,47 +500,120 @@
         
 
         
+        <!-- 代码块折行 -->
+        <style type="text/css">
+            code[class*="language-"], pre[class*="language-"] { white-space: pre-wrap !important; }
+        </style>
+        
 
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h1 id="本地部署时出现：FATAL-Port-4000-has-been-used-Try-other-port-instead"><a href="#本地部署时出现：FATAL-Port-4000-has-been-used-Try-other-port-instead" class="headerlink" title="本地部署时出现：FATAL Port 4000 has been used. Try other port instead."></a>本地部署时出现：FATAL Port 4000 has been used. Try other port instead.</h1><p>解释：提示4000端口出问题</p>
 <h3 id="方法一："><a href="#方法一：" class="headerlink" title="方法一："></a>方法一：</h3><p>在主地址下的_config.yml文件中加入以下代码</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">server:</span><br><span class="line">  port: 4000 #端口值，默认为4000</span><br><span class="line">  compress: true</span><br><span class="line">  header: true</span><br></pre></td></tr></table></figure>
-
+<pre><code>server:
+  port: 4000 #端口值，默认为4000
+  compress: true
+  header: true
+</code></pre>
 <br>
 
 <h3 id="方法二："><a href="#方法二：" class="headerlink" title="方法二："></a>方法二：</h3><p>用以下命令启动</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server -p 4001</span><br></pre></td></tr></table></figure>
-
+<pre><code>hexo server -p 4001
+</code></pre>
 <hr>
-<h1 id="图片无法加载"><a href="#图片无法加载" class="headerlink" title="图片无法加载"></a>图片无法加载</h1><h3 id="第一步：安装插件"><a href="#第一步：安装插件" class="headerlink" title="第一步：安装插件"></a>第一步：安装插件</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-asset-image --save</span><br></pre></td></tr></table></figure>
-
+<h1 id="图片无法加载"><a href="#图片无法加载" class="headerlink" title="图片无法加载"></a>图片无法加载</h1><h3 id="第一步：安装插件"><a href="#第一步：安装插件" class="headerlink" title="第一步：安装插件"></a>第一步：安装插件</h3><pre><code>    npm install hexo-asset-image --save
+</code></pre>
 <h3 id="第二步：修改文件内容"><a href="#第二步：修改文件内容" class="headerlink" title="第二步：修改文件内容"></a>第二步：修改文件内容</h3><p>在根目录下的_config.yml中加入：（新建文章时自动生成同名文件夹）</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">post_asset_folder: true</span><br></pre></td></tr></table></figure>
-
-<h3 id="第三步：打开根目录下的"><a href="#第三步：打开根目录下的" class="headerlink" title="第三步：打开根目录下的"></a>第三步：打开根目录下的</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/node_modules/hexo-asset-image/index.js</span><br></pre></td></tr></table></figure>
-
+<pre><code>post_asset_folder: true
+</code></pre>
+<h3 id="第三步：打开根目录下的"><a href="#第三步：打开根目录下的" class="headerlink" title="第三步：打开根目录下的"></a>第三步：打开根目录下的</h3><pre><code>/node_modules/hexo-asset-image/index.js
+</code></pre>
 <p>将内容修改为</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">&#x27;use strict&#x27;;</span><br><span class="line">var cheerio = require(&#x27;cheerio&#x27;);</span><br><span class="line"></span><br><span class="line">// http://stackoverflow.com/questions/14480345/how-to-get-the-nth-occurrence-in-a-string</span><br><span class="line">function getPosition(str, m, i) &#123;</span><br><span class="line">  return str.split(m, i).join(m).length;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var version = String(hexo.version).split(&#x27;.&#x27;);</span><br><span class="line">hexo.extend.filter.register(&#x27;after_post_render&#x27;, function(data)&#123;</span><br><span class="line">  var config = hexo.config;</span><br><span class="line">  if(config.post_asset_folder)&#123;</span><br><span class="line">        var link = data.permalink;</span><br><span class="line">    if(version.length &gt; 0 &amp;&amp; Number(version[0]) == 3)</span><br><span class="line">       var beginPos = getPosition(link, &#x27;/&#x27;, 1) + 1;</span><br><span class="line">    else</span><br><span class="line">       var beginPos = getPosition(link, &#x27;/&#x27;, 3) + 1;</span><br><span class="line">    // In hexo 3.1.1, the permalink of &quot;about&quot; page is like &quot;.../about/index.html&quot;.</span><br><span class="line">    var endPos = link.lastIndexOf(&#x27;/&#x27;) + 1;</span><br><span class="line">    link = link.substring(beginPos, endPos);</span><br><span class="line"></span><br><span class="line">    var toprocess = [&#x27;excerpt&#x27;, &#x27;more&#x27;, &#x27;content&#x27;];</span><br><span class="line">    for(var i = 0; i &lt; toprocess.length; i++)&#123;</span><br><span class="line">      var key = toprocess[i];</span><br><span class="line"> </span><br><span class="line">      var $ = cheerio.load(data[key], &#123;</span><br><span class="line">        ignoreWhitespace: false,</span><br><span class="line">        xmlMode: false,</span><br><span class="line">        lowerCaseTags: false,</span><br><span class="line">        decodeEntities: false</span><br><span class="line">      &#125;);</span><br><span class="line"></span><br><span class="line">      $(&#x27;img&#x27;).each(function()&#123;</span><br><span class="line">        if ($(this).attr(&#x27;src&#x27;))&#123;</span><br><span class="line">            // For windows style path, we replace &#x27;\&#x27; to &#x27;/&#x27;.</span><br><span class="line">            var src = $(this).attr(&#x27;src&#x27;).replace(&#x27;\\&#x27;, &#x27;/&#x27;);</span><br><span class="line">            if(!/http[s]*.*|\/\/.*/.test(src) &amp;&amp;</span><br><span class="line">               !/^\s*\//.test(src)) &#123;</span><br><span class="line">              // For &quot;about&quot; page, the first part of &quot;src&quot; can&#x27;t be removed.</span><br><span class="line">              // In addition, to support multi-level local directory.</span><br><span class="line">              var linkArray = link.split(&#x27;/&#x27;).filter(function(elem)&#123;</span><br><span class="line">                return elem != &#x27;&#x27;;</span><br><span class="line">              &#125;);</span><br><span class="line">              var srcArray = src.split(&#x27;/&#x27;).filter(function(elem)&#123;</span><br><span class="line">                return elem != &#x27;&#x27; &amp;&amp; elem != &#x27;.&#x27;;</span><br><span class="line">              &#125;);</span><br><span class="line">              if(srcArray.length &gt; 1)</span><br><span class="line">                srcArray.shift();</span><br><span class="line">              src = srcArray.join(&#x27;/&#x27;);</span><br><span class="line">              $(this).attr(&#x27;src&#x27;, config.root + link + src);</span><br><span class="line">              console.info&amp;&amp;console.info(&quot;update link as:--&gt;&quot;+config.root + link + src);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            console.info&amp;&amp;console.info(&quot;no src attr, skipped...&quot;);</span><br><span class="line">            console.info&amp;&amp;console.info($(this));</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;);</span><br><span class="line">      data[key] = $.html();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<pre><code>&#39;use strict&#39;;
+var cheerio = require(&#39;cheerio&#39;);
 
+// http://stackoverflow.com/questions/14480345/how-to-get-the-nth-occurrence-in-a-string
+function getPosition(str, m, i) &#123;
+  return str.split(m, i).join(m).length;
+&#125;
+
+var version = String(hexo.version).split(&#39;.&#39;);
+hexo.extend.filter.register(&#39;after_post_render&#39;, function(data)&#123;
+  var config = hexo.config;
+  if(config.post_asset_folder)&#123;
+        var link = data.permalink;
+    if(version.length &gt; 0 &amp;&amp; Number(version[0]) == 3)
+       var beginPos = getPosition(link, &#39;/&#39;, 1) + 1;
+    else
+       var beginPos = getPosition(link, &#39;/&#39;, 3) + 1;
+    // In hexo 3.1.1, the permalink of &quot;about&quot; page is like &quot;.../about/index.html&quot;.
+    var endPos = link.lastIndexOf(&#39;/&#39;) + 1;
+    link = link.substring(beginPos, endPos);
+
+    var toprocess = [&#39;excerpt&#39;, &#39;more&#39;, &#39;content&#39;];
+    for(var i = 0; i &lt; toprocess.length; i++)&#123;
+      var key = toprocess[i];
+ 
+      var $ = cheerio.load(data[key], &#123;
+        ignoreWhitespace: false,
+        xmlMode: false,
+        lowerCaseTags: false,
+        decodeEntities: false
+      &#125;);
+
+      $(&#39;img&#39;).each(function()&#123;
+        if ($(this).attr(&#39;src&#39;))&#123;
+            // For windows style path, we replace &#39;\&#39; to &#39;/&#39;.
+            var src = $(this).attr(&#39;src&#39;).replace(&#39;\\&#39;, &#39;/&#39;);
+            if(!/http[s]*.*|\/\/.*/.test(src) &amp;&amp;
+               !/^\s*\//.test(src)) &#123;
+              // For &quot;about&quot; page, the first part of &quot;src&quot; can&#39;t be removed.
+              // In addition, to support multi-level local directory.
+              var linkArray = link.split(&#39;/&#39;).filter(function(elem)&#123;
+                return elem != &#39;&#39;;
+              &#125;);
+              var srcArray = src.split(&#39;/&#39;).filter(function(elem)&#123;
+                return elem != &#39;&#39; &amp;&amp; elem != &#39;.&#39;;
+              &#125;);
+              if(srcArray.length &gt; 1)
+                srcArray.shift();
+              src = srcArray.join(&#39;/&#39;);
+              $(this).attr(&#39;src&#39;, config.root + link + src);
+              console.info&amp;&amp;console.info(&quot;update link as:--&gt;&quot;+config.root + link + src);
+            &#125;
+        &#125;else&#123;
+            console.info&amp;&amp;console.info(&quot;no src attr, skipped...&quot;);
+            console.info&amp;&amp;console.info($(this));
+        &#125;
+      &#125;);
+      data[key] = $.html();
+    &#125;
+  &#125;
+&#125;);
+</code></pre>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/xjm850552586/article/details/84101345">参考Ericam_</a></p>
 <h3 id="第四步："><a href="#第四步：" class="headerlink" title="第四步："></a>第四步：</h3><p><strong>此种方式如有文件夹中存在中文则会<code>url</code>转码,也会显示不正常,解决方法: <code>new </code>文件时使用英文名,手动设置文章标题即可</strong></p>
 <p>在.md文件中按markdown语法引用图片：（在text.md中引用在同名文件夹中的</p>
 <p>picture.png)</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![随便写](text/picture.png)</span><br></pre></td></tr></table></figure>
-
+<pre><code>![随便写](text/picture.png)
+</code></pre>
 <hr>
 <h1 id="添加valine评论邮件通知："><a href="#添加valine评论邮件通知：" class="headerlink" title="添加valine评论邮件通知："></a>添加valine评论邮件通知：</h1><p><a target="_blank" rel="noopener" href="https://zealot.top/Hexo%E5%8D%9A%E5%AE%A2%E4%B9%8Bvaline%E8%AF%84%E8%AE%BA%E5%AE%9E%E7%8E%B0%E9%82%AE%E7%AE%B1%E6%8F%90%E9%86%92%E7%9A%84%E6%96%B9%E6%B3%95.html">Hexo博客之valine评论实现邮箱提醒的方法</a></p>
 <hr>
 <h1 id="添加搜索功能"><a href="#添加搜索功能" class="headerlink" title="添加搜索功能"></a>添加搜索功能</h1><h3 id="第一步："><a href="#第一步：" class="headerlink" title="第一步："></a>第一步：</h3><p>安装插件：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-generator-searchdb --save</span><br></pre></td></tr></table></figure>
-
+<pre><code>npm install hexo-generator-searchdb --save
+</code></pre>
 <h3 id="第二步："><a href="#第二步：" class="headerlink" title="第二步："></a>第二步：</h3><p>在根目录文件_config.yml文件下添加配置：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">search:</span><br><span class="line">  path: search.xml</span><br><span class="line">  field: post</span><br><span class="line">  format: html</span><br><span class="line">  limit: 10000</span><br></pre></td></tr></table></figure>
-
+<pre><code>search:
+  path: search.xml
+  field: post
+  format: html
+  limit: 10000
+</code></pre>
 <p>在主题目录文件_config.yml文件下配置：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">local_search:</span><br><span class="line">  enable: true</span><br></pre></td></tr></table></figure>
-
+<pre><code>local_search:
+  enable: true
+</code></pre>
 <hr>
 
                 
@@ -1379,7 +1453,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">4.1k</span>&nbsp;字
+                class="white-color">3.8k</span>&nbsp;字
             
             
             

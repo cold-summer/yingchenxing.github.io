@@ -6,7 +6,7 @@
   <link href="https://yingchenxing.github.io/atom.xml" rel="self"/>
   
   <link href="https://yingchenxing.github.io/"/>
-  <updated>2021-09-03T03:11:19.630Z</updated>
+  <updated>2021-09-04T06:51:57.327Z</updated>
   <id>https://yingchenxing.github.io/</id>
   
   <author>
@@ -15,6 +15,60 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>安卓开发（二）UI组件—组件</title>
+    <link href="https://yingchenxing.github.io/2021/09/03/AndroidDevelopment02/"/>
+    <id>https://yingchenxing.github.io/2021/09/03/AndroidDevelopment02/</id>
+    <published>2021-09-03T12:40:45.000Z</published>
+    <updated>2021-09-04T06:51:57.327Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;TextView&quot;&gt;&lt;a href=&quot;#TextView&quot; class=&quot;headerlink&quot; title=&quot;TextView&quot;&gt;&lt;/a&gt;TextView&lt;/h1&gt;&lt;figure class=&quot;highlight xml&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td</summary>
+        
+      
+    
+    
+    
+    <category term="Android" scheme="https://yingchenxing.github.io/categories/Android/"/>
+    
+    
+    <category term="Android" scheme="https://yingchenxing.github.io/tags/Android/"/>
+    
+    <category term="UI" scheme="https://yingchenxing.github.io/tags/UI/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>安卓开发（二）UI组件—布局</title>
+    <link href="https://yingchenxing.github.io/2021/09/03/AndroidDevelopment01/"/>
+    <id>https://yingchenxing.github.io/2021/09/03/AndroidDevelopment01/</id>
+    <published>2021-09-03T03:15:27.000Z</published>
+    <updated>2021-09-03T12:41:09.315Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;布局管理器&quot;&gt;&lt;a href=&quot;#布局管理器&quot; class=&quot;headerlink&quot; title=&quot;布局管理器&quot;&gt;&lt;/a&gt;布局管理器&lt;/h1&gt;&lt;h2 id=&quot;分类&quot;&gt;&lt;a href=&quot;#分类&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="Android" scheme="https://yingchenxing.github.io/categories/Android/"/>
+    
+    
+    <category term="Android" scheme="https://yingchenxing.github.io/tags/Android/"/>
+    
+    <category term="UI" scheme="https://yingchenxing.github.io/tags/UI/"/>
+    
+  </entry>
   
   <entry>
     <title>计组：数字逻辑基础知识（时序逻辑电路）</title>

@@ -30,17 +30,6 @@
       </tags>
   </entry>
   <entry>
-    <title>计组：数字逻辑基础知识（时序逻辑电路）</title>
-    <url>/2021/09/03/Sequential-logic-circuit/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>计算机组成原理</category>
-      </categories>
-      <tags>
-        <tag>计算机组成原理，逻辑电路</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>安卓开发（二）UI组件—组件</title>
     <url>/2021/09/03/AndroidDevelopment02/</url>
     <content><![CDATA[<h1 id="TextView"><a href="#TextView" class="headerlink" title="TextView"></a>TextView</h1><pre class="line-numbers language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>TextView</span>
@@ -495,6 +484,17 @@ tv<span class="token punctuation">.</span><span class="token function">setTextSi
       <tags>
         <tag>Android</tag>
         <tag>UI</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>计组：数字逻辑基础知识（时序逻辑电路）</title>
+    <url>/2021/09/03/Sequential-logic-circuit/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>计算机组成原理</category>
+      </categories>
+      <tags>
+        <tag>计算机组成原理，逻辑电路</tag>
       </tags>
   </entry>
   <entry>

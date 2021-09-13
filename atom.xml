@@ -6,7 +6,7 @@
   <link href="https://yingchenxing.github.io/atom.xml" rel="self"/>
   
   <link href="https://yingchenxing.github.io/"/>
-  <updated>2021-09-05T09:45:12.503Z</updated>
+  <updated>2021-09-13T02:51:04.747Z</updated>
   <id>https://yingchenxing.github.io/</id>
   
   <author>
@@ -17,11 +17,376 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>编译原理（四）正则表达式</title>
+    <link href="https://yingchenxing.github.io/2021/09/13/CompileTechnical04/"/>
+    <id>https://yingchenxing.github.io/2021/09/13/CompileTechnical04/</id>
+    <published>2021-09-13T02:29:43.000Z</published>
+    <updated>2021-09-13T02:51:04.747Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;正则表达式&quot;&gt;&lt;a href=&quot;#正则表达式&quot; class=&quot;headerlink&quot; title=&quot;正则表达式&quot;&gt;&lt;/a&gt;正则表达式&lt;/h2&gt;&lt;p&gt;&lt;img</summary>
+        
+      
+    
+    
+    
+    <category term="编译原理" scheme="https://yingchenxing.github.io/categories/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/"/>
+    
+    
+    <category term="编译原理" scheme="https://yingchenxing.github.io/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/"/>
+    
+    <category term="正则表达式" scheme="https://yingchenxing.github.io/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>成电微记（三）-创建github仓库</title>
+    <link href="https://yingchenxing.github.io/2021/09/11/DiaryInUESTC03/"/>
+    <id>https://yingchenxing.github.io/2021/09/11/DiaryInUESTC03/</id>
+    <published>2021-09-11T05:20:08.000Z</published>
+    <updated>2021-09-11T08:26:01.082Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;第一步：配置身份&quot;&gt;&lt;a href=&quot;#第一步：配置身份&quot; class=&quot;headerlink&quot; title=&quot;第一步：配置身份&quot;&gt;&lt;/a&gt;第一步：配置身份&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;gti config --global</summary>
+        
+      
+    
+    
+    
+    <category term="成电微记" scheme="https://yingchenxing.github.io/categories/%E6%88%90%E7%94%B5%E5%BE%AE%E8%AE%B0/"/>
+    
+    
+    <category term="Android" scheme="https://yingchenxing.github.io/tags/Android/"/>
+    
+    <category term="git" scheme="https://yingchenxing.github.io/tags/git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>安卓开发（五）碎片的实践</title>
+    <link href="https://yingchenxing.github.io/2021/09/10/AndroidDevelopment08/"/>
+    <id>https://yingchenxing.github.io/2021/09/10/AndroidDevelopment08/</id>
+    <published>2021-09-10T08:29:14.000Z</published>
+    <updated>2021-09-11T02:05:59.341Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;新闻内容的布局&quot;&gt;&lt;a href=&quot;#新闻内容的布局&quot; class=&quot;headerlink&quot; title=&quot;新闻内容的布局&quot;&gt;&lt;/a&gt;新闻内容的布局&lt;/h2&gt;&lt;pre class=&quot;line-numbers language-xml&quot;&gt;&lt;code</summary>
+        
+      
+    
+    
+    
+    <category term="Android" scheme="https://yingchenxing.github.io/categories/Android/"/>
+    
+    
+    <category term="Android" scheme="https://yingchenxing.github.io/tags/Android/"/>
+    
+    <category term="Fragment" scheme="https://yingchenxing.github.io/tags/Fragment/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>安卓开发（五）碎片</title>
+    <link href="https://yingchenxing.github.io/2021/09/09/AndroidDevelopment07/"/>
+    <id>https://yingchenxing.github.io/2021/09/09/AndroidDevelopment07/</id>
+    <published>2021-09-09T08:49:33.000Z</published>
+    <updated>2021-09-11T02:06:18.487Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;碎片的使用方式&quot;&gt;&lt;a href=&quot;#碎片的使用方式&quot; class=&quot;headerlink&quot; title=&quot;碎片的使用方式&quot;&gt;&lt;/a&gt;碎片的使用方式&lt;/h2&gt;&lt;h3 id=&quot;碎片的简单用法：&quot;&gt;&lt;a href=&quot;#碎片的简单用法：&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="Android" scheme="https://yingchenxing.github.io/categories/Android/"/>
+    
+    
+    <category term="Android" scheme="https://yingchenxing.github.io/tags/Android/"/>
+    
+    <category term="Fragment" scheme="https://yingchenxing.github.io/tags/Fragment/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>成电微记（二）-需求分析</title>
+    <link href="https://yingchenxing.github.io/2021/09/09/DiaryInUESTC02/"/>
+    <id>https://yingchenxing.github.io/2021/09/09/DiaryInUESTC02/</id>
+    <published>2021-09-09T08:31:13.000Z</published>
+    <updated>2021-09-11T10:20:36.349Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;记账&quot;&gt;&lt;a href=&quot;#记账&quot; class=&quot;headerlink&quot; title=&quot;记账&quot;&gt;&lt;/a&gt;记账&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;&lt;a href&gt;@陈曦&lt;/a&gt;   &lt;a href&gt;@吴欣璇&lt;/a&gt;  &lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="成电微记" scheme="https://yingchenxing.github.io/categories/%E6%88%90%E7%94%B5%E5%BE%AE%E8%AE%B0/"/>
+    
+    
+    <category term="Android" scheme="https://yingchenxing.github.io/tags/Android/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>计组：计算机中信息的表示方式</title>
+    <link href="https://yingchenxing.github.io/2021/09/08/ComputerCompositionPrinciple02/"/>
+    <id>https://yingchenxing.github.io/2021/09/08/ComputerCompositionPrinciple02/</id>
+    <published>2021-09-08T13:33:35.000Z</published>
+    <updated>2021-09-13T02:11:57.042Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;strong&gt;计算机中信息的表示方式&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img</summary>
+        
+      
+    
+    
+    
+    <category term="计算机组成原理" scheme="https://yingchenxing.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/"/>
+    
+    
+    <category term="计算机组成原理" scheme="https://yingchenxing.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>安卓开发（四）编写界面实践</title>
+    <link href="https://yingchenxing.github.io/2021/09/08/AndroidDevelopment06/"/>
+    <id>https://yingchenxing.github.io/2021/09/08/AndroidDevelopment06/</id>
+    <published>2021-09-08T08:58:14.000Z</published>
+    <updated>2021-09-11T02:03:05.381Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;制作Nine-Patch图片&quot;&gt;&lt;a href=&quot;#制作Nine-Patch图片&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="Android" scheme="https://yingchenxing.github.io/categories/Android/"/>
+    
+    
+    <category term="Android" scheme="https://yingchenxing.github.io/tags/Android/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>编译原理（三）语言及其文法</title>
+    <link href="https://yingchenxing.github.io/2021/09/08/CompileTechnical03/"/>
+    <id>https://yingchenxing.github.io/2021/09/08/CompileTechnical03/</id>
+    <published>2021-09-08T02:00:28.000Z</published>
+    <updated>2021-09-12T09:00:41.428Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;基本概念&quot;&gt;&lt;a href=&quot;#基本概念&quot; class=&quot;headerlink&quot; title=&quot;基本概念&quot;&gt;&lt;/a&gt;基本概念&lt;/h2&gt;&lt;h3 id=&quot;字母表（Alphabet）&quot;&gt;&lt;a href=&quot;#字母表（Alphabet）&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="编译原理" scheme="https://yingchenxing.github.io/categories/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/"/>
+    
+    
+    <category term="编译原理" scheme="https://yingchenxing.github.io/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>安卓开发（零）AndroidStdio项目中各个文件(夹)的作用</title>
+    <link href="https://yingchenxing.github.io/2021/09/07/AndroidDevelopment05/"/>
+    <id>https://yingchenxing.github.io/2021/09/07/AndroidDevelopment05/</id>
+    <published>2021-09-07T11:12:20.000Z</published>
+    <updated>2021-09-07T12:03:23.912Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;笔记来自于《第一行代码》&lt;/p&gt;
+&lt;img src=&quot;/2021/09/07/AndroidDevelopment05/1631014300281.png&quot; style=&quot;zoom:150%;&quot;&gt;
+
+&lt;p&gt;&lt;img</summary>
+        
+      
+    
+    
+    
+    <category term="Android" scheme="https://yingchenxing.github.io/categories/Android/"/>
+    
+    
+    <category term="Android" scheme="https://yingchenxing.github.io/tags/Android/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>安卓开发（四）UI组件—视图</title>
+    <link href="https://yingchenxing.github.io/2021/09/07/AndroidDevelopment04/"/>
+    <id>https://yingchenxing.github.io/2021/09/07/AndroidDevelopment04/</id>
+    <published>2021-09-07T01:13:43.000Z</published>
+    <updated>2021-09-11T02:04:07.816Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;ListView&quot;&gt;&lt;a href=&quot;#ListView&quot; class=&quot;headerlink&quot; title=&quot;ListView&quot;&gt;&lt;/a&gt;ListView&lt;/h1&gt;&lt;h2 id=&quot;常用属性&quot;&gt;&lt;a href=&quot;#常用属性&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="Android" scheme="https://yingchenxing.github.io/categories/Android/"/>
+    
+    
+    <category term="Android" scheme="https://yingchenxing.github.io/tags/Android/"/>
+    
+    <category term="UI" scheme="https://yingchenxing.github.io/tags/UI/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>成电微记（一）-软件过程模型的选择</title>
+    <link href="https://yingchenxing.github.io/2021/09/06/DiaryInUESTC01/"/>
+    <id>https://yingchenxing.github.io/2021/09/06/DiaryInUESTC01/</id>
+    <published>2021-09-06T05:45:53.000Z</published>
+    <updated>2021-09-09T08:31:21.419Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;在选择合适的软件过程模型之前，我们先了解几种常用的模型&lt;/p&gt;
+&lt;h2 id=&quot;瀑布模型&quot;&gt;&lt;a href=&quot;#瀑布模型&quot; class=&quot;headerlink&quot; title=&quot;瀑布模型&quot;&gt;&lt;/a&gt;瀑布模型&lt;/h2&gt;&lt;p&gt;转载自：&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="成电微记" scheme="https://yingchenxing.github.io/categories/%E6%88%90%E7%94%B5%E5%BE%AE%E8%AE%B0/"/>
+    
+    
+    <category term="Android" scheme="https://yingchenxing.github.io/tags/Android/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>编译原理（二）词法分析器</title>
+    <link href="https://yingchenxing.github.io/2021/09/06/CompileTechnical02/"/>
+    <id>https://yingchenxing.github.io/2021/09/06/CompileTechnical02/</id>
+    <published>2021-09-06T03:34:15.000Z</published>
+    <updated>2021-09-08T02:37:39.514Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;词法分析器&quot;&gt;&lt;a href=&quot;#词法分析器&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="编译原理" scheme="https://yingchenxing.github.io/categories/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/"/>
+    
+    
+    <category term="编译原理" scheme="https://yingchenxing.github.io/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>编译原理（一）概论</title>
+    <link href="https://yingchenxing.github.io/2021/09/06/CompileTechnical01/"/>
+    <id>https://yingchenxing.github.io/2021/09/06/CompileTechnical01/</id>
+    <published>2021-09-06T02:55:03.000Z</published>
+    <updated>2021-09-12T06:10:52.933Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;编译器在语言处理系统中的位置&quot;&gt;&lt;a href=&quot;#编译器在语言处理系统中的位置&quot; class=&quot;headerlink&quot; title=&quot;编译器在语言处理系统中的位置&quot;&gt;&lt;/a&gt;编译器在语言处理系统中的位置&lt;/h2&gt;&lt;p&gt;&lt;img</summary>
+        
+      
+    
+    
+    
+    <category term="编译原理" scheme="https://yingchenxing.github.io/categories/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/"/>
+    
+    
+    <category term="编译原理" scheme="https://yingchenxing.github.io/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>计组：概论</title>
+    <link href="https://yingchenxing.github.io/2021/09/06/ComputerCompositionPrinciple01/"/>
+    <id>https://yingchenxing.github.io/2021/09/06/ComputerCompositionPrinciple01/</id>
+    <published>2021-09-06T02:04:04.000Z</published>
+    <updated>2021-09-11T02:08:53.125Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;计算机基本组成&quot;&gt;&lt;a href=&quot;#计算机基本组成&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="计算机组成原理" scheme="https://yingchenxing.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/"/>
+    
+    
+    <category term="计算机组成原理" scheme="https://yingchenxing.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/"/>
+    
+  </entry>
+  
+  <entry>
     <title>安卓开发（二）UI组件—组件</title>
     <link href="https://yingchenxing.github.io/2021/09/03/AndroidDevelopment02/"/>
     <id>https://yingchenxing.github.io/2021/09/03/AndroidDevelopment02/</id>
     <published>2021-09-03T12:40:45.000Z</published>
-    <updated>2021-09-05T09:45:12.503Z</updated>
+    <updated>2021-09-11T02:05:21.649Z</updated>
     
     
       
@@ -44,11 +409,11 @@
   </entry>
   
   <entry>
-    <title>安卓开发（二）UI组件—布局</title>
+    <title>安卓开发（三）UI组件—布局</title>
     <link href="https://yingchenxing.github.io/2021/09/03/AndroidDevelopment01/"/>
     <id>https://yingchenxing.github.io/2021/09/03/AndroidDevelopment01/</id>
     <published>2021-09-03T03:15:27.000Z</published>
-    <updated>2021-09-05T07:38:59.684Z</updated>
+    <updated>2021-09-07T01:12:01.498Z</updated>
     
     
       
@@ -75,7 +440,7 @@
     <link href="https://yingchenxing.github.io/2021/09/03/Sequential-logic-circuit/"/>
     <id>https://yingchenxing.github.io/2021/09/03/Sequential-logic-circuit/</id>
     <published>2021-09-03T03:10:03.000Z</published>
-    <updated>2021-09-03T03:11:19.630Z</updated>
+    <updated>2021-09-06T05:46:08.522Z</updated>
     
     
     
@@ -119,7 +484,7 @@
     <link href="https://yingchenxing.github.io/2021/09/01/%E8%AE%A1%E7%BB%84%EF%BC%9A%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
     <id>https://yingchenxing.github.io/2021/09/01/%E8%AE%A1%E7%BB%84%EF%BC%9A%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</id>
     <published>2021-09-01T12:28:45.000Z</published>
-    <updated>2021-09-03T03:05:18.522Z</updated>
+    <updated>2021-09-08T11:41:16.561Z</updated>
     
     
       
@@ -159,80 +524,6 @@
     
     
     <category term="计算机组成原理" scheme="https://yingchenxing.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>建立博客时遇到的问题（持续更新）</title>
-    <link href="https://yingchenxing.github.io/2021/08/30/%E5%BB%BA%E7%AB%8B%E5%8D%9A%E5%AE%A2%E9%81%87%E5%88%B0%E9%97%AE%E9%A2%98/"/>
-    <id>https://yingchenxing.github.io/2021/08/30/%E5%BB%BA%E7%AB%8B%E5%8D%9A%E5%AE%A2%E9%81%87%E5%88%B0%E9%97%AE%E9%A2%98/</id>
-    <published>2021-08-30T09:52:36.000Z</published>
-    <updated>2021-09-03T03:06:20.215Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;本地部署时出现：FATAL-Port-4000-has-been-used-Try-other-port-instead&quot;&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="博客" scheme="https://yingchenxing.github.io/categories/%E5%8D%9A%E5%AE%A2/"/>
-    
-    
-    <category term="博客" scheme="https://yingchenxing.github.io/tags/%E5%8D%9A%E5%AE%A2/"/>
-    
-    <category term="问题" scheme="https://yingchenxing.github.io/tags/%E9%97%AE%E9%A2%98/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>托福学习笔记</title>
-    <link href="https://yingchenxing.github.io/2021/08/29/TOFEL/"/>
-    <id>https://yingchenxing.github.io/2021/08/29/TOFEL/</id>
-    <published>2021-08-29T04:01:07.000Z</published>
-    <updated>2021-09-05T15:15:36.970Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;试卷结构&quot;&gt;&lt;a href=&quot;#试卷结构&quot; class=&quot;headerlink&quot; title=&quot;试卷结构&quot;&gt;&lt;/a&gt;试卷结构&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;/2021/08/29/TOFEL/1.png&quot;&gt;&lt;/p&gt;
-&lt;h1 id=&quot;阅读&quot;&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="托福" scheme="https://yingchenxing.github.io/categories/%E6%89%98%E7%A6%8F/"/>
-    
-    
-    <category term="托福" scheme="https://yingchenxing.github.io/tags/%E6%89%98%E7%A6%8F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="https://yingchenxing.github.io/2021/08/27/hello-world/"/>
-    <id>https://yingchenxing.github.io/2021/08/27/hello-world/</id>
-    <published>2021-08-27T09:39:54.084Z</published>
-    <updated>2021-08-27T09:39:54.084Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt;</summary>
-        
-      
-    
-    
-    
     
   </entry>
   

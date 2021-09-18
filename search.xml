@@ -327,6 +327,130 @@ implementation &quot;com.android.support:recyclerview-v7:$recyclerviewV7Version&
       </tags>
   </entry>
   <entry>
+    <title>安卓开发（四）编写界面实践</title>
+    <url>/2021/09/08/AndroidDevelopment06/</url>
+    <content><![CDATA[<h2 id="制作Nine-Patch图片"><a href="#制作Nine-Patch图片" class="headerlink" title="制作Nine-Patch图片"></a>制作Nine-Patch图片</h2><p><strong>第一步</strong></p>
+<p>右键图片文件，选择</p>
+<p><img src="/2021/09/08/AndroidDevelopment06/1631177537152.png"></p>
+<p><strong>第二步</strong></p>
+<p><img src="/2021/09/08/AndroidDevelopment06/1631177615012.png"></p>
+<p>上边框和左边框划分的区域是图片拉伸的区域</p>
+<p>下边框和右边框换份的区域是内容填写的区域</p>
+<p><strong>拉伸效果</strong></p>
+<img src="/2021/09/08/AndroidDevelopment06/1631177880883.png" style="zoom:50%;">
+
+
+
+<h2 id="编写主界面"><a href="#编写主界面" class="headerlink" title="编写主界面"></a>编写主界面</h2><h3 id="主界面"><a href="#主界面" class="headerlink" title="主界面"></a>主界面</h3><pre class="line-numbers language-java"><code class="language-java"><span class="token operator">&lt;</span>LinearLayout xmlns<span class="token operator">:</span>android<span class="token operator">=</span><span class="token string">"http://schemas.android.com/apk/res/android"</span>
+    android<span class="token operator">:</span>layout_width<span class="token operator">=</span><span class="token string">"match_parent"</span>
+    android<span class="token operator">:</span>layout_height<span class="token operator">=</span><span class="token string">"match_parent"</span>
+    android<span class="token operator">:</span>background<span class="token operator">=</span><span class="token string">"#d8e0e8"</span>
+    android<span class="token operator">:</span>orientation<span class="token operator">=</span><span class="token string">"vertical"</span><span class="token operator">></span>
+    <span class="token operator">&lt;</span>androidx<span class="token punctuation">.</span>recyclerview<span class="token punctuation">.</span>widget<span class="token punctuation">.</span>RecyclerView
+        android<span class="token operator">:</span>layout_width<span class="token operator">=</span><span class="token string">"match_parent"</span>
+        android<span class="token operator">:</span>layout_height<span class="token operator">=</span><span class="token string">"0dp"</span>
+        android<span class="token operator">:</span>layout_weight<span class="token operator">=</span><span class="token string">"1"</span><span class="token operator">/</span><span class="token operator">></span>
+    <span class="token operator">&lt;</span>LinearLayout
+        android<span class="token operator">:</span>layout_width<span class="token operator">=</span><span class="token string">"match_parent"</span>
+        android<span class="token operator">:</span>layout_height<span class="token operator">=</span><span class="token string">"wrap_content"</span><span class="token operator">></span>
+        <span class="token operator">&lt;</span>EditText
+            android<span class="token operator">:</span>id<span class="token operator">=</span><span class="token string">"@+id/input_text"</span>
+            android<span class="token operator">:</span>layout_width<span class="token operator">=</span><span class="token string">"0dp"</span>
+            android<span class="token operator">:</span>layout_height<span class="token operator">=</span><span class="token string">"wrap_content"</span>
+            android<span class="token operator">:</span>layout_weight<span class="token operator">=</span><span class="token string">"1"</span>
+            android<span class="token operator">:</span>hint<span class="token operator">=</span><span class="token string">"Type something here"</span>
+            android<span class="token operator">:</span>maxLines<span class="token operator">=</span><span class="token string">"2"</span><span class="token operator">/</span><span class="token operator">></span>
+
+        <span class="token operator">&lt;</span>Button
+            android<span class="token operator">:</span>id<span class="token operator">=</span><span class="token string">"@+id/send"</span>
+            android<span class="token operator">:</span>layout_width<span class="token operator">=</span><span class="token string">"wrap_content"</span>
+            android<span class="token operator">:</span>layout_height<span class="token operator">=</span><span class="token string">"wrap_content"</span>
+            android<span class="token operator">:</span>text<span class="token operator">=</span><span class="token string">"Send"</span><span class="token operator">/</span><span class="token operator">></span>
+
+    <span class="token operator">&lt;</span><span class="token operator">/</span>LinearLayout<span class="token operator">></span>
+    
+<span class="token operator">&lt;</span><span class="token operator">/</span>LinearLayout<span class="token operator">></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="Msg类"><a href="#Msg类" class="headerlink" title="Msg类"></a>Msg类</h3><pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Msg</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">int</span> TYPE_RECEIVED <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span>  <span class="token keyword">static</span>  <span class="token keyword">final</span> <span class="token keyword">int</span> TYPE_SENT <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token keyword">private</span> String content<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token keyword">int</span> type<span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token function">Msg</span><span class="token punctuation">(</span>String content<span class="token punctuation">,</span> <span class="token keyword">int</span> type<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>content <span class="token operator">=</span> content<span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>type <span class="token operator">=</span> type<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> String <span class="token function">getContent</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">return</span> content<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">getType</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">return</span> type<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="MainActivity"><a href="#MainActivity" class="headerlink" title="MainActivity"></a>MainActivity</h3><pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MainActivity</span> <span class="token keyword">extends</span> <span class="token class-name">AppCompatActivity</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">private</span> List<span class="token operator">&lt;</span>Msg<span class="token operator">></span> msgList <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">private</span> EditText inputText<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> Button send<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> RecyclerView msgRecyclerView<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> MsgAdapter adapter<span class="token punctuation">;</span>
+
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">onCreate</span><span class="token punctuation">(</span>Bundle savedInstanceState<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">onCreate</span><span class="token punctuation">(</span>savedInstanceState<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">setContentView</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>layout<span class="token punctuation">.</span>activity_main<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">initMsgs</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        inputText <span class="token operator">=</span> <span class="token punctuation">(</span>EditText<span class="token punctuation">)</span> <span class="token function">findViewById</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>id<span class="token punctuation">.</span>input_text<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        send <span class="token operator">=</span> <span class="token function">findViewById</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>id<span class="token punctuation">.</span>send<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        msgRecyclerView <span class="token operator">=</span> <span class="token function">findViewById</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>id<span class="token punctuation">.</span>msg_recycler_view<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        LinearLayoutManager layoutManager <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">LinearLayoutManager</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        msgRecyclerView<span class="token punctuation">.</span><span class="token function">setLayoutManager</span><span class="token punctuation">(</span>layoutManager<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        adapter <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">MsgAdapter</span><span class="token punctuation">(</span>msgList<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        msgRecyclerView<span class="token punctuation">.</span><span class="token function">setAdapter</span><span class="token punctuation">(</span>adapter<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        send<span class="token punctuation">.</span><span class="token function">setOnClickListener</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">View<span class="token punctuation">.</span>OnClickListener</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token annotation punctuation">@Override</span>
+            <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onClick</span><span class="token punctuation">(</span>View view<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                String content <span class="token operator">=</span> inputText<span class="token punctuation">.</span><span class="token function">getText</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token string">""</span><span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>content<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                    Msg msg <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Msg</span><span class="token punctuation">(</span>content<span class="token punctuation">,</span>Msg<span class="token punctuation">.</span>TYPE_SENT<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    msgList<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>msg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    adapter<span class="token punctuation">.</span><span class="token function">notifyItemInserted</span><span class="token punctuation">(</span>msgList<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//将新消息插入</span>
+                    msgRecyclerView<span class="token punctuation">.</span><span class="token function">scrollToPosition</span><span class="token punctuation">(</span>msgList<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//将ListView定位到最后一行</span>
+                    inputText<span class="token punctuation">.</span><span class="token function">setText</span><span class="token punctuation">(</span><span class="token string">""</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//清空输入框</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">initMsgs</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        Msg msg1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Msg</span><span class="token punctuation">(</span><span class="token string">"Hello gal."</span><span class="token punctuation">,</span>Msg<span class="token punctuation">.</span>TYPE_RECEIVED<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        msgList<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>msg1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        Msg msg2 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Msg</span><span class="token punctuation">(</span><span class="token string">"Hello. Who is that?"</span><span class="token punctuation">,</span>Msg<span class="token punctuation">.</span>TYPE_SENT<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        msgList<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>msg2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        Msg msg3 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Msg</span><span class="token punctuation">(</span><span class="token string">"This is Tom."</span><span class="token punctuation">,</span>Msg<span class="token punctuation">.</span>TYPE_RECEIVED<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        msgList<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>msg3<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>注意新消息插入的步骤</p>
+<pre class="line-numbers language-java"><code class="language-java">msgList<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>msg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+adapter<span class="token punctuation">.</span><span class="token function">notifyItemInserted</span><span class="token punctuation">(</span>msgList<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//将新消息插入</span>
+msgRecyclerView<span class="token punctuation">.</span><span class="token function">scrollToPosition</span><span class="token punctuation">(</span>msgList<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//将ListView定位到最后一行</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>安卓开发（五）碎片</title>
     <url>/2021/09/09/AndroidDevelopment07/</url>
     <content><![CDATA[<h2 id="碎片的使用方式"><a href="#碎片的使用方式" class="headerlink" title="碎片的使用方式"></a>碎片的使用方式</h2><h3 id="碎片的简单用法："><a href="#碎片的简单用法：" class="headerlink" title="碎片的简单用法："></a>碎片的简单用法：</h3><p><strong>left_fragment布局</strong></p>
@@ -464,127 +588,191 @@ implementation &quot;com.android.support:recyclerview-v7:$recyclerviewV7Version&
       </tags>
   </entry>
   <entry>
-    <title>安卓开发（四）编写界面实践</title>
-    <url>/2021/09/08/AndroidDevelopment06/</url>
-    <content><![CDATA[<h2 id="制作Nine-Patch图片"><a href="#制作Nine-Patch图片" class="headerlink" title="制作Nine-Patch图片"></a>制作Nine-Patch图片</h2><p><strong>第一步</strong></p>
-<p>右键图片文件，选择</p>
-<p><img src="/2021/09/08/AndroidDevelopment06/1631177537152.png"></p>
-<p><strong>第二步</strong></p>
-<p><img src="/2021/09/08/AndroidDevelopment06/1631177615012.png"></p>
-<p>上边框和左边框划分的区域是图片拉伸的区域</p>
-<p>下边框和右边框换份的区域是内容填写的区域</p>
-<p><strong>拉伸效果</strong></p>
-<img src="/2021/09/08/AndroidDevelopment06/1631177880883.png" style="zoom:50%;">
+    <title>安卓开发（五）碎片的实践</title>
+    <url>/2021/09/10/AndroidDevelopment08/</url>
+    <content><![CDATA[<h2 id="新闻内容的布局"><a href="#新闻内容的布局" class="headerlink" title="新闻内容的布局"></a>新闻内容的布局</h2><pre class="line-numbers language-xml"><code class="language-xml"><span class="token prolog">&lt;?xml version="1.0" encoding="utf-8"?></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>RelativeLayout</span> <span class="token attr-name"><span class="token namespace">xmlns:</span>android</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://schemas.android.com/apk/res/android<span class="token punctuation">"</span></span>
+    <span class="token attr-name"><span class="token namespace">android:</span>layout_width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span>
+    <span class="token attr-name"><span class="token namespace">android:</span>layout_height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>LinearLayout</span>
+        <span class="token attr-name"><span class="token namespace">android:</span>id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>@+id/visibility_layout<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">android:</span>layout_width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">android:</span>layout_height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">android:</span>orientation</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>vertical<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">android:</span>visibility</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>visible<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>TextView</span>
+            <span class="token attr-name"><span class="token namespace">android:</span>id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>@+id/news_tittle<span class="token punctuation">"</span></span>
+            <span class="token attr-name"><span class="token namespace">android:</span>layout_width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span>
+            <span class="token attr-name"><span class="token namespace">android:</span>layout_height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>wrap_content<span class="token punctuation">"</span></span>
+            <span class="token attr-name"><span class="token namespace">android:</span>gravity</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>center<span class="token punctuation">"</span></span>
+            <span class="token attr-name"><span class="token namespace">android:</span>padding</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>10dp<span class="token punctuation">"</span></span>
+            <span class="token attr-name"><span class="token namespace">android:</span>textSize</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>20sp<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
 
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>View</span>
+            <span class="token attr-name"><span class="token namespace">android:</span>layout_width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span>
+            <span class="token attr-name"><span class="token namespace">android:</span>layout_height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>10dp<span class="token punctuation">"</span></span>
+            <span class="token attr-name"><span class="token namespace">android:</span>background</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>#000<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>TextView</span>
+            <span class="token attr-name"><span class="token namespace">android:</span>id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>@+id/news_content<span class="token punctuation">"</span></span>
+            <span class="token attr-name"><span class="token namespace">android:</span>layout_width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span>
+            <span class="token attr-name"><span class="token namespace">android:</span>layout_height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>0dp<span class="token punctuation">"</span></span>
+            <span class="token attr-name"><span class="token namespace">android:</span>layout_weight</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>1<span class="token punctuation">"</span></span>
+            <span class="token attr-name"><span class="token namespace">android:</span>padding</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>15dp<span class="token punctuation">"</span></span>
+            <span class="token attr-name"><span class="token namespace">android:</span>textSize</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>18sp<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
 
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>LinearLayout</span><span class="token punctuation">></span></span>
 
-<h2 id="编写主界面"><a href="#编写主界面" class="headerlink" title="编写主界面"></a>编写主界面</h2><h3 id="主界面"><a href="#主界面" class="headerlink" title="主界面"></a>主界面</h3><pre class="line-numbers language-java"><code class="language-java"><span class="token operator">&lt;</span>LinearLayout xmlns<span class="token operator">:</span>android<span class="token operator">=</span><span class="token string">"http://schemas.android.com/apk/res/android"</span>
-    android<span class="token operator">:</span>layout_width<span class="token operator">=</span><span class="token string">"match_parent"</span>
-    android<span class="token operator">:</span>layout_height<span class="token operator">=</span><span class="token string">"match_parent"</span>
-    android<span class="token operator">:</span>background<span class="token operator">=</span><span class="token string">"#d8e0e8"</span>
-    android<span class="token operator">:</span>orientation<span class="token operator">=</span><span class="token string">"vertical"</span><span class="token operator">></span>
-    <span class="token operator">&lt;</span>androidx<span class="token punctuation">.</span>recyclerview<span class="token punctuation">.</span>widget<span class="token punctuation">.</span>RecyclerView
-        android<span class="token operator">:</span>layout_width<span class="token operator">=</span><span class="token string">"match_parent"</span>
-        android<span class="token operator">:</span>layout_height<span class="token operator">=</span><span class="token string">"0dp"</span>
-        android<span class="token operator">:</span>layout_weight<span class="token operator">=</span><span class="token string">"1"</span><span class="token operator">/</span><span class="token operator">></span>
-    <span class="token operator">&lt;</span>LinearLayout
-        android<span class="token operator">:</span>layout_width<span class="token operator">=</span><span class="token string">"match_parent"</span>
-        android<span class="token operator">:</span>layout_height<span class="token operator">=</span><span class="token string">"wrap_content"</span><span class="token operator">></span>
-        <span class="token operator">&lt;</span>EditText
-            android<span class="token operator">:</span>id<span class="token operator">=</span><span class="token string">"@+id/input_text"</span>
-            android<span class="token operator">:</span>layout_width<span class="token operator">=</span><span class="token string">"0dp"</span>
-            android<span class="token operator">:</span>layout_height<span class="token operator">=</span><span class="token string">"wrap_content"</span>
-            android<span class="token operator">:</span>layout_weight<span class="token operator">=</span><span class="token string">"1"</span>
-            android<span class="token operator">:</span>hint<span class="token operator">=</span><span class="token string">"Type something here"</span>
-            android<span class="token operator">:</span>maxLines<span class="token operator">=</span><span class="token string">"2"</span><span class="token operator">/</span><span class="token operator">></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>View</span>
+        <span class="token attr-name"><span class="token namespace">android:</span>layout_width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>1dp<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">android:</span>layout_height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">android:</span>layout_alignParentLeft</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">android:</span>background</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>#000<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
 
-        <span class="token operator">&lt;</span>Button
-            android<span class="token operator">:</span>id<span class="token operator">=</span><span class="token string">"@+id/send"</span>
-            android<span class="token operator">:</span>layout_width<span class="token operator">=</span><span class="token string">"wrap_content"</span>
-            android<span class="token operator">:</span>layout_height<span class="token operator">=</span><span class="token string">"wrap_content"</span>
-            android<span class="token operator">:</span>text<span class="token operator">=</span><span class="token string">"Send"</span><span class="token operator">/</span><span class="token operator">></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>RelativeLayout</span><span class="token punctuation">></span></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>NewsContentFragment类</strong></p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">NewsContentFragment</span> <span class="token keyword">extends</span> <span class="token class-name">Fragment</span> <span class="token punctuation">{</span>
+    <span class="token keyword">private</span> View view<span class="token punctuation">;</span>
 
-    <span class="token operator">&lt;</span><span class="token operator">/</span>LinearLayout<span class="token operator">></span>
-    
-<span class="token operator">&lt;</span><span class="token operator">/</span>LinearLayout<span class="token operator">></span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="Msg类"><a href="#Msg类" class="headerlink" title="Msg类"></a>Msg类</h3><pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Msg</span> <span class="token punctuation">{</span>
-    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">int</span> TYPE_RECEIVED <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-    <span class="token keyword">public</span>  <span class="token keyword">static</span>  <span class="token keyword">final</span> <span class="token keyword">int</span> TYPE_SENT <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
-    <span class="token keyword">private</span> String content<span class="token punctuation">;</span>
-    <span class="token keyword">private</span> <span class="token keyword">int</span> type<span class="token punctuation">;</span>
-    <span class="token keyword">public</span> <span class="token function">Msg</span><span class="token punctuation">(</span>String content<span class="token punctuation">,</span> <span class="token keyword">int</span> type<span class="token punctuation">)</span><span class="token punctuation">{</span>
-        <span class="token keyword">this</span><span class="token punctuation">.</span>content <span class="token operator">=</span> content<span class="token punctuation">;</span>
-        <span class="token keyword">this</span><span class="token punctuation">.</span>type <span class="token operator">=</span> type<span class="token punctuation">;</span>
+    <span class="token annotation punctuation">@Nullable</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> View <span class="token function">onCreateView</span><span class="token punctuation">(</span><span class="token annotation punctuation">@NonNull</span> LayoutInflater inflater<span class="token punctuation">,</span> <span class="token annotation punctuation">@Nullable</span> ViewGroup container<span class="token punctuation">,</span> <span class="token annotation punctuation">@Nullable</span> Bundle savedInstanceState<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        view <span class="token operator">=</span> inflater<span class="token punctuation">.</span><span class="token function">inflate</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>layout<span class="token punctuation">.</span>news_content_frag<span class="token punctuation">,</span>container<span class="token punctuation">,</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> view<span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
-    <span class="token keyword">public</span> String <span class="token function">getContent</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-        <span class="token keyword">return</span> content<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">getType</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-        <span class="token keyword">return</span> type<span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">refresh</span><span class="token punctuation">(</span>String newsTittle<span class="token punctuation">,</span>String newsContent<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        View visibilityLayout <span class="token operator">=</span> view<span class="token punctuation">.</span><span class="token function">findViewById</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>id<span class="token punctuation">.</span>visibility_layout<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        visibilityLayout<span class="token punctuation">.</span><span class="token function">setVisibility</span><span class="token punctuation">(</span>View<span class="token punctuation">.</span>VISIBLE<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        TextView newsTittleText <span class="token operator">=</span> view<span class="token punctuation">.</span><span class="token function">findViewById</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>id<span class="token punctuation">.</span>news_tittle<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        TextView newsContentText <span class="token operator">=</span> view<span class="token punctuation">.</span><span class="token function">findViewById</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>id<span class="token punctuation">.</span>news_content<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        newsTittleText<span class="token punctuation">.</span><span class="token function">setText</span><span class="token punctuation">(</span>newsTittle<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        newsContentText<span class="token punctuation">.</span><span class="token function">setText</span><span class="token punctuation">(</span>newsContent<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="MainActivity"><a href="#MainActivity" class="headerlink" title="MainActivity"></a>MainActivity</h3><pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MainActivity</span> <span class="token keyword">extends</span> <span class="token class-name">AppCompatActivity</span> <span class="token punctuation">{</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>提供了refresh（）方法将新闻内容和题目显示在界面上。</p>
+<p><strong>news_content布局</strong></p>
+<pre class="line-numbers language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>LinearLayout</span> <span class="token attr-name"><span class="token namespace">xmlns:</span>android</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://schemas.android.com/apk/res/android<span class="token punctuation">"</span></span>
+    <span class="token attr-name"><span class="token namespace">android:</span>orientation</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>vertical<span class="token punctuation">"</span></span>
+    <span class="token attr-name"><span class="token namespace">android:</span>layout_width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span>
+    <span class="token attr-name"><span class="token namespace">android:</span>layout_height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>fragment</span>
+        <span class="token attr-name"><span class="token namespace">android:</span>id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>@+id/news_content_fragment<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">android:</span>name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>com.example.newspaper.NewsContentFragment<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">android:</span>layout_width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">android:</span>layout_height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
+    
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>LinearLayout</span><span class="token punctuation">></span></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>直接在布局中引用了NewsContentActivity，相当于把news_content_frag布局加入</p>
+<p><strong>NewsContentActivity类</strong></p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">NewsContentActivity</span> <span class="token keyword">extends</span> <span class="token class-name">AppCompatActivity</span> <span class="token punctuation">{</span>
 
-    <span class="token keyword">private</span> List<span class="token operator">&lt;</span>Msg<span class="token operator">></span> msgList <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">private</span> EditText inputText<span class="token punctuation">;</span>
-    <span class="token keyword">private</span> Button send<span class="token punctuation">;</span>
-    <span class="token keyword">private</span> RecyclerView msgRecyclerView<span class="token punctuation">;</span>
-    <span class="token keyword">private</span> MsgAdapter adapter<span class="token punctuation">;</span>
-
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">actionStart</span><span class="token punctuation">(</span>Context context<span class="token punctuation">,</span>String newsTittle<span class="token punctuation">,</span>String newsContent<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        Intent intent <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Intent</span><span class="token punctuation">(</span>context<span class="token punctuation">,</span>NewsContentActivity<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        intent<span class="token punctuation">.</span><span class="token function">putExtra</span><span class="token punctuation">(</span><span class="token string">"news_title"</span><span class="token punctuation">,</span>newsTittle<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        intent<span class="token punctuation">.</span><span class="token function">putExtra</span><span class="token punctuation">(</span><span class="token string">"news_content"</span><span class="token punctuation">,</span>newsContent<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        context<span class="token punctuation">.</span><span class="token function">startActivity</span><span class="token punctuation">(</span>intent<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
     <span class="token annotation punctuation">@Override</span>
     <span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">onCreate</span><span class="token punctuation">(</span>Bundle savedInstanceState<span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">onCreate</span><span class="token punctuation">(</span>savedInstanceState<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token function">setContentView</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>layout<span class="token punctuation">.</span>activity_main<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token function">initMsgs</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        inputText <span class="token operator">=</span> <span class="token punctuation">(</span>EditText<span class="token punctuation">)</span> <span class="token function">findViewById</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>id<span class="token punctuation">.</span>input_text<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        send <span class="token operator">=</span> <span class="token function">findViewById</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>id<span class="token punctuation">.</span>send<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        msgRecyclerView <span class="token operator">=</span> <span class="token function">findViewById</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>id<span class="token punctuation">.</span>msg_recycler_view<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        LinearLayoutManager layoutManager <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">LinearLayoutManager</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        msgRecyclerView<span class="token punctuation">.</span><span class="token function">setLayoutManager</span><span class="token punctuation">(</span>layoutManager<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        adapter <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">MsgAdapter</span><span class="token punctuation">(</span>msgList<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        msgRecyclerView<span class="token punctuation">.</span><span class="token function">setAdapter</span><span class="token punctuation">(</span>adapter<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        send<span class="token punctuation">.</span><span class="token function">setOnClickListener</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">View<span class="token punctuation">.</span>OnClickListener</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token annotation punctuation">@Override</span>
-            <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onClick</span><span class="token punctuation">(</span>View view<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                String content <span class="token operator">=</span> inputText<span class="token punctuation">.</span><span class="token function">getText</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token string">""</span><span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>content<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-                    Msg msg <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Msg</span><span class="token punctuation">(</span>content<span class="token punctuation">,</span>Msg<span class="token punctuation">.</span>TYPE_SENT<span class="token punctuation">)</span><span class="token punctuation">;</span>
-                    msgList<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>msg<span class="token punctuation">)</span><span class="token punctuation">;</span>
-                    adapter<span class="token punctuation">.</span><span class="token function">notifyItemInserted</span><span class="token punctuation">(</span>msgList<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//将新消息插入</span>
-                    msgRecyclerView<span class="token punctuation">.</span><span class="token function">scrollToPosition</span><span class="token punctuation">(</span>msgList<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//将ListView定位到最后一行</span>
-                    inputText<span class="token punctuation">.</span><span class="token function">setText</span><span class="token punctuation">(</span><span class="token string">""</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//清空输入框</span>
-                <span class="token punctuation">}</span>
-            <span class="token punctuation">}</span>
-        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-    <span class="token punctuation">}</span>
-
-    <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">initMsgs</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-        Msg msg1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Msg</span><span class="token punctuation">(</span><span class="token string">"Hello gal."</span><span class="token punctuation">,</span>Msg<span class="token punctuation">.</span>TYPE_RECEIVED<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        msgList<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>msg1<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        Msg msg2 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Msg</span><span class="token punctuation">(</span><span class="token string">"Hello. Who is that?"</span><span class="token punctuation">,</span>Msg<span class="token punctuation">.</span>TYPE_SENT<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        msgList<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>msg2<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        Msg msg3 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Msg</span><span class="token punctuation">(</span><span class="token string">"This is Tom."</span><span class="token punctuation">,</span>Msg<span class="token punctuation">.</span>TYPE_RECEIVED<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        msgList<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>msg3<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">setContentView</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>layout<span class="token punctuation">.</span>news_content<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        String newsTitle <span class="token operator">=</span> <span class="token function">getIntent</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getStringExtra</span><span class="token punctuation">(</span><span class="token string">"news_title"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//获取传入的新闻标题</span>
+        String newsContent <span class="token operator">=</span> <span class="token function">getIntent</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getStringExtra</span><span class="token punctuation">(</span><span class="token string">"news_content"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//获取传入的新闻内容</span>
+        NewsContentFragment newsContentFragment <span class="token operator">=</span> <span class="token punctuation">(</span>NewsContentFragment<span class="token punctuation">)</span>
+                <span class="token function">getSupportFragmentManager</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">findFragmentById</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>id<span class="token punctuation">.</span>news_content_fragment<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        newsContentFragment<span class="token punctuation">.</span><span class="token function">refresh</span><span class="token punctuation">(</span>newsTitle<span class="token punctuation">,</span>newsContent<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//刷新NewsContentFragment界面</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>注意新消息插入的步骤</p>
-<pre class="line-numbers language-java"><code class="language-java">msgList<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>msg<span class="token punctuation">)</span><span class="token punctuation">;</span>
-adapter<span class="token punctuation">.</span><span class="token function">notifyItemInserted</span><span class="token punctuation">(</span>msgList<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//将新消息插入</span>
-msgRecyclerView<span class="token punctuation">.</span><span class="token function">scrollToPosition</span><span class="token punctuation">(</span>msgList<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//将ListView定位到最后一行</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><img src="/2021/09/10/AndroidDevelopment08/1631265768592.png"></p>
+<p><strong>news_item布局</strong></p>
+<pre class="line-numbers language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>TextView</span> <span class="token attr-name"><span class="token namespace">xmlns:</span>android</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://schemas.android.com/apk/res/android<span class="token punctuation">"</span></span>
+    <span class="token attr-name"><span class="token namespace">android:</span>id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>@+id/news_tittle<span class="token punctuation">"</span></span>
+    <span class="token attr-name"><span class="token namespace">android:</span>layout_width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span>
+    <span class="token attr-name"><span class="token namespace">android:</span>layout_height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>wrap_content<span class="token punctuation">"</span></span>
+    <span class="token attr-name"><span class="token namespace">android:</span>singleLine</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span>
+    <span class="token attr-name"><span class="token namespace">android:</span>ellipsize</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>end<span class="token punctuation">"</span></span>
+    <span class="token attr-name"><span class="token namespace">android:</span>textSize</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>18sp<span class="token punctuation">"</span></span>
+    <span class="token attr-name"><span class="token namespace">android:</span>paddingLeft</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>10dp<span class="token punctuation">"</span></span>
+    <span class="token attr-name"><span class="token namespace">android:</span>paddingRight</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>10dp<span class="token punctuation">"</span></span>
+    <span class="token attr-name"><span class="token namespace">android:</span>paddingTop</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>15dp<span class="token punctuation">"</span></span>
+    <span class="token attr-name"><span class="token namespace">android:</span>padding</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>15dp<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>ellipse：文本的缩略方式（end：在尾部缩略）</p>
+<p><strong>NewsTitleFragment类</strong></p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">NewsTitleFragment</span> <span class="token keyword">extends</span> <span class="token class-name">Fragment</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">boolean</span> isTwoPane<span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@Nullable</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> View <span class="token function">onCreateView</span><span class="token punctuation">(</span><span class="token annotation punctuation">@NonNull</span> LayoutInflater inflater<span class="token punctuation">,</span> <span class="token annotation punctuation">@Nullable</span> ViewGroup container<span class="token punctuation">,</span> <span class="token annotation punctuation">@Nullable</span> Bundle savedInstanceState<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        View view <span class="token operator">=</span> inflater<span class="token punctuation">.</span><span class="token function">inflate</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>layout<span class="token punctuation">.</span>news_title_frag<span class="token punctuation">,</span>container<span class="token punctuation">,</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> view<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onActivityCreated</span><span class="token punctuation">(</span><span class="token annotation punctuation">@Nullable</span> Bundle savedInstanceState<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">onActivityCreated</span><span class="token punctuation">(</span>savedInstanceState<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">getActivity</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">findViewById</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>id<span class="token punctuation">.</span>news_content_layout<span class="token punctuation">)</span><span class="token operator">!=</span>null<span class="token punctuation">)</span><span class="token punctuation">{</span>
+            isTwoPane <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
+            isTwoPane <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>通过能否找到news_content_layout来判断当前是双页还是单页</p>
+<pre class="line-numbers language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>FrameLayout</span> <span class="token attr-name"><span class="token namespace">xmlns:</span>android</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://schemas.android.com/apk/res/android<span class="token punctuation">"</span></span>
+    <span class="token attr-name"><span class="token namespace">android:</span>id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>@+id/news_tittle_layout<span class="token punctuation">"</span></span>
+    <span class="token attr-name"><span class="token namespace">android:</span>layout_width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span>
+    <span class="token attr-name"><span class="token namespace">android:</span>layout_height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>fragment</span>
+        <span class="token attr-name"><span class="token namespace">android:</span>id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>@+id/news_tittle_fragment<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">android:</span>name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>com.example.newspaper.NewsTitleFragment<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">android:</span>layout_width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">android:</span>layout_height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>FrameLayout</span><span class="token punctuation">></span></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>单页指挥加载一个碎片</p>
+<pre class="line-numbers language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>LinearLayout</span> <span class="token attr-name"><span class="token namespace">xmlns:</span>android</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://schemas.android.com/apk/res/android<span class="token punctuation">"</span></span>
+    <span class="token attr-name"><span class="token namespace">android:</span>orientation</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>horizontal<span class="token punctuation">"</span></span>
+    <span class="token attr-name"><span class="token namespace">android:</span>layout_width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span>
+    <span class="token attr-name"><span class="token namespace">android:</span>layout_height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>fragment</span>
+        <span class="token attr-name"><span class="token namespace">android:</span>id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>@+id/news_title_fragment<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">android:</span>name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>com.example.newspaper.NewsTitleFragment<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">android:</span>layout_width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>0dp<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">android:</span>layout_height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">android:</span>layout_weight</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>1<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>FrameLayout</span>
+        <span class="token attr-name"><span class="token namespace">android:</span>id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>@+id/news_content_layout<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">android:</span>layout_width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>0dp<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">android:</span>layout_height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span>
+        <span class="token attr-name"><span class="token namespace">android:</span>layout_weight</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>3<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+        &lt;fragment
+            android:id="@+id/news_content_fragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>FrameLayout</span><span class="token punctuation">></span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>LinearLayout</span><span class="token punctuation">></span></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>双页加载</p>
 ]]></content>
       <categories>
         <category>Android</category>
       </categories>
       <tags>
         <tag>Android</tag>
+        <tag>Fragment</tag>
       </tags>
   </entry>
   <entry>
@@ -796,194 +984,6 @@ msgRecyclerView<span class="token punctuation">.</span><span class="token functi
       </tags>
   </entry>
   <entry>
-    <title>安卓开发（五）碎片的实践</title>
-    <url>/2021/09/10/AndroidDevelopment08/</url>
-    <content><![CDATA[<h2 id="新闻内容的布局"><a href="#新闻内容的布局" class="headerlink" title="新闻内容的布局"></a>新闻内容的布局</h2><pre class="line-numbers language-xml"><code class="language-xml"><span class="token prolog">&lt;?xml version="1.0" encoding="utf-8"?></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>RelativeLayout</span> <span class="token attr-name"><span class="token namespace">xmlns:</span>android</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://schemas.android.com/apk/res/android<span class="token punctuation">"</span></span>
-    <span class="token attr-name"><span class="token namespace">android:</span>layout_width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span>
-    <span class="token attr-name"><span class="token namespace">android:</span>layout_height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>LinearLayout</span>
-        <span class="token attr-name"><span class="token namespace">android:</span>id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>@+id/visibility_layout<span class="token punctuation">"</span></span>
-        <span class="token attr-name"><span class="token namespace">android:</span>layout_width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span>
-        <span class="token attr-name"><span class="token namespace">android:</span>layout_height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span>
-        <span class="token attr-name"><span class="token namespace">android:</span>orientation</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>vertical<span class="token punctuation">"</span></span>
-        <span class="token attr-name"><span class="token namespace">android:</span>visibility</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>visible<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>TextView</span>
-            <span class="token attr-name"><span class="token namespace">android:</span>id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>@+id/news_tittle<span class="token punctuation">"</span></span>
-            <span class="token attr-name"><span class="token namespace">android:</span>layout_width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span>
-            <span class="token attr-name"><span class="token namespace">android:</span>layout_height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>wrap_content<span class="token punctuation">"</span></span>
-            <span class="token attr-name"><span class="token namespace">android:</span>gravity</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>center<span class="token punctuation">"</span></span>
-            <span class="token attr-name"><span class="token namespace">android:</span>padding</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>10dp<span class="token punctuation">"</span></span>
-            <span class="token attr-name"><span class="token namespace">android:</span>textSize</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>20sp<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
-
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>View</span>
-            <span class="token attr-name"><span class="token namespace">android:</span>layout_width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span>
-            <span class="token attr-name"><span class="token namespace">android:</span>layout_height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>10dp<span class="token punctuation">"</span></span>
-            <span class="token attr-name"><span class="token namespace">android:</span>background</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>#000<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>TextView</span>
-            <span class="token attr-name"><span class="token namespace">android:</span>id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>@+id/news_content<span class="token punctuation">"</span></span>
-            <span class="token attr-name"><span class="token namespace">android:</span>layout_width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span>
-            <span class="token attr-name"><span class="token namespace">android:</span>layout_height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>0dp<span class="token punctuation">"</span></span>
-            <span class="token attr-name"><span class="token namespace">android:</span>layout_weight</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>1<span class="token punctuation">"</span></span>
-            <span class="token attr-name"><span class="token namespace">android:</span>padding</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>15dp<span class="token punctuation">"</span></span>
-            <span class="token attr-name"><span class="token namespace">android:</span>textSize</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>18sp<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
-
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>LinearLayout</span><span class="token punctuation">></span></span>
-
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>View</span>
-        <span class="token attr-name"><span class="token namespace">android:</span>layout_width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>1dp<span class="token punctuation">"</span></span>
-        <span class="token attr-name"><span class="token namespace">android:</span>layout_height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span>
-        <span class="token attr-name"><span class="token namespace">android:</span>layout_alignParentLeft</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span>
-        <span class="token attr-name"><span class="token namespace">android:</span>background</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>#000<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
-
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>RelativeLayout</span><span class="token punctuation">></span></span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><strong>NewsContentFragment类</strong></p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">NewsContentFragment</span> <span class="token keyword">extends</span> <span class="token class-name">Fragment</span> <span class="token punctuation">{</span>
-    <span class="token keyword">private</span> View view<span class="token punctuation">;</span>
-
-    <span class="token annotation punctuation">@Nullable</span>
-    <span class="token annotation punctuation">@Override</span>
-    <span class="token keyword">public</span> View <span class="token function">onCreateView</span><span class="token punctuation">(</span><span class="token annotation punctuation">@NonNull</span> LayoutInflater inflater<span class="token punctuation">,</span> <span class="token annotation punctuation">@Nullable</span> ViewGroup container<span class="token punctuation">,</span> <span class="token annotation punctuation">@Nullable</span> Bundle savedInstanceState<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        view <span class="token operator">=</span> inflater<span class="token punctuation">.</span><span class="token function">inflate</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>layout<span class="token punctuation">.</span>news_content_frag<span class="token punctuation">,</span>container<span class="token punctuation">,</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">return</span> view<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">refresh</span><span class="token punctuation">(</span>String newsTittle<span class="token punctuation">,</span>String newsContent<span class="token punctuation">)</span><span class="token punctuation">{</span>
-        View visibilityLayout <span class="token operator">=</span> view<span class="token punctuation">.</span><span class="token function">findViewById</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>id<span class="token punctuation">.</span>visibility_layout<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        visibilityLayout<span class="token punctuation">.</span><span class="token function">setVisibility</span><span class="token punctuation">(</span>View<span class="token punctuation">.</span>VISIBLE<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        TextView newsTittleText <span class="token operator">=</span> view<span class="token punctuation">.</span><span class="token function">findViewById</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>id<span class="token punctuation">.</span>news_tittle<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        TextView newsContentText <span class="token operator">=</span> view<span class="token punctuation">.</span><span class="token function">findViewById</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>id<span class="token punctuation">.</span>news_content<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        newsTittleText<span class="token punctuation">.</span><span class="token function">setText</span><span class="token punctuation">(</span>newsTittle<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        newsContentText<span class="token punctuation">.</span><span class="token function">setText</span><span class="token punctuation">(</span>newsContent<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>提供了refresh（）方法将新闻内容和题目显示在界面上。</p>
-<p><strong>news_content布局</strong></p>
-<pre class="line-numbers language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>LinearLayout</span> <span class="token attr-name"><span class="token namespace">xmlns:</span>android</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://schemas.android.com/apk/res/android<span class="token punctuation">"</span></span>
-    <span class="token attr-name"><span class="token namespace">android:</span>orientation</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>vertical<span class="token punctuation">"</span></span>
-    <span class="token attr-name"><span class="token namespace">android:</span>layout_width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span>
-    <span class="token attr-name"><span class="token namespace">android:</span>layout_height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-    
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>fragment</span>
-        <span class="token attr-name"><span class="token namespace">android:</span>id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>@+id/news_content_fragment<span class="token punctuation">"</span></span>
-        <span class="token attr-name"><span class="token namespace">android:</span>name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>com.example.newspaper.NewsContentFragment<span class="token punctuation">"</span></span>
-        <span class="token attr-name"><span class="token namespace">android:</span>layout_width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span>
-        <span class="token attr-name"><span class="token namespace">android:</span>layout_height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
-    
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>LinearLayout</span><span class="token punctuation">></span></span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>直接在布局中引用了NewsContentActivity，相当于把news_content_frag布局加入</p>
-<p><strong>NewsContentActivity类</strong></p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">NewsContentActivity</span> <span class="token keyword">extends</span> <span class="token class-name">AppCompatActivity</span> <span class="token punctuation">{</span>
-
-    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">actionStart</span><span class="token punctuation">(</span>Context context<span class="token punctuation">,</span>String newsTittle<span class="token punctuation">,</span>String newsContent<span class="token punctuation">)</span><span class="token punctuation">{</span>
-        Intent intent <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Intent</span><span class="token punctuation">(</span>context<span class="token punctuation">,</span>NewsContentActivity<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        intent<span class="token punctuation">.</span><span class="token function">putExtra</span><span class="token punctuation">(</span><span class="token string">"news_title"</span><span class="token punctuation">,</span>newsTittle<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        intent<span class="token punctuation">.</span><span class="token function">putExtra</span><span class="token punctuation">(</span><span class="token string">"news_content"</span><span class="token punctuation">,</span>newsContent<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        context<span class="token punctuation">.</span><span class="token function">startActivity</span><span class="token punctuation">(</span>intent<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token annotation punctuation">@Override</span>
-    <span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">onCreate</span><span class="token punctuation">(</span>Bundle savedInstanceState<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">onCreate</span><span class="token punctuation">(</span>savedInstanceState<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token function">setContentView</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>layout<span class="token punctuation">.</span>news_content<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        String newsTitle <span class="token operator">=</span> <span class="token function">getIntent</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getStringExtra</span><span class="token punctuation">(</span><span class="token string">"news_title"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//获取传入的新闻标题</span>
-        String newsContent <span class="token operator">=</span> <span class="token function">getIntent</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getStringExtra</span><span class="token punctuation">(</span><span class="token string">"news_content"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//获取传入的新闻内容</span>
-        NewsContentFragment newsContentFragment <span class="token operator">=</span> <span class="token punctuation">(</span>NewsContentFragment<span class="token punctuation">)</span>
-                <span class="token function">getSupportFragmentManager</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">findFragmentById</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>id<span class="token punctuation">.</span>news_content_fragment<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        newsContentFragment<span class="token punctuation">.</span><span class="token function">refresh</span><span class="token punctuation">(</span>newsTitle<span class="token punctuation">,</span>newsContent<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//刷新NewsContentFragment界面</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><img src="/2021/09/10/AndroidDevelopment08/1631265768592.png"></p>
-<p><strong>news_item布局</strong></p>
-<pre class="line-numbers language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>TextView</span> <span class="token attr-name"><span class="token namespace">xmlns:</span>android</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://schemas.android.com/apk/res/android<span class="token punctuation">"</span></span>
-    <span class="token attr-name"><span class="token namespace">android:</span>id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>@+id/news_tittle<span class="token punctuation">"</span></span>
-    <span class="token attr-name"><span class="token namespace">android:</span>layout_width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span>
-    <span class="token attr-name"><span class="token namespace">android:</span>layout_height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>wrap_content<span class="token punctuation">"</span></span>
-    <span class="token attr-name"><span class="token namespace">android:</span>singleLine</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span>
-    <span class="token attr-name"><span class="token namespace">android:</span>ellipsize</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>end<span class="token punctuation">"</span></span>
-    <span class="token attr-name"><span class="token namespace">android:</span>textSize</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>18sp<span class="token punctuation">"</span></span>
-    <span class="token attr-name"><span class="token namespace">android:</span>paddingLeft</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>10dp<span class="token punctuation">"</span></span>
-    <span class="token attr-name"><span class="token namespace">android:</span>paddingRight</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>10dp<span class="token punctuation">"</span></span>
-    <span class="token attr-name"><span class="token namespace">android:</span>paddingTop</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>15dp<span class="token punctuation">"</span></span>
-    <span class="token attr-name"><span class="token namespace">android:</span>padding</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>15dp<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>ellipse：文本的缩略方式（end：在尾部缩略）</p>
-<p><strong>NewsTitleFragment类</strong></p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">NewsTitleFragment</span> <span class="token keyword">extends</span> <span class="token class-name">Fragment</span> <span class="token punctuation">{</span>
-
-    <span class="token keyword">private</span> <span class="token keyword">boolean</span> isTwoPane<span class="token punctuation">;</span>
-
-    <span class="token annotation punctuation">@Nullable</span>
-    <span class="token annotation punctuation">@Override</span>
-    <span class="token keyword">public</span> View <span class="token function">onCreateView</span><span class="token punctuation">(</span><span class="token annotation punctuation">@NonNull</span> LayoutInflater inflater<span class="token punctuation">,</span> <span class="token annotation punctuation">@Nullable</span> ViewGroup container<span class="token punctuation">,</span> <span class="token annotation punctuation">@Nullable</span> Bundle savedInstanceState<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        View view <span class="token operator">=</span> inflater<span class="token punctuation">.</span><span class="token function">inflate</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>layout<span class="token punctuation">.</span>news_title_frag<span class="token punctuation">,</span>container<span class="token punctuation">,</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">return</span> view<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token annotation punctuation">@Override</span>
-    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onActivityCreated</span><span class="token punctuation">(</span><span class="token annotation punctuation">@Nullable</span> Bundle savedInstanceState<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">onActivityCreated</span><span class="token punctuation">(</span>savedInstanceState<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">getActivity</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">findViewById</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>id<span class="token punctuation">.</span>news_content_layout<span class="token punctuation">)</span><span class="token operator">!=</span>null<span class="token punctuation">)</span><span class="token punctuation">{</span>
-            isTwoPane <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
-            isTwoPane <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>通过能否找到news_content_layout来判断当前是双页还是单页</p>
-<pre class="line-numbers language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>FrameLayout</span> <span class="token attr-name"><span class="token namespace">xmlns:</span>android</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://schemas.android.com/apk/res/android<span class="token punctuation">"</span></span>
-    <span class="token attr-name"><span class="token namespace">android:</span>id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>@+id/news_tittle_layout<span class="token punctuation">"</span></span>
-    <span class="token attr-name"><span class="token namespace">android:</span>layout_width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span>
-    <span class="token attr-name"><span class="token namespace">android:</span>layout_height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>fragment</span>
-        <span class="token attr-name"><span class="token namespace">android:</span>id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>@+id/news_tittle_fragment<span class="token punctuation">"</span></span>
-        <span class="token attr-name"><span class="token namespace">android:</span>name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>com.example.newspaper.NewsTitleFragment<span class="token punctuation">"</span></span>
-        <span class="token attr-name"><span class="token namespace">android:</span>layout_width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span>
-        <span class="token attr-name"><span class="token namespace">android:</span>layout_height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
-
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>FrameLayout</span><span class="token punctuation">></span></span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>单页指挥加载一个碎片</p>
-<pre class="line-numbers language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>LinearLayout</span> <span class="token attr-name"><span class="token namespace">xmlns:</span>android</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://schemas.android.com/apk/res/android<span class="token punctuation">"</span></span>
-    <span class="token attr-name"><span class="token namespace">android:</span>orientation</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>horizontal<span class="token punctuation">"</span></span>
-    <span class="token attr-name"><span class="token namespace">android:</span>layout_width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span>
-    <span class="token attr-name"><span class="token namespace">android:</span>layout_height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>fragment</span>
-        <span class="token attr-name"><span class="token namespace">android:</span>id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>@+id/news_title_fragment<span class="token punctuation">"</span></span>
-        <span class="token attr-name"><span class="token namespace">android:</span>name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>com.example.newspaper.NewsTitleFragment<span class="token punctuation">"</span></span>
-        <span class="token attr-name"><span class="token namespace">android:</span>layout_width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>0dp<span class="token punctuation">"</span></span>
-        <span class="token attr-name"><span class="token namespace">android:</span>layout_height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span>
-        <span class="token attr-name"><span class="token namespace">android:</span>layout_weight</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>1<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>FrameLayout</span>
-        <span class="token attr-name"><span class="token namespace">android:</span>id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>@+id/news_content_layout<span class="token punctuation">"</span></span>
-        <span class="token attr-name"><span class="token namespace">android:</span>layout_width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>0dp<span class="token punctuation">"</span></span>
-        <span class="token attr-name"><span class="token namespace">android:</span>layout_height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>match_parent<span class="token punctuation">"</span></span>
-        <span class="token attr-name"><span class="token namespace">android:</span>layout_weight</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>3<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-        &lt;fragment
-            android:id="@+id/news_content_fragment"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>FrameLayout</span><span class="token punctuation">></span></span>
-
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>LinearLayout</span><span class="token punctuation">></span></span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>双页加载</p>
-]]></content>
-      <categories>
-        <category>Android</category>
-      </categories>
-      <tags>
-        <tag>Android</tag>
-        <tag>Fragment</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>安卓开发（六）广播的最佳实例</title>
     <url>/2021/09/14/AndroidDevelopment10/</url>
     <content><![CDATA[<h2 id="创建AcitivityCollector类"><a href="#创建AcitivityCollector类" class="headerlink" title="创建AcitivityCollector类"></a>创建AcitivityCollector类</h2><p>管理所有活动</p>
@@ -1125,6 +1125,122 @@ msgRecyclerView<span class="token punctuation">.</span><span class="token functi
       </tags>
   </entry>
   <entry>
+    <title>编译原理（二）词法分析器</title>
+    <url>/2021/09/06/CompileTechnical02/</url>
+    <content><![CDATA[<h1 id="词法分析器"><a href="#词法分析器" class="headerlink" title="词法分析器"></a>词法分析器</h1><p>词法分析是对源程序进行的首次分析，实现词法分析的程序称为<strong>词法分析程序</strong></p>
+<h2 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h2><ol>
+<li><p>读入字符串</p>
+</li>
+<li><p>进行预处理工作</p>
+<p>包括取消注释，剔除无用的空格键、跳格、回车、换行等</p>
+</li>
+<li><p>将预处理后的字符串转换为<strong>单词流</strong>输出</p>
+</li>
+</ol>
+<h2 id="单词的识别"><a href="#单词的识别" class="headerlink" title="单词的识别"></a>单词的识别</h2><h3 id="分类："><a href="#分类：" class="headerlink" title="分类："></a>分类：</h3><ol>
+<li>标识词：变量名、函数名等</li>
+<li>基本字：如if、while、for等</li>
+<li>常数：如整型、浮点型等</li>
+<li>运算符：+-*/等</li>
+<li>界符：包括,  ;  :  //  /* */等</li>
+</ol>
+<h3 id="表示方法"><a href="#表示方法" class="headerlink" title="表示方法"></a>表示方法</h3><p>通常一个单词用一个二元式来表示：</p>
+<p>&lt;单词类型,单词的属性&gt;</p>
+<p>例:</p>
+<pre><code>int i=0;
+</code></pre>
+<p>识别的中间码：</p>
+<pre><code>&lt;int的编码, - &gt;
+&lt;标识符的编码,&quot;i&quot;&gt;
+&lt;=的编码, - &gt;
+&lt;常数的编码,常数0&gt;
+&lt;;的编码, - &gt;
+</code></pre>
+<h2 id="状态转换图"><a href="#状态转换图" class="headerlink" title="状态转换图"></a>状态转换图</h2><p>状态转化图（转换图）是一张有限方向图，结点表示状态（State），有向边表示状态间的转换（Transition），有向边上标记的字符表示状态转换的条件。</p>
+<p>状态数量是有限的，其中必有一个初始状态（双箭头指向），若干个终止状态（双圆圈表示）</p>
+<p>某些终止状态是在多识别一个字符后才成为识别状态的，对这种情况多识别的字符予以退回，在终态上标“*”区别</p>
+<p><img src="/2021/09/06/CompileTechnical02/1631068043131.png"></p>
+]]></content>
+      <categories>
+        <category>编译原理</category>
+      </categories>
+      <tags>
+        <tag>编译原理</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>编译原理（一）概论</title>
+    <url>/2021/09/06/CompileTechnical01/</url>
+    <content><![CDATA[<h2 id="编译器在语言处理系统中的位置"><a href="#编译器在语言处理系统中的位置" class="headerlink" title="编译器在语言处理系统中的位置"></a>编译器在语言处理系统中的位置</h2><p><img src="/2021/09/06/CompileTechnical01/1631415856819.png"></p>
+<p>链接器：</p>
+<p>将多个可重定位的机器代码文件连接到一起</p>
+<p>解决外部内存地址问题</p>
+<h2 id="编译系统的结构"><a href="#编译系统的结构" class="headerlink" title="编译系统的结构"></a>编译系统的结构</h2><h3 id="翻译过程"><a href="#翻译过程" class="headerlink" title="翻译过程"></a>翻译过程</h3><p><img src="/2021/09/06/CompileTechnical01/1631416283170.png"></p>
+<p>词法分析：确定句子中各个单词的词性</p>
+<p>语法分析：识别句子中各类短语从而获得句子结构</p>
+<p>语义分析： 分析各个短语在句子中充当什么成分，得到短语之间的关系</p>
+<h3 id="编译器结构"><a href="#编译器结构" class="headerlink" title="编译器结构"></a>编译器结构</h3><img src="/2021/09/06/CompileTechnical01/1631416517620.png" style="zoom: 67%;">
+
+<hr>
+<h2 id="词法分析概述"><a href="#词法分析概述" class="headerlink" title="词法分析概述"></a>词法分析概述</h2><h3 id="词法分析-扫描（Scanning）"><a href="#词法分析-扫描（Scanning）" class="headerlink" title="词法分析/扫描（Scanning）"></a>词法分析/扫描（Scanning）</h3><p><strong>主要任务：</strong></p>
+<p>从左向右逐行扫面源程序的字符，识别出每一个单词，确定单词的类型。将识别出的单词转换成统一的<strong>机内表示</strong>——词法单元（token）形式</p>
+<p><strong>token：</strong>&lt;种别码，属性值&gt;</p>
+<p><img src="/2021/09/06/CompileTechnical01/1631416872548.png"></p>
+<p><strong>例：</strong></p>
+<img src="/2021/09/06/CompileTechnical01/1631416949744.png" style="zoom:67%;">
+
+
+
+
+
+<h2 id="语法分析概述"><a href="#语法分析概述" class="headerlink" title="语法分析概述"></a>语法分析概述</h2><p>语法分析器（parser）从单词分析器输出的token序列中识别出各类短语，并构造<strong>语法分析树</strong>（prase tree）</p>
+<p><img src="/2021/09/06/CompileTechnical01/1631417219451.png"></p>
+<h3 id="例1：赋值语句的分析树"><a href="#例1：赋值语句的分析树" class="headerlink" title="例1：赋值语句的分析树"></a>例1：赋值语句的分析树</h3><img src="/2021/09/06/CompileTechnical01/1631417286626.png" style="zoom:80%;">
+
+
+
+<h3 id="例2：变量声明语句的分析树"><a href="#例2：变量声明语句的分析树" class="headerlink" title="例2：变量声明语句的分析树"></a>例2：变量声明语句的分析树</h3> <img src="/2021/09/06/CompileTechnical01/1631417462314.png" style="zoom:80%;">
+
+
+
+
+
+<h2 id="语义分析概述"><a href="#语义分析概述" class="headerlink" title="语义分析概述"></a>语义分析概述</h2><h3 id="收集标识符的属性信息："><a href="#收集标识符的属性信息：" class="headerlink" title="收集标识符的属性信息："></a>收集标识符的属性信息：</h3><ol>
+<li>种类：简单变量，复合变量，过程</li>
+<li>类型：整型、bool型···</li>
+<li>存储长度、长度</li>
+<li>值</li>
+<li>作用域</li>
+<li>参数和返回值信息</li>
+</ol>
+<h3 id="符号表和字符串表"><a href="#符号表和字符串表" class="headerlink" title="符号表和字符串表"></a>符号表和字符串表</h3><p><img src="/2021/09/06/CompileTechnical01/1631417842788.png" alt="1631417842788"></p>
+<h3 id="语义检查"><a href="#语义检查" class="headerlink" title="语义检查"></a>语义检查</h3><p><img src="/2021/09/06/CompileTechnical01/1631417970126.png"></p>
+<h2 id="中间代码生成及编译后端概述"><a href="#中间代码生成及编译后端概述" class="headerlink" title="中间代码生成及编译后端概述"></a>中间代码生成及编译后端概述</h2><h3 id="常用中间表示形式："><a href="#常用中间表示形式：" class="headerlink" title="常用中间表示形式："></a>常用中间表示形式：</h3><p><strong>三地址码</strong></p>
+<p><strong>语法结构树/语法树</strong></p>
+<h4 id="三地址码："><a href="#三地址码：" class="headerlink" title="三地址码："></a><strong>三地址码：</strong></h4><p>三地址码由类似于汇编语言的指令序列组成，每个指令最多由三个操作数</p>
+<p><img src="/2021/09/06/CompileTechnical01/1631418278417.png"></p>
+<p><strong>地址可具有如下形式之一：</strong></p>
+<p>源程序中的名字；常量；编译器中的临时变量</p>
+<p><strong>三地址指令的表示</strong>：</p>
+<img src="/2021/09/06/CompileTechnical01/1631418496974.png" style="zoom:50%;">
+
+<p>例：</p>
+<img src="/2021/09/06/CompileTechnical01/1631418564645.png" style="zoom:80%;">
+
+<p>一个三地址指令确定了一个唯一运算完成的顺序。</p>
+<h4 id="中间代码生成的例子"><a href="#中间代码生成的例子" class="headerlink" title="中间代码生成的例子"></a>中间代码生成的例子</h4><p><img src="/2021/09/06/CompileTechnical01/1631418746359.png"></p>
+<h3 id="目标代码生成："><a href="#目标代码生成：" class="headerlink" title="目标代码生成："></a>目标代码生成：</h3><p>目标代码生成以源程序的<strong>中间表示形式</strong>作为输入，并把它映射到<strong>目标语言</strong></p>
+<p>目标代码生成一个重要任务是为程序中使用的变量<strong>合理分配寄存器</strong></p>
+<h3 id="代码优化："><a href="#代码优化：" class="headerlink" title="代码优化："></a>代码优化：</h3><p>为改进代码所进行的等价程序变换，使其运行得更快一些、占用空间更少一些，或者二者兼顾。</p>
+]]></content>
+      <categories>
+        <category>编译原理</category>
+      </categories>
+      <tags>
+        <tag>编译原理</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>AndroidDevelopment11</title>
     <url>/2021/09/16/AndroidDevelopment11/</url>
     <content><![CDATA[<h1 id="Materai-Design实践"><a href="#Materai-Design实践" class="headerlink" title="Materai Design实践"></a>Materai Design实践</h1><h2 id="Toolbar"><a href="#Toolbar" class="headerlink" title="Toolbar"></a>Toolbar</h2><p><strong>themes.xml中的设置</strong></p>
@@ -1209,119 +1325,31 @@ msgRecyclerView<span class="token punctuation">.</span><span class="token functi
 ]]></content>
   </entry>
   <entry>
-    <title>编译原理（一）概论</title>
-    <url>/2021/09/06/CompileTechnical01/</url>
-    <content><![CDATA[<h2 id="编译器在语言处理系统中的位置"><a href="#编译器在语言处理系统中的位置" class="headerlink" title="编译器在语言处理系统中的位置"></a>编译器在语言处理系统中的位置</h2><p><img src="/2021/09/06/CompileTechnical01/1631415856819.png"></p>
-<p>链接器：</p>
-<p>将多个可重定位的机器代码文件连接到一起</p>
-<p>解决外部内存地址问题</p>
-<h2 id="编译系统的结构"><a href="#编译系统的结构" class="headerlink" title="编译系统的结构"></a>编译系统的结构</h2><h3 id="翻译过程"><a href="#翻译过程" class="headerlink" title="翻译过程"></a>翻译过程</h3><p><img src="/2021/09/06/CompileTechnical01/1631416283170.png"></p>
-<p>词法分析：确定句子中各个单词的词性</p>
-<p>语法分析：识别句子中各类短语从而获得句子结构</p>
-<p>语义分析： 分析各个短语在句子中充当什么成分，得到短语之间的关系</p>
-<h3 id="编译器结构"><a href="#编译器结构" class="headerlink" title="编译器结构"></a>编译器结构</h3><img src="/2021/09/06/CompileTechnical01/1631416517620.png" style="zoom: 67%;">
-
-<hr>
-<h2 id="词法分析概述"><a href="#词法分析概述" class="headerlink" title="词法分析概述"></a>词法分析概述</h2><h3 id="词法分析-扫描（Scanning）"><a href="#词法分析-扫描（Scanning）" class="headerlink" title="词法分析/扫描（Scanning）"></a>词法分析/扫描（Scanning）</h3><p><strong>主要任务：</strong></p>
-<p>从左向右逐行扫面源程序的字符，识别出每一个单词，确定单词的类型。将识别出的单词转换成统一的<strong>机内表示</strong>——词法单元（token）形式</p>
-<p><strong>token：</strong>&lt;种别码，属性值&gt;</p>
-<p><img src="/2021/09/06/CompileTechnical01/1631416872548.png"></p>
-<p><strong>例：</strong></p>
-<img src="/2021/09/06/CompileTechnical01/1631416949744.png" style="zoom:67%;">
+    <title>编译原理（四）正则表达式</title>
+    <url>/2021/09/13/CompileTechnical04/</url>
+    <content><![CDATA[<h2 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h2><p><img src="/2021/09/13/CompileTechnical04/image-20210913103353953.png"></p>
+<h3 id="正则表达式的定义"><a href="#正则表达式的定义" class="headerlink" title="正则表达式的定义"></a>正则表达式的定义</h3><p><img src="/2021/09/13/CompileTechnical04/image-20210913103516059.png"></p>
+<img src="/2021/09/13/CompileTechnical04/image-20210913103914688.png" style="zoom:50%;">
 
 
 
-
-
-<h2 id="语法分析概述"><a href="#语法分析概述" class="headerlink" title="语法分析概述"></a>语法分析概述</h2><p>语法分析器（parser）从单词分析器输出的token序列中识别出各类短语，并构造<strong>语法分析树</strong>（prase tree）</p>
-<p><img src="/2021/09/06/CompileTechnical01/1631417219451.png"></p>
-<h3 id="例1：赋值语句的分析树"><a href="#例1：赋值语句的分析树" class="headerlink" title="例1：赋值语句的分析树"></a>例1：赋值语句的分析树</h3><img src="/2021/09/06/CompileTechnical01/1631417286626.png" style="zoom:80%;">
-
-
-
-<h3 id="例2：变量声明语句的分析树"><a href="#例2：变量声明语句的分析树" class="headerlink" title="例2：变量声明语句的分析树"></a>例2：变量声明语句的分析树</h3> <img src="/2021/09/06/CompileTechnical01/1631417462314.png" style="zoom:80%;">
+<h3 id="正则语言"><a href="#正则语言" class="headerlink" title="正则语言"></a>正则语言</h3><p><img src="/2021/09/13/CompileTechnical04/image-20210913103828514.png"></p>
+<h3 id="RE的代数定律"><a href="#RE的代数定律" class="headerlink" title="RE的代数定律"></a>RE的代数定律</h3><p><img src="/2021/09/13/CompileTechnical04/image-20210913104140162.png"></p>
+<h3 id="正则文法与正则表达式等价"><a href="#正则文法与正则表达式等价" class="headerlink" title="正则文法与正则表达式等价"></a>正则文法与正则表达式等价</h3><img src="/2021/09/13/CompileTechnical04/image-20210913104327585.png" style="zoom:67%;">
 
 
 
-
-
-<h2 id="语义分析概述"><a href="#语义分析概述" class="headerlink" title="语义分析概述"></a>语义分析概述</h2><h3 id="收集标识符的属性信息："><a href="#收集标识符的属性信息：" class="headerlink" title="收集标识符的属性信息："></a>收集标识符的属性信息：</h3><ol>
-<li>种类：简单变量，复合变量，过程</li>
-<li>类型：整型、bool型···</li>
-<li>存储长度、长度</li>
-<li>值</li>
-<li>作用域</li>
-<li>参数和返回值信息</li>
-</ol>
-<h3 id="符号表和字符串表"><a href="#符号表和字符串表" class="headerlink" title="符号表和字符串表"></a>符号表和字符串表</h3><p><img src="/2021/09/06/CompileTechnical01/1631417842788.png" alt="1631417842788"></p>
-<h3 id="语义检查"><a href="#语义检查" class="headerlink" title="语义检查"></a>语义检查</h3><p><img src="/2021/09/06/CompileTechnical01/1631417970126.png"></p>
-<h2 id="中间代码生成及编译后端概述"><a href="#中间代码生成及编译后端概述" class="headerlink" title="中间代码生成及编译后端概述"></a>中间代码生成及编译后端概述</h2><h3 id="常用中间表示形式："><a href="#常用中间表示形式：" class="headerlink" title="常用中间表示形式："></a>常用中间表示形式：</h3><p><strong>三地址码</strong></p>
-<p><strong>语法结构树/语法树</strong></p>
-<h4 id="三地址码："><a href="#三地址码：" class="headerlink" title="三地址码："></a><strong>三地址码：</strong></h4><p>三地址码由类似于汇编语言的指令序列组成，每个指令最多由三个操作数</p>
-<p><img src="/2021/09/06/CompileTechnical01/1631418278417.png"></p>
-<p><strong>地址可具有如下形式之一：</strong></p>
-<p>源程序中的名字；常量；编译器中的临时变量</p>
-<p><strong>三地址指令的表示</strong>：</p>
-<img src="/2021/09/06/CompileTechnical01/1631418496974.png" style="zoom:50%;">
-
+<h3 id="正则定义"><a href="#正则定义" class="headerlink" title="正则定义"></a>正则定义</h3><p><img src="/2021/09/13/CompileTechnical04/image-20210913104817879.png"></p>
 <p>例：</p>
-<img src="/2021/09/06/CompileTechnical01/1631418564645.png" style="zoom:80%;">
+<img src="/2021/09/13/CompileTechnical04/image-20210913104849120.png" style="zoom:50%;">
 
-<p>一个三地址指令确定了一个唯一运算完成的顺序。</p>
-<h4 id="中间代码生成的例子"><a href="#中间代码生成的例子" class="headerlink" title="中间代码生成的例子"></a>中间代码生成的例子</h4><p><img src="/2021/09/06/CompileTechnical01/1631418746359.png"></p>
-<h3 id="目标代码生成："><a href="#目标代码生成：" class="headerlink" title="目标代码生成："></a>目标代码生成：</h3><p>目标代码生成以源程序的<strong>中间表示形式</strong>作为输入，并把它映射到<strong>目标语言</strong></p>
-<p>目标代码生成一个重要任务是为程序中使用的变量<strong>合理分配寄存器</strong></p>
-<h3 id="代码优化："><a href="#代码优化：" class="headerlink" title="代码优化："></a>代码优化：</h3><p>为改进代码所进行的等价程序变换，使其运行得更快一些、占用空间更少一些，或者二者兼顾。</p>
 ]]></content>
       <categories>
         <category>编译原理</category>
       </categories>
       <tags>
         <tag>编译原理</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>编译原理（二）词法分析器</title>
-    <url>/2021/09/06/CompileTechnical02/</url>
-    <content><![CDATA[<h1 id="词法分析器"><a href="#词法分析器" class="headerlink" title="词法分析器"></a>词法分析器</h1><p>词法分析是对源程序进行的首次分析，实现词法分析的程序称为<strong>词法分析程序</strong></p>
-<h2 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h2><ol>
-<li><p>读入字符串</p>
-</li>
-<li><p>进行预处理工作</p>
-<p>包括取消注释，剔除无用的空格键、跳格、回车、换行等</p>
-</li>
-<li><p>将预处理后的字符串转换为<strong>单词流</strong>输出</p>
-</li>
-</ol>
-<h2 id="单词的识别"><a href="#单词的识别" class="headerlink" title="单词的识别"></a>单词的识别</h2><h3 id="分类："><a href="#分类：" class="headerlink" title="分类："></a>分类：</h3><ol>
-<li>标识词：变量名、函数名等</li>
-<li>基本字：如if、while、for等</li>
-<li>常数：如整型、浮点型等</li>
-<li>运算符：+-*/等</li>
-<li>界符：包括,  ;  :  //  /* */等</li>
-</ol>
-<h3 id="表示方法"><a href="#表示方法" class="headerlink" title="表示方法"></a>表示方法</h3><p>通常一个单词用一个二元式来表示：</p>
-<p>&lt;单词类型,单词的属性&gt;</p>
-<p>例:</p>
-<pre><code>int i=0;
-</code></pre>
-<p>识别的中间码：</p>
-<pre><code>&lt;int的编码, - &gt;
-&lt;标识符的编码,&quot;i&quot;&gt;
-&lt;=的编码, - &gt;
-&lt;常数的编码,常数0&gt;
-&lt;;的编码, - &gt;
-</code></pre>
-<h2 id="状态转换图"><a href="#状态转换图" class="headerlink" title="状态转换图"></a>状态转换图</h2><p>状态转化图（转换图）是一张有限方向图，结点表示状态（State），有向边表示状态间的转换（Transition），有向边上标记的字符表示状态转换的条件。</p>
-<p>状态数量是有限的，其中必有一个初始状态（双箭头指向），若干个终止状态（双圆圈表示）</p>
-<p>某些终止状态是在多识别一个字符后才成为识别状态的，对这种情况多识别的字符予以退回，在终态上标“*”区别</p>
-<p><img src="/2021/09/06/CompileTechnical02/1631068043131.png"></p>
-]]></content>
-      <categories>
-        <category>编译原理</category>
-      </categories>
-      <tags>
-        <tag>编译原理</tag>
+        <tag>正则表达式</tag>
       </tags>
   </entry>
   <entry>
@@ -1412,88 +1440,6 @@ msgRecyclerView<span class="token punctuation">.</span><span class="token functi
 
 
 <h3 id="二义性文法的判定"><a href="#二义性文法的判定" class="headerlink" title="二义性文法的判定"></a><strong>二义性文法的判定</strong></h3><p><img src="/2021/09/08/CompileTechnical03/image-20210912162329248.png"></p>
-]]></content>
-      <categories>
-        <category>编译原理</category>
-      </categories>
-      <tags>
-        <tag>编译原理</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>编译原理（四）正则表达式</title>
-    <url>/2021/09/13/CompileTechnical04/</url>
-    <content><![CDATA[<h2 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h2><p><img src="/2021/09/13/CompileTechnical04/image-20210913103353953.png"></p>
-<h3 id="正则表达式的定义"><a href="#正则表达式的定义" class="headerlink" title="正则表达式的定义"></a>正则表达式的定义</h3><p><img src="/2021/09/13/CompileTechnical04/image-20210913103516059.png"></p>
-<img src="/2021/09/13/CompileTechnical04/image-20210913103914688.png" style="zoom:50%;">
-
-
-
-<h3 id="正则语言"><a href="#正则语言" class="headerlink" title="正则语言"></a>正则语言</h3><p><img src="/2021/09/13/CompileTechnical04/image-20210913103828514.png"></p>
-<h3 id="RE的代数定律"><a href="#RE的代数定律" class="headerlink" title="RE的代数定律"></a>RE的代数定律</h3><p><img src="/2021/09/13/CompileTechnical04/image-20210913104140162.png"></p>
-<h3 id="正则文法与正则表达式等价"><a href="#正则文法与正则表达式等价" class="headerlink" title="正则文法与正则表达式等价"></a>正则文法与正则表达式等价</h3><img src="/2021/09/13/CompileTechnical04/image-20210913104327585.png" style="zoom:67%;">
-
-
-
-<h3 id="正则定义"><a href="#正则定义" class="headerlink" title="正则定义"></a>正则定义</h3><p><img src="/2021/09/13/CompileTechnical04/image-20210913104817879.png"></p>
-<p>例：</p>
-<img src="/2021/09/13/CompileTechnical04/image-20210913104849120.png" style="zoom:50%;">
-
-]]></content>
-      <categories>
-        <category>编译原理</category>
-      </categories>
-      <tags>
-        <tag>编译原理</tag>
-        <tag>正则表达式</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>编译原理（六）自顶向下的分析</title>
-    <url>/2021/09/15/CompileTechnical06/</url>
-    <content><![CDATA[<h2 id="自顶向下的分析-（Top-Down-Parsing）"><a href="#自顶向下的分析-（Top-Down-Parsing）" class="headerlink" title="自顶向下的分析 （Top-Down Parsing）"></a>自顶向下的分析 （Top-Down Parsing）</h2><p><img src="/2021/09/15/CompileTechnical06/image-20210915091925663.png"></p>
-<h3 id="最左推导（Left-mostDerivation）"><a href="#最左推导（Left-mostDerivation）" class="headerlink" title="最左推导（Left-mostDerivation）"></a>最左推导（Left-mostDerivation）</h3><p><img src="/2021/09/15/CompileTechnical06/image-20210915092045212.png"></p>
-<h3 id="最右推导（Right-most-Derivation）"><a href="#最右推导（Right-most-Derivation）" class="headerlink" title="最右推导（Right-most Derivation）"></a>最右推导（Right-most Derivation）</h3><p><img src="/2021/09/15/CompileTechnical06/image-20210915092144182.png"></p>
-<p>在自定向上的分析中，总是采用最左归约的方式，因此把<strong>最左归约</strong>称为<strong>规范归约</strong>，而<strong>最右推导</strong>相应地称为<strong>规范推导</strong></p>
-<h3 id="最右推导和最左推导的唯一性"><a href="#最右推导和最左推导的唯一性" class="headerlink" title="最右推导和最左推导的唯一性"></a>最右推导和最左推导的唯一性</h3><p><img src="/2021/09/15/CompileTechnical06/image-20210915093257042.png"></p>
-<p><strong>自顶向下的语法分析采用最左推导方式</strong></p>
-<p>总是选择每个句型的最左非终结符进行替换</p>
-<p>根据输入流中的下一个终结符，选择最左非终结符的一个候选式</p>
-<p>例：</p>
-<p><img src="/2021/09/15/CompileTechnical06/1631669772951.png"></p>
-<h3 id="自顶向下语法分析的通用形式"><a href="#自顶向下语法分析的通用形式" class="headerlink" title="自顶向下语法分析的通用形式"></a>自顶向下语法分析的通用形式</h3><p><img src="/2021/09/15/CompileTechnical06/image-20210915094352344.png"></p>
-<h3 id="预测分析"><a href="#预测分析" class="headerlink" title="预测分析"></a>预测分析</h3><p><img src="/2021/09/15/CompileTechnical06/image-20210915095115483.png"></p>
-<h2 id="文法转换"><a href="#文法转换" class="headerlink" title="文法转换"></a>文法转换</h2><p><strong>问题1</strong></p>
-<img src="/2021/09/15/CompileTechnical06/image-20210915095557128.png" style="zoom:67%;">
-
-<p><strong>问题2</strong></p>
-<img src="/2021/09/15/CompileTechnical06/image-20210915095625817.png" alt="image-20210915095625817" style="zoom:67%;">
-
-
-
-<h3 id="消除直接左递归"><a href="#消除直接左递归" class="headerlink" title="消除直接左递归"></a>消除直接左递归</h3><p><img src="/2021/09/15/CompileTechnical06/image-20210917151108735.png"></p>
-<p><strong>消除左递归的一般形式</strong></p>
-<p><img src="/2021/09/15/CompileTechnical06/image-20210917151306750.png"></p>
-<h3 id="消除间接左递归"><a href="#消除间接左递归" class="headerlink" title="消除间接左递归"></a>消除间接左递归</h3><p><img src="/2021/09/15/CompileTechnical06/image-20210917152125244.png"></p>
-<p><img src="/2021/09/15/CompileTechnical06/image-20210917152305490.png"></p>
-<h3 id="提取左公因子"><a href="#提取左公因子" class="headerlink" title="提取左公因子"></a>提取左公因子</h3><p><img src="/2021/09/15/CompileTechnical06/image-20210917152442550.png"></p>
-<p><img src="/2021/09/15/CompileTechnical06/image-20210917152844195.png"></p>
-<h2 id="LL-1-文法"><a href="#LL-1-文法" class="headerlink" title="LL(1)文法"></a>LL(1)文法</h2><p><img src="/2021/09/15/CompileTechnical06/image-20210917153215934.png"></p>
-<p>例：</p>
-<p><img src="/2021/09/15/CompileTechnical06/image-20210917153737301.png"></p>
-<h4 id="非终结符的后继符号级"><a href="#非终结符的后继符号级" class="headerlink" title="非终结符的后继符号级"></a>非终结符的后继符号级</h4><p><img src="/2021/09/15/CompileTechnical06/image-20210917155114722.png"></p>
-<h4 id="产生式的可选集"><a href="#产生式的可选集" class="headerlink" title="产生式的可选集"></a>产生式的可选集</h4><p><img src="/2021/09/15/CompileTechnical06/image-20210917155712456.png"></p>
-<h4 id="串首终结符集"><a href="#串首终结符集" class="headerlink" title="串首终结符集"></a>串首终结符集</h4><p><img src="/2021/09/15/CompileTechnical06/image-20210917160516778.png"></p>
-<h4 id="LL-1-文法-1"><a href="#LL-1-文法-1" class="headerlink" title="LL(1)文法"></a>LL(1)文法</h4><p><img src="/2021/09/15/CompileTechnical06/image-20210917161259083.png"></p>
-<p><img src="/2021/09/15/CompileTechnical06/image-20210917161342550.png"></p>
-<h2 id="FIRST集和FOLLOW集的计算"><a href="#FIRST集和FOLLOW集的计算" class="headerlink" title="FIRST集和FOLLOW集的计算"></a>FIRST集和FOLLOW集的计算</h2><p><strong>计算FIRST集</strong></p>
-<p><img src="/2021/09/15/CompileTechnical06/image-20210918113202668.png"></p>
-<p><img src="/2021/09/15/CompileTechnical06/image-20210917161922136.png"></p>
-<p><strong>计算FOLLOW集</strong></p>
-<p><img src="/2021/09/15/CompileTechnical06/image-20210918113224532.png"></p>
-<p><img src="/2021/09/15/CompileTechnical06/image-20210918113239292.png"></p>
-<p><strong>计算SELECT集</strong></p>
-<p><img src="/2021/09/15/CompileTechnical06/image-20210918113340666.png"></p>
 ]]></content>
       <categories>
         <category>编译原理</category>
@@ -1655,6 +1601,207 @@ msgRecyclerView<span class="token punctuation">.</span><span class="token functi
 <p>​                或 字数×字节长（按字节编址，8位）</p>
 <p><strong>外存容量：</strong></p>
 <p>常表示为字节数。 外存容量与地址码位数无关。</p>
+]]></content>
+      <categories>
+        <category>计算机组成原理</category>
+      </categories>
+      <tags>
+        <tag>计算机组成原理</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>编译原理（六）自顶向下的分析</title>
+    <url>/2021/09/15/CompileTechnical06/</url>
+    <content><![CDATA[<h2 id="自顶向下的分析-（Top-Down-Parsing）"><a href="#自顶向下的分析-（Top-Down-Parsing）" class="headerlink" title="自顶向下的分析 （Top-Down Parsing）"></a>自顶向下的分析 （Top-Down Parsing）</h2><p><img src="/2021/09/15/CompileTechnical06/image-20210915091925663.png"></p>
+<h3 id="最左推导（Left-mostDerivation）"><a href="#最左推导（Left-mostDerivation）" class="headerlink" title="最左推导（Left-mostDerivation）"></a>最左推导（Left-mostDerivation）</h3><p><img src="/2021/09/15/CompileTechnical06/image-20210915092045212.png"></p>
+<h3 id="最右推导（Right-most-Derivation）"><a href="#最右推导（Right-most-Derivation）" class="headerlink" title="最右推导（Right-most Derivation）"></a>最右推导（Right-most Derivation）</h3><p><img src="/2021/09/15/CompileTechnical06/image-20210915092144182.png"></p>
+<p>在自定向上的分析中，总是采用最左归约的方式，因此把<strong>最左归约</strong>称为<strong>规范归约</strong>，而<strong>最右推导</strong>相应地称为<strong>规范推导</strong></p>
+<h3 id="最右推导和最左推导的唯一性"><a href="#最右推导和最左推导的唯一性" class="headerlink" title="最右推导和最左推导的唯一性"></a>最右推导和最左推导的唯一性</h3><p><img src="/2021/09/15/CompileTechnical06/image-20210915093257042.png"></p>
+<p><strong>自顶向下的语法分析采用最左推导方式</strong></p>
+<p>总是选择每个句型的最左非终结符进行替换</p>
+<p>根据输入流中的下一个终结符，选择最左非终结符的一个候选式</p>
+<p>例：</p>
+<p><img src="/2021/09/15/CompileTechnical06/1631669772951.png"></p>
+<h3 id="自顶向下语法分析的通用形式"><a href="#自顶向下语法分析的通用形式" class="headerlink" title="自顶向下语法分析的通用形式"></a>自顶向下语法分析的通用形式</h3><p><img src="/2021/09/15/CompileTechnical06/image-20210915094352344.png"></p>
+<h3 id="预测分析"><a href="#预测分析" class="headerlink" title="预测分析"></a>预测分析</h3><p><img src="/2021/09/15/CompileTechnical06/image-20210915095115483.png"></p>
+<h2 id="文法转换"><a href="#文法转换" class="headerlink" title="文法转换"></a>文法转换</h2><p><strong>问题1</strong></p>
+<img src="/2021/09/15/CompileTechnical06/image-20210915095557128.png" style="zoom:67%;">
+
+<p><strong>问题2</strong></p>
+<img src="/2021/09/15/CompileTechnical06/image-20210915095625817.png" alt="image-20210915095625817" style="zoom:67%;">
+
+
+
+<h3 id="消除直接左递归"><a href="#消除直接左递归" class="headerlink" title="消除直接左递归"></a>消除直接左递归</h3><p><img src="/2021/09/15/CompileTechnical06/image-20210917151108735.png"></p>
+<p><strong>消除左递归的一般形式</strong></p>
+<p><img src="/2021/09/15/CompileTechnical06/image-20210917151306750.png"></p>
+<h3 id="消除间接左递归"><a href="#消除间接左递归" class="headerlink" title="消除间接左递归"></a>消除间接左递归</h3><p><img src="/2021/09/15/CompileTechnical06/image-20210917152125244.png"></p>
+<p><img src="/2021/09/15/CompileTechnical06/image-20210917152305490.png"></p>
+<h3 id="提取左公因子"><a href="#提取左公因子" class="headerlink" title="提取左公因子"></a>提取左公因子</h3><p><img src="/2021/09/15/CompileTechnical06/image-20210917152442550.png"></p>
+<p><img src="/2021/09/15/CompileTechnical06/image-20210917152844195.png"></p>
+<h2 id="LL-1-文法"><a href="#LL-1-文法" class="headerlink" title="LL(1)文法"></a>LL(1)文法</h2><p><img src="/2021/09/15/CompileTechnical06/image-20210917153215934.png"></p>
+<p>例：</p>
+<p><img src="/2021/09/15/CompileTechnical06/image-20210917153737301.png"></p>
+<h4 id="非终结符的后继符号级"><a href="#非终结符的后继符号级" class="headerlink" title="非终结符的后继符号级"></a>非终结符的后继符号级</h4><p><img src="/2021/09/15/CompileTechnical06/image-20210917155114722.png"></p>
+<h4 id="产生式的可选集"><a href="#产生式的可选集" class="headerlink" title="产生式的可选集"></a>产生式的可选集</h4><p><img src="/2021/09/15/CompileTechnical06/image-20210917155712456.png"></p>
+<h4 id="串首终结符集"><a href="#串首终结符集" class="headerlink" title="串首终结符集"></a>串首终结符集</h4><p><img src="/2021/09/15/CompileTechnical06/image-20210917160516778.png"></p>
+<h4 id="LL-1-文法-1"><a href="#LL-1-文法-1" class="headerlink" title="LL(1)文法"></a>LL(1)文法</h4><p><img src="/2021/09/15/CompileTechnical06/image-20210917161259083.png"></p>
+<p><img src="/2021/09/15/CompileTechnical06/image-20210917161342550.png"></p>
+<h2 id="FIRST集和FOLLOW集的计算"><a href="#FIRST集和FOLLOW集的计算" class="headerlink" title="FIRST集和FOLLOW集的计算"></a>FIRST集和FOLLOW集的计算</h2><p><strong>计算FIRST集</strong></p>
+<p><img src="/2021/09/15/CompileTechnical06/image-20210918113202668.png"></p>
+<p><img src="/2021/09/15/CompileTechnical06/image-20210917161922136.png"></p>
+<p><strong>计算FOLLOW集</strong></p>
+<p><img src="/2021/09/15/CompileTechnical06/image-20210918113224532.png"></p>
+<p><img src="/2021/09/15/CompileTechnical06/image-20210918113239292.png"></p>
+<p><strong>计算SELECT集</strong></p>
+<p><img src="/2021/09/15/CompileTechnical06/image-20210918113340666.png"></p>
+]]></content>
+      <categories>
+        <category>编译原理</category>
+      </categories>
+      <tags>
+        <tag>编译原理</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>计组：计算机中信息的表示方式（一）</title>
+    <url>/2021/09/08/ComputerCompositionPrinciple02/</url>
+    <content><![CDATA[<p><strong>计算机中信息的表示方式</strong></p>
+<p><img src="/2021/09/08/ComputerCompositionPrinciple02/1631108317881.png"></p>
+<p><strong>指令的执行：</strong></p>
+<ol>
+<li>取指：从主存储器中取指令；</li>
+<li>执行指令：在CPU内部执行该条指令（在此过程中， CPU一般还需从主存储器中获取如操作数等相关的信 息）；</li>
+<li>存结果：结果送回存储器存放。</li>
+</ol>
+<p><strong>指令：</strong>一系列按照某种规律有序排列的，能被CPU 识别、并执行的二进制代码</p>
+<p><strong>指令系统（或集）：</strong>一台计算机所能执行的全部指令。</p>
+<h2 id="指令格式"><a href="#指令格式" class="headerlink" title="指令格式"></a>指令格式</h2><p>一条指令最多提供两方面的信息：</p>
+<p>操作码（OP）：与CPU操作有关的信息</p>
+<p>地址码（AD）：与操作数有关的信息</p>
+<p><strong>基本格式</strong></p>
+<p><img src="/2021/09/08/ComputerCompositionPrinciple02/1631108657173.png"></p>
+<h2 id="指令字长"><a href="#指令字长" class="headerlink" title="指令字长"></a>指令字长</h2><p>指令字长越长：</p>
+<p>​    优点：功能丰富，完成工作多</p>
+<p>​    缺点：占用空间大，取指时间长，执行速度慢</p>
+<p><strong>操作码的位数决定了操作类型的多少</strong></p>
+<p><strong>操作码分类：</strong></p>
+<p>定长操作码：</p>
+<p>指令长度比较长时，位置、位数固定，位置在指令 的前几位。</p>
+<p>扩展操作码：</p>
+<p>指令长度比较短时，位置、位数不固定，用扩展标 志表示。</p>
+<p>方式码：</p>
+<p>操作码分为几部分，每部分表示一种操作。</p>
+<p><img src="/2021/09/08/ComputerCompositionPrinciple02/1631109347792.png"></p>
+<h2 id="地址结构"><a href="#地址结构" class="headerlink" title="地址结构"></a>地址结构</h2><p>在指令中明确给出几个地址，给出哪些地址</p>
+<p><img src="/2021/09/08/ComputerCompositionPrinciple02/1631235309933.png"></p>
+<p><strong>指令给出操作数地址的方式：</strong></p>
+<p>显式：直接、间接、变址、基址等</p>
+<p>隐式：隐含约定寄存器号、主存储器单元号</p>
+<p><strong>显地址：</strong></p>
+<p>指令明显给出地址</p>
+<p>如：写明主存储单元号 或CPU的寄存器编号,则这种地址表达称为显地址。</p>
+<p><strong>显地址分为：</strong> 三地址指令、二地址指令、 一地址指令、零地址指令</p>
+<p><strong>隐地址：</strong></p>
+<p>指令中的地址是以隐含的方式约定</p>
+<p>如：系统事先隐含约定操作数在CPU某个寄存器中,或是在堆栈 中,因此在指令中并不给出地址码,这种隐含约定的地址就称为隐地址。</p>
+<p><strong>简化地址结构的基本途径：尽量使用隐地址。</strong></p>
+<p><strong>（1）四地址指令</strong></p>
+<p><strong><img src="/2021/09/08/ComputerCompositionPrinciple02/1631236505556.png"></strong></p>
+<p><strong>（2）三地址指令</strong></p>
+<p><img src="/2021/09/08/ComputerCompositionPrinciple02/1631237535653.png"></p>
+<p><strong>（3）二地址指令</strong></p>
+<p><img src="/2021/09/08/ComputerCompositionPrinciple02/1631237595648.png"></p>
+<p><strong>（4）单地址指令</strong></p>
+<p><strong>a. 隐含约定的目的地的双操作数指令</strong></p>
+<p><img src="/2021/09/08/ComputerCompositionPrinciple02/1631237677942.png"></p>
+<img src="/2021/09/08/ComputerCompositionPrinciple02/1631238035214-16312380540271.png" style="zoom:50%;">
+
+
+
+<p><strong>b.只有目的操作数的单操作数指令</strong></p>
+<p><img src="/2021/09/08/ComputerCompositionPrinciple02/1631238181946.png"></p>
+<p><strong>（5）零地址指令</strong></p>
+<p><img src="/2021/09/08/ComputerCompositionPrinciple02/1631238421642.png"></p>
+<p><strong>a.对只有目的操作数的指令，隐含在指定寄存器内 进行操作。</strong></p>
+<p>PUSHF ；FLAGS→入栈 </p>
+<p>POPF ；FLAGS→出栈 </p>
+<p>LAHF ；FLAGS的低8位→AH </p>
+<p>SAHF ；AH→FLAGS的低8位</p>
+<p>···</p>
+<p><strong>b.不需要操作数的指令。</strong></p>
+<p>NOP ；空操作指令</p>
+<p>HLT ；停机指令</p>
+<p>···</p>
+<p><strong>c.对堆栈栈顶单元内容进行操作,如指令PUSH (压 入堆栈)、POP (弹出堆栈)</strong></p>
+<h2 id="寻址方式"><a href="#寻址方式" class="headerlink" title="寻址方式"></a>寻址方式</h2><p><img src="/2021/09/08/ComputerCompositionPrinciple02/1631239226346.png"></p>
+<p>① CPU能够直接访问的操作数只能存放在主存储器 （包括CACHE、接口中的R）或CPU内的寄存器中； </p>
+<p>② 由于主存储器的容量远远大于CPU内的寄存器的 容量，因此CPU能够直接访问的操作数主要存放在主 存储器中。</p>
+<p><strong>存放方式（大致过程）：</strong></p>
+<p>程序-&gt;CS段</p>
+<p>数据-&gt;DS段</p>
+<p>结果-&gt;ES段</p>
+<p>下条地址-&gt;SS段</p>
+<p><strong>四大寻址方式</strong></p>
+<ol>
+<li><p><strong>立即寻址：（掌握）</strong></p>
+<p>操作码字段后面你的部分不是操作码地址，而是操作数本身。在读取指令时也就从指令之中获得了操作数，即操 作数包含在指令中。</p>
+<img src="/2021/09/08/ComputerCompositionPrinciple02/image-20210913085811043.png" style="zoom:50%;"></li>
+<li><p><strong>直接寻址类：（掌握）</strong></p>
+<p>直接给出主存地址（主存直接寻址）或寄存器（寄存器直接寻址）编号，从主存单元内或 CPU的寄存器内读取操作数。</p>
+<p><img src="/2021/09/08/ComputerCompositionPrinciple02/image-20210913085532650.png"></p>
+<img src="/2021/09/08/ComputerCompositionPrinciple02/image-20210913090007021.png" style="zoom:67%;">
+
+<p><strong>比较：</strong></p>
+<p>a. 直接寻址是访问一次主存才能读取所需操作数；寄 存器寻址是从CPU的寄存器中读取操作数，不需访问主存，所需时间大约是从主存中读数时间的几分之一到 几十分之一 ，因而寄存器寻址比直接寻址快得多。</p>
+<p>b.由于寄存器数远少于主存储器的单元数，所以指令 中存放寄存器号的字段位数也就大大少于存放主存地 址码所需位数。采用寄存器寻址方式或其它以寄存器 为基础的寻址方式（例如寄存器寻址、寄存器间址方 式），可以大大减少指令中一个地址的位数，从而有 效地缩短指令长度。这也使读取指令的时间减少，提 高了工作速度。</p>
+<p><strong>注意：</strong></p>
+<p>减少指令中地址数目与减少一个地址的位数是 两个不同的概念。 </p>
+<p>采用隐地址可以减少指令中地址的数目； </p>
+<p>采用寄存器寻址方式、寄存器间址方式等可以使指令中为给出一个地址所需的位数减少。 其实，均减少了指令长度。</p>
+</li>
+<li><p><strong>间接寻址类：（掌握）</strong></p>
+<p>先从某寄存器/主存中读取地址，再按这个地址访问 主存以读取操作数。</p>
+<p><img src="/2021/09/08/ComputerCompositionPrinciple02/image-20210913092428125.png"></p>
+<p><img src="/2021/09/08/ComputerCompositionPrinciple02/image-20210913094228659.png"></p>
+<p><strong>自增型寄存器间址方式</strong></p>
+<p>寄存器间址的一种变型,若指令中给出存放操作数地址 的寄存器号,从寄存器中读出操作数地址后,寄存器内容加1，这种寻址方式称为自增型寄存器间接寻址。</p>
+<p><img src="/2021/09/08/ComputerCompositionPrinciple02/image-20210913095016132.png"></p>
+<p><strong>自减型寄存器间址型</strong></p>
+<p>若指令中给出寄存器号，被指定的寄存器内容减1后 作为操作数地址，按照该地址访问主存储器，相应的主 存单元内容为操作数，自减型寄存器间址方式常用助记 符 -（R）表示。</p>
+<p><img src="/2021/09/08/ComputerCompositionPrinciple02/image-20210913095243802.png"></p>
+<p><strong>堆栈寻址</strong></p>
+<p>堆栈寻址方式是指操作数在堆栈中，指令隐含约定由堆 栈指针SP寄存器提供栈顶单元地址（SP也可以编码形式 出现在指令中），进行读出或写入的一种寻址方式。 根据压入数据时栈顶单元的地址是减小还是增大或不变, 可以将堆栈的工作方式大致分为向上生成方式、向下生 成方式和栈顶固定方式三种。</p>
+<p><img src="/2021/09/08/ComputerCompositionPrinciple02/image-20210913100304932.png"></p>
+</li>
+</ol>
+<p><strong>多重间接寻址</strong></p>
+<p><img src="/2021/09/08/ComputerCompositionPrinciple02/image-20210915202759509.png"></p>
+<p><img src="/2021/09/08/ComputerCompositionPrinciple02/image-20210915202812521.png"></p>
+<p>例：</p>
+<p><img src="/2021/09/08/ComputerCompositionPrinciple02/image-20210915202828392.png"></p>
+<p><img src="/2021/09/08/ComputerCompositionPrinciple02/image-20210915202904166.png"></p>
+<ol start="4">
+<li><strong>变址类</strong></li>
+</ol>
+<p><strong>变址寻址</strong>（掌握）</p>
+<p>SI:source index</p>
+<p>DI:destination index</p>
+<p>BX:base </p>
+<p>BP:base pointer</p>
+<p>在8086/8088中使用SI,DI</p>
+<p>指令给出的是形式地址（不是最终地址），经过某种变换（例如相加、相减、高低位地址拼接等），才获得有效地址，据此访问主存储器以读取操作数。变址方式常用助记符**X(R)**表示</p>
+<p><img src="/2021/09/08/ComputerCompositionPrinciple02/image-20210915200045895.png"></p>
+<p>例:</p>
+<p><img src="/2021/09/08/ComputerCompositionPrinciple02/image-20210915200155551.png"></p>
+<p><strong>基址寻址</strong></p>
+<p>区别：寄存器不一样</p>
+<p><img src="/2021/09/08/ComputerCompositionPrinciple02/image-20210915200329184.png"></p>
+<p><strong>变址、基址寻址区别</strong></p>
+<p><img src="/2021/09/08/ComputerCompositionPrinciple02/image-20210915200841131.png"></p>
+<p><strong>基址加变址方式</strong></p>
+<p><img src="/2021/09/08/ComputerCompositionPrinciple02/image-20210915201014412.png"></p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p><img src="/2021/09/08/ComputerCompositionPrinciple02/image-20210915202424469.png"></p>
 ]]></content>
       <categories>
         <category>计算机组成原理</category>
@@ -1882,150 +2029,60 @@ msgRecyclerView<span class="token punctuation">.</span><span class="token functi
 ]]></content>
   </entry>
   <entry>
-    <title>计组：计算机中信息的表示方式（一）</title>
-    <url>/2021/09/08/ComputerCompositionPrinciple02/</url>
-    <content><![CDATA[<p><strong>计算机中信息的表示方式</strong></p>
-<p><img src="/2021/09/08/ComputerCompositionPrinciple02/1631108317881.png"></p>
-<p><strong>指令的执行：</strong></p>
+    <title>成电微记（一）-软件过程模型的选择</title>
+    <url>/2021/09/06/DiaryInUESTC01/</url>
+    <content><![CDATA[<p>在选择合适的软件过程模型之前，我们先了解几种常用的模型</p>
+<h2 id="瀑布模型"><a href="#瀑布模型" class="headerlink" title="瀑布模型"></a>瀑布模型</h2><p>转载自：<a href="https://www.cnblogs.com/jojop/p/11801241.html">周二鸭</a></p>
+<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>瀑布模型（经典生命模型）提出了软件开发的系统化的、顺序的方法。其流程从用户需求规格说明开始，通过策划、建模、构建和部署过程，最终提供一个完整的软件并提供持续的技术支持。</p>
+<p><strong>模型特点</strong></p>
+<ul>
+<li>必须等前一阶段的工作完成之后，才能开始后一段的工作；</li>
+<li>每一阶段都必须完成规定的文档，没有交出合格的文档就是没有完成该阶段的任务。</li>
+<li>前一阶段的输出文档就是后一阶段的输入文档，因此，只有前一阶段的输出文档正确，后一阶段的工作才能得到正确的结果。</li>
+<li>每个阶段结束前都要对所完成的文档进行评审，以便及早发现问题，改正错误。事实上越是早期阶段犯下的错误，暴露出来的时间就越晚，排除故障改正错误所需付出的代价也越高。因此，及时审查，是保证软件质量，降低软件成本的重要措施。</li>
+</ul>
+<p><strong>模型优点</strong>：</p>
+<ul>
+<li>强调了开发的阶段性，各阶段具有顺序性和依赖性</li>
+<li>强调早期调研和需求分析，推迟编码实现的观点</li>
+<li>提供了一个模板，这个模板使得分析、设计、编码、测试和支持的方法可以在该模板下有一个共同的指导。</li>
+</ul>
+<p><strong>模型局限</strong>：</p>
+<ul>
+<li>瀑布模型是一种线性模型，要求项目严格按规程推进，必须等到所有开发工作全部完成以后才能获得可以交付的软件产品。不能对软件系统进行快速创建，对于一些急于交付的软件系统的开发很不方便。</li>
+<li>瀑布模型适合于需求明确，且无大的需求变更的软件开发（编译系统、操作系统等）。而对于分析初期需求模糊的项目，瀑布模型也并不适合。</li>
+</ul>
+<p><strong>适用场景</strong>：</p>
+<p>适用于需求确定，无大的需求变更，工作能够采用线性的方式完成的软件。</p>
+<hr>
+<p>而在这个项目中我们使用的是基于瀑布模型之上的<strong>增量模型</strong></p>
+<h2 id="增量模型"><a href="#增量模型" class="headerlink" title="增量模型"></a>增量模型</h2><h3 id="简介-1"><a href="#简介-1" class="headerlink" title="简介"></a>简介</h3><p>增量模型融合了瀑布模型的基本成分和原型实现的迭代特征，它对软件过程的考虑是：在整体上按照瀑布模型的流程实施项目开发，以方便对项目的管理；但在软件的实际开发中，则将软件系统按功能分解为许多增减构件，并以构件为单位逐个地创建与交付，直到全部增量构件创建完成，并都被集成到系统之中交付用户使用。</p>
+<p><strong>各阶段任务：</strong></p>
 <ol>
-<li>取指：从主存储器中取指令；</li>
-<li>执行指令：在CPU内部执行该条指令（在此过程中， CPU一般还需从主存储器中获取如操作数等相关的信 息）；</li>
-<li>存结果：结果送回存储器存放。</li>
+<li>对整个系统进行需求分析和概要设计，确定系统基于增量构建的开发，以需求中构建的组成和关系为依据，完成对软件系统的体系结构设计。</li>
+<li>进行增量构建的开发。对构建进行需求精细化，然后设计、编码、测试和有效性验证</li>
+<li>将构建集成到系统，并对已经改变的系统进行有效性验证，继续下一个增量构建的开发</li>
 </ol>
-<p><strong>指令：</strong>一系列按照某种规律有序排列的，能被CPU 识别、并执行的二进制代码</p>
-<p><strong>指令系统（或集）：</strong>一台计算机所能执行的全部指令。</p>
-<h2 id="指令格式"><a href="#指令格式" class="headerlink" title="指令格式"></a>指令格式</h2><p>一条指令最多提供两方面的信息：</p>
-<p>操作码（OP）：与CPU操作有关的信息</p>
-<p>地址码（AD）：与操作数有关的信息</p>
-<p><strong>基本格式</strong></p>
-<p><img src="/2021/09/08/ComputerCompositionPrinciple02/1631108657173.png"></p>
-<h2 id="指令字长"><a href="#指令字长" class="headerlink" title="指令字长"></a>指令字长</h2><p>指令字长越长：</p>
-<p>​    优点：功能丰富，完成工作多</p>
-<p>​    缺点：占用空间大，取指时间长，执行速度慢</p>
-<p><strong>操作码的位数决定了操作类型的多少</strong></p>
-<p><strong>操作码分类：</strong></p>
-<p>定长操作码：</p>
-<p>指令长度比较长时，位置、位数固定，位置在指令 的前几位。</p>
-<p>扩展操作码：</p>
-<p>指令长度比较短时，位置、位数不固定，用扩展标 志表示。</p>
-<p>方式码：</p>
-<p>操作码分为几部分，每部分表示一种操作。</p>
-<p><img src="/2021/09/08/ComputerCompositionPrinciple02/1631109347792.png"></p>
-<h2 id="地址结构"><a href="#地址结构" class="headerlink" title="地址结构"></a>地址结构</h2><p>在指令中明确给出几个地址，给出哪些地址</p>
-<p><img src="/2021/09/08/ComputerCompositionPrinciple02/1631235309933.png"></p>
-<p><strong>指令给出操作数地址的方式：</strong></p>
-<p>显式：直接、间接、变址、基址等</p>
-<p>隐式：隐含约定寄存器号、主存储器单元号</p>
-<p><strong>显地址：</strong></p>
-<p>指令明显给出地址</p>
-<p>如：写明主存储单元号 或CPU的寄存器编号,则这种地址表达称为显地址。</p>
-<p><strong>显地址分为：</strong> 三地址指令、二地址指令、 一地址指令、零地址指令</p>
-<p><strong>隐地址：</strong></p>
-<p>指令中的地址是以隐含的方式约定</p>
-<p>如：系统事先隐含约定操作数在CPU某个寄存器中,或是在堆栈 中,因此在指令中并不给出地址码,这种隐含约定的地址就称为隐地址。</p>
-<p><strong>简化地址结构的基本途径：尽量使用隐地址。</strong></p>
-<p><strong>（1）四地址指令</strong></p>
-<p><strong><img src="/2021/09/08/ComputerCompositionPrinciple02/1631236505556.png"></strong></p>
-<p><strong>（2）三地址指令</strong></p>
-<p><img src="/2021/09/08/ComputerCompositionPrinciple02/1631237535653.png"></p>
-<p><strong>（3）二地址指令</strong></p>
-<p><img src="/2021/09/08/ComputerCompositionPrinciple02/1631237595648.png"></p>
-<p><strong>（4）单地址指令</strong></p>
-<p><strong>a. 隐含约定的目的地的双操作数指令</strong></p>
-<p><img src="/2021/09/08/ComputerCompositionPrinciple02/1631237677942.png"></p>
-<img src="/2021/09/08/ComputerCompositionPrinciple02/1631238035214-16312380540271.png" style="zoom:50%;">
-
-
-
-<p><strong>b.只有目的操作数的单操作数指令</strong></p>
-<p><img src="/2021/09/08/ComputerCompositionPrinciple02/1631238181946.png"></p>
-<p><strong>（5）零地址指令</strong></p>
-<p><img src="/2021/09/08/ComputerCompositionPrinciple02/1631238421642.png"></p>
-<p><strong>a.对只有目的操作数的指令，隐含在指定寄存器内 进行操作。</strong></p>
-<p>PUSHF ；FLAGS→入栈 </p>
-<p>POPF ；FLAGS→出栈 </p>
-<p>LAHF ；FLAGS的低8位→AH </p>
-<p>SAHF ；AH→FLAGS的低8位</p>
-<p>···</p>
-<p><strong>b.不需要操作数的指令。</strong></p>
-<p>NOP ；空操作指令</p>
-<p>HLT ；停机指令</p>
-<p>···</p>
-<p><strong>c.对堆栈栈顶单元内容进行操作,如指令PUSH (压 入堆栈)、POP (弹出堆栈)</strong></p>
-<h2 id="寻址方式"><a href="#寻址方式" class="headerlink" title="寻址方式"></a>寻址方式</h2><p><img src="/2021/09/08/ComputerCompositionPrinciple02/1631239226346.png"></p>
-<p>① CPU能够直接访问的操作数只能存放在主存储器 （包括CACHE、接口中的R）或CPU内的寄存器中； </p>
-<p>② 由于主存储器的容量远远大于CPU内的寄存器的 容量，因此CPU能够直接访问的操作数主要存放在主 存储器中。</p>
-<p><strong>存放方式（大致过程）：</strong></p>
-<p>程序-&gt;CS段</p>
-<p>数据-&gt;DS段</p>
-<p>结果-&gt;ES段</p>
-<p>下条地址-&gt;SS段</p>
-<p><strong>四大寻址方式</strong></p>
+<p><strong>模型特点：</strong></p>
 <ol>
-<li><p><strong>立即寻址：（掌握）</strong></p>
-<p>操作码字段后面你的部分不是操作码地址，而是操作数本身。在读取指令时也就从指令之中获得了操作数，即操 作数包含在指令中。</p>
-<img src="/2021/09/08/ComputerCompositionPrinciple02/image-20210913085811043.png" style="zoom:50%;"></li>
-<li><p><strong>直接寻址类：（掌握）</strong></p>
-<p>直接给出主存地址（主存直接寻址）或寄存器（寄存器直接寻址）编号，从主存单元内或 CPU的寄存器内读取操作数。</p>
-<p><img src="/2021/09/08/ComputerCompositionPrinciple02/image-20210913085532650.png"></p>
-<img src="/2021/09/08/ComputerCompositionPrinciple02/image-20210913090007021.png" style="zoom:67%;">
-
-<p><strong>比较：</strong></p>
-<p>a. 直接寻址是访问一次主存才能读取所需操作数；寄 存器寻址是从CPU的寄存器中读取操作数，不需访问主存，所需时间大约是从主存中读数时间的几分之一到 几十分之一 ，因而寄存器寻址比直接寻址快得多。</p>
-<p>b.由于寄存器数远少于主存储器的单元数，所以指令 中存放寄存器号的字段位数也就大大少于存放主存地 址码所需位数。采用寄存器寻址方式或其它以寄存器 为基础的寻址方式（例如寄存器寻址、寄存器间址方 式），可以大大减少指令中一个地址的位数，从而有 效地缩短指令长度。这也使读取指令的时间减少，提 高了工作速度。</p>
-<p><strong>注意：</strong></p>
-<p>减少指令中地址数目与减少一个地址的位数是 两个不同的概念。 </p>
-<p>采用隐地址可以减少指令中地址的数目； </p>
-<p>采用寄存器寻址方式、寄存器间址方式等可以使指令中为给出一个地址所需的位数减少。 其实，均减少了指令长度。</p>
-</li>
-<li><p><strong>间接寻址类：（掌握）</strong></p>
-<p>先从某寄存器/主存中读取地址，再按这个地址访问 主存以读取操作数。</p>
-<p><img src="/2021/09/08/ComputerCompositionPrinciple02/image-20210913092428125.png"></p>
-<p><img src="/2021/09/08/ComputerCompositionPrinciple02/image-20210913094228659.png"></p>
-<p><strong>自增型寄存器间址方式</strong></p>
-<p>寄存器间址的一种变型,若指令中给出存放操作数地址 的寄存器号,从寄存器中读出操作数地址后,寄存器内容加1，这种寻址方式称为自增型寄存器间接寻址。</p>
-<p><img src="/2021/09/08/ComputerCompositionPrinciple02/image-20210913095016132.png"></p>
-<p><strong>自减型寄存器间址型</strong></p>
-<p>若指令中给出寄存器号，被指定的寄存器内容减1后 作为操作数地址，按照该地址访问主存储器，相应的主 存单元内容为操作数，自减型寄存器间址方式常用助记 符 -（R）表示。</p>
-<p><img src="/2021/09/08/ComputerCompositionPrinciple02/image-20210913095243802.png"></p>
-<p><strong>堆栈寻址</strong></p>
-<p>堆栈寻址方式是指操作数在堆栈中，指令隐含约定由堆 栈指针SP寄存器提供栈顶单元地址（SP也可以编码形式 出现在指令中），进行读出或写入的一种寻址方式。 根据压入数据时栈顶单元的地址是减小还是增大或不变, 可以将堆栈的工作方式大致分为向上生成方式、向下生 成方式和栈顶固定方式三种。</p>
-<p><img src="/2021/09/08/ComputerCompositionPrinciple02/image-20210913100304932.png"></p>
-</li>
+<li>将软件系统模块化，分批地提交软件产品，用户可以及时了解软件项目的进展</li>
+<li>降低了软件开发的风险，一个开发周期内的错误不会影响整个系统</li>
+<li>开发顺序灵活。开发人员可以对组件的实现顺序进行优先级排序，先完成需求稳定的核心组件。当组件的优先级发生变化时，还能及时地对实现顺序进行调整。</li>
 </ol>
-<p><strong>多重间接寻址</strong></p>
-<p><img src="/2021/09/08/ComputerCompositionPrinciple02/image-20210915202759509.png"></p>
-<p><img src="/2021/09/08/ComputerCompositionPrinciple02/image-20210915202812521.png"></p>
-<p>例：</p>
-<p><img src="/2021/09/08/ComputerCompositionPrinciple02/image-20210915202828392.png"></p>
-<p><img src="/2021/09/08/ComputerCompositionPrinciple02/image-20210915202904166.png"></p>
-<ol start="4">
-<li><strong>变址类</strong></li>
-</ol>
-<p><strong>变址寻址</strong>（掌握）</p>
-<p>SI:source index</p>
-<p>DI:destination index</p>
-<p>BX:base </p>
-<p>BP:base pointer</p>
-<p>在8086/8088中使用SI,DI</p>
-<p>指令给出的是形式地址（不是最终地址），经过某种变换（例如相加、相减、高低位地址拼接等），才获得有效地址，据此访问主存储器以读取操作数。变址方式常用助记符**X(R)**表示</p>
-<p><img src="/2021/09/08/ComputerCompositionPrinciple02/image-20210915200045895.png"></p>
-<p>例:</p>
-<p><img src="/2021/09/08/ComputerCompositionPrinciple02/image-20210915200155551.png"></p>
-<p><strong>基址寻址</strong></p>
-<p>区别：寄存器不一样</p>
-<p><img src="/2021/09/08/ComputerCompositionPrinciple02/image-20210915200329184.png"></p>
-<p><strong>变址、基址寻址区别</strong></p>
-<p><img src="/2021/09/08/ComputerCompositionPrinciple02/image-20210915200841131.png"></p>
-<p><strong>基址加变址方式</strong></p>
-<p><img src="/2021/09/08/ComputerCompositionPrinciple02/image-20210915201014412.png"></p>
-<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p><img src="/2021/09/08/ComputerCompositionPrinciple02/image-20210915202424469.png"></p>
+<p><strong>适用场景：</strong></p>
+<p>1、软件产品可以分批次地进行交付。</p>
+<p>2、待开发的软件系统能够被模块化。</p>
+<p>3、软件开发人员对应用领域不熟悉，难以一次性地进行系统开发。</p>
+<p>4、项目管理人员把握全局的水平较高</p>
+<hr>
+<p>参考：<a href="https://baike.baidu.com/item/%E5%A2%9E%E9%87%8F%E6%A8%A1%E5%9E%8B/686083?fr=aladdin">增量模型</a></p>
+<p>其他软件过程模型介绍：<a href="https://www.cnblogs.com/jojop/p/11801241.html">周二鸭</a></p>
 ]]></content>
       <categories>
-        <category>计算机组成原理</category>
+        <category>成电微记</category>
       </categories>
       <tags>
-        <tag>计算机组成原理</tag>
+        <tag>Android</tag>
       </tags>
   </entry>
   <entry>
@@ -2178,63 +2235,6 @@ msgRecyclerView<span class="token punctuation">.</span><span class="token functi
 </li>
 </ol>
 <h3 id="优先级：-2"><a href="#优先级：-2" class="headerlink" title="优先级："></a>优先级：</h3><p>设置功能&gt;个人信息</p>
-]]></content>
-      <categories>
-        <category>成电微记</category>
-      </categories>
-      <tags>
-        <tag>Android</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>成电微记（一）-软件过程模型的选择</title>
-    <url>/2021/09/06/DiaryInUESTC01/</url>
-    <content><![CDATA[<p>在选择合适的软件过程模型之前，我们先了解几种常用的模型</p>
-<h2 id="瀑布模型"><a href="#瀑布模型" class="headerlink" title="瀑布模型"></a>瀑布模型</h2><p>转载自：<a href="https://www.cnblogs.com/jojop/p/11801241.html">周二鸭</a></p>
-<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>瀑布模型（经典生命模型）提出了软件开发的系统化的、顺序的方法。其流程从用户需求规格说明开始，通过策划、建模、构建和部署过程，最终提供一个完整的软件并提供持续的技术支持。</p>
-<p><strong>模型特点</strong></p>
-<ul>
-<li>必须等前一阶段的工作完成之后，才能开始后一段的工作；</li>
-<li>每一阶段都必须完成规定的文档，没有交出合格的文档就是没有完成该阶段的任务。</li>
-<li>前一阶段的输出文档就是后一阶段的输入文档，因此，只有前一阶段的输出文档正确，后一阶段的工作才能得到正确的结果。</li>
-<li>每个阶段结束前都要对所完成的文档进行评审，以便及早发现问题，改正错误。事实上越是早期阶段犯下的错误，暴露出来的时间就越晚，排除故障改正错误所需付出的代价也越高。因此，及时审查，是保证软件质量，降低软件成本的重要措施。</li>
-</ul>
-<p><strong>模型优点</strong>：</p>
-<ul>
-<li>强调了开发的阶段性，各阶段具有顺序性和依赖性</li>
-<li>强调早期调研和需求分析，推迟编码实现的观点</li>
-<li>提供了一个模板，这个模板使得分析、设计、编码、测试和支持的方法可以在该模板下有一个共同的指导。</li>
-</ul>
-<p><strong>模型局限</strong>：</p>
-<ul>
-<li>瀑布模型是一种线性模型，要求项目严格按规程推进，必须等到所有开发工作全部完成以后才能获得可以交付的软件产品。不能对软件系统进行快速创建，对于一些急于交付的软件系统的开发很不方便。</li>
-<li>瀑布模型适合于需求明确，且无大的需求变更的软件开发（编译系统、操作系统等）。而对于分析初期需求模糊的项目，瀑布模型也并不适合。</li>
-</ul>
-<p><strong>适用场景</strong>：</p>
-<p>适用于需求确定，无大的需求变更，工作能够采用线性的方式完成的软件。</p>
-<hr>
-<p>而在这个项目中我们使用的是基于瀑布模型之上的<strong>增量模型</strong></p>
-<h2 id="增量模型"><a href="#增量模型" class="headerlink" title="增量模型"></a>增量模型</h2><h3 id="简介-1"><a href="#简介-1" class="headerlink" title="简介"></a>简介</h3><p>增量模型融合了瀑布模型的基本成分和原型实现的迭代特征，它对软件过程的考虑是：在整体上按照瀑布模型的流程实施项目开发，以方便对项目的管理；但在软件的实际开发中，则将软件系统按功能分解为许多增减构件，并以构件为单位逐个地创建与交付，直到全部增量构件创建完成，并都被集成到系统之中交付用户使用。</p>
-<p><strong>各阶段任务：</strong></p>
-<ol>
-<li>对整个系统进行需求分析和概要设计，确定系统基于增量构建的开发，以需求中构建的组成和关系为依据，完成对软件系统的体系结构设计。</li>
-<li>进行增量构建的开发。对构建进行需求精细化，然后设计、编码、测试和有效性验证</li>
-<li>将构建集成到系统，并对已经改变的系统进行有效性验证，继续下一个增量构建的开发</li>
-</ol>
-<p><strong>模型特点：</strong></p>
-<ol>
-<li>将软件系统模块化，分批地提交软件产品，用户可以及时了解软件项目的进展</li>
-<li>降低了软件开发的风险，一个开发周期内的错误不会影响整个系统</li>
-<li>开发顺序灵活。开发人员可以对组件的实现顺序进行优先级排序，先完成需求稳定的核心组件。当组件的优先级发生变化时，还能及时地对实现顺序进行调整。</li>
-</ol>
-<p><strong>适用场景：</strong></p>
-<p>1、软件产品可以分批次地进行交付。</p>
-<p>2、待开发的软件系统能够被模块化。</p>
-<p>3、软件开发人员对应用领域不熟悉，难以一次性地进行系统开发。</p>
-<p>4、项目管理人员把握全局的水平较高</p>
-<hr>
-<p>参考：<a href="https://baike.baidu.com/item/%E5%A2%9E%E9%87%8F%E6%A8%A1%E5%9E%8B/686083?fr=aladdin">增量模型</a></p>
-<p>其他软件过程模型介绍：<a href="https://www.cnblogs.com/jojop/p/11801241.html">周二鸭</a></p>
 ]]></content>
       <categories>
         <category>成电微记</category>

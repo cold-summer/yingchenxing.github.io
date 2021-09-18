@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="计组：计算机中信息的表示方式, cold fish">
+    <meta name="keywords" content="计组：计算机中信息的表示方式（一）, cold fish">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>计组：计算机中信息的表示方式 | cold fish</title>
+    <title>计组：计算机中信息的表示方式（一） | cold fish</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -312,12 +312,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/3.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">计组：计算机中信息的表示方式</h1>
+                    <h1 class="description center-align post-title">计组：计算机中信息的表示方式（一）</h1>
                 </div>
             </div>
         </div>
@@ -465,14 +465,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-09-13
+                    2021-09-15
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.6k
+                    1.7k
                 </div>
                 
 
@@ -582,10 +582,10 @@
 <p>下条地址-&gt;SS段</p>
 <p><strong>四大寻址方式</strong></p>
 <ol>
-<li><p><strong>立即寻址：</strong></p>
+<li><p><strong>立即寻址：（掌握）</strong></p>
 <p>操作码字段后面你的部分不是操作码地址，而是操作数本身。在读取指令时也就从指令之中获得了操作数，即操 作数包含在指令中。</p>
 <img src="/2021/09/08/ComputerCompositionPrinciple02/image-20210913085811043.png" style="zoom:50%;"></li>
-<li><p><strong>直接寻址类：</strong></p>
+<li><p><strong>直接寻址类：（掌握）</strong></p>
 <p>直接给出主存地址（主存直接寻址）或寄存器（寄存器直接寻址）编号，从主存单元内或 CPU的寄存器内读取操作数。</p>
 <p><img src="/2021/09/08/ComputerCompositionPrinciple02/image-20210913085532650.png"></p>
 <img src="/2021/09/08/ComputerCompositionPrinciple02/image-20210913090007021.png" style="zoom:67%;">
@@ -598,7 +598,7 @@
 <p>采用隐地址可以减少指令中地址的数目； </p>
 <p>采用寄存器寻址方式、寄存器间址方式等可以使指令中为给出一个地址所需的位数减少。 其实，均减少了指令长度。</p>
 </li>
-<li><p><strong>间接寻址类：</strong></p>
+<li><p><strong>间接寻址类：（掌握）</strong></p>
 <p>先从某寄存器/主存中读取地址，再按这个地址访问 主存以读取操作数。</p>
 <p><img src="/2021/09/08/ComputerCompositionPrinciple02/image-20210913092428125.png"></p>
 <p><img src="/2021/09/08/ComputerCompositionPrinciple02/image-20210913094228659.png"></p>
@@ -612,10 +612,34 @@
 <p>堆栈寻址方式是指操作数在堆栈中，指令隐含约定由堆 栈指针SP寄存器提供栈顶单元地址（SP也可以编码形式 出现在指令中），进行读出或写入的一种寻址方式。 根据压入数据时栈顶单元的地址是减小还是增大或不变, 可以将堆栈的工作方式大致分为向上生成方式、向下生 成方式和栈顶固定方式三种。</p>
 <p><img src="/2021/09/08/ComputerCompositionPrinciple02/image-20210913100304932.png"></p>
 </li>
-<li><p>变址类</p>
-<p>指令给出的是形式地址（不是最终地址），经过某种变换（例如相加、相减、高低位地址拼接等），才获得有效地址，据此访问主存储器以读取操作数。</p>
-</li>
 </ol>
+<p><strong>多重间接寻址</strong></p>
+<p><img src="/2021/09/08/ComputerCompositionPrinciple02/image-20210915202759509.png"></p>
+<p><img src="/2021/09/08/ComputerCompositionPrinciple02/image-20210915202812521.png"></p>
+<p>例：</p>
+<p><img src="/2021/09/08/ComputerCompositionPrinciple02/image-20210915202828392.png"></p>
+<p><img src="/2021/09/08/ComputerCompositionPrinciple02/image-20210915202904166.png"></p>
+<ol start="4">
+<li><strong>变址类</strong></li>
+</ol>
+<p><strong>变址寻址</strong>（掌握）</p>
+<p>SI:source index</p>
+<p>DI:destination index</p>
+<p>BX:base </p>
+<p>BP:base pointer</p>
+<p>在8086/8088中使用SI,DI</p>
+<p>指令给出的是形式地址（不是最终地址），经过某种变换（例如相加、相减、高低位地址拼接等），才获得有效地址，据此访问主存储器以读取操作数。变址方式常用助记符**X(R)**表示</p>
+<p><img src="/2021/09/08/ComputerCompositionPrinciple02/image-20210915200045895.png"></p>
+<p>例:</p>
+<p><img src="/2021/09/08/ComputerCompositionPrinciple02/image-20210915200155551.png"></p>
+<p><strong>基址寻址</strong></p>
+<p>区别：寄存器不一样</p>
+<p><img src="/2021/09/08/ComputerCompositionPrinciple02/image-20210915200329184.png"></p>
+<p><strong>变址、基址寻址区别</strong></p>
+<p><img src="/2021/09/08/ComputerCompositionPrinciple02/image-20210915200841131.png"></p>
+<p><strong>基址加变址方式</strong></p>
+<p><img src="/2021/09/08/ComputerCompositionPrinciple02/image-20210915201014412.png"></p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p><img src="/2021/09/08/ComputerCompositionPrinciple02/image-20210915202424469.png"></p>
 
                 
             </div>
@@ -1454,7 +1478,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">14.3k</span>&nbsp;字
+                class="white-color">17.2k</span>&nbsp;字
             
             
             

@@ -469,14 +469,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-09-11
+                    2021-09-14
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    953
+                    975
                 </div>
                 
 
@@ -629,11 +629,11 @@ implementation &quot;com.android.support:recyclerview-v7:$recyclerviewV7Version&
     <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">onCreate</span><span class="token punctuation">(</span>savedInstanceState<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token function">setContentView</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>layout<span class="token punctuation">.</span>activity_main<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token function">initFruits</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    RecyclerView recyclerView <span class="token operator">=</span> <span class="token function">findViewById</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>id<span class="token punctuation">.</span>recycle_view<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    LinearLayoutManager layoutManager <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">LinearLayoutManager</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    recyclerView<span class="token punctuation">.</span><span class="token function">setLayoutManager</span><span class="token punctuation">(</span>layoutManager<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    FruitAdapter adapter<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">FruitAdapter</span><span class="token punctuation">(</span>fruitList<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    recyclerView<span class="token punctuation">.</span><span class="token function">setAdapter</span><span class="token punctuation">(</span>adapter<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    RecyclerView recyclerView <span class="token operator">=</span> <span class="token function">findViewById</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>id<span class="token punctuation">.</span>recycle_view<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//1. 实例化对象</span>
+    LinearLayoutManager layoutManager <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">LinearLayoutManager</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//2. 新建LinearLayoutManager类</span>
+    recyclerView<span class="token punctuation">.</span><span class="token function">setLayoutManager</span><span class="token punctuation">(</span>layoutManager<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//3. 为recyclerView设置LayoutManager</span>
+    FruitAdapter adapter<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">FruitAdapter</span><span class="token punctuation">(</span>fruitList<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//</span>
+    recyclerView<span class="token punctuation">.</span><span class="token function">setAdapter</span><span class="token punctuation">(</span>adapter<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//4. 设置适配器</span>
 <span class="token punctuation">}</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>LinearLayoutManager：用于指定RecyclerView的布局方式</p>
@@ -1526,7 +1526,7 @@ implementation &quot;com.android.support:recyclerview-v7:$recyclerviewV7Version&
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">14.3k</span>&nbsp;字
+                class="white-color">17.2k</span>&nbsp;字
             
             
             

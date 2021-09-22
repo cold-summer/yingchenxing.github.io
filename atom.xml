@@ -6,7 +6,7 @@
   <link href="https://yingchenxing.github.io/atom.xml" rel="self"/>
   
   <link href="https://yingchenxing.github.io/"/>
-  <updated>2021-09-18T03:44:11.178Z</updated>
+  <updated>2021-09-22T07:33:09.606Z</updated>
   <id>https://yingchenxing.github.io/</id>
   
   <author>
@@ -17,11 +17,37 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>模型机的总体设计</title>
+    <title>成电微记（四）-对模板进行修改</title>
+    <link href="https://yingchenxing.github.io/2021/09/22/DiaryInUESTC04/"/>
+    <id>https://yingchenxing.github.io/2021/09/22/DiaryInUESTC04/</id>
+    <published>2021-09-22T07:19:35.000Z</published>
+    <updated>2021-09-22T07:33:09.606Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;strong&gt;选择Bottom Navigation Activity&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/2021/09/22/DiaryInUESTC04/image-20210922152329323.png&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="成电微记" scheme="https://yingchenxing.github.io/categories/%E6%88%90%E7%94%B5%E5%BE%AE%E8%AE%B0/"/>
+    
+    
+    <category term="Android" scheme="https://yingchenxing.github.io/tags/Android/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>计组：模型机的总体设计</title>
     <link href="https://yingchenxing.github.io/2021/09/17/ComputerCompositionPrinciple04/"/>
     <id>https://yingchenxing.github.io/2021/09/17/ComputerCompositionPrinciple04/</id>
     <published>2021-09-17T00:31:06.000Z</published>
-    <updated>2021-09-18T03:44:11.178Z</updated>
+    <updated>2021-09-22T07:17:52.752Z</updated>
     
     
       
@@ -34,15 +60,19 @@
     
     
     
+    <category term="计算机组成原理" scheme="https://yingchenxing.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/"/>
+    
+    
+    <category term="计算机组成原理" scheme="https://yingchenxing.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/"/>
     
   </entry>
   
   <entry>
-    <title>AndroidDevelopment11</title>
+    <title>安卓开发（七）MateraiDesign实践</title>
     <link href="https://yingchenxing.github.io/2021/09/16/AndroidDevelopment11/"/>
     <id>https://yingchenxing.github.io/2021/09/16/AndroidDevelopment11/</id>
     <published>2021-09-16T14:14:32.000Z</published>
-    <updated>2021-09-17T00:27:15.738Z</updated>
+    <updated>2021-09-21T03:52:59.545Z</updated>
     
     
       
@@ -63,7 +93,7 @@
     <link href="https://yingchenxing.github.io/2021/09/15/ComputerCompositionPrinciple03/"/>
     <id>https://yingchenxing.github.io/2021/09/15/ComputerCompositionPrinciple03/</id>
     <published>2021-09-15T12:31:20.000Z</published>
-    <updated>2021-09-18T03:43:36.582Z</updated>
+    <updated>2021-09-22T06:46:56.533Z</updated>
     
     
       
@@ -76,6 +106,10 @@
     
     
     
+    <category term="计算机组成原理" scheme="https://yingchenxing.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/"/>
+    
+    
+    <category term="计算机组成原理" scheme="https://yingchenxing.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/"/>
     
   </entry>
   
@@ -84,7 +118,7 @@
     <link href="https://yingchenxing.github.io/2021/09/15/CompileTechnical06/"/>
     <id>https://yingchenxing.github.io/2021/09/15/CompileTechnical06/</id>
     <published>2021-09-15T01:14:35.000Z</published>
-    <updated>2021-09-18T03:37:13.858Z</updated>
+    <updated>2021-09-18T03:55:37.174Z</updated>
     
     
       
@@ -217,7 +251,7 @@
     <link href="https://yingchenxing.github.io/2021/09/11/DiaryInUESTC03/"/>
     <id>https://yingchenxing.github.io/2021/09/11/DiaryInUESTC03/</id>
     <published>2021-09-11T05:20:08.000Z</published>
-    <updated>2021-09-11T08:26:01.082Z</updated>
+    <updated>2021-09-21T14:37:09.314Z</updated>
     
     
       
@@ -399,7 +433,7 @@
     <link href="https://yingchenxing.github.io/2021/09/07/AndroidDevelopment05/"/>
     <id>https://yingchenxing.github.io/2021/09/07/AndroidDevelopment05/</id>
     <published>2021-09-07T11:12:20.000Z</published>
-    <updated>2021-09-07T12:03:23.912Z</updated>
+    <updated>2021-09-20T13:00:38.245Z</updated>
     
     
       
@@ -488,31 +522,6 @@
         
         
     <summary type="html">&lt;h1 id=&quot;词法分析器&quot;&gt;&lt;a href=&quot;#词法分析器&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="编译原理" scheme="https://yingchenxing.github.io/categories/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/"/>
-    
-    
-    <category term="编译原理" scheme="https://yingchenxing.github.io/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>编译原理（一）概论</title>
-    <link href="https://yingchenxing.github.io/2021/09/06/CompileTechnical01/"/>
-    <id>https://yingchenxing.github.io/2021/09/06/CompileTechnical01/</id>
-    <published>2021-09-06T02:55:03.000Z</published>
-    <updated>2021-09-18T03:40:40.480Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;编译器在语言处理系统中的位置&quot;&gt;&lt;a href=&quot;#编译器在语言处理系统中的位置&quot; class=&quot;headerlink&quot; title=&quot;编译器在语言处理系统中的位置&quot;&gt;&lt;/a&gt;编译器在语言处理系统中的位置&lt;/h2&gt;&lt;p&gt;&lt;img</summary>
         
       
     

@@ -686,6 +686,31 @@
     
     
     <entry>
+      <title>计组：计算机基本组成</title>
+      <link href="/2021/09/08/ComputerCompositionPrinciple01/"/>
+      <url>/2021/09/08/ComputerCompositionPrinciple01/</url>
+      
+        <content type="html"><![CDATA[<h2 id="计算机基本组成"><a href="#计算机基本组成" class="headerlink" title="计算机基本组成"></a>计算机基本组成</h2><p><strong>五大组成部分</strong></p><p>运算器、控制器、存储器、输入设备、输出设备</p><p><strong>硬件组成</strong></p><p><img src="/2021/09/08/ComputerCompositionPrinciple01/1631101751247-16311017717611.png"></p><p><strong>工作流程：</strong></p><p>编写程序-&gt;输入程序-&gt;存储程序-&gt;程序转换为指令序列-&gt;执行指令-&gt;输出结果</p><p><strong>计算机内部的两大流：</strong></p><p>控制流：控制计算机工作大学习，即指令、微命令</p><p>数据流：计算机加工处理的对象，即数据型数据，非数值型数据</p><p>（重点：信息的表示；信息的传送及传送中的控制）</p><h2 id="存储程序"><a href="#存储程序" class="headerlink" title="存储程序"></a>存储程序</h2><p><strong>计算机存储程序的工作方式：</strong></p><ol><li>事先编制程序</li><li>存储程序</li><li>自动连续运行程序</li></ol><p><strong>冯诺依曼体质</strong></p><ol><li>采用二进制形式表示数据和指令</li><li>采用存储程序方式工作（核心）</li><li>由五大部分组成计算机系统的硬件，并规定了这五部分的基本功能</li></ol><h2 id="数字型计算机的特点"><a href="#数字型计算机的特点" class="headerlink" title="数字型计算机的特点"></a>数字型计算机的特点</h2><ol><li>能在程序控制下自动连续工作：PC寄存器</li><li>运算速度快</li><li>运算精度高</li><li>具有很强的信息存储能力</li><li>通用性强</li></ol><h2 id="主要功能部件"><a href="#主要功能部件" class="headerlink" title="主要功能部件"></a>主要功能部件</h2><h3 id="存储器"><a href="#存储器" class="headerlink" title="存储器"></a>存储器</h3><p>功能：存储信息</p><p>组成（主存储器）：</p><p><img src="/2021/09/08/ComputerCompositionPrinciple01/1631103052208.png"></p><p><strong>存储体：</strong>存放信息的实体</p><p><strong>寻址系统：</strong>对地址码译码，选择存储单元</p><p><strong>读/写线路和数据寄存器：</strong>完成读/写操作，</p><p>​                                            暂存读/写数据</p><p><strong>控制线路：</strong>产生读/写时序，控制读/写操作</p><h3 id="CPU"><a href="#CPU" class="headerlink" title="CPU"></a>CPU</h3><p>由<strong>运算器、控制器</strong>组成</p><h4 id="运算器："><a href="#运算器：" class="headerlink" title="运算器："></a>运算器：</h4><p><img src="/2021/09/08/ComputerCompositionPrinciple01/1631103737634.png"></p><p><strong>ALU：</strong>通过加法器实现运算操作（由<strong>全加器</strong>求和，由<strong>进位链</strong>传递<strong>进位信号</strong>）</p><p><strong>通用寄存器组：</strong>提供操作数，存放运算结果</p><p><strong>移位器：</strong>直接或者移位送出运算结果</p><p><strong>控制器：</strong></p><ol><li><p>功能：产生控制命令（微命令），控制全机操作</p></li><li><p>组成：</p><p><img src="/2021/09/08/ComputerCompositionPrinciple01/1631104175903.png"></p></li><li><p>微命令产生方式（指令执行控制方式）:</p><ul><li>组合逻辑控制方式：由组合逻辑电路产生微命令</li><li>微程序控制方式：由微指令产生微命令</li></ul></li></ol><h3 id="输入-输出设备"><a href="#输入-输出设备" class="headerlink" title="输入/输出设备"></a>输入/输出设备</h3><ol><li><p>功能：转换信息</p><p>输入：原始信息-&gt;代码，送入主机 </p><p>输出：处理结果-&gt;人所能接受的形式，并输出 （代码）</p></li></ol><h2 id="硬件系统结构"><a href="#硬件系统结构" class="headerlink" title="硬件系统结构"></a>硬件系统结构</h2><h3 id="总线"><a href="#总线" class="headerlink" title="总线"></a>总线</h3><p>能为多个部件分时、共享的一组信息传送线 路及相应的控制逻辑。</p><p><img src="/2021/09/08/ComputerCompositionPrinciple01/1631104683808.png"></p><p><img src="/2021/09/08/ComputerCompositionPrinciple01/1631104748258.png"></p><p><strong>以CPU为中心的双总线结构：</strong></p><p><img src="/2021/09/08/ComputerCompositionPrinciple01/1631104791464.png"></p><p><strong>单总线结构：</strong></p><p><img src="/2021/09/08/ComputerCompositionPrinciple01/1631104831462.png"></p><p><strong>以M为中心的双总线结构：</strong></p><p><img src="/2021/09/08/ComputerCompositionPrinciple01/1631104873210.png"></p><p><strong>多级总线结构：</strong></p><p><img src="/2021/09/08/ComputerCompositionPrinciple01/1631104927121.png"></p><h3 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h3><p>部件与部件（指硬件或软件）之间的交接部分称为接口；</p><p>主机系统总线与I/O设备之间的交接部分称为I/O接口。</p><p><strong>接口类型</strong></p><p>按传送格式： 串行接口、并行接口 </p><p>按时序控制： 同步接口、异步接口 </p><p>按信息传送控制方式：<strong>中断接口</strong>、DMA接口</p><h2 id="计算机性能的性能指标"><a href="#计算机性能的性能指标" class="headerlink" title="计算机性能的性能指标"></a>计算机性能的性能指标</h2><h3 id="基本字长"><a href="#基本字长" class="headerlink" title="基本字长"></a>基本字长</h3><p>一般指参加<strong>一次定点运算的操作数的位数</strong></p><p>8、16、32、64位</p><h3 id="运算速度"><a href="#运算速度" class="headerlink" title="运算速度"></a>运算速度</h3><p><strong>CPU主频</strong></p><p>计算机的振荡器输出的脉冲序列的频率，是计算机中一切操作所依据的时间基准信号，其高低决定了计算机工做速度的快慢。</p><p><strong>时钟频率</strong></p><p>是主频脉冲经分频后所形成的时钟脉冲序列的频率，两个相邻时钟脉冲之间的间隔时间是一个<strong>时钟周期</strong>时间，也称为<strong>节拍</strong>。</p><h3 id="数据通路宽度与数据传输率"><a href="#数据通路宽度与数据传输率" class="headerlink" title="数据通路宽度与数据传输率"></a>数据通路宽度与数据传输率</h3><p><strong>数据通路宽度</strong></p><p> 指数据总线（多条）一次能并行传送的数据位数。</p><p><strong>数据传输率</strong></p><p>指数据总线每秒传送的数据量，也称为数据总线的带宽。</p><p><img src="/2021/09/08/ComputerCompositionPrinciple01/1631106969901.png"></p><h3 id="存储容量"><a href="#存储容量" class="headerlink" title="存储容量"></a>存储容量</h3><p><strong>主存容量：</strong></p><p>指  存储单元个数（地址位数）×位数（编制单位）</p><p>表示为：字数×字长（按字编址，16位） </p><p>​                或 字数×字节长（按字节编址，8位）</p><p><strong>外存容量：</strong></p><p>常表示为字节数。 外存容量与地址码位数无关。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 计算机组成原理 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 计算机组成原理 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>安卓开发（四）编写界面实践</title>
       <link href="/2021/09/08/AndroidDevelopment06/"/>
       <url>/2021/09/08/AndroidDevelopment06/</url>
@@ -857,19 +882,6 @@
             <tag> 编译原理 </tag>
             
         </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title></title>
-      <link href="/2021/09/06/ComputerCompositionPrinciple01/"/>
-      <url>/2021/09/06/ComputerCompositionPrinciple01/</url>
-      
-        <content type="html"><![CDATA[<h2 id="计算机基本组成"><a href="#计算机基本组成" class="headerlink" title="计算机基本组成"></a>计算机基本组成</h2><p><strong>五大组成部分</strong></p><p>运算器、控制器、存储器、输入设备、输出设备</p><p><strong>硬件组成</strong></p><p><img src="/2021/09/06/ComputerCompositionPrinciple01/1631101751247-16311017717611.png"></p><p><strong>工作流程：</strong></p><p>编写程序-&gt;输入程序-&gt;存储程序-&gt;程序转换为指令序列-&gt;执行指令-&gt;输出结果</p><p><strong>计算机内部的两大流：</strong></p><p>控制流：控制计算机工作大学习，即指令、微命令</p><p>数据流：计算机加工处理的对象，即数据型数据，非数值型数据</p><p>（重点：信息的表示；信息的传送及传送中的控制）</p><h2 id="存储程序"><a href="#存储程序" class="headerlink" title="存储程序"></a>存储程序</h2><p><strong>计算机存储程序的工作方式：</strong></p><ol><li>事先编制程序</li><li>存储程序</li><li>自动连续运行程序</li></ol><p><strong>冯诺依曼体质</strong></p><ol><li>采用二进制形式表示数据和指令</li><li>采用存储程序方式工作（核心）</li><li>由五大部分组成计算机系统的硬件，并规定了这五部分的基本功能</li></ol><h2 id="数字型计算机的特点"><a href="#数字型计算机的特点" class="headerlink" title="数字型计算机的特点"></a>数字型计算机的特点</h2><ol><li>能在程序控制下自动连续工作：PC寄存器</li><li>运算速度快</li><li>运算精度高</li><li>具有很强的信息存储能力</li><li>通用性强</li></ol><h2 id="主要功能部件"><a href="#主要功能部件" class="headerlink" title="主要功能部件"></a>主要功能部件</h2><h3 id="存储器"><a href="#存储器" class="headerlink" title="存储器"></a>存储器</h3><p>功能：存储信息</p><p>组成（主存储器）：</p><p><img src="/2021/09/06/ComputerCompositionPrinciple01/1631103052208.png"></p><p><strong>存储体：</strong>存放信息的实体</p><p><strong>寻址系统：</strong>对地址码译码，选择存储单元</p><p><strong>读/写线路和数据寄存器：</strong>完成读/写操作，</p><p>​                                            暂存读/写数据</p><p><strong>控制线路：</strong>产生读/写时序，控制读/写操作</p><h3 id="CPU"><a href="#CPU" class="headerlink" title="CPU"></a>CPU</h3><p>由<strong>运算器、控制器</strong>组成</p><h4 id="运算器："><a href="#运算器：" class="headerlink" title="运算器："></a>运算器：</h4><p><img src="/2021/09/06/ComputerCompositionPrinciple01/1631103737634.png"></p><p><strong>ALU：</strong>通过加法器实现运算操作（由<strong>全加器</strong>求和，由<strong>进位链</strong>传递<strong>进位信号</strong>）</p><p><strong>通用寄存器组：</strong>提供操作数，存放运算结果</p><p><strong>移位器：</strong>直接或者移位送出运算结果</p><p><strong>控制器：</strong></p><ol><li><p>功能：产生控制命令（微命令），控制全机操作</p></li><li><p>组成：</p><p><img src="/2021/09/06/ComputerCompositionPrinciple01/1631104175903.png"></p></li><li><p>微命令产生方式（指令执行控制方式）:</p><ul><li>组合逻辑控制方式：由组合逻辑电路产生微命令</li><li>微程序控制方式：由微指令产生微命令</li></ul></li></ol><h3 id="输入-输出设备"><a href="#输入-输出设备" class="headerlink" title="输入/输出设备"></a>输入/输出设备</h3><ol><li><p>功能：转换信息</p><p>输入：原始信息-&gt;代码，送入主机 </p><p>输出：处理结果-&gt;人所能接受的形式，并输出 （代码）</p></li></ol><h2 id="硬件系统结构"><a href="#硬件系统结构" class="headerlink" title="硬件系统结构"></a>硬件系统结构</h2><h3 id="总线"><a href="#总线" class="headerlink" title="总线"></a>总线</h3><p>能为多个部件分时、共享的一组信息传送线 路及相应的控制逻辑。</p><p><img src="/2021/09/06/ComputerCompositionPrinciple01/1631104683808.png"></p><p><img src="/2021/09/06/ComputerCompositionPrinciple01/1631104748258.png"></p><p><strong>以CPU为中心的双总线结构：</strong></p><p><img src="/2021/09/06/ComputerCompositionPrinciple01/1631104791464.png"></p><p><strong>单总线结构：</strong></p><p><img src="/2021/09/06/ComputerCompositionPrinciple01/1631104831462.png"></p><p><strong>以M为中心的双总线结构：</strong></p><p><img src="/2021/09/06/ComputerCompositionPrinciple01/1631104873210.png"></p><p><strong>多级总线结构：</strong></p><p><img src="/2021/09/06/ComputerCompositionPrinciple01/1631104927121.png"></p><h3 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h3><p>部件与部件（指硬件或软件）之间的交接部分称为接口；</p><p>主机系统总线与I/O设备之间的交接部分称为I/O接口。</p><p><strong>接口类型</strong></p><p>按传送格式： 串行接口、并行接口 </p><p>按时序控制： 同步接口、异步接口 </p><p>按信息传送控制方式：<strong>中断接口</strong>、DMA接口</p><h2 id="计算机性能的性能指标"><a href="#计算机性能的性能指标" class="headerlink" title="计算机性能的性能指标"></a>计算机性能的性能指标</h2><h3 id="基本字长"><a href="#基本字长" class="headerlink" title="基本字长"></a>基本字长</h3><p>一般指参加<strong>一次定点运算的操作数的位数</strong></p><p>8、16、32、64位</p><h3 id="运算速度"><a href="#运算速度" class="headerlink" title="运算速度"></a>运算速度</h3><p><strong>CPU主频</strong></p><p>计算机的振荡器输出的脉冲序列的频率，是计算机中一切操作所依据的时间基准信号，其高低决定了计算机工做速度的快慢。</p><p><strong>时钟频率</strong></p><p>是主频脉冲经分频后所形成的时钟脉冲序列的频率，两个相邻时钟脉冲之间的间隔时间是一个<strong>时钟周期</strong>时间，也称为<strong>节拍</strong>。</p><h3 id="数据通路宽度与数据传输率"><a href="#数据通路宽度与数据传输率" class="headerlink" title="数据通路宽度与数据传输率"></a>数据通路宽度与数据传输率</h3><p><strong>数据通路宽度</strong></p><p> 指数据总线（多条）一次能并行传送的数据位数。</p><p><strong>数据传输率</strong></p><p>指数据总线每秒传送的数据量，也称为数据总线的带宽。</p><p><img src="/2021/09/06/ComputerCompositionPrinciple01/1631106969901.png"></p><h3 id="存储容量"><a href="#存储容量" class="headerlink" title="存储容量"></a>存储容量</h3><p><strong>主存容量：</strong></p><p>指  存储单元个数（地址位数）×位数（编制单位）</p><p>表示为：字数×字长（按字编址，16位） </p><p>​                或 字数×字节长（按字节编址，8位）</p><p><strong>外存容量：</strong></p><p>常表示为字节数。 外存容量与地址码位数无关。</p>]]></content>
-      
-      
       
     </entry>
     

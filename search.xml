@@ -2650,18 +2650,6 @@ git merge version1.0
       </tags>
   </entry>
   <entry>
-    <title>成电微记（六）Bill界面的实现</title>
-    <url>/2021/11/10/DiaryInUESTC06/</url>
-    <content><![CDATA[<p>在<em>TODO界面的实现</em>中，我们对定义实体类和recyclerView已经有了一定的了解，Bill页面的基本原理也是跟TODO一样的，不过我在这里丰富了一些细节。</p>
-<h2 id="recyclerView的嵌套"><a href="#recyclerView的嵌套" class="headerlink" title="recyclerView的嵌套"></a>recyclerView的嵌套</h2><h2 id="addView窗口的实现"><a href="#addView窗口的实现" class="headerlink" title="addView窗口的实现"></a>addView窗口的实现</h2><h2 id="RadioGroup无法添加布局的问题解决"><a href="#RadioGroup无法添加布局的问题解决" class="headerlink" title="RadioGroup无法添加布局的问题解决"></a>RadioGroup无法添加布局的问题解决</h2>]]></content>
-      <categories>
-        <category>成电微记</category>
-      </categories>
-      <tags>
-        <tag>Android</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>成电微记（五）TODO界面的实现</title>
     <url>/2021/10/02/DiaryInUESTC05/</url>
     <content><![CDATA[<h2 id="step1：创建Todo类"><a href="#step1：创建Todo类" class="headerlink" title="step1：创建Todo类"></a>step1：创建Todo类</h2><pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Todo</span> <span class="token punctuation">{</span>
@@ -2893,6 +2881,18 @@ git merge version1.0
 <h2 id="step6：通过itemTouchHelper实现拖拽效果"><a href="#step6：通过itemTouchHelper实现拖拽效果" class="headerlink" title="step6：通过itemTouchHelper实现拖拽效果"></a>step6：通过itemTouchHelper实现拖拽效果</h2><p>定义todoItemTouchHelper继承自itemTouchHelper并且重写某些方法</p>
 <p>在adapter中重写onItemMove和onItemDismiss实现todo项在recyclerView和数据库中的更新。</p>
 ]]></content>
+      <categories>
+        <category>成电微记</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>成电微记（六）Bill界面的实现</title>
+    <url>/2021/11/10/DiaryInUESTC06/</url>
+    <content><![CDATA[<p>在<em>TODO界面的实现</em>中，我们对定义实体类和recyclerView已经有了一定的了解，Bill页面的基本原理也是跟TODO一样的，不过我在这里丰富了一些细节。</p>
+<h2 id="recyclerView的嵌套"><a href="#recyclerView的嵌套" class="headerlink" title="recyclerView的嵌套"></a>recyclerView的嵌套</h2><h2 id="addView窗口的实现"><a href="#addView窗口的实现" class="headerlink" title="addView窗口的实现"></a>addView窗口的实现</h2><h2 id="RadioGroup无法添加布局的问题解决"><a href="#RadioGroup无法添加布局的问题解决" class="headerlink" title="RadioGroup无法添加布局的问题解决"></a>RadioGroup无法添加布局的问题解决</h2>]]></content>
       <categories>
         <category>成电微记</category>
       </categories>

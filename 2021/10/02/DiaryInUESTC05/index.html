@@ -465,21 +465,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-10-04
+                    2021-11-10
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    486
+                    825
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    4 分
                 </div>
                 
 
@@ -610,6 +610,128 @@
 <p>实现效果：</p>
 <img src="/2021/10/02/DiaryInUESTC05/image-20211002105638844.png" style="zoom:50%;">
 
+
+
+<h2 id="step5：将TODO添加到数据库"><a href="#step5：将TODO添加到数据库" class="headerlink" title="step5：将TODO添加到数据库"></a>step5：将TODO添加到数据库</h2><p>除了database和Dao类之外，在这里我还定义了一个TodoEngine类用于简化todo增删改查的操作，代码如下：</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">TodoEngine</span> <span class="token punctuation">{</span>
+    <span class="token keyword">final</span> TodoDao todoDao<span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token function">TodoEngine</span><span class="token punctuation">(</span>Context context<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        TodoDatabase todoDatabase <span class="token operator">=</span> TodoDatabase<span class="token punctuation">.</span><span class="token function">getInstance</span><span class="token punctuation">(</span>context<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        todoDao <span class="token operator">=</span> todoDatabase<span class="token punctuation">.</span><span class="token function">getTodoDao</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">//插入</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">insertTodo</span><span class="token punctuation">(</span>Todo<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> todos<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">new</span> <span class="token class-name">InsertAsyncTack</span><span class="token punctuation">(</span>todoDao<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">execute</span><span class="token punctuation">(</span>todos<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">InsertAsyncTack</span> <span class="token keyword">extends</span> <span class="token class-name">AsyncTask</span><span class="token operator">&lt;</span>Todo<span class="token punctuation">,</span> Void<span class="token punctuation">,</span> Void<span class="token operator">></span> <span class="token punctuation">{</span>
+        <span class="token keyword">final</span> TodoDao dao<span class="token punctuation">;</span>
+
+        <span class="token keyword">public</span> <span class="token function">InsertAsyncTack</span><span class="token punctuation">(</span>TodoDao todoDao<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            dao <span class="token operator">=</span> todoDao<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token annotation punctuation">@Override</span>
+        <span class="token keyword">protected</span> Void <span class="token function">doInBackground</span><span class="token punctuation">(</span>Todo<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> todos<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            dao<span class="token punctuation">.</span><span class="token function">insertTodo</span><span class="token punctuation">(</span>todos<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span> null<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">//更新</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">updateTodos</span><span class="token punctuation">(</span>Todo<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> todos<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">new</span> <span class="token class-name">UpdateAsyncTack</span><span class="token punctuation">(</span>todoDao<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">execute</span><span class="token punctuation">(</span>todos<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">UpdateAsyncTack</span> <span class="token keyword">extends</span> <span class="token class-name">AsyncTask</span><span class="token operator">&lt;</span>Todo<span class="token punctuation">,</span> Void<span class="token punctuation">,</span> Void<span class="token operator">></span> <span class="token punctuation">{</span>
+        <span class="token keyword">final</span> TodoDao dao<span class="token punctuation">;</span>
+
+        <span class="token keyword">public</span> <span class="token function">UpdateAsyncTack</span><span class="token punctuation">(</span>TodoDao todoDao<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            dao <span class="token operator">=</span> todoDao<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token annotation punctuation">@Override</span>
+        <span class="token keyword">protected</span> Void <span class="token function">doInBackground</span><span class="token punctuation">(</span>Todo<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> todos<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            dao<span class="token punctuation">.</span><span class="token function">updateTodos</span><span class="token punctuation">(</span>todos<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span> null<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">//删除</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">deleteTodos</span><span class="token punctuation">(</span>Todo<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> todos<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">new</span> <span class="token class-name">DeleteAsyncTack</span><span class="token punctuation">(</span>todoDao<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">execute</span><span class="token punctuation">(</span>todos<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">DeleteAsyncTack</span> <span class="token keyword">extends</span> <span class="token class-name">AsyncTask</span><span class="token operator">&lt;</span>Todo<span class="token punctuation">,</span> Void<span class="token punctuation">,</span> Void<span class="token operator">></span> <span class="token punctuation">{</span>
+        <span class="token keyword">private</span> TodoDao dao<span class="token punctuation">;</span>
+
+        <span class="token keyword">public</span> <span class="token function">DeleteAsyncTack</span><span class="token punctuation">(</span>TodoDao todoDao<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            dao <span class="token operator">=</span> todoDao<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token annotation punctuation">@Override</span>
+        <span class="token keyword">protected</span> Void <span class="token function">doInBackground</span><span class="token punctuation">(</span>Todo<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> todos<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            dao<span class="token punctuation">.</span><span class="token function">deleteTodos</span><span class="token punctuation">(</span>todos<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span> null<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+
+    <span class="token comment" spellcheck="true">//全部删除</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">deleteAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">new</span> <span class="token class-name">DeleteAllAsyncTack</span><span class="token punctuation">(</span>todoDao<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">execute</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">DeleteAllAsyncTack</span> <span class="token keyword">extends</span> <span class="token class-name">AsyncTask</span><span class="token operator">&lt;</span>Void<span class="token punctuation">,</span> Void<span class="token punctuation">,</span> Void<span class="token operator">></span> <span class="token punctuation">{</span>
+        <span class="token keyword">private</span> TodoDao dao<span class="token punctuation">;</span>
+
+        <span class="token keyword">public</span> <span class="token function">DeleteAllAsyncTack</span><span class="token punctuation">(</span>TodoDao todoDao<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            dao <span class="token operator">=</span> todoDao<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token annotation punctuation">@Override</span>
+        <span class="token keyword">protected</span> Void <span class="token function">doInBackground</span><span class="token punctuation">(</span>Void<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> voids<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            dao<span class="token punctuation">.</span><span class="token function">deleteAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span> null<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">//查询</span>
+    <span class="token keyword">public</span> List<span class="token operator">&lt;</span>Todo<span class="token operator">></span> <span class="token function">queryAllTodos</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+        List<span class="token operator">&lt;</span>Todo<span class="token operator">></span> todoList <span class="token operator">=</span> null<span class="token punctuation">;</span>
+        <span class="token keyword">try</span> <span class="token punctuation">{</span>
+            todoList <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">QueryAsyncTack</span><span class="token punctuation">(</span>todoDao<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">execute</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">ExecutionException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">InterruptedException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span>  todoList<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">QueryAsyncTack</span> <span class="token keyword">extends</span> <span class="token class-name">AsyncTask</span><span class="token operator">&lt;</span>Void<span class="token punctuation">,</span> Void<span class="token punctuation">,</span> List<span class="token operator">&lt;</span>Todo<span class="token operator">>></span> <span class="token punctuation">{</span>
+        <span class="token keyword">private</span> TodoDao dao<span class="token punctuation">;</span>
+
+        <span class="token keyword">public</span> <span class="token function">QueryAsyncTack</span><span class="token punctuation">(</span>TodoDao todoDao<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            dao <span class="token operator">=</span> todoDao<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token annotation punctuation">@Override</span>
+        <span class="token keyword">protected</span> List<span class="token operator">&lt;</span>Todo<span class="token operator">></span> <span class="token function">doInBackground</span><span class="token punctuation">(</span>Void<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> voids<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            List<span class="token operator">&lt;</span>Todo<span class="token operator">></span> todoList <span class="token operator">=</span> dao<span class="token punctuation">.</span><span class="token function">getAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span>Todo todo <span class="token operator">:</span> todoList<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                Log<span class="token punctuation">.</span><span class="token function">i</span><span class="token punctuation">(</span><span class="token string">"TODO"</span><span class="token punctuation">,</span> todo<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">return</span> todoList<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="step6：通过itemTouchHelper实现拖拽效果"><a href="#step6：通过itemTouchHelper实现拖拽效果" class="headerlink" title="step6：通过itemTouchHelper实现拖拽效果"></a>step6：通过itemTouchHelper实现拖拽效果</h2><p>定义todoItemTouchHelper继承自itemTouchHelper并且重写某些方法</p>
+<p>在adapter中重写onItemMove和onItemDismiss实现todo项在recyclerView和数据库中的更新。</p>
 
                 
             </div>
@@ -1436,7 +1558,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">24.8k</span>&nbsp;字
+                class="white-color">14.7k</span>&nbsp;字
             
             
             

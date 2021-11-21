@@ -1890,8 +1890,372 @@ swipeRefresh<span class="token punctuation">.</span><span class="token function"
       </tags>
   </entry>
   <entry>
-    <title>安卓开发（八）LitePal</title>
+    <title>安卓开发（八）数据存储</title>
     <url>/2021/09/27/AndroidDevelopment12/</url>
+    <content><![CDATA[<h1 id="SP-SharePreferences"><a href="#SP-SharePreferences" class="headerlink" title="SP(SharePreferences)"></a>SP(SharePreferences)</h1><pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> SharedPreferences <span class="token function">getSharedPreferences</span><span class="token punctuation">(</span>String name<span class="token punctuation">,</span> <span class="token keyword">int</span> mode<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">RuntimeException</span><span class="token punctuation">(</span><span class="token string">"Stub!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>name：SP的名字</p>
+<p>mode：SP保存时用的模式：</p>
+<p>常规（每次保存都会更新）：Context.MODE_PRIVATE</p>
+<p>追加（每次保存都会追加到后面）：Context.MODE_APPEND</p>
+<h2 id="添加数据"><a href="#添加数据" class="headerlink" title="添加数据"></a>添加数据</h2><p>通过apply()方法添加</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">saveToSP</span><span class="token punctuation">(</span>View view<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    SharedPreferences sp <span class="token operator">=</span> <span class="token function">getSharedPreferences</span><span class="token punctuation">(</span><span class="token string">"SPDerryName"</span><span class="token punctuation">,</span> Context<span class="token punctuation">.</span>MODE_PRIVATE<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    sp<span class="token punctuation">.</span><span class="token function">edit</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">putString</span><span class="token punctuation">(</span><span class="token string">"DerryKey"</span><span class="token punctuation">,</span><span class="token string">"九阳神功"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>添加后出现如下文件夹</p>
+<p><img src="/2021/09/27/AndroidDevelopment12/image-20211010164549464.png"></p>
+<p>数据存放在xml文件中：</p>
+<p><img src="/2021/09/27/AndroidDevelopment12/image-20211010165329481.png"></p>
+<h2 id="获取数据"><a href="#获取数据" class="headerlink" title="获取数据"></a>获取数据</h2><pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">getSPData</span><span class="token punctuation">(</span>View view<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    SharedPreferences sp <span class="token operator">=</span> <span class="token function">getSharedPreferences</span><span class="token punctuation">(</span><span class="token string">"SPDerryName"</span><span class="token punctuation">,</span> Context<span class="token punctuation">.</span>MODE_PRIVATE<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    String value <span class="token operator">=</span> sp<span class="token punctuation">.</span><span class="token function">getString</span><span class="token punctuation">(</span><span class="token string">"DerryKey"</span><span class="token punctuation">,</span> <span class="token string">"默认值"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//假设DerryKey获取值为空，则使用默认值返回</span>
+    Toast<span class="token punctuation">.</span><span class="token function">makeText</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span><span class="token string">""</span><span class="token operator">+</span>value<span class="token punctuation">,</span>Toast<span class="token punctuation">.</span>LENGTH_SHORT<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="SQLite"><a href="#SQLite" class="headerlink" title="SQLite"></a>SQLite</h1><h2 id="基本变量"><a href="#基本变量" class="headerlink" title="基本变量"></a>基本变量</h2><p>数据库名称</p>
+<p>数据库版本号</p>
+<h2 id="新建类继承于SQLiteHelper"><a href="#新建类继承于SQLiteHelper" class="headerlink" title="新建类继承于SQLiteHelper"></a>新建类继承于SQLiteHelper</h2><pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MySqliteOpenHelper</span> <span class="token keyword">extends</span> <span class="token class-name">SQLiteOpenHelper</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">static</span> SQLiteOpenHelper mInstance<span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">synchronized</span> SQLiteOpenHelper <span class="token function">getmInstance</span><span class="token punctuation">(</span>Context context<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>mInstance <span class="token operator">==</span> null<span class="token punctuation">)</span><span class="token punctuation">{</span>
+            mInstance <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">MySqliteOpenHelper</span><span class="token punctuation">(</span>context<span class="token punctuation">,</span><span class="token string">"derryDB.db"</span><span class="token punctuation">,</span>null<span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> mInstance<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">private</span> <span class="token function">MySqliteOpenHelper</span><span class="token punctuation">(</span><span class="token annotation punctuation">@Nullable</span> Context context<span class="token punctuation">,</span> <span class="token annotation punctuation">@Nullable</span> String name<span class="token punctuation">,</span> <span class="token annotation punctuation">@Nullable</span> SQLiteDatabase<span class="token punctuation">.</span>CursorFactory factory<span class="token punctuation">,</span> <span class="token keyword">int</span> version<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">super</span><span class="token punctuation">(</span>context<span class="token punctuation">,</span> name<span class="token punctuation">,</span> factory<span class="token punctuation">,</span> version<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">//创建表 表数据初始化 数据库第一次创建时调用 不会重复创建 即此函数只执行一次</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onCreate</span><span class="token punctuation">(</span>SQLiteDatabase sqLiteDatabase<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//创建表：person表 _id name</span>
+
+        <span class="token comment" spellcheck="true">//主键：primary key是唯一的</span>
+        <span class="token comment" spellcheck="true">//自动增长关键字：autoincrement</span>
+        <span class="token comment" spellcheck="true">//_id标准写法 主键只能是Integer类型</span>
+
+        String sql <span class="token operator">=</span> <span class="token string">"create table persons(_id integer primary key autoincrement,name text)"</span><span class="token punctuation">;</span>
+
+        sqLiteDatabase<span class="token punctuation">.</span><span class="token function">execSQL</span><span class="token punctuation">(</span>sql<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onUpgrade</span><span class="token punctuation">(</span>SQLiteDatabase sqLiteDatabase<span class="token punctuation">,</span> <span class="token keyword">int</span> i<span class="token punctuation">,</span> <span class="token keyword">int</span> i1<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="创库、创表"><a href="#创库、创表" class="headerlink" title="创库、创表"></a>创库、创表</h2><pre class="line-numbers language-java"><code class="language-java">SQLiteOpenHelper helper <span class="token operator">=</span> MySqliteOpenHelper<span class="token punctuation">.</span><span class="token function">getmInstance</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">//Datebase 文件夹创建</span>
+SQLiteDatabase readableDatebase <span class="token operator">=</span> helper<span class="token punctuation">.</span><span class="token function">getReadableDatabase</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="增删改查"><a href="#增删改查" class="headerlink" title="增删改查"></a>增删改查</h2><pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">//查询</span>
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">query</span><span class="token punctuation">(</span>View view<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    SQLiteOpenHelper helper <span class="token operator">=</span> MySqliteOpenHelper<span class="token punctuation">.</span><span class="token function">getmInstance</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    SQLiteDatabase db <span class="token operator">=</span> helper<span class="token punctuation">.</span><span class="token function">getReadableDatabase</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">if</span><span class="token punctuation">(</span>db<span class="token punctuation">.</span><span class="token function">isOpen</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//返回游标</span>
+        Cursor cursor <span class="token operator">=</span> db<span class="token punctuation">.</span><span class="token function">rawQuery</span><span class="token punctuation">(</span><span class="token string">"select * from persons"</span><span class="token punctuation">,</span> null<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//迭代游标 往下移来遍历数据</span>
+        <span class="token keyword">while</span> <span class="token punctuation">(</span>cursor<span class="token punctuation">.</span><span class="token function">moveToNext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token annotation punctuation">@SuppressLint</span><span class="token punctuation">(</span><span class="token string">"Range"</span><span class="token punctuation">)</span> <span class="token keyword">int</span> _id <span class="token operator">=</span> cursor<span class="token punctuation">.</span><span class="token function">getInt</span><span class="token punctuation">(</span>cursor<span class="token punctuation">.</span><span class="token function">getColumnIndex</span><span class="token punctuation">(</span><span class="token string">"_id"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token annotation punctuation">@SuppressLint</span><span class="token punctuation">(</span><span class="token string">"Range"</span><span class="token punctuation">)</span> String name <span class="token operator">=</span> cursor<span class="token punctuation">.</span><span class="token function">getString</span><span class="token punctuation">(</span>cursor<span class="token punctuation">.</span><span class="token function">getColumnIndex</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            Log<span class="token punctuation">.</span><span class="token function">d</span><span class="token punctuation">(</span><span class="token string">"derry"</span><span class="token punctuation">,</span> <span class="token string">"query:_id "</span> <span class="token operator">+</span> _id <span class="token operator">+</span><span class="token string">"  name:"</span><span class="token operator">+</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment" spellcheck="true">//游标关闭：</span>
+        cursor<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        db<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">//插入数据</span>
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">insert</span><span class="token punctuation">(</span>View view<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    SQLiteOpenHelper helper <span class="token operator">=</span> MySqliteOpenHelper<span class="token punctuation">.</span><span class="token function">getmInstance</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    SQLiteDatabase db <span class="token operator">=</span> helper<span class="token punctuation">.</span><span class="token function">getWritableDatabase</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">if</span><span class="token punctuation">(</span>db<span class="token punctuation">.</span><span class="token function">isOpen</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//插入语句</span>
+        String sql <span class="token operator">=</span><span class="token string">"insert into persons(name) values('Derry老师')"</span><span class="token punctuation">;</span>
+
+        db<span class="token punctuation">.</span><span class="token function">execSQL</span><span class="token punctuation">(</span>sql<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token punctuation">}</span>
+    db<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">//修改</span>
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">update</span><span class="token punctuation">(</span>View view<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    SQLiteOpenHelper helper <span class="token operator">=</span> MySqliteOpenHelper<span class="token punctuation">.</span><span class="token function">getmInstance</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    SQLiteDatabase db <span class="token operator">=</span> helper<span class="token punctuation">.</span><span class="token function">getWritableDatabase</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">if</span><span class="token punctuation">(</span>db<span class="token punctuation">.</span><span class="token function">isOpen</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        String sql <span class="token operator">=</span> <span class="token string">"update persons set name =? where _id =?"</span><span class="token punctuation">;</span>
+        db<span class="token punctuation">.</span><span class="token function">execSQL</span><span class="token punctuation">(</span>sql<span class="token punctuation">,</span><span class="token keyword">new</span> <span class="token class-name">Object</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">{</span><span class="token string">"李连杰"</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    db<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><img src="/2021/09/27/AndroidDevelopment12/image-20211012214032632.png"></p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">delete</span><span class="token punctuation">(</span>View view<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    SQLiteOpenHelper helper <span class="token operator">=</span> MySqliteOpenHelper<span class="token punctuation">.</span><span class="token function">getmInstance</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    SQLiteDatabase db <span class="token operator">=</span> helper<span class="token punctuation">.</span><span class="token function">getWritableDatabase</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">if</span><span class="token punctuation">(</span>db<span class="token punctuation">.</span><span class="token function">isOpen</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        String sql <span class="token operator">=</span> <span class="token string">"delete from persons where _id=?"</span><span class="token punctuation">;</span>
+        db<span class="token punctuation">.</span><span class="token function">execSQL</span><span class="token punctuation">(</span>sql<span class="token punctuation">,</span><span class="token keyword">new</span> <span class="token class-name">Object</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">{</span><span class="token number">4</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    db<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><img src="/2021/09/27/AndroidDevelopment12/image-20211012214533016.png"></p>
+<h1 id="Room"><a href="#Room" class="headerlink" title="Room"></a>Room</h1><p>Room是对SQLite数据库的抽象封装，从而实现流畅地访问数据库</p>
+<h2 id="Room的三角色"><a href="#Room的三角色" class="headerlink" title="Room的三角色"></a>Room的三角色</h2><p><strong>@Entity</strong>：表</p>
+<p><strong>@DAO</strong>：对表进行增删改查</p>
+<p><strong>@Datebase（数据库名字，版本号）</strong>：</p>
+<h2 id="Entity"><a href="#Entity" class="headerlink" title="Entity"></a>Entity</h2><pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">//一张表 (主键唯一、自动增长</span>
+<span class="token annotation punctuation">@Entity</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Student</span> <span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@PrimaryKey</span><span class="token punctuation">(</span>autoGenerate <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">//设置自动增长</span>
+    <span class="token keyword">private</span> <span class="token keyword">int</span> id<span class="token punctuation">;</span>
+
+    <span class="token keyword">private</span> String name<span class="token punctuation">;</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">int</span> age<span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token function">Student</span><span class="token punctuation">(</span><span class="token keyword">int</span> id<span class="token punctuation">,</span> String name<span class="token punctuation">,</span> <span class="token keyword">int</span> age<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>id <span class="token operator">=</span> id<span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name<span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>age <span class="token operator">=</span> age<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">getId</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> id<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setId</span><span class="token punctuation">(</span><span class="token keyword">int</span> id<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>id <span class="token operator">=</span> id<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> String <span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> name<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setName</span><span class="token punctuation">(</span>String name<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">getAge</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> age<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setAge</span><span class="token punctuation">(</span><span class="token keyword">int</span> age<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>age <span class="token operator">=</span> age<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> String <span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token string">"Student{"</span> <span class="token operator">+</span>
+                <span class="token string">"id="</span> <span class="token operator">+</span> id <span class="token operator">+</span>
+                <span class="token string">", name='"</span> <span class="token operator">+</span> name <span class="token operator">+</span> <span class="token string">'\''</span> <span class="token operator">+</span>
+                <span class="token string">", age="</span> <span class="token operator">+</span> age <span class="token operator">+</span>
+                <span class="token string">'}'</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="Dao"><a href="#Dao" class="headerlink" title="@Dao"></a>@Dao</h3><pre class="line-numbers language-java"><code class="language-java"><span class="token annotation punctuation">@Dao</span><span class="token comment" spellcheck="true">//datebase access object == 对表进行增删改查</span>
+<span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">StudentDao</span> <span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@Insert</span>
+    <span class="token keyword">void</span> <span class="token function">insertStudents</span><span class="token punctuation">(</span>Student <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> students<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@Update</span>
+    <span class="token keyword">void</span> <span class="token function">updateStudents</span><span class="token punctuation">(</span>Student <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> students<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@Delete</span>
+    <span class="token keyword">void</span> <span class="token function">deleteAllStudents</span><span class="token punctuation">(</span>Student <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> students<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@Query</span><span class="token punctuation">(</span><span class="token string">"DELETE FROM Student"</span><span class="token punctuation">)</span>
+    <span class="token keyword">void</span> <span class="token function">deleteAllStudents</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@Query</span><span class="token punctuation">(</span><span class="token string">"SELECT * FROM Student ORDER BY ID DESC"</span><span class="token punctuation">)</span>
+    List<span class="token operator">&lt;</span>Student<span class="token operator">></span> <span class="token function">getAllStudent</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="Datebase"><a href="#Datebase" class="headerlink" title="@Datebase"></a>@Datebase</h3><pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">//数据库关联前面的表、数据库信息</span>
+<span class="token annotation punctuation">@Database</span><span class="token punctuation">(</span>entities <span class="token operator">=</span> <span class="token punctuation">{</span>Student<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">}</span> <span class="token punctuation">,</span>version <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">class</span> <span class="token class-name">StudentDatebase</span> <span class="token keyword">extends</span> <span class="token class-name">RoomDatabase</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">abstract</span> StudentDao <span class="token function">getStudentDao</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+
+    <span class="token comment" spellcheck="true">//单例模式 返回DB</span>
+    <span class="token keyword">private</span> <span class="token keyword">static</span> StudentDatebase INSTANCE<span class="token punctuation">;</span>
+    <span class="token keyword">static</span> <span class="token keyword">synchronized</span> StudentDatebase <span class="token function">getInstance</span><span class="token punctuation">(</span>Context context<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>INSTANCE <span class="token operator">==</span>null<span class="token punctuation">)</span><span class="token punctuation">{</span>
+            INSTANCE <span class="token operator">=</span> Room<span class="token punctuation">.</span><span class="token function">databaseBuilder</span><span class="token punctuation">(</span>context<span class="token punctuation">.</span><span class="token function">getApplicationContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                    StudentDatebase<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span><span class="token string">"student_datebase"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment" spellcheck="true">//</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> INSTANCE<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="工具类DBEngine"><a href="#工具类DBEngine" class="headerlink" title="工具类DBEngine"></a>工具类DBEngine</h2><pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">DBEngine</span> <span class="token punctuation">{</span>
+    <span class="token keyword">private</span> StudentDao studentDao<span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token function">DBEngine</span><span class="token punctuation">(</span>Context context<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        StudentDatebase studentDatebase <span class="token operator">=</span> StudentDatebase<span class="token punctuation">.</span><span class="token function">getInstance</span><span class="token punctuation">(</span>context<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        studentDao <span class="token operator">=</span> studentDatebase<span class="token punctuation">.</span><span class="token function">getStudentDao</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">//插入</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">insertStudent</span><span class="token punctuation">(</span>Student<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> students<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">new</span> <span class="token class-name">InsertAsyncTack</span><span class="token punctuation">(</span>studentDao<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">execute</span><span class="token punctuation">(</span>students<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">InsertAsyncTack</span> <span class="token keyword">extends</span> <span class="token class-name">AsyncTask</span><span class="token operator">&lt;</span>Student<span class="token punctuation">,</span> Void<span class="token punctuation">,</span> Void<span class="token operator">></span> <span class="token punctuation">{</span>
+        <span class="token keyword">private</span> StudentDao dao<span class="token punctuation">;</span>
+
+        <span class="token keyword">public</span> <span class="token function">InsertAsyncTack</span><span class="token punctuation">(</span>StudentDao studentDao<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            dao <span class="token operator">=</span> studentDao<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token annotation punctuation">@Override</span>
+        <span class="token keyword">protected</span> Void <span class="token function">doInBackground</span><span class="token punctuation">(</span>Student<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> students<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            dao<span class="token punctuation">.</span><span class="token function">insertStudents</span><span class="token punctuation">(</span>students<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span> null<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">//更新</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">updateStudents</span><span class="token punctuation">(</span>Student<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> students<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">new</span> <span class="token class-name">UpdateAsynTack</span><span class="token punctuation">(</span>studentDao<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">execute</span><span class="token punctuation">(</span>students<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token punctuation">}</span>
+
+
+    <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">UpdateAsynTack</span> <span class="token keyword">extends</span> <span class="token class-name">AsyncTask</span><span class="token operator">&lt;</span>Student<span class="token punctuation">,</span> Void<span class="token punctuation">,</span> Void<span class="token operator">></span> <span class="token punctuation">{</span>
+        <span class="token keyword">private</span> StudentDao dao<span class="token punctuation">;</span>
+
+        <span class="token keyword">public</span> <span class="token function">UpdateAsynTack</span><span class="token punctuation">(</span>StudentDao studentDao<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            dao <span class="token operator">=</span> studentDao<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token annotation punctuation">@Override</span>
+        <span class="token keyword">protected</span> Void <span class="token function">doInBackground</span><span class="token punctuation">(</span>Student<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> students<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            dao<span class="token punctuation">.</span><span class="token function">updateStudents</span><span class="token punctuation">(</span>students<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span> null<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">//删除</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">deleteStudents</span><span class="token punctuation">(</span>Student<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> students<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">new</span> <span class="token class-name">DeleteAsynTack</span><span class="token punctuation">(</span>studentDao<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">execute</span><span class="token punctuation">(</span>students<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">DeleteAsynTack</span> <span class="token keyword">extends</span> <span class="token class-name">AsyncTask</span><span class="token operator">&lt;</span>Student<span class="token punctuation">,</span> Void<span class="token punctuation">,</span> Void<span class="token operator">></span> <span class="token punctuation">{</span>
+        <span class="token keyword">private</span> StudentDao dao<span class="token punctuation">;</span>
+
+        <span class="token keyword">public</span> <span class="token function">DeleteAsynTack</span><span class="token punctuation">(</span>StudentDao studentDao<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            dao <span class="token operator">=</span> studentDao<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token annotation punctuation">@Override</span>
+        <span class="token keyword">protected</span> Void <span class="token function">doInBackground</span><span class="token punctuation">(</span>Student<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> students<span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token comment" spellcheck="true">//有条件删除</span>
+            dao<span class="token punctuation">.</span><span class="token function">deleteStudents</span><span class="token punctuation">(</span>students<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span> null<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">//全部删除</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">deleteAllStudents</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">new</span> <span class="token class-name">DeleteAllAsyncTack</span><span class="token punctuation">(</span>studentDao<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">execute</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">DeleteAllAsyncTack</span> <span class="token keyword">extends</span> <span class="token class-name">AsyncTask</span><span class="token operator">&lt;</span>Void<span class="token punctuation">,</span> Void<span class="token punctuation">,</span> Void<span class="token operator">></span> <span class="token punctuation">{</span>
+        <span class="token keyword">private</span> StudentDao dao<span class="token punctuation">;</span>
+
+        <span class="token keyword">public</span> <span class="token function">DeleteAllAsyncTack</span><span class="token punctuation">(</span>StudentDao studentDao<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            dao <span class="token operator">=</span> studentDao<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token annotation punctuation">@Override</span>
+        <span class="token keyword">protected</span> Void <span class="token function">doInBackground</span><span class="token punctuation">(</span>Void<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> voids<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            dao<span class="token punctuation">.</span><span class="token function">deleteAllStudents</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span> null<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">//查询</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">queryAllStudents</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">new</span> <span class="token class-name">QueryAsyncTack</span><span class="token punctuation">(</span>studentDao<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">execute</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">QueryAsyncTack</span> <span class="token keyword">extends</span> <span class="token class-name">AsyncTask</span><span class="token operator">&lt;</span>Void<span class="token punctuation">,</span> Void<span class="token punctuation">,</span> Void<span class="token operator">></span> <span class="token punctuation">{</span>
+        <span class="token keyword">private</span> StudentDao dao<span class="token punctuation">;</span>
+
+        <span class="token keyword">public</span> <span class="token function">QueryAsyncTack</span><span class="token punctuation">(</span>StudentDao studentDao<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            dao <span class="token operator">=</span> studentDao<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token annotation punctuation">@Override</span>
+        <span class="token keyword">protected</span> Void <span class="token function">doInBackground</span><span class="token punctuation">(</span>Void<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> voids<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            List<span class="token operator">&lt;</span>Student<span class="token operator">></span> allStudents <span class="token operator">=</span> dao<span class="token punctuation">.</span><span class="token function">getAllStudent</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token keyword">for</span> <span class="token punctuation">(</span>Student student <span class="token operator">:</span> allStudents<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                Log<span class="token punctuation">.</span><span class="token function">i</span><span class="token punctuation">(</span><span class="token string">"Derry"</span><span class="token punctuation">,</span> <span class="token string">"doInBackground: 全部查询"</span> <span class="token operator">+</span> student<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">return</span> null<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>用法：</strong></p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">private</span> DBEngine dbEngine<span class="token punctuation">;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">insertAction</span><span class="token punctuation">(</span>View view<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    Student student <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Student</span><span class="token punctuation">(</span><span class="token string">"张三"</span><span class="token punctuation">,</span><span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    Student student1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Student</span><span class="token punctuation">(</span><span class="token string">"李四"</span><span class="token punctuation">,</span><span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    Student student2 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Student</span><span class="token punctuation">(</span><span class="token string">"王五"</span><span class="token punctuation">,</span><span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    dbEngine<span class="token punctuation">.</span><span class="token function">insertStudent</span><span class="token punctuation">(</span>student<span class="token punctuation">,</span>student1<span class="token punctuation">,</span>student2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">updateAction</span><span class="token punctuation">(</span>View view<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    Student student <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Student</span><span class="token punctuation">(</span><span class="token string">"lisi"</span><span class="token punctuation">,</span><span class="token number">40</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    student<span class="token punctuation">.</span><span class="token function">setId</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    dbEngine<span class="token punctuation">.</span><span class="token function">updateStudents</span><span class="token punctuation">(</span>student<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">queryAction</span><span class="token punctuation">(</span>View view<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    dbEngine<span class="token punctuation">.</span><span class="token function">queryAllStudents</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">deleteAction</span><span class="token punctuation">(</span>View view<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    Student student <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Student</span><span class="token punctuation">(</span>null<span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    student<span class="token punctuation">.</span><span class="token function">setId</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    dbEngine<span class="token punctuation">.</span><span class="token function">deleteStudents</span><span class="token punctuation">(</span>student<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">deleteAllAction</span><span class="token punctuation">(</span>View view<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    dbEngine<span class="token punctuation">.</span><span class="token function">deleteAllStudents</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+]]></content>
+  </entry>
+  <entry>
+    <title>AndroidDevelopment14</title>
+    <url>/2021/10/01/AndroidDevelopment14/</url>
     <content><![CDATA[]]></content>
   </entry>
   <entry>
@@ -1948,1233 +2312,6 @@ tv1<span class="token punctuation">.</span><span class="token function">setOnCli
       <tags>
         <tag>Android</tag>
         <tag>PopupWindow</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>AndroidDevelopment14</title>
-    <url>/2021/10/01/AndroidDevelopment14/</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
-    <title>编译原理（一）概论</title>
-    <url>/2021/09/06/CompileTechnical01/</url>
-    <content><![CDATA[<h2 id="编译器在语言处理系统中的位置"><a href="#编译器在语言处理系统中的位置" class="headerlink" title="编译器在语言处理系统中的位置"></a>编译器在语言处理系统中的位置</h2><p><img src="/2021/09/06/CompileTechnical01/1631415856819.png"></p>
-<p>链接器：</p>
-<p>将多个可重定位的机器代码文件连接到一起</p>
-<p>解决外部内存地址问题</p>
-<h2 id="编译系统的结构"><a href="#编译系统的结构" class="headerlink" title="编译系统的结构"></a>编译系统的结构</h2><h3 id="翻译过程"><a href="#翻译过程" class="headerlink" title="翻译过程"></a>翻译过程</h3><p><img src="/2021/09/06/CompileTechnical01/1631416283170.png"></p>
-<p>词法分析：确定句子中各个单词的词性</p>
-<p>语法分析：识别句子中各类短语从而获得句子结构</p>
-<p>语义分析： 分析各个短语在句子中充当什么成分，得到短语之间的关系</p>
-<h3 id="编译器结构"><a href="#编译器结构" class="headerlink" title="编译器结构"></a>编译器结构</h3><img src="/2021/09/06/CompileTechnical01/1631416517620.png" style="zoom: 67%;">
-
-<hr>
-<h2 id="词法分析概述"><a href="#词法分析概述" class="headerlink" title="词法分析概述"></a>词法分析概述</h2><h3 id="词法分析-扫描（Scanning）"><a href="#词法分析-扫描（Scanning）" class="headerlink" title="词法分析/扫描（Scanning）"></a>词法分析/扫描（Scanning）</h3><p><strong>主要任务：</strong></p>
-<p>从左向右逐行扫面源程序的字符，识别出每一个单词，确定单词的类型。将识别出的单词转换成统一的<strong>机内表示</strong>——词法单元（token）形式</p>
-<p><strong>token：</strong>&lt;种别码，属性值&gt;</p>
-<p><img src="/2021/09/06/CompileTechnical01/1631416872548.png"></p>
-<p><strong>例：</strong></p>
-<img src="/2021/09/06/CompileTechnical01/1631416949744.png" style="zoom:67%;">
-
-
-
-
-
-<h2 id="语法分析概述"><a href="#语法分析概述" class="headerlink" title="语法分析概述"></a>语法分析概述</h2><p>语法分析器（parser）从单词分析器输出的token序列中识别出各类短语，并构造<strong>语法分析树</strong>（prase tree）</p>
-<p><img src="/2021/09/06/CompileTechnical01/1631417219451.png"></p>
-<h3 id="例1：赋值语句的分析树"><a href="#例1：赋值语句的分析树" class="headerlink" title="例1：赋值语句的分析树"></a>例1：赋值语句的分析树</h3><img src="/2021/09/06/CompileTechnical01/1631417286626.png" style="zoom:80%;">
-
-
-
-<h3 id="例2：变量声明语句的分析树"><a href="#例2：变量声明语句的分析树" class="headerlink" title="例2：变量声明语句的分析树"></a>例2：变量声明语句的分析树</h3> <img src="/2021/09/06/CompileTechnical01/1631417462314.png" style="zoom:80%;">
-
-
-
-
-
-<h2 id="语义分析概述"><a href="#语义分析概述" class="headerlink" title="语义分析概述"></a>语义分析概述</h2><h3 id="收集标识符的属性信息："><a href="#收集标识符的属性信息：" class="headerlink" title="收集标识符的属性信息："></a>收集标识符的属性信息：</h3><ol>
-<li>种类：简单变量，复合变量，过程</li>
-<li>类型：整型、bool型···</li>
-<li>存储长度、长度</li>
-<li>值</li>
-<li>作用域</li>
-<li>参数和返回值信息</li>
-</ol>
-<h3 id="符号表和字符串表"><a href="#符号表和字符串表" class="headerlink" title="符号表和字符串表"></a>符号表和字符串表</h3><p><img src="/2021/09/06/CompileTechnical01/1631417842788.png" alt="1631417842788"></p>
-<h3 id="语义检查"><a href="#语义检查" class="headerlink" title="语义检查"></a>语义检查</h3><p><img src="/2021/09/06/CompileTechnical01/1631417970126.png"></p>
-<h2 id="中间代码生成及编译后端概述"><a href="#中间代码生成及编译后端概述" class="headerlink" title="中间代码生成及编译后端概述"></a>中间代码生成及编译后端概述</h2><h3 id="常用中间表示形式："><a href="#常用中间表示形式：" class="headerlink" title="常用中间表示形式："></a>常用中间表示形式：</h3><p><strong>三地址码</strong></p>
-<p><strong>语法结构树/语法树</strong></p>
-<h4 id="三地址码："><a href="#三地址码：" class="headerlink" title="三地址码："></a><strong>三地址码：</strong></h4><p>三地址码由类似于汇编语言的指令序列组成，每个指令最多由三个操作数</p>
-<p><img src="/2021/09/06/CompileTechnical01/1631418278417.png"></p>
-<p><strong>地址可具有如下形式之一：</strong></p>
-<p>源程序中的名字；常量；编译器中的临时变量</p>
-<p><strong>三地址指令的表示</strong>：</p>
-<img src="/2021/09/06/CompileTechnical01/1631418496974.png" style="zoom:50%;">
-
-<p>例：</p>
-<img src="/2021/09/06/CompileTechnical01/1631418564645.png" style="zoom:80%;">
-
-<p>一个三地址指令确定了一个唯一运算完成的顺序。</p>
-<h4 id="中间代码生成的例子"><a href="#中间代码生成的例子" class="headerlink" title="中间代码生成的例子"></a>中间代码生成的例子</h4><p><img src="/2021/09/06/CompileTechnical01/1631418746359.png"></p>
-<h3 id="目标代码生成："><a href="#目标代码生成：" class="headerlink" title="目标代码生成："></a>目标代码生成：</h3><p>目标代码生成以源程序的<strong>中间表示形式</strong>作为输入，并把它映射到<strong>目标语言</strong></p>
-<p>目标代码生成一个重要任务是为程序中使用的变量<strong>合理分配寄存器</strong></p>
-<h3 id="代码优化："><a href="#代码优化：" class="headerlink" title="代码优化："></a>代码优化：</h3><p>为改进代码所进行的等价程序变换，使其运行得更快一些、占用空间更少一些，或者二者兼顾。</p>
-]]></content>
-      <categories>
-        <category>编译原理</category>
-      </categories>
-      <tags>
-        <tag>编译原理</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>编译原理（二）词法分析器</title>
-    <url>/2021/09/06/CompileTechnical02/</url>
-    <content><![CDATA[<h1 id="词法分析器"><a href="#词法分析器" class="headerlink" title="词法分析器"></a>词法分析器</h1><p>词法分析是对源程序进行的首次分析，实现词法分析的程序称为<strong>词法分析程序</strong></p>
-<h2 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h2><ol>
-<li><p>读入字符串</p>
-</li>
-<li><p>进行预处理工作</p>
-<p>包括取消注释，剔除无用的空格键、跳格、回车、换行等</p>
-</li>
-<li><p>将预处理后的字符串转换为<strong>单词流</strong>输出</p>
-</li>
-</ol>
-<h2 id="单词的识别"><a href="#单词的识别" class="headerlink" title="单词的识别"></a>单词的识别</h2><h3 id="分类："><a href="#分类：" class="headerlink" title="分类："></a>分类：</h3><ol>
-<li>标识词：变量名、函数名等</li>
-<li>基本字：如if、while、for等</li>
-<li>常数：如整型、浮点型等</li>
-<li>运算符：+-*/等</li>
-<li>界符：包括,  ;  :  //  /* */等</li>
-</ol>
-<h3 id="表示方法"><a href="#表示方法" class="headerlink" title="表示方法"></a>表示方法</h3><p>通常一个单词用一个二元式来表示：</p>
-<p>&lt;单词类型,单词的属性&gt;</p>
-<p>例:</p>
-<pre><code>int i=0;
-</code></pre>
-<p>识别的中间码：</p>
-<pre><code>&lt;int的编码, - &gt;
-&lt;标识符的编码,&quot;i&quot;&gt;
-&lt;=的编码, - &gt;
-&lt;常数的编码,常数0&gt;
-&lt;;的编码, - &gt;
-</code></pre>
-<h2 id="状态转换图"><a href="#状态转换图" class="headerlink" title="状态转换图"></a>状态转换图</h2><p>状态转化图（转换图）是一张有限方向图，结点表示状态（State），有向边表示状态间的转换（Transition），有向边上标记的字符表示状态转换的条件。</p>
-<p>状态数量是有限的，其中必有一个初始状态（双箭头指向），若干个终止状态（双圆圈表示）</p>
-<p>某些终止状态是在多识别一个字符后才成为识别状态的，对这种情况多识别的字符予以退回，在终态上标“*”区别</p>
-<p><img src="/2021/09/06/CompileTechnical02/1631068043131.png"></p>
-]]></content>
-      <categories>
-        <category>编译原理</category>
-      </categories>
-      <tags>
-        <tag>编译原理</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>编译原理（三）语言及其文法</title>
-    <url>/2021/09/08/CompileTechnical03/</url>
-    <content><![CDATA[<h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><h3 id="字母表（Alphabet）"><a href="#字母表（Alphabet）" class="headerlink" title="字母表（Alphabet）"></a>字母表（Alphabet）</h3><p><strong>字母表∑是一个有穷符号集合</strong></p>
-<p>符号：字母、数字、标点···</p>
-<p><img src="/2021/09/08/CompileTechnical03/1631427430401-16314274433141.png"></p>
-<h4 id="字母表的运算"><a href="#字母表的运算" class="headerlink" title="字母表的运算"></a>字母表的运算</h4><p>乘积：</p>
-<p><img src="/2021/09/08/CompileTechnical03/1631427506335.png"></p>
-<p>n次幂：</p>
-<p><img src="/2021/09/08/CompileTechnical03/1631427551449.png"></p>
-<p>正闭包：</p>
-<p><img src="/2021/09/08/CompileTechnical03/1631427620613.png"></p>
-<p>克林闭包：</p>
-<p><img src="/2021/09/08/CompileTechnical03/1631427703580.png"></p>
-<h3 id="串"><a href="#串" class="headerlink" title="串"></a>串</h3><p><img src="/2021/09/08/CompileTechnical03/1631427794545.png"></p>
-<p><img src="/2021/09/08/CompileTechnical03/1631427815604.png"></p>
-<h4 id="串上的运算："><a href="#串上的运算：" class="headerlink" title="串上的运算："></a>串上的运算：</h4><p>连接：</p>
-<p><img src="/2021/09/08/CompileTechnical03/image-20210912143008677.png"></p>
-<p>幂运算：</p>
-<p><img src="/2021/09/08/CompileTechnical03/image-20210912143111064.png"></p>
-<h2 id="文法的定义"><a href="#文法的定义" class="headerlink" title="文法的定义"></a>文法的定义</h2><h3 id="自然语言的例子"><a href="#自然语言的例子" class="headerlink" title="自然语言的例子"></a>自然语言的例子</h3><p><img src="/2021/09/08/CompileTechnical03/1631066388769.png"></p>
-<p>&lt;语法成分&gt;—-&gt;语言的基本符号</p>
-<h3 id="文法形式化定义"><a href="#文法形式化定义" class="headerlink" title="文法形式化定义"></a>文法形式化定义</h3><p><strong>终结符</strong></p>
-<p><img src="/2021/09/08/CompileTechnical03/1631067074489.png"></p>
-<p><strong>非终结符</strong><img src="/2021/09/08/CompileTechnical03/1631067116318.png"></p>
-<p><strong>产生式集合</strong></p>
-<p><img src="/2021/09/08/CompileTechnical03/1631067215559.png"></p>
-<p><img src="/2021/09/08/CompileTechnical03/1631067329740.png"></p>
-<p><strong>开始符号</strong></p>
-<img src="/2021/09/08/CompileTechnical03/1631067410774.png" style="zoom: 50%;">
-
-<p>开始符号表示该文法中最大的语法成分</p>
-<p>例： S=&lt;句子&gt;</p>
-<p><strong>文法表示</strong></p>
-<p><img src="/2021/09/08/CompileTechnical03/image-20210912144829948.png"></p>
-<h4 id="产生式的简写"><a href="#产生式的简写" class="headerlink" title="产生式的简写"></a>产生式的简写</h4><p><img src="/2021/09/08/CompileTechnical03/image-20210912145002125.png"></p>
-<h4 id="符号约定"><a href="#符号约定" class="headerlink" title="符号约定"></a>符号约定</h4><p><img src="/2021/09/08/CompileTechnical03/image-20210912145437200.png"></p>
-<p><img src="/2021/09/08/CompileTechnical03/image-20210912145547004.png"></p>
-<p><img src="/2021/09/08/CompileTechnical03/image-20210912145646206.png"></p>
-<p><img src="/2021/09/08/CompileTechnical03/image-20210912145815658.png"></p>
-<h2 id="语言的形式化定义"><a href="#语言的形式化定义" class="headerlink" title="语言的形式化定义"></a>语言的形式化定义</h2><h3 id="推导和归约"><a href="#推导和归约" class="headerlink" title="推导和归约"></a>推导和归约</h3><p><img src="/2021/09/08/CompileTechnical03/image-20210912150225452.png"></p>
-<p><img src="/2021/09/08/CompileTechnical03/image-20210912150316670.png"></p>
-<p><strong>例子：</strong></p>
-<p><img src="/2021/09/08/CompileTechnical03/image-20210912150417460.png"></p>
-<p><strong>如何判断某一词串是否是该文法的句子：</strong></p>
-<p><img src="/2021/09/08/CompileTechnical03/image-20210912150658480.png"></p>
-<h3 id="句型和句子"><a href="#句型和句子" class="headerlink" title="句型和句子"></a>句型和句子</h3><p><img src="/2021/09/08/CompileTechnical03/image-20210912151143183.png"></p>
-<p><strong>例子：</strong></p>
-<p><img src="/2021/09/08/CompileTechnical03/image-20210912151234666.png"></p>
-<p><img src="/2021/09/08/CompileTechnical03/image-20210912151602748.png"></p>
-<h2 id="Chomsky文法分类体系"><a href="#Chomsky文法分类体系" class="headerlink" title="Chomsky文法分类体系"></a>Chomsky文法分类体系</h2><h3 id="0型文法"><a href="#0型文法" class="headerlink" title="0型文法"></a>0型文法</h3><img src="/2021/09/08/CompileTechnical03/image-20210912152312993.png" style="zoom: 80%;">
-
-
-
-<h3 id="1型文法"><a href="#1型文法" class="headerlink" title="1型文法"></a>1型文法</h3><img src="/2021/09/08/CompileTechnical03/image-20210912152833892.png" style="zoom:80%;">
-
-<p><strong>ε-产生式：右部为空串的产生式</strong></p>
-<h3 id="2型文法"><a href="#2型文法" class="headerlink" title="2型文法"></a>2型文法</h3><img src="/2021/09/08/CompileTechnical03/image-20210912153121027.png" style="zoom:80%;">
-
-<img src="/2021/09/08/CompileTechnical03/image-20210912154056351.png" style="zoom:80%;">
-
-
-
-<h3 id="3型文法"><a href="#3型文法" class="headerlink" title="3型文法"></a>3型文法</h3><p><img src="/2021/09/08/CompileTechnical03/image-20210912154530442.png"></p>
- <img src="/2021/09/08/CompileTechnical03/image-20210912155146911.png" style="zoom:80%;">
-
-
-
-<h3 id="四种文法的关系："><a href="#四种文法的关系：" class="headerlink" title="四种文法的关系："></a>四种文法的关系：</h3><img src="/2021/09/08/CompileTechnical03/1631433173194.png" style="zoom:80%;">
-
-
-
-
-
-<h2 id="CFG分析树"><a href="#CFG分析树" class="headerlink" title="CFG分析树"></a>CFG分析树</h2><p><img src="/2021/09/08/CompileTechnical03/image-20210912160412131.png"></p>
-<img src="/2021/09/08/CompileTechnical03/image-20210912160519530.png" style="zoom:80%;">
-
-
-
-<p><strong>（句型的）短语</strong></p>
-<p><img src="/2021/09/08/CompileTechnical03/image-20210912161659518.png"></p>
-<h3 id="二义性文法"><a href="#二义性文法" class="headerlink" title="二义性文法"></a><strong>二义性文法</strong></h3><p><img src="/2021/09/08/CompileTechnical03/image-20210912162014931.png"></p>
-<p>例：</p>
-<img src="/2021/09/08/CompileTechnical03/image-20210912162223446.png" style="zoom:67%;">
-
-
-
-<h3 id="二义性文法的判定"><a href="#二义性文法的判定" class="headerlink" title="二义性文法的判定"></a><strong>二义性文法的判定</strong></h3><p><img src="/2021/09/08/CompileTechnical03/image-20210912162329248.png"></p>
-]]></content>
-      <categories>
-        <category>编译原理</category>
-      </categories>
-      <tags>
-        <tag>编译原理</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>编译原理（四）正则表达式</title>
-    <url>/2021/09/13/CompileTechnical04/</url>
-    <content><![CDATA[<h2 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h2><p><img src="/2021/09/13/CompileTechnical04/image-20210913103353953.png"></p>
-<h3 id="正则表达式的定义"><a href="#正则表达式的定义" class="headerlink" title="正则表达式的定义"></a>正则表达式的定义</h3><p><img src="/2021/09/13/CompileTechnical04/image-20210913103516059.png"></p>
-<img src="/2021/09/13/CompileTechnical04/image-20210913103914688.png" style="zoom:50%;">
-
-
-
-<h3 id="正则语言"><a href="#正则语言" class="headerlink" title="正则语言"></a>正则语言</h3><p><img src="/2021/09/13/CompileTechnical04/image-20210913103828514.png"></p>
-<h3 id="RE的代数定律"><a href="#RE的代数定律" class="headerlink" title="RE的代数定律"></a>RE的代数定律</h3><p><img src="/2021/09/13/CompileTechnical04/image-20210913104140162.png"></p>
-<h3 id="正则文法与正则表达式等价"><a href="#正则文法与正则表达式等价" class="headerlink" title="正则文法与正则表达式等价"></a>正则文法与正则表达式等价</h3><img src="/2021/09/13/CompileTechnical04/image-20210913104327585.png" style="zoom:67%;">
-
-
-
-<h3 id="正则定义"><a href="#正则定义" class="headerlink" title="正则定义"></a>正则定义</h3><p><img src="/2021/09/13/CompileTechnical04/image-20210913104817879.png"></p>
-<p>例：</p>
-<img src="/2021/09/13/CompileTechnical04/image-20210913104849120.png" style="zoom:50%;">
-
-]]></content>
-      <categories>
-        <category>编译原理</category>
-      </categories>
-      <tags>
-        <tag>编译原理</tag>
-        <tag>正则表达式</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>编译原理（五）有穷自动机</title>
-    <url>/2021/09/13/CompileTechnical05/</url>
-    <content><![CDATA[<h2 id="有穷自动机"><a href="#有穷自动机" class="headerlink" title="有穷自动机"></a>有穷自动机</h2><p><img src="/2021/09/13/CompileTechnical05/image-20210913110558275.png"></p>
-<h3 id="FA的典型例子"><a href="#FA的典型例子" class="headerlink" title="FA的典型例子"></a>FA的典型例子</h3><p><img src="/2021/09/13/CompileTechnical05/image-20210913111631646.png"></p>
-<h3 id="FA模型"><a href="#FA模型" class="headerlink" title="FA模型"></a>FA模型</h3><p><img src="/2021/09/13/CompileTechnical05/image-20210913111732614.png"></p>
-<h3 id="FA的表示"><a href="#FA的表示" class="headerlink" title="FA的表示"></a>FA的表示</h3><p><img src="/2021/09/13/CompileTechnical05/image-20210913111848121.png"></p>
-<h3 id="最长子串匹配原则（Longest-String-Matching-Principle）"><a href="#最长子串匹配原则（Longest-String-Matching-Principle）" class="headerlink" title="最长子串匹配原则（Longest String Matching Principle）"></a>最长子串匹配原则（Longest String Matching Principle）</h3><p><img src="/2021/09/13/CompileTechnical05/image-20210913112130173.png"></p>
-<h2 id="FA的分类"><a href="#FA的分类" class="headerlink" title="FA的分类"></a>FA的分类</h2><p><img src="/2021/09/13/CompileTechnical05/image-20210913112310989.png"></p>
-<h3 id="确定的有穷自动机（DFA）"><a href="#确定的有穷自动机（DFA）" class="headerlink" title="确定的有穷自动机（DFA）"></a>确定的有穷自动机（DFA）</h3><p><img src="/2021/09/13/CompileTechnical05/image-20210913112408235.png"></p>
-<p>例：</p>
-<p><img src="/2021/09/13/CompileTechnical05/image-20210913112547422.png"></p>
-<h3 id="非确定的有穷自动机（NFA）"><a href="#非确定的有穷自动机（NFA）" class="headerlink" title="非确定的有穷自动机（NFA）"></a>非确定的有穷自动机（NFA）</h3><p><img src="/2021/09/13/CompileTechnical05/image-20210913112816595.png"></p>
-<p>例：</p>
-<p><img src="/2021/09/13/CompileTechnical05/image-20210913113105794.png"></p>
-<h3 id="DFA和NFA的等价性"><a href="#DFA和NFA的等价性" class="headerlink" title="DFA和NFA的等价性"></a>DFA和NFA的等价性</h3><p><img src="/2021/09/13/CompileTechnical05/image-20210913113209744.png"></p>
-<p>例：</p>
-<p><img src="/2021/09/13/CompileTechnical05/image-20210913113401567.png"></p>
-<h3 id="带有“ε-边”的NFA"><a href="#带有“ε-边”的NFA" class="headerlink" title="带有“ε-边”的NFA"></a>带有“ε-边”的NFA</h3><p><img src="/2021/09/13/CompileTechnical05/image-20210913113547309.png"></p>
-<h3 id="带有和不带有“ε-边”的NFA的等价性"><a href="#带有和不带有“ε-边”的NFA的等价性" class="headerlink" title="带有和不带有“ε-边”的NFA的等价性"></a>带有和不带有“ε-边”的NFA的等价性</h3><p><img src="/2021/09/13/CompileTechnical05/image-20210913113806553.png"></p>
-<h3 id="DAF的算法实现"><a href="#DAF的算法实现" class="headerlink" title="DAF的算法实现"></a>DAF的算法实现</h3><p><img src="/2021/09/13/CompileTechnical05/image-20210913114040891.png"></p>
-<h2 id="从正则表达式到有穷自动机"><a href="#从正则表达式到有穷自动机" class="headerlink" title="从正则表达式到有穷自动机"></a>从正则表达式到有穷自动机</h2><p><img src="/2021/09/13/CompileTechnical05/image-20210913114442039.png"></p>
-<h3 id="根据RE构造NFA"><a href="#根据RE构造NFA" class="headerlink" title="根据RE构造NFA"></a>根据RE构造NFA</h3><img src="/2021/09/13/CompileTechnical05/image-20210913114513431.png" style="zoom: 67%;">
-
-
-
-<p><img src="/2021/09/13/CompileTechnical05/image-20210913114751466.png"></p>
-<img src="/2021/09/13/CompileTechnical05/image-20210913114836905.png" style="zoom:80%;">
-
-<h3 id="从NFA到DFA的转换"><a href="#从NFA到DFA的转换" class="headerlink" title="从NFA到DFA的转换"></a>从NFA到DFA的转换</h3><p><img src="/2021/09/13/CompileTechnical05/image-20210913151805953.png"></p>
-<p>可见，DFA中的状态是NFA中若干状态的集合</p>
-<img src="/2021/09/13/CompileTechnical05/image-20210913152400310.png" style="zoom:80%;">
-
-<p><img src="/2021/09/13/CompileTechnical05/image-20210913152807437.png" alt="image-20210913152807437"></p>
-<h3 id="计算-closure（T）"><a href="#计算-closure（T）" class="headerlink" title="计算-closure（T）"></a>计算-closure（T）</h3><p><img src="/2021/09/13/CompileTechnical05/image-20210913153232065.png"></p>
-<h2 id="识别单词的DFA"><a href="#识别单词的DFA" class="headerlink" title="识别单词的DFA"></a>识别单词的DFA</h2><h3 id="识别标识符的正则表达式"><a href="#识别标识符的正则表达式" class="headerlink" title="识别标识符的正则表达式"></a>识别标识符的正则表达式</h3><p><img src="/2021/09/13/CompileTechnical05/image-20210913154102608.png"></p>
-<h3 id="识别无符号数的DFA"><a href="#识别无符号数的DFA" class="headerlink" title="识别无符号数的DFA"></a>识别无符号数的DFA</h3><p><img src="/2021/09/13/CompileTechnical05/image-20210913154233027.png"></p>
-<p><img src="/2021/09/13/CompileTechnical05/image-20210913154619752.png"></p>
-<h3 id="识别无符号数的DFA-1"><a href="#识别无符号数的DFA-1" class="headerlink" title="识别无符号数的DFA"></a>识别无符号数的DFA</h3><p><img src="/2021/09/13/CompileTechnical05/image-20210913154939740.png"></p>
-<h3 id="识别注释的DFA"><a href="#识别注释的DFA" class="headerlink" title="识别注释的DFA"></a>识别注释的DFA</h3><p><img src="/2021/09/13/CompileTechnical05/image-20210913155223841.png"></p>
-<h3 id="总结：识别Token的DFA"><a href="#总结：识别Token的DFA" class="headerlink" title="总结：识别Token的DFA"></a>总结：识别Token的DFA</h3><p><img src="/2021/09/13/CompileTechnical05/image-20210913155515955.png"></p>
-<h2 id="词法分析阶段的错误处理"><a href="#词法分析阶段的错误处理" class="headerlink" title="词法分析阶段的错误处理"></a>词法分析阶段的错误处理</h2><h3 id="可检测的错误类型"><a href="#可检测的错误类型" class="headerlink" title="可检测的错误类型"></a>可检测的错误类型</h3><p><img src="/2021/09/13/CompileTechnical05/image-20210913155816099.png"></p>
-<h3 id="词法错误检测"><a href="#词法错误检测" class="headerlink" title="词法错误检测"></a>词法错误检测</h3><p>如果当前状态与当前输入符号在转换表中对应项的信息为空，则报错，调用错误处理程序</p>
-<h3 id="错误处理"><a href="#错误处理" class="headerlink" title="错误处理"></a>错误处理</h3><p><img src="/2021/09/13/CompileTechnical05/image-20210913162921960.png"></p>
-<h3 id="错误回复策略"><a href="#错误回复策略" class="headerlink" title="错误回复策略"></a>错误回复策略</h3><p><img src="/2021/09/13/CompileTechnical05/image-20210913163001011.png"></p>
-]]></content>
-      <categories>
-        <category>编译原理</category>
-      </categories>
-      <tags>
-        <tag>编译原理</tag>
-        <tag>有穷自动机</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>编译原理（六）自顶向下的分析</title>
-    <url>/2021/09/15/CompileTechnical06/</url>
-    <content><![CDATA[<h2 id="自顶向下的分析-（Top-Down-Parsing）"><a href="#自顶向下的分析-（Top-Down-Parsing）" class="headerlink" title="自顶向下的分析 （Top-Down Parsing）"></a>自顶向下的分析 （Top-Down Parsing）</h2><p><img src="/2021/09/15/CompileTechnical06/image-20210915091925663.png"></p>
-<h3 id="最左推导（Left-mostDerivation）"><a href="#最左推导（Left-mostDerivation）" class="headerlink" title="最左推导（Left-mostDerivation）"></a>最左推导（Left-mostDerivation）</h3><p><img src="/2021/09/15/CompileTechnical06/image-20210915092045212.png"></p>
-<h3 id="最右推导（Right-most-Derivation）"><a href="#最右推导（Right-most-Derivation）" class="headerlink" title="最右推导（Right-most Derivation）"></a>最右推导（Right-most Derivation）</h3><p><img src="/2021/09/15/CompileTechnical06/image-20210915092144182.png"></p>
-<p>在自定向上的分析中，总是采用最左归约的方式，因此把<strong>最左归约</strong>称为<strong>规范归约</strong>，而<strong>最右推导</strong>相应地称为<strong>规范推导</strong></p>
-<h3 id="最右推导和最左推导的唯一性"><a href="#最右推导和最左推导的唯一性" class="headerlink" title="最右推导和最左推导的唯一性"></a>最右推导和最左推导的唯一性</h3><p><img src="/2021/09/15/CompileTechnical06/image-20210915093257042.png"></p>
-<p><strong>自顶向下的语法分析采用最左推导方式</strong></p>
-<p>总是选择每个句型的最左非终结符进行替换</p>
-<p>根据输入流中的下一个终结符，选择最左非终结符的一个候选式</p>
-<p>例：</p>
-<p><img src="/2021/09/15/CompileTechnical06/1631669772951.png"></p>
-<h3 id="自顶向下语法分析的通用形式"><a href="#自顶向下语法分析的通用形式" class="headerlink" title="自顶向下语法分析的通用形式"></a>自顶向下语法分析的通用形式</h3><p><img src="/2021/09/15/CompileTechnical06/image-20210915094352344.png"></p>
-<h3 id="预测分析"><a href="#预测分析" class="headerlink" title="预测分析"></a>预测分析</h3><p><img src="/2021/09/15/CompileTechnical06/image-20210915095115483.png"></p>
-<h2 id="文法转换"><a href="#文法转换" class="headerlink" title="文法转换"></a>文法转换</h2><p><strong>问题1</strong></p>
-<img src="/2021/09/15/CompileTechnical06/image-20210915095557128.png" style="zoom:67%;">
-
-<p><strong>问题2</strong></p>
-<img src="/2021/09/15/CompileTechnical06/image-20210915095625817.png" alt="image-20210915095625817" style="zoom:67%;">
-
-
-
-<h3 id="消除直接左递归"><a href="#消除直接左递归" class="headerlink" title="消除直接左递归"></a>消除直接左递归</h3><p><img src="/2021/09/15/CompileTechnical06/image-20210917151108735.png"></p>
-<p><strong>消除左递归的一般形式</strong></p>
-<p><img src="/2021/09/15/CompileTechnical06/image-20210917151306750.png"></p>
-<h3 id="消除间接左递归"><a href="#消除间接左递归" class="headerlink" title="消除间接左递归"></a>消除间接左递归</h3><p><img src="/2021/09/15/CompileTechnical06/image-20210917152125244.png"></p>
-<p><img src="/2021/09/15/CompileTechnical06/image-20210917152305490.png"></p>
-<h3 id="提取左公因子"><a href="#提取左公因子" class="headerlink" title="提取左公因子"></a>提取左公因子</h3><p><img src="/2021/09/15/CompileTechnical06/image-20210917152442550.png"></p>
-<p><img src="/2021/09/15/CompileTechnical06/image-20210917152844195.png"></p>
-<h2 id="LL-1-文法"><a href="#LL-1-文法" class="headerlink" title="LL(1)文法"></a>LL(1)文法</h2><ul>
-<li>第一个“L”：left to right，按照从左到右的顺序处理输入的token序列</li>
-<li>第二个“L”：leftmost derivation，从文法的最左边开始进行推导</li>
-<li>“(1)”：使用1个token来预测解析的方向（当然也有LL(n)）</li>
-</ul>
-<p><img src="/2021/09/15/CompileTechnical06/image-20210917153215934.png"></p>
-<p>例：</p>
-<p><img src="/2021/09/15/CompileTechnical06/image-20210917153737301.png"></p>
-<h4 id="非终结符的后继符号级"><a href="#非终结符的后继符号级" class="headerlink" title="非终结符的后继符号级"></a>非终结符的后继符号级</h4><p><img src="/2021/09/15/CompileTechnical06/image-20210917155114722.png"></p>
-<h4 id="产生式的可选集"><a href="#产生式的可选集" class="headerlink" title="产生式的可选集"></a>产生式的可选集</h4><p><img src="/2021/09/15/CompileTechnical06/image-20210917155712456.png"></p>
-<h4 id="串首终结符集"><a href="#串首终结符集" class="headerlink" title="串首终结符集"></a>串首终结符集</h4><p><img src="/2021/09/15/CompileTechnical06/image-20210917160516778.png"></p>
-<h4 id="LL-1-文法-1"><a href="#LL-1-文法-1" class="headerlink" title="LL(1)文法"></a>LL(1)文法</h4><p><img src="/2021/09/15/CompileTechnical06/image-20210917161259083.png"></p>
-<p><img src="/2021/09/15/CompileTechnical06/image-20210917161342550.png"></p>
-<h2 id="FIRST集和FOLLOW集的计算"><a href="#FIRST集和FOLLOW集的计算" class="headerlink" title="FIRST集和FOLLOW集的计算"></a>FIRST集和FOLLOW集的计算</h2><p><strong>计算FIRST集</strong></p>
-<p><img src="/2021/09/15/CompileTechnical06/image-20210918113202668.png"></p>
-<p><img src="/2021/09/15/CompileTechnical06/image-20210917161922136.png"></p>
-<p><strong>计算FOLLOW集</strong></p>
-<p><img src="/2021/09/15/CompileTechnical06/image-20210918113224532.png"></p>
-<p><img src="/2021/09/15/CompileTechnical06/image-20210918113239292.png"></p>
-<p><strong>计算SELECT集</strong></p>
-<p><img src="/2021/09/15/CompileTechnical06/image-20210918113340666.png"></p>
-]]></content>
-      <categories>
-        <category>编译原理</category>
-      </categories>
-      <tags>
-        <tag>编译原理</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>编译技术（七）</title>
-    <url>/2021/09/27/CompileTechnical07/</url>
-    <content><![CDATA[<h2 id="递归的预测分析法"><a href="#递归的预测分析法" class="headerlink" title="递归的预测分析法"></a>递归的预测分析法</h2><p><img src="/2021/09/27/CompileTechnical07/image-20210927195215795.png"></p>
-<p><img src="/2021/09/27/CompileTechnical07/image-20210927195446119.png"></p>
-<p><img src="/2021/09/27/CompileTechnical07/image-20210927195647264.png"></p>
-<p><img src="/2021/09/27/CompileTechnical07/image-20210927200237286.png"></p>
-<p><img src="/2021/09/27/CompileTechnical07/image-20210927200250896.png"></p>
-<p><img src="/2021/09/27/CompileTechnical07/image-20210927200309486.png"></p>
-<h2 id="非递归的预测分析法"><a href="#非递归的预测分析法" class="headerlink" title="非递归的预测分析法"></a>非递归的预测分析法</h2><p><img src="/2021/09/27/CompileTechnical07/image-20210927200431533.png"></p>
-<p><img src="/2021/09/27/CompileTechnical07/image-20210927201320326.png"></p>
-<p><strong>表驱动的预测分析法</strong></p>
-<p><img src="/2021/09/27/CompileTechnical07/image-20210927201402297.png"></p>
-<p><strong>对比</strong></p>
-<p><img src="/2021/09/27/CompileTechnical07/image-20210927203201613.png"></p>
-<p><strong>实现步骤</strong></p>
-<p><img src="/2021/09/27/CompileTechnical07/image-20210927203440620.png"></p>
-<h2 id="预测分析中的错误检测"><a href="#预测分析中的错误检测" class="headerlink" title="预测分析中的错误检测"></a>预测分析中的错误检测</h2><p><img src="/2021/09/27/CompileTechnical07/image-20210927203536117.png"></p>
-<h3 id="恐慌模式"><a href="#恐慌模式" class="headerlink" title="恐慌模式"></a>恐慌模式</h3><p><img src="/2021/09/27/CompileTechnical07/image-20210927203622693.png"></p>
-<p><img src="/2021/09/27/CompileTechnical07/image-20210927204148013.png"></p>
-<p><img src="/2021/09/27/CompileTechnical07/image-20210927204631068.png"></p>
-<h2 id="该章要点"><a href="#该章要点" class="headerlink" title="该章要点"></a>该章要点</h2><p><img src="/2021/09/27/CompileTechnical07/image-20210927205758518.png"></p>
-<p>递归的预测分析 </p>
-<p><img src="/2021/09/27/CompileTechnical07/image-20210927210130858.png"></p>
-]]></content>
-      <categories>
-        <category>编译原理</category>
-      </categories>
-      <tags>
-        <tag>编译原理</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>编译技术（八）自底向上分析概述</title>
-    <url>/2021/09/27/CompileTechnical08/</url>
-    <content><![CDATA[<h2 id="自底向上分析概述"><a href="#自底向上分析概述" class="headerlink" title="自底向上分析概述"></a>自底向上分析概述</h2><p><img src="/2021/09/27/CompileTechnical08/image-20210927211636184.png"></p>
-<p><img src="/2021/09/27/CompileTechnical08/image-20210927212049846.png"></p>
-<p>每次归约的符号串称为“<strong>句柄</strong>”</p>
-<h3 id="移入-归约分析的工作过程"><a href="#移入-归约分析的工作过程" class="headerlink" title="移入-归约分析的工作过程"></a>移入-归约分析的工作过程</h3><p><img src="/2021/09/27/CompileTechnical08/image-20210927212901034.png"></p>
-<h3 id="移入-归约分析可采取的4种动作"><a href="#移入-归约分析可采取的4种动作" class="headerlink" title="移入-归约分析可采取的4种动作"></a>移入-归约分析可采取的4种动作</h3><p><img src="/2021/09/27/CompileTechnical08/image-20210927212955907.png"></p>
-<h3 id="移入-归约分析中存在的问题"><a href="#移入-归约分析中存在的问题" class="headerlink" title="移入-归约分析中存在的问题"></a>移入-归约分析中存在的问题</h3><p><img src="/2021/09/27/CompileTechnical08/image-20210927213143213.png"></p>
-<p>造成错误的原因：错误地识别了句柄</p>
-<h2 id="LR分析法"><a href="#LR分析法" class="headerlink" title="LR分析法"></a>LR分析法</h2><p><img src="/2021/09/27/CompileTechnical08/image-20210927214047716.png"></p>
-<p><strong>LR分析法的基本原理</strong></p>
-<p><img src="/2021/09/27/CompileTechnical08/image-20210927214123653.png"></p>
-<h3 id="LR分析器（自动机）的总体结构"><a href="#LR分析器（自动机）的总体结构" class="headerlink" title="LR分析器（自动机）的总体结构"></a><strong>LR分析器（自动机）的总体结构</strong></h3><p><img src="/2021/09/27/CompileTechnical08/image-20210927214422190.png"></p>
-<p><img src="/2021/09/27/CompileTechnical08/image-20210927214936681.png"></p>
-<p><img src="/2021/09/27/CompileTechnical08/image-20210927215216357.png"></p>
-<p><img src="/2021/09/27/CompileTechnical08/image-20210927215226895.png"></p>
-<p><img src="/2021/09/27/CompileTechnical08/image-20210927215242790.png"></p>
-<p><img src="/2021/09/27/CompileTechnical08/image-20210927215254745.png"></p>
-<p><img src="/2021/09/27/CompileTechnical08/image-20210927215304387.png"></p>
-<h3 id="LR分析法的工作流程"><a href="#LR分析法的工作流程" class="headerlink" title="LR分析法的工作流程"></a><strong>LR分析法的工作流程</strong></h3><p><img src="/2021/09/27/CompileTechnical08/image-20210929090158168.png"></p>
-<p><img src="/2021/09/27/CompileTechnical08/image-20210929090400576.png" alt="image-20210929090400576"></p>
-<p><img src="/2021/09/27/CompileTechnical08/image-20210929090411687.png"></p>
-<p><img src="/2021/09/27/CompileTechnical08/image-20210929090724075.png"></p>
-<h2 id="LR（0）项目"><a href="#LR（0）项目" class="headerlink" title="LR（0）项目"></a>LR（0）项目</h2><p><img src="/2021/09/27/CompileTechnical08/image-20210929104124517.png"></p>
-<h3 id><a href="#" class="headerlink" title></a></h3><h3 id="增广文法"><a href="#增广文法" class="headerlink" title="增广文法"></a>增广文法</h3><p><img src="/2021/09/27/CompileTechnical08/image-20210929104352500.png"></p>
-<p><strong>文法中的项目</strong></p>
-<p><img src="/2021/09/27/CompileTechnical08/image-20210929104707194.png" alt="image-20210929104707194"></p>
-<p>归约项目：原点在最后的项目</p>
-<p>接收项目：文法开始符的归约项目</p>
-<p>待约项目：圆点后为非终结符的项目</p>
-<p>移进项目：原点后为终结符的项目</p>
-<p><img src="/2021/09/27/CompileTechnical08/image-20210929105608678.png" alt="image-20210929105608678"></p>
-<p><img src="/2021/09/27/CompileTechnical08/image-20210929105840997.png"></p>
-<p><img src="/2021/09/27/CompileTechnical08/image-20210929110155851.png"></p>
-<h3 id="CLOSURE-函数"><a href="#CLOSURE-函数" class="headerlink" title="CLOSURE()函数"></a>CLOSURE()函数</h3><p><img src="/2021/09/27/CompileTechnical08/image-20210929111658342.png"></p>
-<p><img src="/2021/09/27/CompileTechnical08/image-20210929111707276.png"></p>
-<h3 id="GOTO-函数"><a href="#GOTO-函数" class="headerlink" title="GOTO()函数"></a>GOTO()函数</h3><p><img src="/2021/09/27/CompileTechnical08/image-20210929112008473.png"></p>
-<h3 id="构造LR-0-自动机的状态集"><a href="#构造LR-0-自动机的状态集" class="headerlink" title="构造LR(0)自动机的状态集"></a>构造LR(0)自动机的状态集</h3><p><img src="/2021/09/27/CompileTechnical08/image-20210929112215276.png"></p>
-<h3 id="LR-0-分析表构造算法"><a href="#LR-0-分析表构造算法" class="headerlink" title="LR(0)分析表构造算法"></a>LR(0)分析表构造算法</h3><p><img src="/2021/09/27/CompileTechnical08/image-20210929112534836.png"></p>
-<h3 id="LR-0-自动机的形式化定义"><a href="#LR-0-自动机的形式化定义" class="headerlink" title="LR(0)自动机的形式化定义"></a>LR(0)自动机的形式化定义</h3><p><img src="/2021/09/27/CompileTechnical08/image-20210929112845821.png"></p>
-<h3 id="LR-0-分析过程中的冲突"><a href="#LR-0-分析过程中的冲突" class="headerlink" title="LR(0)分析过程中的冲突"></a>LR(0)分析过程中的冲突</h3><p><img src="/2021/09/27/CompileTechnical08/image-20210929113140568.png"></p>
-<p><img src="/2021/09/27/CompileTechnical08/image-20210929113258671.png"></p>
-<p><img src="/2021/09/27/CompileTechnical08/image-20210929113418363.png"></p>
-]]></content>
-      <categories>
-        <category>编译原理</category>
-      </categories>
-      <tags>
-        <tag>编译原理</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>计算机组成原理（一）</title>
-    <url>/2021/09/08/ComputerCompositionPrinciple01/</url>
-    <content><![CDATA[<h2 id="计算机基本组成"><a href="#计算机基本组成" class="headerlink" title="计算机基本组成"></a>计算机基本组成</h2><p><strong>五大组成部分</strong></p>
-<p>运算器、控制器、存储器、输入设备、输出设备</p>
-<p><strong>硬件组成</strong></p>
-<p><img src="/2021/09/08/ComputerCompositionPrinciple01/1631101751247-16311017717611.png"></p>
-<p><strong>工作流程：</strong></p>
-<p>编写程序-&gt;输入程序-&gt;存储程序-&gt;程序转换为指令序列-&gt;执行指令-&gt;输出结果</p>
-<p><strong>计算机内部的两大流：</strong></p>
-<p>控制流：控制计算机工作大学习，即指令、微命令</p>
-<p>数据流：计算机加工处理的对象，即数据型数据，非数值型数据</p>
-<p>（重点：信息的表示；信息的传送及传送中的控制）</p>
-<h2 id="存储程序"><a href="#存储程序" class="headerlink" title="存储程序"></a>存储程序</h2><p><strong>计算机存储程序的工作方式：</strong></p>
-<ol>
-<li>事先编制程序</li>
-<li>存储程序</li>
-<li>自动连续运行程序</li>
-</ol>
-<p><strong>冯诺依曼体质</strong></p>
-<ol>
-<li>采用二进制形式表示数据和指令</li>
-<li>采用存储程序方式工作（核心）</li>
-<li>由五大部分组成计算机系统的硬件，并规定了这五部分的基本功能</li>
-</ol>
-<h2 id="数字型计算机的特点"><a href="#数字型计算机的特点" class="headerlink" title="数字型计算机的特点"></a>数字型计算机的特点</h2><ol>
-<li>能在程序控制下自动连续工作：PC寄存器</li>
-<li>运算速度快</li>
-<li>运算精度高</li>
-<li>具有很强的信息存储能力</li>
-<li>通用性强</li>
-</ol>
-<h2 id="主要功能部件"><a href="#主要功能部件" class="headerlink" title="主要功能部件"></a>主要功能部件</h2><h3 id="存储器"><a href="#存储器" class="headerlink" title="存储器"></a>存储器</h3><p>功能：存储信息</p>
-<p>组成（主存储器）：</p>
-<p><img src="/2021/09/08/ComputerCompositionPrinciple01/1631103052208.png"></p>
-<p><strong>存储体：</strong>存放信息的实体</p>
-<p><strong>寻址系统：</strong>对地址码译码，选择存储单元</p>
-<p><strong>读/写线路和数据寄存器：</strong>完成读/写操作，</p>
-<p>​                                            暂存读/写数据</p>
-<p><strong>控制线路：</strong>产生读/写时序，控制读/写操作</p>
-<h3 id="CPU"><a href="#CPU" class="headerlink" title="CPU"></a>CPU</h3><p>由<strong>运算器、控制器</strong>组成</p>
-<h4 id="运算器："><a href="#运算器：" class="headerlink" title="运算器："></a>运算器：</h4><p><img src="/2021/09/08/ComputerCompositionPrinciple01/1631103737634.png"></p>
-<p><strong>ALU：</strong>通过加法器实现运算操作（由<strong>全加器</strong>求和，由<strong>进位链</strong>传递<strong>进位信号</strong>）</p>
-<p><strong>通用寄存器组：</strong>提供操作数，存放运算结果</p>
-<p><strong>移位器：</strong>直接或者移位送出运算结果</p>
-<p><strong>控制器：</strong></p>
-<ol>
-<li><p>功能：产生控制命令（微命令），控制全机操作</p>
-</li>
-<li><p>组成：</p>
-<p><img src="/2021/09/08/ComputerCompositionPrinciple01/1631104175903.png"></p>
-</li>
-<li><p>微命令产生方式（指令执行控制方式）:</p>
-<ul>
-<li>组合逻辑控制方式：由组合逻辑电路产生微命令</li>
-<li>微程序控制方式：由微指令产生微命令</li>
-</ul>
-</li>
-</ol>
-<h3 id="输入-输出设备"><a href="#输入-输出设备" class="headerlink" title="输入/输出设备"></a>输入/输出设备</h3><ol>
-<li><p>功能：转换信息</p>
-<p>输入：原始信息-&gt;代码，送入主机 </p>
-<p>输出：处理结果-&gt;人所能接受的形式，并输出 （代码）</p>
-</li>
-</ol>
-<h2 id="硬件系统结构"><a href="#硬件系统结构" class="headerlink" title="硬件系统结构"></a>硬件系统结构</h2><h3 id="总线"><a href="#总线" class="headerlink" title="总线"></a>总线</h3><p>能为多个部件分时、共享的一组信息传送线 路及相应的控制逻辑。</p>
-<p><img src="/2021/09/08/ComputerCompositionPrinciple01/1631104683808.png"></p>
-<p><img src="/2021/09/08/ComputerCompositionPrinciple01/1631104748258.png"></p>
-<p><strong>以CPU为中心的双总线结构：</strong></p>
-<p><img src="/2021/09/08/ComputerCompositionPrinciple01/1631104791464.png"></p>
-<p><strong>单总线结构：</strong></p>
-<p><img src="/2021/09/08/ComputerCompositionPrinciple01/1631104831462.png"></p>
-<p><strong>以M为中心的双总线结构：</strong></p>
-<p><img src="/2021/09/08/ComputerCompositionPrinciple01/1631104873210.png"></p>
-<p><strong>多级总线结构：</strong></p>
-<p><img src="/2021/09/08/ComputerCompositionPrinciple01/1631104927121.png"></p>
-<h3 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h3><p>部件与部件（指硬件或软件）之间的交接部分称为接口；</p>
-<p>主机系统总线与I/O设备之间的交接部分称为I/O接口。</p>
-<p><strong>接口类型</strong></p>
-<p>按传送格式： 串行接口、并行接口 </p>
-<p>按时序控制： 同步接口、异步接口 </p>
-<p>按信息传送控制方式：<strong>中断接口</strong>、DMA接口</p>
-<h2 id="计算机性能的性能指标"><a href="#计算机性能的性能指标" class="headerlink" title="计算机性能的性能指标"></a>计算机性能的性能指标</h2><h3 id="基本字长"><a href="#基本字长" class="headerlink" title="基本字长"></a>基本字长</h3><p>一般指参加<strong>一次定点运算的操作数的位数</strong></p>
-<p>8、16、32、64位</p>
-<h3 id="运算速度"><a href="#运算速度" class="headerlink" title="运算速度"></a>运算速度</h3><p><strong>CPU主频</strong></p>
-<p>计算机的振荡器输出的脉冲序列的频率，是计算机中一切操作所依据的时间基准信号，其高低决定了计算机工做速度的快慢。</p>
-<p><strong>时钟频率</strong></p>
-<p>是主频脉冲经分频后所形成的时钟脉冲序列的频率，两个相邻时钟脉冲之间的间隔时间是一个<strong>时钟周期</strong>时间，也称为<strong>节拍</strong>。</p>
-<h3 id="数据通路宽度与数据传输率"><a href="#数据通路宽度与数据传输率" class="headerlink" title="数据通路宽度与数据传输率"></a>数据通路宽度与数据传输率</h3><p><strong>数据通路宽度</strong></p>
-<p> 指数据总线（多条）一次能并行传送的数据位数。</p>
-<p><strong>数据传输率</strong></p>
-<p>指数据总线每秒传送的数据量，也称为数据总线的带宽。</p>
-<p><img src="/2021/09/08/ComputerCompositionPrinciple01/1631106969901.png"></p>
-<h3 id="存储容量"><a href="#存储容量" class="headerlink" title="存储容量"></a>存储容量</h3><p><strong>主存容量：</strong></p>
-<p>指  存储单元个数（地址位数）×位数（编制单位）</p>
-<p>表示为：字数×字长（按字编址，16位） </p>
-<p>​                或 字数×字节长（按字节编址，8位）</p>
-<p><strong>外存容量：</strong></p>
-<p>常表示为字节数。 外存容量与地址码位数无关。</p>
-]]></content>
-      <categories>
-        <category>计算机组成原理</category>
-      </categories>
-      <tags>
-        <tag>计算机组成原理</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>计算机组成原理（二）</title>
-    <url>/2021/09/08/ComputerCompositionPrinciple02/</url>
-    <content><![CDATA[<p><strong>计算机中信息的表示方式</strong></p>
-<p><img src="/2021/09/08/ComputerCompositionPrinciple02/1631108317881.png"></p>
-<p><strong>指令的执行：</strong></p>
-<ol>
-<li>取指：从主存储器中取指令；</li>
-<li>执行指令：在CPU内部执行该条指令（在此过程中， CPU一般还需从主存储器中获取如操作数等相关的信 息）；</li>
-<li>存结果：结果送回存储器存放。</li>
-</ol>
-<p><strong>指令：</strong>一系列按照某种规律有序排列的，能被CPU 识别、并执行的二进制代码</p>
-<p><strong>指令系统（或集）：</strong>一台计算机所能执行的全部指令。</p>
-<h2 id="指令格式"><a href="#指令格式" class="headerlink" title="指令格式"></a>指令格式</h2><p>一条指令最多提供两方面的信息：</p>
-<p>操作码（OP）：与CPU操作有关的信息</p>
-<p>地址码（AD）：与操作数有关的信息</p>
-<p><strong>基本格式</strong></p>
-<p><img src="/2021/09/08/ComputerCompositionPrinciple02/1631108657173.png"></p>
-<h2 id="指令字长"><a href="#指令字长" class="headerlink" title="指令字长"></a>指令字长</h2><p>指令字长越长：</p>
-<p>​    优点：功能丰富，完成工作多</p>
-<p>​    缺点：占用空间大，取指时间长，执行速度慢</p>
-<p><strong>操作码的位数决定了操作类型的多少</strong></p>
-<p><strong>操作码分类：</strong></p>
-<p>定长操作码：</p>
-<p>指令长度比较长时，位置、位数固定，位置在指令 的前几位。</p>
-<p>扩展操作码：</p>
-<p>指令长度比较短时，位置、位数不固定，用扩展标 志表示。</p>
-<p>方式码：</p>
-<p>操作码分为几部分，每部分表示一种操作。</p>
-<p><img src="/2021/09/08/ComputerCompositionPrinciple02/1631109347792.png"></p>
-<h2 id="地址结构"><a href="#地址结构" class="headerlink" title="地址结构"></a>地址结构</h2><p>在指令中明确给出几个地址，给出哪些地址</p>
-<p><img src="/2021/09/08/ComputerCompositionPrinciple02/1631235309933.png"></p>
-<p><strong>指令给出操作数地址的方式：</strong></p>
-<p>显式：直接、间接、变址、基址等</p>
-<p>隐式：隐含约定寄存器号、主存储器单元号</p>
-<p><strong>显地址：</strong></p>
-<p>指令明显给出地址</p>
-<p>如：写明主存储单元号 或CPU的寄存器编号,则这种地址表达称为显地址。</p>
-<p><strong>显地址分为：</strong> 三地址指令、二地址指令、 一地址指令、零地址指令</p>
-<p><strong>隐地址：</strong></p>
-<p>指令中的地址是以隐含的方式约定</p>
-<p>如：系统事先隐含约定操作数在CPU某个寄存器中,或是在堆栈 中,因此在指令中并不给出地址码,这种隐含约定的地址就称为隐地址。</p>
-<p><strong>简化地址结构的基本途径：尽量使用隐地址。</strong></p>
-<p><strong>（1）四地址指令</strong></p>
-<p><strong><img src="/2021/09/08/ComputerCompositionPrinciple02/1631236505556.png"></strong></p>
-<p><strong>（2）三地址指令</strong></p>
-<p><img src="/2021/09/08/ComputerCompositionPrinciple02/1631237535653.png"></p>
-<p><strong>（3）二地址指令</strong></p>
-<p><img src="/2021/09/08/ComputerCompositionPrinciple02/1631237595648.png"></p>
-<p><strong>（4）单地址指令</strong></p>
-<p><strong>a. 隐含约定的目的地的双操作数指令</strong></p>
-<p><img src="/2021/09/08/ComputerCompositionPrinciple02/1631237677942.png"></p>
-<img src="/2021/09/08/ComputerCompositionPrinciple02/1631238035214-16312380540271.png" style="zoom:50%;">
-
-
-
-<p><strong>b.只有目的操作数的单操作数指令</strong></p>
-<p><img src="/2021/09/08/ComputerCompositionPrinciple02/1631238181946.png"></p>
-<p><strong>（5）零地址指令</strong></p>
-<p><img src="/2021/09/08/ComputerCompositionPrinciple02/1631238421642.png"></p>
-<p><strong>a.对只有目的操作数的指令，隐含在指定寄存器内 进行操作。</strong></p>
-<p>PUSHF ；FLAGS→入栈 </p>
-<p>POPF ；FLAGS→出栈 </p>
-<p>LAHF ；FLAGS的低8位→AH </p>
-<p>SAHF ；AH→FLAGS的低8位</p>
-<p>···</p>
-<p><strong>b.不需要操作数的指令。</strong></p>
-<p>NOP ；空操作指令</p>
-<p>HLT ；停机指令</p>
-<p>···</p>
-<p><strong>c.对堆栈栈顶单元内容进行操作,如指令PUSH (压 入堆栈)、POP (弹出堆栈)</strong></p>
-<h2 id="寻址方式"><a href="#寻址方式" class="headerlink" title="寻址方式"></a>寻址方式</h2><p><img src="/2021/09/08/ComputerCompositionPrinciple02/1631239226346.png"></p>
-<p>① CPU能够直接访问的操作数只能存放在主存储器 （包括CACHE、接口中的R）或CPU内的寄存器中； </p>
-<p>② 由于主存储器的容量远远大于CPU内的寄存器的 容量，因此CPU能够直接访问的操作数主要存放在主 存储器中。</p>
-<p><strong>存放方式（大致过程）：</strong></p>
-<p>程序-&gt;CS段</p>
-<p>数据-&gt;DS段</p>
-<p>结果-&gt;ES段</p>
-<p>下条地址-&gt;SS段</p>
-<p><strong>四大寻址方式</strong></p>
-<ol>
-<li><p><strong>立即寻址：（掌握）</strong></p>
-<p>操作码字段后面你的部分不是操作码地址，而是操作数本身。在读取指令时也就从指令之中获得了操作数，即操 作数包含在指令中。</p>
-<img src="/2021/09/08/ComputerCompositionPrinciple02/image-20210913085811043.png" style="zoom:50%;"></li>
-<li><p><strong>直接寻址类：（掌握）</strong></p>
-<p>直接给出主存地址（主存直接寻址）或寄存器（寄存器直接寻址）编号，从主存单元内或 CPU的寄存器内读取操作数。</p>
-<p><img src="/2021/09/08/ComputerCompositionPrinciple02/image-20210913085532650.png"></p>
-<img src="/2021/09/08/ComputerCompositionPrinciple02/image-20210913090007021.png" style="zoom:67%;">
-
-<p><strong>比较：</strong></p>
-<p>a. 直接寻址是访问一次主存才能读取所需操作数；寄 存器寻址是从CPU的寄存器中读取操作数，不需访问主存，所需时间大约是从主存中读数时间的几分之一到 几十分之一 ，因而寄存器寻址比直接寻址快得多。</p>
-<p>b.由于寄存器数远少于主存储器的单元数，所以指令 中存放寄存器号的字段位数也就大大少于存放主存地 址码所需位数。采用寄存器寻址方式或其它以寄存器 为基础的寻址方式（例如寄存器寻址、寄存器间址方 式），可以大大减少指令中一个地址的位数，从而有 效地缩短指令长度。这也使读取指令的时间减少，提 高了工作速度。</p>
-<p><strong>注意：</strong></p>
-<p>减少指令中地址数目与减少一个地址的位数是 两个不同的概念。 </p>
-<p>采用隐地址可以减少指令中地址的数目； </p>
-<p>采用寄存器寻址方式、寄存器间址方式等可以使指令中为给出一个地址所需的位数减少。 其实，均减少了指令长度。</p>
-</li>
-<li><p><strong>间接寻址类：（掌握）</strong></p>
-<p>先从某寄存器/主存中读取地址，再按这个地址访问 主存以读取操作数。</p>
-<p><img src="/2021/09/08/ComputerCompositionPrinciple02/image-20210913092428125.png"></p>
-<p><img src="/2021/09/08/ComputerCompositionPrinciple02/image-20210913094228659.png"></p>
-<p><strong>自增型寄存器间址方式</strong></p>
-<p>寄存器间址的一种变型,若指令中给出存放操作数地址 的寄存器号,从寄存器中读出操作数地址后,寄存器内容加1，这种寻址方式称为自增型寄存器间接寻址。</p>
-<p><img src="/2021/09/08/ComputerCompositionPrinciple02/image-20210913095016132.png"></p>
-<p><strong>自减型寄存器间址型</strong></p>
-<p>若指令中给出寄存器号，被指定的寄存器内容减1后 作为操作数地址，按照该地址访问主存储器，相应的主 存单元内容为操作数，自减型寄存器间址方式常用助记 符 -（R）表示。</p>
-<p><img src="/2021/09/08/ComputerCompositionPrinciple02/image-20210913095243802.png"></p>
-<p><strong>堆栈寻址</strong></p>
-<p>堆栈寻址方式是指操作数在堆栈中，指令隐含约定由堆 栈指针SP寄存器提供栈顶单元地址（SP也可以编码形式 出现在指令中），进行读出或写入的一种寻址方式。 根据压入数据时栈顶单元的地址是减小还是增大或不变, 可以将堆栈的工作方式大致分为向上生成方式、向下生 成方式和栈顶固定方式三种。</p>
-<p><img src="/2021/09/08/ComputerCompositionPrinciple02/image-20210913100304932.png"></p>
-</li>
-</ol>
-<p><strong>多重间接寻址</strong></p>
-<p><img src="/2021/09/08/ComputerCompositionPrinciple02/image-20210915202759509.png"></p>
-<p><img src="/2021/09/08/ComputerCompositionPrinciple02/image-20210915202812521.png"></p>
-<p>例：</p>
-<p><img src="/2021/09/08/ComputerCompositionPrinciple02/image-20210915202828392.png"></p>
-<p><img src="/2021/09/08/ComputerCompositionPrinciple02/image-20210915202904166.png"></p>
-<ol start="4">
-<li><strong>变址类</strong></li>
-</ol>
-<p><strong>变址寻址</strong>（掌握）</p>
-<p>SI:source index</p>
-<p>DI:destination index</p>
-<p>BX:base </p>
-<p>BP:base pointer</p>
-<p>在8086/8088中使用SI,DI</p>
-<p>指令给出的是形式地址（不是最终地址），经过某种变换（例如相加、相减、高低位地址拼接等），才获得有效地址，据此访问主存储器以读取操作数。变址方式常用助记符**X(R)**表示</p>
-<p><img src="/2021/09/08/ComputerCompositionPrinciple02/image-20210915200045895.png"></p>
-<p>例:</p>
-<p><img src="/2021/09/08/ComputerCompositionPrinciple02/image-20210915200155551.png"></p>
-<p><strong>基址寻址</strong></p>
-<p>区别：寄存器不一样</p>
-<p><img src="/2021/09/08/ComputerCompositionPrinciple02/image-20210915200329184.png"></p>
-<p><strong>变址、基址寻址区别</strong></p>
-<p><img src="/2021/09/08/ComputerCompositionPrinciple02/image-20210915200841131.png"></p>
-<p><strong>基址加变址方式</strong></p>
-<p><img src="/2021/09/08/ComputerCompositionPrinciple02/image-20210915201014412.png"></p>
-<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p><img src="/2021/09/08/ComputerCompositionPrinciple02/image-20210915202424469.png"></p>
-]]></content>
-      <categories>
-        <category>计算机组成原理</category>
-      </categories>
-      <tags>
-        <tag>计算机组成原理</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>计算机组成原理（三）</title>
-    <url>/2021/09/15/ComputerCompositionPrinciple03/</url>
-    <content><![CDATA[<h1 id="指令分类"><a href="#指令分类" class="headerlink" title="指令分类"></a>指令分类</h1><p><img src="/2021/09/15/ComputerCompositionPrinciple03/image-20210915203451432.png"></p>
-<ol>
-<li><p>按指令格式分类</p>
-<p>双操作数指令，单操作数指令，程序转移指令</p>
-</li>
-<li><p>按操作数寻址方式分类</p>
-<p><img src="/2021/09/15/ComputerCompositionPrinciple03/image-20210915203637196.png"></p>
-</li>
-<li><p>按指令功能分类</p>
-<p><strong>传送指令，输入/输出（I/O）指令</strong>，算数逻辑指令，程序控制指令，处理机控制类指令</p>
-</li>
-</ol>
-<h2 id="一般传送指令"><a href="#一般传送指令" class="headerlink" title="一般传送指令"></a>一般传送指令</h2><p>计算机中<strong>最基本的指令</strong>，包括：</p>
-<p>算术逻辑运算、输入输出操作···</p>
-<p>单纯的传送指令将数据从一个地方（源地址）传送到另一个地方（目的地址）</p>
-<p><strong>传送范围</strong>：</p>
-<p>即指令允许数据在什么范围内传送。</p>
-<p>操作数来源与目的地主要是：<strong>CPU寄存器、主存储器</strong></p>
-<p><img src="/2021/09/15/ComputerCompositionPrinciple03/image-20210915204839560.png"></p>
-<p><img src="/2021/09/15/ComputerCompositionPrinciple03/image-20210915204851811.png"></p>
-<p><strong>传送单位</strong></p>
-<p><strong>设置寻址方式</strong></p>
-<h2 id="输入输出（I-O）指令"><a href="#输入输出（I-O）指令" class="headerlink" title="输入输出（I/O）指令"></a>输入输出（I/O）指令</h2><p>从广义的角度来看，<strong>I/O指令也是一种传送指令</strong></p>
-<p>主机对外围设备的访问一般就是对有关接口寄存器的访问</p>
-<img src="/2021/09/15/ComputerCompositionPrinciple03/image-20210915205114711.png" style="zoom:80%;">
-
-
-
-<h3 id="外围设备编址"><a href="#外围设备编址" class="headerlink" title="外围设备编址"></a><strong>外围设备编址</strong></h3><img src="/2021/09/15/ComputerCompositionPrinciple03/image-20210915205412470.png" style="zoom:80%;">
-
-<h4 id="单独编址"><a href="#单独编址" class="headerlink" title="单独编址"></a>单独编址</h4><ol>
-<li><strong>单独编址到设备级：</strong></li>
-</ol>
-<img src="/2021/09/15/ComputerCompositionPrinciple03/image-20210915205549385.png" style="zoom:80%;">
-
-<ol start="2">
-<li><strong>单独编制到寄存器级：</strong></li>
-</ol>
-<img src="/2021/09/15/ComputerCompositionPrinciple03/image-20210915205825524.png" style="zoom:80%;">
-
-<img src="/2021/09/15/ComputerCompositionPrinciple03/image-20210915211441454.png" style="zoom:80%;">
-
-
-
-<h4 id="统一编址"><a href="#统一编址" class="headerlink" title="统一编址"></a>统一编址</h4><img src="/2021/09/15/ComputerCompositionPrinciple03/image-20210915212129447.png" style="zoom:80%;">
-
-
-
-<h4 id="单独编制和统一编址比较"><a href="#单独编制和统一编址比较" class="headerlink" title="单独编制和统一编址比较"></a>单独编制和统一编址比较</h4><img src="/2021/09/15/ComputerCompositionPrinciple03/image-20210915212200991.png" style="zoom: 67%;">
-
-
-
-<h3 id="I-O指令的设置方法"><a href="#I-O指令的设置方法" class="headerlink" title="I/O指令的设置方法"></a>I/O指令的设置方法</h3><img src="/2021/09/15/ComputerCompositionPrinciple03/image-20210915213415716.png" style="zoom:80%;">
-
-<p><strong>1. 设置专用的I/O指令：IN,OUT</strong></p>
-<img src="/2021/09/15/ComputerCompositionPrinciple03/image-20210922163608301.png" style="zoom: 67%;">
-
-
-
-<p>1）如采用<strong>设备编码</strong>方式，则I/O指令的地址码部分应给出所要访问的外围设备的编码，并指定所访问的寄存器。</p>
-<p>2）如果采用<strong>I/O端口地址编码</strong>方式，则I/O指令的地址 段给出端口地址，并指定CPU中寄存器号，操作码规定输入或输出操作类型。</p>
-<p><strong>2. 采用通用的数据传送指令实现I/O操作</strong></p>
-<img src="/2021/09/15/ComputerCompositionPrinciple03/image-20210922163959176.png" style="zoom: 67%;">
-
-<p>如果传送指令的源地址是<strong>CPU寄存器</strong>，而目的地是接口寄存器，则这条传送指令就是一条输出指令。例如传送指令:MOV n，R0；</p>
-<p>如果传送指令的源地址是<strong>接口寄存器</strong>，而目的地是 CPU中的寄存器，则是一条输入指令，例如:MOV R0，n。</p>
-<img src="/2021/09/15/ComputerCompositionPrinciple03/image-20210922164519440.png" style="zoom: 67%;">
-
-
-
-<p><strong>3. 通过I/O处理器（或I/O处理机）控制I/O操作</strong></p>
-<img src="/2021/09/15/ComputerCompositionPrinciple03/image-20210922164927227.png" style="zoom:67%;">
-
-
-
-<img src="/2021/09/15/ComputerCompositionPrinciple03/image-20210922164954101.png" style="zoom:67%;">
-
-
-
-<h1 id="复习提纲"><a href="#复习提纲" class="headerlink" title="复习提纲"></a>复习提纲</h1><p><img src="/2021/09/15/ComputerCompositionPrinciple03/image-20210922165204285.png"></p>
-<img src="/2021/09/15/ComputerCompositionPrinciple03/image-20210922165139954.png" style="zoom:67%;">
-
-<p><img src="/2021/09/15/ComputerCompositionPrinciple03/image-20210922165215552.png"></p>
-]]></content>
-      <categories>
-        <category>计算机组成原理</category>
-      </categories>
-      <tags>
-        <tag>计算机组成原理</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>计算机组成原理（四）</title>
-    <url>/2021/09/17/ComputerCompositionPrinciple04/</url>
-    <content><![CDATA[<h1 id="模型机的总体设计"><a href="#模型机的总体设计" class="headerlink" title="模型机的总体设计"></a>模型机的总体设计</h1><p><img src="/2021/09/17/ComputerCompositionPrinciple04/image-20210917083753129.png"></p>
-<h2 id="指令格式"><a href="#指令格式" class="headerlink" title="指令格式"></a>指令格式</h2><p><img src="/2021/09/17/ComputerCompositionPrinciple04/image-20210917084042617.png"></p>
-<p><strong>1. 双操作数指令</strong></p>
-<p><img src="/2021/09/17/ComputerCompositionPrinciple04/image-20210917084103503.png" alt="image-20210917084103503"></p>
-<ol start="2">
-<li><strong>单操作数指令</strong></li>
-</ol>
-<p><img src="/2021/09/17/ComputerCompositionPrinciple04/image-20210917084130138.png"></p>
-<ol start="3">
-<li><p><strong>转移指令</strong></p>
-<p><img src="/2021/09/17/ComputerCompositionPrinciple04/image-20210917084154667.png"></p>
-</li>
-</ol>
-<h2 id="寻址方式"><a href="#寻址方式" class="headerlink" title="寻址方式"></a>寻址方式</h2><p><img src="/2021/09/17/ComputerCompositionPrinciple04/image-20210917084308367.png"></p>
-<p><img src="/2021/09/17/ComputerCompositionPrinciple04/image-20210917084320473.png"></p>
-<p><img src="/2021/09/17/ComputerCompositionPrinciple04/image-20210917085432918.png"></p>
-<h2 id="操作类型"><a href="#操作类型" class="headerlink" title="操作类型"></a>操作类型</h2><p><img src="/2021/09/17/ComputerCompositionPrinciple04/image-20210917085558828.png"></p>
-<p><img src="/2021/09/17/ComputerCompositionPrinciple04/image-20210917085826008.png"></p>
-<h2 id="CPU组成"><a href="#CPU组成" class="headerlink" title="CPU组成"></a>CPU组成</h2><p><img src="/2021/09/17/ComputerCompositionPrinciple04/image-20210917085910304.png"></p>
-<h3 id="运算器"><a href="#运算器" class="headerlink" title="运算器"></a>运算器</h3><p><img src="/2021/09/17/ComputerCompositionPrinciple04/image-20210917090154698.png"></p>
-<ol>
-<li><p>输入选择器/锁存器</p>
-<p><img src="/2021/09/17/ComputerCompositionPrinciple04/image-20210917090456194.png"></p>
-</li>
-<li><p>ALU部件</p>
-<p><img src="/2021/09/17/ComputerCompositionPrinciple04/image-20210917090739124.png"></p>
-</li>
-<li><p>移位器</p>
-<p><img src="/2021/09/17/ComputerCompositionPrinciple04/image-20210917090752014.png"></p>
-</li>
-</ol>
-<h3 id="寄存器"><a href="#寄存器" class="headerlink" title="寄存器"></a>寄存器</h3><p><strong>寄存器设置</strong></p>
-<p><img src="/2021/09/17/ComputerCompositionPrinciple04/image-20210917092527017.png"></p>
-<h4 id="用于处理的寄存器"><a href="#用于处理的寄存器" class="headerlink" title="用于处理的寄存器"></a>用于处理的寄存器</h4><p><strong>通用寄存器组</strong></p>
-<p><img src="/2021/09/17/ComputerCompositionPrinciple04/image-20210917093326618.png"></p>
-<p><strong>暂存器</strong></p>
-<p><img src="/2021/09/17/ComputerCompositionPrinciple04/image-20210917093437800.png" alt="image-20210917093437800"></p>
-<h4 id="用于控制的寄存器"><a href="#用于控制的寄存器" class="headerlink" title="用于控制的寄存器"></a>用于控制的寄存器</h4><p><strong>指令寄存器IR（Instruction Register）</strong></p>
-<p><img src="/2021/09/17/ComputerCompositionPrinciple04/image-20210917093942508.png"></p>
-<p><strong>程序计数器PC（Program Counter）</strong></p>
-<p><img src="/2021/09/17/ComputerCompositionPrinciple04/image-20210917094305279.png"></p>
-<p><strong>程序状态字寄存器PSW（Program Status Word)</strong></p>
-<p><img src="/2021/09/17/ComputerCompositionPrinciple04/image-20210917094359904.png"></p>
-<h4 id="用作主存接口的寄存器"><a href="#用作主存接口的寄存器" class="headerlink" title="用作主存接口的寄存器"></a>用作主存接口的寄存器</h4><p><img src="/2021/09/17/ComputerCompositionPrinciple04/image-20210917094946788.png"></p>
-<p><strong>地址寄存器MAR: Memory Address Register</strong></p>
-<p><img src="/2021/09/17/ComputerCompositionPrinciple04/image-20210917095141560.png"></p>
-<p><strong>数据缓冲寄存器MBR/MDR：Memory Buffer/Data Register</strong></p>
-<p><img src="/2021/09/17/ComputerCompositionPrinciple04/image-20210917100027716.png"></p>
-<h3 id="总线"><a href="#总线" class="headerlink" title="总线"></a>总线</h3><p>1.定义</p>
-<p><img src="/2021/09/17/ComputerCompositionPrinciple04/image-20210917100423495.png"></p>
-<ol start="2">
-<li><p>总线类型</p>
-<p><img src="/2021/09/17/ComputerCompositionPrinciple04/image-20210917100543723.png"></p>
-</li>
-</ol>
-<p> <strong>CPU内总线：</strong></p>
-<p><img src="/2021/09/17/ComputerCompositionPrinciple04/image-20210918084656831.png"></p>
-<p><strong>部件间总线：</strong></p>
-<p><img src="/2021/09/17/ComputerCompositionPrinciple04/image-20210918084848134.png"></p>
-<p><strong>系统总线：</strong></p>
-<img src="/2021/09/17/ComputerCompositionPrinciple04/image-20210918084905049.png" style="zoom:67%;">
-
-
-
-<p><strong>外总线：</strong></p>
-<p><img src="/2021/09/17/ComputerCompositionPrinciple04/image-20210918084919443.png"></p>
-<h3 id="时序控制方式与时序系统"><a href="#时序控制方式与时序系统" class="headerlink" title="时序控制方式与时序系统"></a>时序控制方式与时序系统</h3><img src="/2021/09/17/ComputerCompositionPrinciple04/image-20210918085259855.png" style="zoom:67%;">
-
-
-
-<p><img src="/2021/09/17/ComputerCompositionPrinciple04/image-20210922200728446.png"></p>
-<h4 id="时序控制方式："><a href="#时序控制方式：" class="headerlink" title="时序控制方式："></a>时序控制方式：</h4><p><strong>同步控制方式：</strong></p>
-<p><img src="/2021/09/17/ComputerCompositionPrinciple04/image-20210922200909734.png" alt="image-20210922200909734"></p>
-<p>同步定时：在许多操作中需要严格地同步定时，如同步打入脉冲。</p>
-<p>各部件协同：在CPU内， 一般采用由CPU提供的统一时序信号来控制部件间信息的传送的。</p>
-<p>特点：时序关系比较简单，在是时间安排利用上可能不经济的。</p>
-<p><strong>异步控制方式</strong></p>
-<p><img src="/2021/09/17/ComputerCompositionPrinciple04/image-20210922201522469.png"></p>
-<p><img src="/2021/09/17/ComputerCompositionPrinciple04/image-20210922201555950.png" alt="image-20210922201555950"></p>
-<p><strong>实际应用中一些变化</strong></p>
-<p><img src="/2021/09/17/ComputerCompositionPrinciple04/image-20210922202328484.png"></p>
-<p><strong>指令序列间的衔接方式</strong></p>
-<p><img src="/2021/09/17/ComputerCompositionPrinciple04/image-20210922203140097.png"></p>
-<h4 id="时序系统"><a href="#时序系统" class="headerlink" title="时序系统"></a>时序系统</h4><p><img src="/2021/09/17/ComputerCompositionPrinciple04/image-20210922203220857.png"></p>
-<p><strong>划分层次</strong></p>
-<p><img src="/2021/09/17/ComputerCompositionPrinciple04/image-20210922203543953.png"></p>
-<p><strong>多级时序的划分</strong></p>
-<p><img src="/2021/09/17/ComputerCompositionPrinciple04/image-20210922204055893.png"></p>
-<h3 id="CPU的内部数据通路结构"><a href="#CPU的内部数据通路结构" class="headerlink" title="CPU的内部数据通路结构"></a>CPU的内部数据通路结构</h3><img src="/2021/09/17/ComputerCompositionPrinciple04/image-20210918085557420.png" style="zoom:67%;">
-
-
-
-<p><strong>1. 模型机数据通路框图</strong></p>
-<img src="/2021/09/17/ComputerCompositionPrinciple04/image-20210918085634763.png" style="zoom:67%;">
-
-<p><strong>2. 各类信息的传送路径</strong></p>
-<img src="/2021/09/17/ComputerCompositionPrinciple04/image-20210918085746835.png" style="zoom:67%;">
-
-
-
-<p>取指令地址</p>
-<img src="/2021/09/17/ComputerCompositionPrinciple04/image-20210918092219691.png" style="zoom:67%;">
-
-<img src="/2021/09/17/ComputerCompositionPrinciple04/image-20210918090243201.png" style="zoom:50%;">
-
-
-
-<p>指令信息的传递</p>
-<img src="/2021/09/17/ComputerCompositionPrinciple04/image-20210918091244655.png" style="zoom:50%;">
-
-
-
-<p>取操作数地址（寄存器间址）</p>
-<img src="/2021/09/17/ComputerCompositionPrinciple04/image-20210918092728565.png" style="zoom:67%;">
-
-
-
-<p>取操作数地址（自减型寄存器间址）</p>
-<img src="/2021/09/17/ComputerCompositionPrinciple04/image-20210918092837970.png" alt="image-20210918092837970" style="zoom:67%;">
-
-
-
-<p>取操作数地址（自增型寄存器间址）</p>
-<img src="/2021/09/17/ComputerCompositionPrinciple04/image-20210918093042362.png" style="zoom:67%;">
-
-<p><img src="/2021/09/17/ComputerCompositionPrinciple04/image-20210918093051599.png"></p>
-<p><img src="/2021/09/17/ComputerCompositionPrinciple04/image-20210918093059929.png"></p>
-<p>取操作数地址（变址器间址）</p>
-<img src="/2021/09/17/ComputerCompositionPrinciple04/image-20210918093735006.png" style="zoom:67%;">
-
-<img src="/2021/09/17/ComputerCompositionPrinciple04/image-20210918093752452.png" alt="image-20210918093752452" style="zoom:67%;">
-
-<img src="/2021/09/17/ComputerCompositionPrinciple04/image-20210918093802571.png" style="zoom:67%;">
-
-
-
-<p><strong>4. 数据信息的传送</strong></p>
-<p>寄存器-&gt;寄存器</p>
-<img src="/2021/09/17/ComputerCompositionPrinciple04/image-20210918094030278.png" style="zoom:67%;">
-
-
-
-<p>寄存器-&gt;主存</p>
-<img src="/2021/09/17/ComputerCompositionPrinciple04/image-20210918094212532.png" style="zoom:67%;">
-
-
-
-<p>主存-&gt;寄存器</p>
-<img src="/2021/09/17/ComputerCompositionPrinciple04/image-20210918094235606.png" style="zoom:67%;">
-
-
-
-<p>主存-&gt;主存</p>
-<img src="/2021/09/17/ComputerCompositionPrinciple04/image-20210918094316110.png" style="zoom:67%;">
-
-
-
-<p>寄存器-&gt;外围设备</p>
-<img src="/2021/09/17/ComputerCompositionPrinciple04/image-20210918094608972.png" style="zoom:67%;">
-
-
-
-<p>外围设备-&gt;寄存器</p>
-<img src="/2021/09/17/ComputerCompositionPrinciple04/image-20210918094836188.png" style="zoom:67%;">
-
-
-
-
-
-<h3 id="微命令设置"><a href="#微命令设置" class="headerlink" title="微命令设置"></a>微命令设置</h3><p>将模型机的数据传送路径分为<strong>两大类操作</strong>，并分段设置相关微命令：</p>
-<h4 id="数据通路操作：CPU内部操作"><a href="#数据通路操作：CPU内部操作" class="headerlink" title="数据通路操作：CPU内部操作"></a>数据通路操作：CPU内部操作</h4><img src="/2021/09/17/ComputerCompositionPrinciple04/image-20210918095508673.png" style="zoom:67%;">
-
-
-
-<img src="/2021/09/17/ComputerCompositionPrinciple04/image-20210918095602805.png" style="zoom: 67%;">
-
-
-
-<img src="/2021/09/17/ComputerCompositionPrinciple04/image-20210918095949584.png" style="zoom:50%;">
-
-<img src="/2021/09/17/ComputerCompositionPrinciple04/image-20210918100143665.png" style="zoom:50%;">
-
-
-
-<img src="/2021/09/17/ComputerCompositionPrinciple04/image-20210918100202131.png" style="zoom:50%;">
-
-<img src="/2021/09/17/ComputerCompositionPrinciple04/image-20210918100326456.png" style="zoom:50%;">
-
-<p><img src="/2021/09/17/ComputerCompositionPrinciple04/image-20210922194825326.png"></p>
-<p><img src="/2021/09/17/ComputerCompositionPrinciple04/image-20210922195226991.png"></p>
-<h4 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h4><p><img src="/2021/09/17/ComputerCompositionPrinciple04/image-20210922195259142.png" alt="image-20210922195259142"></p>
-<p><img src="/2021/09/17/ComputerCompositionPrinciple04/image-20210922195954157.png"></p>
-]]></content>
-      <categories>
-        <category>计算机组成原理</category>
-      </categories>
-      <tags>
-        <tag>计算机组成原理</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>计组（八）：模型机的微程序控制器</title>
-    <url>/2021/09/27/ComputerCompositionPrinciple05/</url>
-    <content><![CDATA[<h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><ol>
-<li><p>微命令：构成控制信号序列的<strong>最小（或最基本）单 位</strong>，又称微信号，指那些直接作用于部件或控制门 电路的命令。如：打开或关闭某传送通路的电信命 令，或对触发器D端或R/S端进行同步打入，置位、 复位等的控制脉冲。</p>
-</li>
-<li><p>微操作：由微命令控制实现的最基本的操作称为微操作，如：开门、关门、选择。</p>
-</li>
-<li><p>微周期：从控制存储器中读取一条微指令并执行相应的一步操作所需的时间，称为一个微周期或微指 令周期。通常一个时钟周期为一个微周期。</p>
-</li>
-<li><p>微指令：每个<strong>微周期</strong>的操作所需的微命令组成一条 微指令。从控制存储器的组织角度讲，每个单元存 放一条微指令。</p>
-</li>
-<li><p>微程序：一系列微指令的有序集合称为微程序，用 来解释执行一条机器指令。</p>
-</li>
-<li><p>对应关系：</p>
-<p><img src="/2021/09/27/ComputerCompositionPrinciple05/image-20210927094728546.png" alt="image-20210927094728546"></p>
-</li>
-</ol>
-<p>微程序控制的概念</p>
-<p>① 将控制器所需的微命令，以代码（微码）形式编成 微指令，存入一个ROM构成的控制存储器中。 ……将存储逻辑引入CPU。 ② 将各种机器指令的操作分解为若干微操作序列。 ……将程序技术引入CPU的构成级。 </p>
-<p>上面从两个角度阐明了微程序控制的基本概念： 微命令的产生方式，微程序与机器指令之间的对应关系。</p>
-<p><img src="/2021/09/27/ComputerCompositionPrinciple05/image-20210927095354076.png"></p>
-<p><img src="/2021/09/27/ComputerCompositionPrinciple05/image-20210927095859376.png"></p>
-<h2 id="复习提纲"><a href="#复习提纲" class="headerlink" title="复习提纲"></a>复习提纲</h2><p><img src="/2021/09/27/ComputerCompositionPrinciple05/image-20210927095924521.png"></p>
-<p><img src="/2021/09/27/ComputerCompositionPrinciple05/image-20210927100154139.png"></p>
-<p><img src="/2021/09/27/ComputerCompositionPrinciple05/image-20210927100315512.png"></p>
-]]></content>
-      <categories>
-        <category>计算机组成原理</category>
-      </categories>
-      <tags>
-        <tag>计算机组成原理</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>计组（九）：存储子系统（一）</title>
-    <url>/2021/09/29/ComputerCompositionPrinciple06/</url>
-    <content><![CDATA[<h2 id="存储器的层次结构"><a href="#存储器的层次结构" class="headerlink" title="存储器的层次结构"></a>存储器的层次结构</h2><p>存储器是用来存放大量程序与数据的计算机部件</p>
-<p><strong>存储器的基本要求：</strong></p>
-<ol>
-<li>存储容量大</li>
-<li>存取速度快</li>
-<li>成本价格低</li>
-</ol>
-<p><strong>计算机的工作表现为读取与执行指令：</strong></p>
-<ol>
-<li>执行指令在CPU内完成</li>
-<li>读取指令是在存储器中完成的</li>
-</ol>
-<p>由于两者速度不匹配，CPU处理时间与访存时间相差一个数量级，这就是计算机的“瓶颈”问题</p>
-<p>解决方法：</p>
-<ol>
-<li>努力改进制造工艺，寻求新的存储机理，以提高存储器的性能</li>
-<li>采用<strong>存储器分层结构</strong>来满足计算机系统对存储器不同方面的要求</li>
-</ol>
-<p><strong>三级存储体系结构：</strong></p>
-<p>高速缓冲存储器-主存-外存</p>
-<p><strong>现代新型多级缓存体系：</strong></p>
-<p>CPU内部寄存器组–CPU内部第一级Cache(L1)–第二级Cache(L2) –第三级Cache(L3)–主存(内存)–外部存储 </p>
-<p><strong>自上而下的存储器具有以下特征：</strong></p>
-<ol>
-<li>存储器每位加个逐渐降低</li>
-<li>存储器容量逐渐增加</li>
-<li>存储器的存取速率逐渐变慢</li>
-</ol>
-<p><img src="/2021/09/29/ComputerCompositionPrinciple06/image-20210929200151518.png"></p>
-<h3 id="主存储"><a href="#主存储" class="headerlink" title="主存储"></a>主存储</h3><p>能由CPU直接编程访问的存储器，它存放当前CPU需要执行的程序与需要处理的数据。</p>
-<p><strong>特点：</strong></p>
-<p>存取速度快，容量有限</p>
-<p><strong>主存储器的基本要求：</strong></p>
-<ol>
-<li><p>随机访问</p>
-</li>
-<li><p>工作速度快</p>
-</li>
-<li><p>具有一定的存储容量</p>
-</li>
-</ol>
-<h3 id="外存储器"><a href="#外存储器" class="headerlink" title="外存储器"></a>外存储器</h3><p>用来存放需要联机保存但暂不使用 的大量程序与数据。</p>
-<p><strong>特点:</strong></p>
-<p>存储速度较慢，容量很大</p>
-<p>程序与数据只有进入主存才能真正运行，而外存储器是作为后援的。</p>
-<h3 id="高速缓存-Cache"><a href="#高速缓存-Cache" class="headerlink" title="高速缓存(Cache)"></a>高速缓存(Cache)</h3><p>高速缓存中存放的是最近经常使用的程序与数据，作为主存中当前活跃信息的副本</p>
-<p><strong>特点：</strong></p>
-<p>存储速度很快，容量很小</p>
-<h3 id="层次结构"><a href="#层次结构" class="headerlink" title="层次结构"></a>层次结构</h3><h4 id="主存-Cache层次"><a href="#主存-Cache层次" class="headerlink" title="主存-Cache层次"></a>主存-Cache层次</h4><p><strong>地址映射：</strong></p>
-<ol>
-<li><p>直接映射：</p>
-<p>主存的每一块只能映射到Cache的固定块中。</p>
-</li>
-<li><p>全相联映射：</p>
-<p>主存的每一块可以映射到Cache的任一块</p>
-</li>
-<li><p>组相联映射</p>
-<p>主存的每一块可以映射到Cache的多个固定块</p>
-</li>
-</ol>
-<p><strong>访问命中：</strong></p>
-<p><img src="/2021/09/29/ComputerCompositionPrinciple06/image-20210929200951301.png"></p>
-<p><strong>Cache内容替换</strong></p>
-<p><strong>数据一致性</strong></p>
-<h4 id="主存-外存层次"><a href="#主存-外存层次" class="headerlink" title="主存-外存层次"></a>主存-外存层次</h4><p>虚拟存储：主存+部分外存-&gt;虚存（用户编程空间）</p>
-<p><strong>需解决：</strong></p>
-<ol>
-<li>存储空间分配</li>
-<li>程序调度</li>
-<li>虚-实地址转换</li>
-</ol>
-<h2 id="存储器分类"><a href="#存储器分类" class="headerlink" title="存储器分类"></a>存储器分类</h2><p><img src="/2021/09/29/ComputerCompositionPrinciple06/image-20210929202137965.png"></p>
-<ol>
-<li><p><strong>静态存储器：</strong></p>
-<p>依靠<strong>双稳态触发器</strong>的两个稳定状态 保存信息。</p>
-</li>
-<li><p><strong>动态存储器：</strong></p>
-<p>依靠<strong>电容上的存储电荷</strong>暂存信息。</p>
-</li>
-<li><p><strong>磁表面存储器：</strong></p>
-<p>利用磁层上<strong>不同方向的磁化区域</strong>表示信息。容量大， 非破坏性读出，长期保存信息，速度慢，作外存。 是构成外存的单元之一 ，分为：磁卡、磁鼓、磁带、磁盘等。</p>
-</li>
-<li><p><strong>光盘存储器：</strong></p>
-<p>利用光斑的有无表示信息。容量很大，非破坏性读出， 长期保存信息，速度慢，作外存。</p>
-<ol>
-<li>只读型光盘（CD-ROM）</li>
-<li>写入式（只能写一次）光盘（WORM）</li>
-<li>可擦除/重写型（可逆式）光盘</li>
-</ol>
-</li>
-</ol>
-<h2 id="存取方式"><a href="#存取方式" class="headerlink" title="存取方式"></a>存取方式</h2><h3 id="随机存取存储器（RAM）：random-access-memory"><a href="#随机存取存储器（RAM）：random-access-memory" class="headerlink" title="随机存取存储器（RAM）：random access memory"></a><strong>随机存取存储器（RAM）：random access memory</strong></h3><p><strong>主存与高速缓存Cache</strong>是CPU可以直接编址访问的存储器，这就要求它们采取随机访问的存取方式。</p>
-<p><strong>随机存取：</strong></p>
-<ol>
-<li><p><strong>可按地址随机地访问任一存储单元。</strong></p>
-<p>如可直接访问 0000H单元，也可直接访问FFFFH单元；CPU可按字节或 字存取数据，进行处理</p>
-</li>
-<li><p><strong>访问各存储单元所需的读/写时间相同，与地址无关。</strong></p>
-<p>可用读/写周期（存取周期）表明RAM的工作速度。</p>
-<p><strong>速度指标：</strong>存取周期或读/写周期</p>
-</li>
-</ol>
-<h3 id="只读存储器（ROM）：read-only-memory"><a href="#只读存储器（ROM）：read-only-memory" class="headerlink" title="只读存储器（ROM）：read only memory"></a>只读存储器（ROM）：read only memory</h3><p>只读存储器在正常工作中只能读出，不能写入。主存中常采用部分ROM固化系统软件中的核心部分、已调试好不再改变的应用软件、汉字字库一类信息。</p>
-<p><strong>CPU中也常采用ROM，存放用来解释执行机器指令的微程序。</strong></p>
-<p><img src="/2021/09/29/ComputerCompositionPrinciple06/image-20210929204724515.png"></p>
-<h3 id="顺序存取存储器（SAM）-sequential-access-memory"><a href="#顺序存取存储器（SAM）-sequential-access-memory" class="headerlink" title="顺序存取存储器（SAM）:sequential access memory"></a>顺序存取存储器（SAM）:sequential access memory</h3><p>顺序存取存储器的信息是按记录块组织、顺序存放的，访问时间与信息存放位置有关。磁带是采取顺 序存取方式的存储器</p>
-<p><img src="/2021/09/29/ComputerCompositionPrinciple06/image-20210929205443604.png"></p>
-<h3 id="直接存取存储器（DAM）-direct-access-memory"><a href="#直接存取存储器（DAM）-direct-access-memory" class="headerlink" title="直接存取存储器（DAM）:direct access memory"></a>直接存取存储器（DAM）:direct access memory</h3><p>访问时读/写部件先直接指向一个小区域，再在该区域内 顺序查找。访问时间与数据位置有关。</p>
-<p><img src="/2021/09/29/ComputerCompositionPrinciple06/image-20210929205610916.png"></p>
-]]></content>
-      <categories>
-        <category>计算机组成原理</category>
-      </categories>
-      <tags>
-        <tag>计算机组成原理</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>计组（11）：存储子系统（三）</title>
-    <url>/2021/09/29/ComputerCompositionPrinciple08/</url>
-    <content><![CDATA[<h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>主存储器的组织涉及到这样一些方面： </p>
-<p>(1)存储器<strong>基本逻辑设计</strong>，而半导体存储器的逻辑 主要是<strong>寻址逻辑</strong>，即如何按地址选择芯片与片内单元； </p>
-<p>(2) 如果采用DRAM，还需考虑<strong>动态刷新</strong>问题；</p>
-<p>(3) 所构成的主存如何与CPU<strong>连接、匹配</strong>；</p>
-<p>(4) <strong>主存校验</strong>，如何保证存取信息的正确性。</p>
-<h2 id="主存储器的逻辑设计"><a href="#主存储器的逻辑设计" class="headerlink" title="主存储器的逻辑设计"></a>主存储器的逻辑设计</h2><h3 id="设计主存时，需要注意两点："><a href="#设计主存时，需要注意两点：" class="headerlink" title="设计主存时，需要注意两点："></a>设计主存时，需要注意两点：</h3><ol>
-<li><p>明确所要求的<strong>总容量</strong>这一技术指标，即<strong>字数× 位数</strong>。</p>
-<p>字数指可编址单元数，常简称单元数；位数指每 个编址单元的位数。</p>
-<p>模型机中，采用主存按字节编址， 那么每个编址单元有8位(一个字节)</p>
-</li>
-<li><p>需要确定可供选用的存储芯片，即什么类型、型号 的存储芯片， 每片的容量是多少。每片容量通常低于总容量，就需要用若干块芯片组成。相应地，可能存在 <strong>位数与字数的扩展问题。</strong></p>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>计算机组成原理</category>
-      </categories>
-      <tags>
-        <tag>计算机组成原理</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>计组（十）：存储子系统（二）</title>
-    <url>/2021/09/29/ComputerCompositionPrinciple07/</url>
-    <content><![CDATA[<h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p><img src="/2021/09/29/ComputerCompositionPrinciple07/image-20210929210409122.png" alt="image-20210929210409122"></p>
-<h2 id="静态MOS存储单元与芯片（SRAM）"><a href="#静态MOS存储单元与芯片（SRAM）" class="headerlink" title="静态MOS存储单元与芯片（SRAM）"></a>静态MOS存储单元与芯片（SRAM）</h2><p>若T1通导而T2截止，存入信息为0。若T1截止而T2通导， 存入信息为1。（不要求）</p>
-<p><img src="/2021/09/29/ComputerCompositionPrinciple07/image-20210929211912273.png"></p>
-<h2 id="动态MOS存储器的基本存储原理-DRAM"><a href="#动态MOS存储器的基本存储原理-DRAM" class="headerlink" title="动态MOS存储器的基本存储原理(DRAM)"></a>动态MOS存储器的基本存储原理(DRAM)</h2><h3 id="动态MOS存储器的基本存储原理"><a href="#动态MOS存储器的基本存储原理" class="headerlink" title="动态MOS存储器的基本存储原理"></a>动态MOS存储器的基本存储原理</h3><p>是将存储信息以<strong>电荷形式存于电容</strong>之中，这种电容可 以是MOS管栅极电容，或者是专用的MOS电容，通常定义 电容充电至高电平时为1；放电至低电平时为0。</p>
-<h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><ol>
-<li><p>刷新</p>
-<p>在MOS管断开之后，电容总存在泄漏通路，难以使泄漏电阻达到无穷大。时间过长，电容上的<strong>电荷会通过泄漏电路放电</strong>，使所存储的信息丢失。为此，经过 一定时间后就需要对存储内容重写一遍，也就是<strong>对存1的电容重新充电</strong>，称为刷新。</p>
-</li>
-<li><p>重写：</p>
-<p>对于单管动态MOS存储单元而言，读操作后电容C上的 电荷将发生变化，属于破坏性读出，需要<strong>读后对存1的电容补充电荷</strong>，称为重写(再生)。这一过程，由芯片内的外围电路自动实现。</p>
-</li>
-</ol>
-<h3 id="动态MOS四管存储单元电路（非双稳态电路）"><a href="#动态MOS四管存储单元电路（非双稳态电路）" class="headerlink" title="动态MOS四管存储单元电路（非双稳态电路）"></a>动态MOS四管存储单元电路（非双稳态电路）</h3><p><strong>组成</strong></p>
-<p>T1、T2：记忆管 </p>
-<p>C1、C2：柵极电容 </p>
-<p>T3、T4：控制门管 </p>
-<p>Z：字线 </p>
-<p>非W、W ：位线</p>
-<p><img src="/2021/09/29/ComputerCompositionPrinciple07/image-20210929213004492.png"></p>
-<p><strong>定义</strong></p>
-<p>“0”：T1导通，T2截止（C1有电荷，C2无电荷）；</p>
-<p> “1”：T1截止，T2导通（C1无电荷，C2有电荷）。</p>
-<h4 id="工作"><a href="#工作" class="headerlink" title="工作"></a><strong>工作</strong></h4><p><strong>写入</strong></p>
-<p>首先字线Z加高电平时， T3、T4导通</p>
-<p><strong>写”0”</strong>： </p>
-<p><img src="/2021/09/29/ComputerCompositionPrinciple07/image-20210929213848997.png"></p>
-<p><strong>写”1”</strong>： </p>
-<p><img src="/2021/09/29/ComputerCompositionPrinciple07/image-20210929213902231.png"></p>
-<p><strong>读出</strong></p>
-<p><img src="/2021/09/29/ComputerCompositionPrinciple07/image-20210929214020099.png"></p>
-<p><strong>读“0”：</strong></p>
-<p><img src="/2021/09/29/ComputerCompositionPrinciple07/image-20210929214044834.png"></p>
-<p><strong>读“1”：</strong></p>
-<p><img src="/2021/09/29/ComputerCompositionPrinciple07/image-20210929214103685.png" alt="image-20210929214103685"></p>
-<p><strong>保持</strong></p>
-<p><img src="/2021/09/29/ComputerCompositionPrinciple07/image-20210929214157111.png"></p>
-<h2 id="单管单元"><a href="#单管单元" class="headerlink" title="单管单元"></a>单管单元</h2><p><img src="/2021/09/29/ComputerCompositionPrinciple07/image-20210929214404392.png"></p>
-<p><strong>组成</strong></p>
-<p>C：记忆单元    T：控制门管    Z：字线    W：位线</p>
-<p><strong>定义</strong></p>
-<p>“0”：C无电荷，电平V0（低） </p>
-<p>“1”：C有电荷，电平V1（高）</p>
-<p><strong>工作</strong></p>
-<p><img src="/2021/09/29/ComputerCompositionPrinciple07/image-20210929214436835.png"></p>
-<p><img src="/2021/09/29/ComputerCompositionPrinciple07/image-20210929214446085.png"></p>
-]]></content>
-      <categories>
-        <category>计算机组成原理</category>
-      </categories>
-      <tags>
-        <tag>计算机组成原理</tag>
       </tags>
   </entry>
   <entry>
@@ -3513,6 +2650,18 @@ git merge version1.0
       </tags>
   </entry>
   <entry>
+    <title>成电微记（六）Bill界面的实现</title>
+    <url>/2021/11/10/DiaryInUESTC06/</url>
+    <content><![CDATA[<p>在<em>TODO界面的实现</em>中，我们对定义实体类和recyclerView已经有了一定的了解，Bill页面的基本原理也是跟TODO一样的，不过我在这里丰富了一些细节。</p>
+<h2 id="recyclerView的嵌套"><a href="#recyclerView的嵌套" class="headerlink" title="recyclerView的嵌套"></a>recyclerView的嵌套</h2><h2 id="addView窗口的实现"><a href="#addView窗口的实现" class="headerlink" title="addView窗口的实现"></a>addView窗口的实现</h2><h2 id="RadioGroup无法添加布局的问题解决"><a href="#RadioGroup无法添加布局的问题解决" class="headerlink" title="RadioGroup无法添加布局的问题解决"></a>RadioGroup无法添加布局的问题解决</h2>]]></content>
+      <categories>
+        <category>成电微记</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>成电微记（五）TODO界面的实现</title>
     <url>/2021/10/02/DiaryInUESTC05/</url>
     <content><![CDATA[<h2 id="step1：创建Todo类"><a href="#step1：创建Todo类" class="headerlink" title="step1：创建Todo类"></a>step1：创建Todo类</h2><pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Todo</span> <span class="token punctuation">{</span>
@@ -3621,6 +2770,128 @@ git merge version1.0
 <p>实现效果：</p>
 <img src="/2021/10/02/DiaryInUESTC05/image-20211002105638844.png" style="zoom:50%;">
 
+
+
+<h2 id="step5：将TODO添加到数据库"><a href="#step5：将TODO添加到数据库" class="headerlink" title="step5：将TODO添加到数据库"></a>step5：将TODO添加到数据库</h2><p>除了database和Dao类之外，在这里我还定义了一个TodoEngine类用于简化todo增删改查的操作，代码如下：</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">TodoEngine</span> <span class="token punctuation">{</span>
+    <span class="token keyword">final</span> TodoDao todoDao<span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token function">TodoEngine</span><span class="token punctuation">(</span>Context context<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        TodoDatabase todoDatabase <span class="token operator">=</span> TodoDatabase<span class="token punctuation">.</span><span class="token function">getInstance</span><span class="token punctuation">(</span>context<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        todoDao <span class="token operator">=</span> todoDatabase<span class="token punctuation">.</span><span class="token function">getTodoDao</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">//插入</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">insertTodo</span><span class="token punctuation">(</span>Todo<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> todos<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">new</span> <span class="token class-name">InsertAsyncTack</span><span class="token punctuation">(</span>todoDao<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">execute</span><span class="token punctuation">(</span>todos<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">InsertAsyncTack</span> <span class="token keyword">extends</span> <span class="token class-name">AsyncTask</span><span class="token operator">&lt;</span>Todo<span class="token punctuation">,</span> Void<span class="token punctuation">,</span> Void<span class="token operator">></span> <span class="token punctuation">{</span>
+        <span class="token keyword">final</span> TodoDao dao<span class="token punctuation">;</span>
+
+        <span class="token keyword">public</span> <span class="token function">InsertAsyncTack</span><span class="token punctuation">(</span>TodoDao todoDao<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            dao <span class="token operator">=</span> todoDao<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token annotation punctuation">@Override</span>
+        <span class="token keyword">protected</span> Void <span class="token function">doInBackground</span><span class="token punctuation">(</span>Todo<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> todos<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            dao<span class="token punctuation">.</span><span class="token function">insertTodo</span><span class="token punctuation">(</span>todos<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span> null<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">//更新</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">updateTodos</span><span class="token punctuation">(</span>Todo<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> todos<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">new</span> <span class="token class-name">UpdateAsyncTack</span><span class="token punctuation">(</span>todoDao<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">execute</span><span class="token punctuation">(</span>todos<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">UpdateAsyncTack</span> <span class="token keyword">extends</span> <span class="token class-name">AsyncTask</span><span class="token operator">&lt;</span>Todo<span class="token punctuation">,</span> Void<span class="token punctuation">,</span> Void<span class="token operator">></span> <span class="token punctuation">{</span>
+        <span class="token keyword">final</span> TodoDao dao<span class="token punctuation">;</span>
+
+        <span class="token keyword">public</span> <span class="token function">UpdateAsyncTack</span><span class="token punctuation">(</span>TodoDao todoDao<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            dao <span class="token operator">=</span> todoDao<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token annotation punctuation">@Override</span>
+        <span class="token keyword">protected</span> Void <span class="token function">doInBackground</span><span class="token punctuation">(</span>Todo<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> todos<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            dao<span class="token punctuation">.</span><span class="token function">updateTodos</span><span class="token punctuation">(</span>todos<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span> null<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">//删除</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">deleteTodos</span><span class="token punctuation">(</span>Todo<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> todos<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">new</span> <span class="token class-name">DeleteAsyncTack</span><span class="token punctuation">(</span>todoDao<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">execute</span><span class="token punctuation">(</span>todos<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">DeleteAsyncTack</span> <span class="token keyword">extends</span> <span class="token class-name">AsyncTask</span><span class="token operator">&lt;</span>Todo<span class="token punctuation">,</span> Void<span class="token punctuation">,</span> Void<span class="token operator">></span> <span class="token punctuation">{</span>
+        <span class="token keyword">private</span> TodoDao dao<span class="token punctuation">;</span>
+
+        <span class="token keyword">public</span> <span class="token function">DeleteAsyncTack</span><span class="token punctuation">(</span>TodoDao todoDao<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            dao <span class="token operator">=</span> todoDao<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token annotation punctuation">@Override</span>
+        <span class="token keyword">protected</span> Void <span class="token function">doInBackground</span><span class="token punctuation">(</span>Todo<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> todos<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            dao<span class="token punctuation">.</span><span class="token function">deleteTodos</span><span class="token punctuation">(</span>todos<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span> null<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+
+    <span class="token comment" spellcheck="true">//全部删除</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">deleteAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">new</span> <span class="token class-name">DeleteAllAsyncTack</span><span class="token punctuation">(</span>todoDao<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">execute</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">DeleteAllAsyncTack</span> <span class="token keyword">extends</span> <span class="token class-name">AsyncTask</span><span class="token operator">&lt;</span>Void<span class="token punctuation">,</span> Void<span class="token punctuation">,</span> Void<span class="token operator">></span> <span class="token punctuation">{</span>
+        <span class="token keyword">private</span> TodoDao dao<span class="token punctuation">;</span>
+
+        <span class="token keyword">public</span> <span class="token function">DeleteAllAsyncTack</span><span class="token punctuation">(</span>TodoDao todoDao<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            dao <span class="token operator">=</span> todoDao<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token annotation punctuation">@Override</span>
+        <span class="token keyword">protected</span> Void <span class="token function">doInBackground</span><span class="token punctuation">(</span>Void<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> voids<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            dao<span class="token punctuation">.</span><span class="token function">deleteAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span> null<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">//查询</span>
+    <span class="token keyword">public</span> List<span class="token operator">&lt;</span>Todo<span class="token operator">></span> <span class="token function">queryAllTodos</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+        List<span class="token operator">&lt;</span>Todo<span class="token operator">></span> todoList <span class="token operator">=</span> null<span class="token punctuation">;</span>
+        <span class="token keyword">try</span> <span class="token punctuation">{</span>
+            todoList <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">QueryAsyncTack</span><span class="token punctuation">(</span>todoDao<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">execute</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">ExecutionException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">InterruptedException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span>  todoList<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">QueryAsyncTack</span> <span class="token keyword">extends</span> <span class="token class-name">AsyncTask</span><span class="token operator">&lt;</span>Void<span class="token punctuation">,</span> Void<span class="token punctuation">,</span> List<span class="token operator">&lt;</span>Todo<span class="token operator">>></span> <span class="token punctuation">{</span>
+        <span class="token keyword">private</span> TodoDao dao<span class="token punctuation">;</span>
+
+        <span class="token keyword">public</span> <span class="token function">QueryAsyncTack</span><span class="token punctuation">(</span>TodoDao todoDao<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            dao <span class="token operator">=</span> todoDao<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token annotation punctuation">@Override</span>
+        <span class="token keyword">protected</span> List<span class="token operator">&lt;</span>Todo<span class="token operator">></span> <span class="token function">doInBackground</span><span class="token punctuation">(</span>Void<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> voids<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            List<span class="token operator">&lt;</span>Todo<span class="token operator">></span> todoList <span class="token operator">=</span> dao<span class="token punctuation">.</span><span class="token function">getAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span>Todo todo <span class="token operator">:</span> todoList<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                Log<span class="token punctuation">.</span><span class="token function">i</span><span class="token punctuation">(</span><span class="token string">"TODO"</span><span class="token punctuation">,</span> todo<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">return</span> todoList<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="step6：通过itemTouchHelper实现拖拽效果"><a href="#step6：通过itemTouchHelper实现拖拽效果" class="headerlink" title="step6：通过itemTouchHelper实现拖拽效果"></a>step6：通过itemTouchHelper实现拖拽效果</h2><p>定义todoItemTouchHelper继承自itemTouchHelper并且重写某些方法</p>
+<p>在adapter中重写onItemMove和onItemDismiss实现todo项在recyclerView和数据库中的更新。</p>
 ]]></content>
       <categories>
         <category>成电微记</category>
@@ -3785,35 +3056,6 @@ git merge version1.0
       </tags>
   </entry>
   <entry>
-    <title>HTML学习笔记（三）</title>
-    <url>/2021/10/06/HTMLLearning03/</url>
-    <content><![CDATA[<h1 id="表单的应用"><a href="#表单的应用" class="headerlink" title="表单的应用"></a>表单的应用</h1><h2 id="只读模式"><a href="#只读模式" class="headerlink" title="只读模式"></a>只读模式</h2><pre class="line-numbers language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>
-    name: <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>username<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>admin<span class="token punctuation">"</span></span> <span class="token attr-name">readonly</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<h2 id="隐藏域"><a href="#隐藏域" class="headerlink" title="隐藏域"></a>隐藏域</h2><pre class="line-numbers language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>password:<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>password<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>password<span class="token punctuation">"</span></span> <span class="token attr-name">hidden</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p><img src="/2021/10/06/HTMLLearning03/image-20211006160703423.png"></p>
-<h2 id="增强鼠标可用性"><a href="#增强鼠标可用性" class="headerlink" title="增强鼠标可用性"></a>增强鼠标可用性</h2><pre class="line-numbers language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span> <span class="token attr-name">for</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>mark<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>你点我试试<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>mark<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<p><img src="/2021/10/06/HTMLLearning03/image-20211006160925407.png"></p>
-<h1 id="表单初级验证"><a href="#表单初级验证" class="headerlink" title="表单初级验证"></a>表单初级验证</h1><pre class="line-numbers language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>name:    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>username<span class="token punctuation">"</span></span> <span class="token attr-name">placeholder</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>请输入用户名<span class="token punctuation">"</span></span> <span class="token attr-name">required</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p><img src="/2021/10/06/HTMLLearning03/image-20211006161748997.png"></p>
-<p>required: 非空判断</p>
-<p>pattern：正则表达式判断</p>
-]]></content>
-      <categories>
-        <category>HTML</category>
-      </categories>
-      <tags>
-        <tag>HTML</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>HTML学习笔记（二）</title>
     <url>/2021/10/06/HTMLLearning02/</url>
     <content><![CDATA[<h2 id="页面结构分析"><a href="#页面结构分析" class="headerlink" title="页面结构分析"></a>页面结构分析</h2><p><img src="/2021/10/06/HTMLLearning02/image-20211006141016170.png" alt="image-20211006141016170"></p>
@@ -3902,6 +3144,35 @@ git merge version1.0
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p><img src="/2021/10/06/HTMLLearning02/image-20211006155241101.png"></p>
+]]></content>
+      <categories>
+        <category>HTML</category>
+      </categories>
+      <tags>
+        <tag>HTML</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>HTML学习笔记（三）</title>
+    <url>/2021/10/06/HTMLLearning03/</url>
+    <content><![CDATA[<h1 id="表单的应用"><a href="#表单的应用" class="headerlink" title="表单的应用"></a>表单的应用</h1><h2 id="只读模式"><a href="#只读模式" class="headerlink" title="只读模式"></a>只读模式</h2><pre class="line-numbers language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>
+    name: <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>username<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>admin<span class="token punctuation">"</span></span> <span class="token attr-name">readonly</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h2 id="隐藏域"><a href="#隐藏域" class="headerlink" title="隐藏域"></a>隐藏域</h2><pre class="line-numbers language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>password:<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>password<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>password<span class="token punctuation">"</span></span> <span class="token attr-name">hidden</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><img src="/2021/10/06/HTMLLearning03/image-20211006160703423.png"></p>
+<h2 id="增强鼠标可用性"><a href="#增强鼠标可用性" class="headerlink" title="增强鼠标可用性"></a>增强鼠标可用性</h2><pre class="line-numbers language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span> <span class="token attr-name">for</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>mark<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>你点我试试<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>mark<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p><img src="/2021/10/06/HTMLLearning03/image-20211006160925407.png"></p>
+<h1 id="表单初级验证"><a href="#表单初级验证" class="headerlink" title="表单初级验证"></a>表单初级验证</h1><pre class="line-numbers language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>name:    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>username<span class="token punctuation">"</span></span> <span class="token attr-name">placeholder</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>请输入用户名<span class="token punctuation">"</span></span> <span class="token attr-name">required</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><img src="/2021/10/06/HTMLLearning03/image-20211006161748997.png"></p>
+<p>required: 非空判断</p>
+<p>pattern：正则表达式判断</p>
 ]]></content>
       <categories>
         <category>HTML</category>
@@ -4091,6 +3362,20 @@ git merge version1.0
       </tags>
   </entry>
   <entry>
+    <title>地址传送指令</title>
+    <url>/2021/11/21/WeiJiYuanLi01/</url>
+    <content><![CDATA[<p>取近地址指针：LEA</p>
+<p>取远地址指针：LES，LDS</p>
+<h2 id="取偏移地址指令LEA"><a href="#取偏移地址指令LEA" class="headerlink" title="取偏移地址指令LEA"></a>取偏移地址指令LEA</h2><p> 取近地址指针。</p>
+]]></content>
+      <categories>
+        <category>计算机组成原理</category>
+      </categories>
+      <tags>
+        <tag>计算机组成原理</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Hello World</title>
     <url>/2021/08/27/hello-world/</url>
     <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
@@ -4107,470 +3392,5 @@ git merge version1.0
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
 ]]></content>
-  </entry>
-  <entry>
-    <title>建立博客时遇到的问题</title>
-    <url>/2021/08/30/%E5%BB%BA%E7%AB%8B%E5%8D%9A%E5%AE%A2%E9%81%87%E5%88%B0%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<h1 id="本地部署时出现：FATAL-Port-4000-has-been-used-Try-other-port-instead"><a href="#本地部署时出现：FATAL-Port-4000-has-been-used-Try-other-port-instead" class="headerlink" title="本地部署时出现：FATAL Port 4000 has been used. Try other port instead."></a>本地部署时出现：FATAL Port 4000 has been used. Try other port instead.</h1><p>解释：提示4000端口出问题</p>
-<h3 id="方法一："><a href="#方法一：" class="headerlink" title="方法一："></a>方法一：</h3><p>在主地址下的_config.yml文件中加入以下代码</p>
-<pre><code>server:
-  port: 4000 #端口值，默认为4000
-  compress: true
-  header: true
-</code></pre>
-<br>
-
-<h3 id="方法二："><a href="#方法二：" class="headerlink" title="方法二："></a>方法二：</h3><p>用以下命令启动</p>
-<pre><code>hexo server -p 4001
-</code></pre>
-<hr>
-<h1 id="图片无法加载"><a href="#图片无法加载" class="headerlink" title="图片无法加载"></a>图片无法加载</h1><h3 id="第一步：安装插件"><a href="#第一步：安装插件" class="headerlink" title="第一步：安装插件"></a>第一步：安装插件</h3><pre><code>    npm install hexo-asset-image --save
-</code></pre>
-<h3 id="第二步：修改文件内容"><a href="#第二步：修改文件内容" class="headerlink" title="第二步：修改文件内容"></a>第二步：修改文件内容</h3><p>在根目录下的_config.yml中加入：（新建文章时自动生成同名文件夹）</p>
-<pre><code>post_asset_folder: true
-</code></pre>
-<h3 id="第三步：打开根目录下的"><a href="#第三步：打开根目录下的" class="headerlink" title="第三步：打开根目录下的"></a>第三步：打开根目录下的</h3><pre><code>/node_modules/hexo-asset-image/index.js
-</code></pre>
-<p>将内容修改为</p>
-<pre><code>&#39;use strict&#39;;
-var cheerio = require(&#39;cheerio&#39;);
-
-// http://stackoverflow.com/questions/14480345/how-to-get-the-nth-occurrence-in-a-string
-function getPosition(str, m, i) &#123;
-  return str.split(m, i).join(m).length;
-&#125;
-
-var version = String(hexo.version).split(&#39;.&#39;);
-hexo.extend.filter.register(&#39;after_post_render&#39;, function(data)&#123;
-  var config = hexo.config;
-  if(config.post_asset_folder)&#123;
-        var link = data.permalink;
-    if(version.length &gt; 0 &amp;&amp; Number(version[0]) == 3)
-       var beginPos = getPosition(link, &#39;/&#39;, 1) + 1;
-    else
-       var beginPos = getPosition(link, &#39;/&#39;, 3) + 1;
-    // In hexo 3.1.1, the permalink of &quot;about&quot; page is like &quot;.../about/index.html&quot;.
-    var endPos = link.lastIndexOf(&#39;/&#39;) + 1;
-    link = link.substring(beginPos, endPos);
-
-    var toprocess = [&#39;excerpt&#39;, &#39;more&#39;, &#39;content&#39;];
-    for(var i = 0; i &lt; toprocess.length; i++)&#123;
-      var key = toprocess[i];
- 
-      var $ = cheerio.load(data[key], &#123;
-        ignoreWhitespace: false,
-        xmlMode: false,
-        lowerCaseTags: false,
-        decodeEntities: false
-      &#125;);
-
-      $(&#39;img&#39;).each(function()&#123;
-        if ($(this).attr(&#39;src&#39;))&#123;
-            // For windows style path, we replace &#39;\&#39; to &#39;/&#39;.
-            var src = $(this).attr(&#39;src&#39;).replace(&#39;\\&#39;, &#39;/&#39;);
-            if(!/http[s]*.*|\/\/.*/.test(src) &amp;&amp;
-               !/^\s*\//.test(src)) &#123;
-              // For &quot;about&quot; page, the first part of &quot;src&quot; can&#39;t be removed.
-              // In addition, to support multi-level local directory.
-              var linkArray = link.split(&#39;/&#39;).filter(function(elem)&#123;
-                return elem != &#39;&#39;;
-              &#125;);
-              var srcArray = src.split(&#39;/&#39;).filter(function(elem)&#123;
-                return elem != &#39;&#39; &amp;&amp; elem != &#39;.&#39;;
-              &#125;);
-              if(srcArray.length &gt; 1)
-                srcArray.shift();
-              src = srcArray.join(&#39;/&#39;);
-              $(this).attr(&#39;src&#39;, config.root + link + src);
-              console.info&amp;&amp;console.info(&quot;update link as:--&gt;&quot;+config.root + link + src);
-            &#125;
-        &#125;else&#123;
-            console.info&amp;&amp;console.info(&quot;no src attr, skipped...&quot;);
-            console.info&amp;&amp;console.info($(this));
-        &#125;
-      &#125;);
-      data[key] = $.html();
-    &#125;
-  &#125;
-&#125;);
-</code></pre>
-<p><a href="https://blog.csdn.net/xjm850552586/article/details/84101345">参考Ericam_</a></p>
-<h3 id="第四步："><a href="#第四步：" class="headerlink" title="第四步："></a>第四步：</h3><p><strong>此种方式如有文件夹中存在中文则会<code>url</code>转码,也会显示不正常,解决方法: <code>new </code>文件时使用英文名,手动设置文章标题即可</strong></p>
-<p>在.md文件中按markdown语法引用图片：（在text.md中引用在同名文件夹中的</p>
-<p>picture.png)</p>
-<pre><code>![随便写](text/picture.png)
-</code></pre>
-<hr>
-<h1 id="添加valine评论邮件通知："><a href="#添加valine评论邮件通知：" class="headerlink" title="添加valine评论邮件通知："></a>添加valine评论邮件通知：</h1><p><a href="https://zealot.top/Hexo%E5%8D%9A%E5%AE%A2%E4%B9%8Bvaline%E8%AF%84%E8%AE%BA%E5%AE%9E%E7%8E%B0%E9%82%AE%E7%AE%B1%E6%8F%90%E9%86%92%E7%9A%84%E6%96%B9%E6%B3%95.html">Hexo博客之valine评论实现邮箱提醒的方法</a></p>
-<hr>
-<h1 id="添加搜索功能"><a href="#添加搜索功能" class="headerlink" title="添加搜索功能"></a>添加搜索功能</h1><h3 id="第一步："><a href="#第一步：" class="headerlink" title="第一步："></a>第一步：</h3><p>安装插件：</p>
-<pre><code>npm install hexo-generator-searchdb --save
-</code></pre>
-<h3 id="第二步："><a href="#第二步：" class="headerlink" title="第二步："></a>第二步：</h3><p>在根目录文件_config.yml文件下添加配置：</p>
-<pre><code>search:
-  path: search.xml
-  field: post
-  format: html
-  limit: 10000
-</code></pre>
-<p>在主题目录文件_config.yml文件下配置：</p>
-<pre><code>local_search:
-  enable: true
-</code></pre>
-<hr>
-]]></content>
-      <categories>
-        <category>博客</category>
-      </categories>
-      <tags>
-        <tag>博客</tag>
-        <tag>问题</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>数字逻辑基础知识（组合逻辑电路）</title>
-    <url>/2021/09/01/%E8%AE%A1%E7%BB%84%EF%BC%9A%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</url>
-    <content><![CDATA[<h1 id="组合逻辑电路"><a href="#组合逻辑电路" class="headerlink" title="组合逻辑电路"></a>组合逻辑电路</h1><h2 id="组合逻辑电路分析"><a href="#组合逻辑电路分析" class="headerlink" title="组合逻辑电路分析"></a>组合逻辑电路分析</h2><h3 id="分类-："><a href="#分类-：" class="headerlink" title="分类 ："></a>分类 ：</h3><ol>
-<li><p><strong>组合逻辑电路</strong></p>
-<p>任意时刻的输出仅仅取决于该时刻的输入组合，而与输入信号 作用前电路的原状态无关(与过去的输入无关)。</p>
-</li>
-<li><p><strong>时序逻辑电路</strong></p>
-<p>任意时刻的输出不仅仅与该时刻的输入有关，而且还与电路的原状态有关(与过去的输入有关)。</p>
-</li>
-</ol>
-<h3 id="特点："><a href="#特点：" class="headerlink" title="特点："></a>特点：</h3><ol>
-<li>电路由逻辑门构成，无记忆元件</li>
-<li>输入信号是单项传输，一般无反馈</li>
-</ol>
-<h3 id="分析步骤："><a href="#分析步骤：" class="headerlink" title="分析步骤："></a>分析步骤：</h3><img src="/2021/09/01/%E8%AE%A1%E7%BB%84%EF%BC%9A%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1.png" style="zoom: 67%;">
-
-<h4 id="例题："><a href="#例题：" class="headerlink" title="例题："></a>例题：</h4><img src="/2021/09/01/%E8%AE%A1%E7%BB%84%EF%BC%9A%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.png" style="zoom: 67%;">
-
-
-
-<h1 id="典型组合逻辑电路介绍"><a href="#典型组合逻辑电路介绍" class="headerlink" title="典型组合逻辑电路介绍"></a>典型组合逻辑电路介绍</h1><h2 id="半加器-Half-Adder-："><a href="#半加器-Half-Adder-：" class="headerlink" title="半加器(Half Adder)："></a>半加器(Half Adder)：</h2><h3 id="概念："><a href="#概念：" class="headerlink" title="概念："></a>概念：</h3><p>半加器电路是指对两个输入<a href="https://baike.baidu.com/item/%E6%95%B0%E6%8D%AE%E4%BD%8D/3441892">数据位</a>相加，输出一个结果位和<a href="https://baike.baidu.com/item/%E8%BF%9B%E4%BD%8D/5989952">进位</a>，没有进位输入的<a href="https://baike.baidu.com/item/%E5%8A%A0%E6%B3%95%E5%99%A8/9374198">加法器</a>电路。 是实现两个一位二进制数的加法运算电路。</p>
-<h3 id="实现原理"><a href="#实现原理" class="headerlink" title="实现原理"></a>实现原理</h3><img src="/2021/09/01/%E8%AE%A1%E7%BB%84%EF%BC%9A%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2.png" style="zoom: 67%;">
-
-
-
-<h2 id="全加器-Full-Adder-："><a href="#全加器-Full-Adder-：" class="headerlink" title="全加器(Full Adder)："></a>全加器(Full Adder)：</h2><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>全加器英语名称为full-adder，是用<a href="https://baike.baidu.com/item/%E9%97%A8%E7%94%B5%E8%B7%AF/10796427">门电路</a>实现两个二进制数相加并求出和的组合线路，称为一位全加器。一位全加器可以处理低位进位，并输出本位加法进位。多个一位全加器进行级联可以得到多位全加器。</p>
-<h3 id="实现原理-1"><a href="#实现原理-1" class="headerlink" title="实现原理"></a>实现原理</h3><img src="/2021/09/01/%E8%AE%A1%E7%BB%84%EF%BC%9A%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/4.png" style="zoom:67%;">
-
-
-
-<h3 id="表达式"><a href="#表达式" class="headerlink" title="表达式"></a>表达式</h3><p>通过上学期的离散数学知识，可将下表转换为表达式</p>
-<img src="/2021/09/01/%E8%AE%A1%E7%BB%84%EF%BC%9A%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/5.png" style="zoom: 80%;">
-
-
-
-<img src="/2021/09/01/%E8%AE%A1%E7%BB%84%EF%BC%9A%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/6.png">
-
-
-
-<p>将表达式转化为组合逻辑电路</p>
-<img src="/2021/09/01/%E8%AE%A1%E7%BB%84%EF%BC%9A%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/7.png" style="zoom:80%;">
-
-
-
-<h2 id="编码器"><a href="#编码器" class="headerlink" title="编码器"></a>编码器</h2><h3 id="概念-1"><a href="#概念-1" class="headerlink" title="概念"></a>概念</h3><p>所谓<strong>编码</strong>，就是在选定的一系列二值代码中赋予每个代码以固定 的含义。执行编码功能的电路称<strong>编码器</strong>。</p>
-<h3 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h3><p><strong>输出：</strong></p>
-<ol>
-<li>二进制编码器：输入2^n个信号，输出n位编码</li>
-<li>二~十进制编码器：10个信号输出，BCD码输出</li>
-</ol>
-<p><strong>功能：</strong></p>
-<ol>
-<li>一般编码器 — 输入信号有约束</li>
-<li>优先编码器 — 按优先级别高低编码</li>
-</ol>
-<h3 id="二进制编码器"><a href="#二进制编码器" class="headerlink" title="二进制编码器"></a>二进制编码器</h3><p><img src="/2021/09/01/%E8%AE%A1%E7%BB%84%EF%BC%9A%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/10.png"></p>
-<h4 id="例：8线－3线编码器"><a href="#例：8线－3线编码器" class="headerlink" title="例：8线－3线编码器"></a>例：8线－3线编码器</h4><p>有8个输入变量，共256种组合，但只用了8种，即任一时刻允许一位为“0”</p>
-<p><img src="/2021/09/01/%E8%AE%A1%E7%BB%84%EF%BC%9A%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/8.png"></p>
-<h5 id="真值表"><a href="#真值表" class="headerlink" title="真值表"></a>真值表</h5><p><img src="/2021/09/01/%E8%AE%A1%E7%BB%84%EF%BC%9A%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/9.png"></p>
-<h2 id="译码器"><a href="#译码器" class="headerlink" title="译码器"></a>译码器</h2><h3 id="概念-2"><a href="#概念-2" class="headerlink" title="概念"></a>概念</h3><p>译码是编码的逆过程，其功能是将具有特定含义的不同二进制代 码“翻译”出来。</p>
-<p><img src="/2021/09/01/%E8%AE%A1%E7%BB%84%EF%BC%9A%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/11.png"></p>
-<h3 id="二进制译码器"><a href="#二进制译码器" class="headerlink" title="二进制译码器"></a>二进制译码器</h3><p>二进制译码器属于完全译码器(设译码器有n个输入和m个输出，则m=2 n )，不满足该条件的称为部分译码器。</p>
-<p><img src="/2021/09/01/%E8%AE%A1%E7%BB%84%EF%BC%9A%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/12.png"></p>
-<h3 id="使能端"><a href="#使能端" class="headerlink" title="使能端"></a>使能端</h3><ol>
-<li><p>控制译码器状态：</p>
-<p>E=1：译码器处于工作状态</p>
-<p>E=2：译码器处于非工作状态</p>
-</li>
-<li><p>用于译码器扩展</p>
-</li>
-</ol>
-<h4 id="例（控制工作状态）："><a href="#例（控制工作状态）：" class="headerlink" title="例（控制工作状态）："></a>例（控制工作状态）：</h4><p><img src="/2021/09/01/%E8%AE%A1%E7%BB%84%EF%BC%9A%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/13.png"></p>
-<h4 id="例（译码器扩展）："><a href="#例（译码器扩展）：" class="headerlink" title="例（译码器扩展）："></a>例（译码器扩展）：</h4><img src="/2021/09/01/%E8%AE%A1%E7%BB%84%EF%BC%9A%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/14.png" style="zoom:67%;">
-
-
-
-<h4 id="3线—8线译码器74LS138-T4138-的引脚图"><a href="#3线—8线译码器74LS138-T4138-的引脚图" class="headerlink" title="3线—8线译码器74LS138(T4138)的引脚图:"></a>3线—8线译码器74LS138(T4138)的引脚图:</h4><p><strong>Ai：输入    Zi：输出    Vcc：电源</strong></p>
-<img src="/2021/09/01/%E8%AE%A1%E7%BB%84%EF%BC%9A%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/15.png" style="zoom:67%;">
-
-
-
-<p><strong>规定：S1=1，S2=S3=0时，使能端E=1</strong></p>
-<p><img src="/2021/09/01/%E8%AE%A1%E7%BB%84%EF%BC%9A%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/16.png"></p>
-<h1 id="触发器"><a href="#触发器" class="headerlink" title="触发器"></a>触发器</h1><h2 id="概念-3"><a href="#概念-3" class="headerlink" title="概念"></a>概念</h2><p>能够存储一位二进制信息的基本单元电路称触发器(Flip-Flop)</p>
-<h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><ol>
-<li><p>具有两个能自我保持的稳定状态：</p>
-<p><strong>现态、次态</strong></p>
-<p>用来表示逻辑状态的“0”或”1“</p>
-</li>
-</ol>
-<p><img src="/2021/09/01/%E8%AE%A1%E7%BB%84%EF%BC%9A%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1630889807481.png"></p>
-<p><img src="/2021/09/01/%E8%AE%A1%E7%BB%84%EF%BC%9A%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1630890041294.png"></p>
-<h2 id="R-S触发器"><a href="#R-S触发器" class="headerlink" title="R-S触发器"></a>R-S触发器</h2><h3 id="电路结构"><a href="#电路结构" class="headerlink" title="电路结构"></a>电路结构</h3><p><img src="/2021/09/01/%E8%AE%A1%E7%BB%84%EF%BC%9A%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1630890362795.png"></p>
-<h3 id="状态转换表"><a href="#状态转换表" class="headerlink" title="状态转换表"></a>状态转换表</h3><p><img src="/2021/09/01/%E8%AE%A1%E7%BB%84%EF%BC%9A%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1630890402605.png"></p>
-<h3 id="特征方程"><a href="#特征方程" class="headerlink" title="特征方程"></a>特征方程</h3><p><img src="/2021/09/01/%E8%AE%A1%E7%BB%84%EF%BC%9A%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1630890477084.png"></p>
-<h3 id="RS触发器存在的问题："><a href="#RS触发器存在的问题：" class="headerlink" title="RS触发器存在的问题："></a>RS触发器存在的问题：</h3><p>(1)存在约束条件的限制； </p>
-<p>(2)没有时钟信号，无法与其他部件同步工作。</p>
-<h2 id="钟控触发器"><a href="#钟控触发器" class="headerlink" title="钟控触发器"></a>钟控触发器</h2><h3 id="钟控RS触发器"><a href="#钟控RS触发器" class="headerlink" title="钟控RS触发器"></a>钟控RS触发器</h3><h4 id="电路结构-1"><a href="#电路结构-1" class="headerlink" title="电路结构"></a>电路结构</h4><p><img src="/2021/09/01/%E8%AE%A1%E7%BB%84%EF%BC%9A%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1630890677853.png"></p>
-<h4 id="工作状态"><a href="#工作状态" class="headerlink" title="工作状态"></a>工作状态</h4><p>CP=0时，保持状态不变；CP=1时，接收输入信号。</p>
-<h4 id="特征方程-1"><a href="#特征方程-1" class="headerlink" title="特征方程"></a>特征方程</h4><p><img src="/2021/09/01/%E8%AE%A1%E7%BB%84%EF%BC%9A%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1630890858258.png"></p>
-<h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><p>加入了时 钟信号，使工作成为可能。</p>
-<h4 id="存在的问题："><a href="#存在的问题：" class="headerlink" title="存在的问题："></a>存在的问题：</h4><ol>
-<li><p>仍然存在约束问题</p>
-</li>
-<li><p>在CP=1期间，只要R、S稍有变化，那么Q段也随之变化，存在”空翻问题“。</p>
-<p>（“空翻”会造成节拍混乱，使系统工作不可靠，因此在实际的 数字电路中是不允许出现的。）</p>
-</li>
-</ol>
-<h2 id="集成D触发器（掌握）"><a href="#集成D触发器（掌握）" class="headerlink" title="集成D触发器（掌握）"></a>集成D触发器（掌握）</h2><p><img src="/2021/09/01/%E8%AE%A1%E7%BB%84%EF%BC%9A%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1630893188523.png"></p>
-<h3 id="特征方程-2"><a href="#特征方程-2" class="headerlink" title="特征方程"></a>特征方程</h3><p>(1) 同步工作时：</p>
-<p><img src="/2021/09/01/%E8%AE%A1%E7%BB%84%EF%BC%9A%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1630893231349.png"></p>
-<p>(2) 异步工作时</p>
-<p><img src="/2021/09/01/%E8%AE%A1%E7%BB%84%EF%BC%9A%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1630893237754.png"></p>
-<h3 id="时序图"><a href="#时序图" class="headerlink" title="时序图"></a>时序图</h3><p><img src="/2021/09/01/%E8%AE%A1%E7%BB%84%EF%BC%9A%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1630892713522.png"></p>
-]]></content>
-      <categories>
-        <category>计算机组成原理</category>
-      </categories>
-      <tags>
-        <tag>计算机组成原理</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>计组：数据的表示、运算和校验（数值型数据）</title>
-    <url>/2021/08/30/%E8%AE%A1%E7%BB%84%EF%BC%9A%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA%E3%80%81%E8%BF%90%E7%AE%97%E5%92%8C%E6%A0%A1%E9%AA%8C/</url>
-    <content><![CDATA[<h1 id="数值型数据"><a href="#数值型数据" class="headerlink" title="数值型数据"></a>数值型数据</h1><h2 id="不同进制的写法："><a href="#不同进制的写法：" class="headerlink" title="不同进制的写法："></a>不同进制的写法：</h2><p><img src="/2021/08/30/%E8%AE%A1%E7%BB%84%EF%BC%9A%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA%E3%80%81%E8%BF%90%E7%AE%97%E5%92%8C%E6%A0%A1%E9%AA%8C/1.png"></p>
-<h2 id="进位计数："><a href="#进位计数：" class="headerlink" title="进位计数："></a>进位计数：</h2><p>基数：每位数中所允许的最大数值加1（十进制的基数是10）</p>
-<p>权：基数的n次方</p>
-<p>两个相邻的权值比是基数</p>
-<h1 id="带符号数表示："><a href="#带符号数表示：" class="headerlink" title="带符号数表示："></a>带符号数表示：</h1><h2 id="真值："><a href="#真值：" class="headerlink" title="真值："></a>真值：</h2><p>正负号加绝对值</p>
-<h2 id="机器数："><a href="#机器数：" class="headerlink" title="机器数："></a>机器数：</h2><h3 id="特征："><a href="#特征：" class="headerlink" title="特征："></a>特征：</h3><ol>
-<li>只能采用二进制</li>
-<li>四种编码制：原码，补码，反码，移码</li>
-<li>符号位数值化：0表示正，1表示负</li>
-<li>组成：符号位+有效数值</li>
-</ol>
-<br>
-
-<h1 id="四种编码制"><a href="#四种编码制" class="headerlink" title="四种编码制"></a>四种编码制</h1><h2 id="原码表示法："><a href="#原码表示法：" class="headerlink" title="原码表示法："></a>原码表示法：</h2><h3 id="整数："><a href="#整数：" class="headerlink" title="整数："></a>整数：</h3><p><img src="/2021/08/30/%E8%AE%A1%E7%BB%84%EF%BC%9A%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA%E3%80%81%E8%BF%90%E7%AE%97%E5%92%8C%E6%A0%A1%E9%AA%8C/2.png"></p>
-<p>Eg：</p>
-<p>+1100-&gt;0,1100(0表示正数）</p>
-<p>-1100 -&gt; 2^4-(-1100) -&gt; 2^4+1100=1,1100(1表示负数）</p>
-<h3 id="小数："><a href="#小数：" class="headerlink" title="小数："></a>小数：</h3><p><img src="/2021/08/30/%E8%AE%A1%E7%BB%84%EF%BC%9A%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA%E3%80%81%E8%BF%90%E7%AE%97%E5%92%8C%E6%A0%A1%E9%AA%8C/3.png"></p>
-<p>Eg：<br>+0.1100-&gt;0.1100(第一个0表示正数）</p>
-<p>-0.1100 -&gt;1-(-0.1100)-&gt;1.1100(第一个1表示负数）</p>
-<p>简单方法：</p>
-<p>（1）取真值的绝对值的2进制表示。</p>
-<p>（2）左边第一位添加符号。  </p>
-<br>
-
-<h2 id="反码表示法"><a href="#反码表示法" class="headerlink" title="反码表示法"></a>反码表示法</h2><p><strong>正数：</strong></p>
-<p>反码和原码相同</p>
-<p><strong>负数：</strong></p>
-<p>符号位不变，原码其余各个位取反</p>
-<br>
-
-<p>Eg:</p>
-<p>[+127]原=0111 1111, [+127]反=0111 1111,</p>
-<p>[-127]原=1111 1111, [-127]反=1000 0000。</p>
-<p>[+0]原=0000 0000, [+0]反=0000 0000,</p>
-<p>[-0]原=1000 0000, [-0]反=1111 1111。</p>
-<br>
-
-<h2 id="补码表示法"><a href="#补码表示法" class="headerlink" title="补码表示法"></a>补码表示法</h2><p><strong>正数：</strong></p>
-<p>补码与原码一样</p>
-<p><strong>负数：</strong></p>
-<p>反码末尾+1</p>
-<p>Eg:</p>
-<p>[+127]原=0111 1111, [+127]反=0111 1111,[+127]补=0111 1111</p>
-<p>[-127]原=1111 1111, [-127]反=1000 0000，[-127]补=1000 0001</p>
-<p>[+0]原=0000 0000, [+0]反=0000 0000,[+0]补=0000 0000,</p>
-<p>[-0]原=1000 0000, [-0]反=1111 1111，[-0]补=0000 0000。</p>
-<br>
-
-<h2 id="移码（增码）表示法"><a href="#移码（增码）表示法" class="headerlink" title="移码（增码）表示法"></a>移码（增码）表示法</h2><p>将补码符号位取反即可</p>
-<h3 id="特征：-1"><a href="#特征：-1" class="headerlink" title="特征："></a>特征：</h3><ol>
-<li>符号位与原码，补码相反</li>
-<li>让X从－128逐渐增至+127，相应地X移从00…00逐渐增至11……11，呈递增状。可见采用移码能更直观地比较正负阶码的大小。</li>
-</ol>
-<p>tips:</p>
-<p>标准移码：沿x轴平移2^(n-1) </p>
-<p>IEEE754非标准移码：2^(n-1)-1</p>
-<p>其中n为字长</p>
-<br>
-
-<h1 id="定点数与浮点数"><a href="#定点数与浮点数" class="headerlink" title="定点数与浮点数"></a>定点数与浮点数</h1><h3 id="1-定点表示法："><a href="#1-定点表示法：" class="headerlink" title="1.定点表示法："></a>1.定点表示法：</h3><p><strong>特征：</strong>小数点位置不变</p>
-<p><strong>类别：</strong></p>
-<ol>
-<li>无符号定点整数：略去符号位的正整数</li>
-<li>带符号定点整数：小数点在最低位之后，最高位为符号位</li>
-<li>带符号定点小数：纯小数，原码或补码表示</li>
-</ol>
-<h3 id="2-浮点数表示法："><a href="#2-浮点数表示法：" class="headerlink" title="2.浮点数表示法："></a>2.浮点数表示法：</h3><p><strong>特征：</strong>浮点数是一种小数点位置不固定，可随需要浮动的数</p>
-<p><strong>格式：</strong></p>
-<p><img src="/2021/08/30/%E8%AE%A1%E7%BB%84%EF%BC%9A%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA%E3%80%81%E8%BF%90%E7%AE%97%E5%92%8C%E6%A0%A1%E9%AA%8C/4.png"></p>
-<p><img src="/2021/08/30/%E8%AE%A1%E7%BB%84%EF%BC%9A%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA%E3%80%81%E8%BF%90%E7%AE%97%E5%92%8C%E6%A0%A1%E9%AA%8C/5.png"></p>
-<br>
-
-<p><strong>R是阶码的底：</strong>一般约定为基数</p>
-<p><strong>E是阶码</strong></p>
-<p><strong>M是尾数：</strong>带符号定点小数，可用补码或原码表示</p>
-<br>
-
-<h2 id="IEEE754标准浮点格式"><a href="#IEEE754标准浮点格式" class="headerlink" title="IEEE754标准浮点格式"></a>IEEE754标准浮点格式</h2><h3 id="3种浮点表示格式："><a href="#3种浮点表示格式：" class="headerlink" title="3种浮点表示格式："></a>3种浮点表示格式：</h3><p><img src="/2021/08/30/%E8%AE%A1%E7%BB%84%EF%BC%9A%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA%E3%80%81%E8%BF%90%E7%AE%97%E5%92%8C%E6%A0%A1%E9%AA%8C/6.png"></p>
-<p><strong>注意：</strong></p>
-<p>短浮点数又称为单精度浮点数，长浮点数又称为双精度浮点数，它们都采用<strong>隐含尾数最高数位</strong></p>
-<p>（2^0）的方法。因此，<strong>相应地尾数真值实际上等于1+（23位尾数数值或52位尾数数值）</strong></p>
-<h3 id="如何用浮点数形式表示："><a href="#如何用浮点数形式表示：" class="headerlink" title="如何用浮点数形式表示："></a>如何用浮点数形式表示：</h3><p><strong>阶码是以移码形式存储的，存储浮点数阶码部分之前，偏置值先要加到阶码真值上。</strong></p>
-<p><img src="/2021/08/30/%E8%AE%A1%E7%BB%84%EF%BC%9A%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA%E3%80%81%E8%BF%90%E7%AE%97%E5%92%8C%E6%A0%A1%E9%AA%8C/7.png"></p>
-<p>tips:</p>
-<p>阶码真值：科学计数法后小数退的位数</p>
-<p>偏置值：2^(n-1)-1</p>
-<p><strong>举例：</strong></p>
-<p><img src="/2021/08/30/%E8%AE%A1%E7%BB%84%EF%BC%9A%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA%E3%80%81%E8%BF%90%E7%AE%97%E5%92%8C%E6%A0%A1%E9%AA%8C/8.png"></p>
-<p><img src="/2021/08/30/%E8%AE%A1%E7%BB%84%EF%BC%9A%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA%E3%80%81%E8%BF%90%E7%AE%97%E5%92%8C%E6%A0%A1%E9%AA%8C/9.png"></p>
-<h3 id="反向运算："><a href="#反向运算：" class="headerlink" title="反向运算："></a>反向运算：</h3><p><img src="/2021/08/30/%E8%AE%A1%E7%BB%84%EF%BC%9A%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA%E3%80%81%E8%BF%90%E7%AE%97%E5%92%8C%E6%A0%A1%E9%AA%8C/10.png"></p>
-<h4 id="例题："><a href="#例题：" class="headerlink" title="例题："></a>例题：</h4><p><img src="/2021/08/30/%E8%AE%A1%E7%BB%84%EF%BC%9A%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA%E3%80%81%E8%BF%90%E7%AE%97%E5%92%8C%E6%A0%A1%E9%AA%8C/11.png"></p>
-<p>参考网站：<a href="https://www.cnblogs.com/bruce81/p/3536596.html">https://www.cnblogs.com/bruce81/p/3536596.html</a></p>
-]]></content>
-      <tags>
-        <tag>计算机组成原理</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>计组（七）：模型机的组合逻辑控制器</title>
-    <url>/2021/09/22/%E8%AE%A1%E7%BB%84%EF%BC%9A%E6%A8%A1%E5%9E%8B%E6%9C%BA%E7%9A%84%E7%BB%84%E5%90%88%E9%80%BB%E8%BE%91%E6%8E%A7%E5%88%B6%E5%99%A8/</url>
-    <content><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>定义：</p>
-<p>组合逻辑控制器的微命令是由组合逻辑电路 来实现。每种微命令都需要一组逻辑电路产生，全机所 有微命令所需的逻辑电路就构成了微命令发生器。</p>
-<h2 id="硬件组成："><a href="#硬件组成：" class="headerlink" title="硬件组成："></a>硬件组成：</h2><p><img src="/2021/09/22/%E8%AE%A1%E7%BB%84%EF%BC%9A%E6%A8%A1%E5%9E%8B%E6%9C%BA%E7%9A%84%E7%BB%84%E5%90%88%E9%80%BB%E8%BE%91%E6%8E%A7%E5%88%B6%E5%99%A8/image-20210922214921297.png"></p>
-<h2 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a>工作原理</h2><img src="/2021/09/22/%E8%AE%A1%E7%BB%84%EF%BC%9A%E6%A8%A1%E5%9E%8B%E6%9C%BA%E7%9A%84%E7%BB%84%E5%90%88%E9%80%BB%E8%BE%91%E6%8E%A7%E5%88%B6%E5%99%A8/image-20210922214952739.png" style="zoom:80%;">
-
-<p><img src="/2021/09/22/%E8%AE%A1%E7%BB%84%EF%BC%9A%E6%A8%A1%E5%9E%8B%E6%9C%BA%E7%9A%84%E7%BB%84%E5%90%88%E9%80%BB%E8%BE%91%E6%8E%A7%E5%88%B6%E5%99%A8/image-20210922215103376.png"></p>
-<h2 id="组合逻辑控制器时序系统"><a href="#组合逻辑控制器时序系统" class="headerlink" title="组合逻辑控制器时序系统"></a>组合逻辑控制器时序系统</h2><p><img src="/2021/09/22/%E8%AE%A1%E7%BB%84%EF%BC%9A%E6%A8%A1%E5%9E%8B%E6%9C%BA%E7%9A%84%E7%BB%84%E5%90%88%E9%80%BB%E8%BE%91%E6%8E%A7%E5%88%B6%E5%99%A8/image-20210922215412178.png"></p>
-<p><strong>工作周期：</strong></p>
-<p><img src="/2021/09/22/%E8%AE%A1%E7%BB%84%EF%BC%9A%E6%A8%A1%E5%9E%8B%E6%9C%BA%E7%9A%84%E7%BB%84%E5%90%88%E9%80%BB%E8%BE%91%E6%8E%A7%E5%88%B6%E5%99%A8/image-20210922215439946.png"></p>
-<ol>
-<li><p>取指周期FT：在FT中完成的操作是公共性操作;</p>
-</li>
-<li><p>源周期ST：如果需要从主存中读取源操作数（非寄 存器寻址），则进入ST。</p>
-</li>
-<li><p>目的周期DT：如果需要从主存中读取目的地址或目的操作数（非寄存器寻址），则进入DT。</p>
-</li>
-<li><p>执行周期ET：取得操作数后，CPU进入ET，这也是 各类指令都需经历的最后一个工作阶段（公共性操作）。</p>
-</li>
-<li><p>中断周期IT：除了考虑指令的正常执行，还需考虑 外部请求带来的变化。</p>
-</li>
-<li><p>DMA周期DMAT：响应DMA请 求之后，CPU进入DMAT。在DMAT 中，CPU交出系统总线的控制权， 即MAR、MDR与系统总线断开 （呈高阻态），改由DMA控制器 控制系统总线，实现主存与外 围设备间的数据直传。</p>
-</li>
-</ol>
-<p><img src="/2021/09/22/%E8%AE%A1%E7%BB%84%EF%BC%9A%E6%A8%A1%E5%9E%8B%E6%9C%BA%E7%9A%84%E7%BB%84%E5%90%88%E9%80%BB%E8%BE%91%E6%8E%A7%E5%88%B6%E5%99%A8/image-20210926195633064.png"></p>
-<p><strong>时钟周期（节拍）</strong></p>
-<p>指令的读取与执行既有<strong>CPU内部数据通路操作</strong>，也包含 <strong>访问主存的操作</strong>。为简化时序控制，模型机将两类操作 周期统一起来，即以主存访问周期所需时间为时钟周期 的宽度，这里设为1微秒。</p>
-<p><strong>工作脉冲</strong></p>
-<p>时钟周期表示一个时间段，在这段时间内可以进行某种 数据通路操作，如两数相加。但有些操作需要同步定时 脉冲进行控制，如将稳定的运算结果打入寄存器，又如 进行周期状态切换。模型机在每个时钟周期的末尾发一 个工作脉冲P，作为各种同步脉冲的来源，如下页图所示。</p>
-<p>工作脉冲P的<strong>前沿作为打入寄存器的定时</strong>，它标志着 一次数据通路操作的完成。<strong>P的后沿作为时序转换的定时</strong>，在此刻如果本工作周期未结束，则对时钟周期计数 器T计数，进入新的节拍；如果本工作周期结束，则将T 清零，并清除本工作周期状态标志，设置新的工作周期 状态标志。</p>
-<h2 id="指令流程与操作时间表"><a href="#指令流程与操作时间表" class="headerlink" title="指令流程与操作时间表"></a>指令流程与操作时间表</h2><p>通过有关讨论应能较深人地了解CPU执行指令的工作 机制。分两个层次进行讨论：</p>
-<ol>
-<li>在寄存器传送级拟定<strong>各类指令的执行流程</strong>，也就是 确定指令执行的具体步骤，即各类信息如何分步地按要 求流动。</li>
-<li>拟定<strong>操作时间表</strong>，即给出实现上述流程所需的微操 作命令序列。其中包含维持一个时钟周期的电位型微命 令，以及短暂的脉冲型微命令。操作时间表还将表明出 现各种微命令的逻辑条件与时间条件。</li>
-</ol>
-<p>这里是<strong>以指令为线索</strong>，按指令类型分别拟定操作流程。 这种方法的优点是对指令的执行过程拟出了清晰的线索， 便于理解CPU的工作过程。</p>
-<h3 id="取址周期FT：Fetch-Time"><a href="#取址周期FT：Fetch-Time" class="headerlink" title="取址周期FT：Fetch Time"></a><strong>取址周期FT：Fetch Time</strong></h3><p><img src="/2021/09/22/%E8%AE%A1%E7%BB%84%EF%BC%9A%E6%A8%A1%E5%9E%8B%E6%9C%BA%E7%9A%84%E7%BB%84%E5%90%88%E9%80%BB%E8%BE%91%E6%8E%A7%E5%88%B6%E5%99%A8/image-20210926203944810.png"></p>
-<p><img src="/2021/09/22/%E8%AE%A1%E7%BB%84%EF%BC%9A%E6%A8%A1%E5%9E%8B%E6%9C%BA%E7%9A%84%E7%BB%84%E5%90%88%E9%80%BB%E8%BE%91%E6%8E%A7%E5%88%B6%E5%99%A8/image-20210926204444731.png"></p>
-<p>EMAR: 地址使能，由它将MAR中的地址输出到地址总线</p>
-<p>EMDR: 数据使能，由它控制吧MDR中的数据输出到数据总线</p>
-<p>SMDR: 把数据总线上的数据置入寄存器MDR</p>
-<p>SIR: 把从主存读取到的指令从数据总线置入IR</p>
-<p>R/W: 控制主存的读取模式</p>
-<h3 id="ST：寻址方式（MOV、双操作数指令）"><a href="#ST：寻址方式（MOV、双操作数指令）" class="headerlink" title="ST：寻址方式（MOV、双操作数指令）"></a>ST：寻址方式（MOV、双操作数指令）</h3><img src="/2021/09/22/%E8%AE%A1%E7%BB%84%EF%BC%9A%E6%A8%A1%E5%9E%8B%E6%9C%BA%E7%9A%84%E7%BB%84%E5%90%88%E9%80%BB%E8%BE%91%E6%8E%A7%E5%88%B6%E5%99%A8/image-20210926210500984.png" style="zoom:50%;">
-
-<img src="/2021/09/22/%E8%AE%A1%E7%BB%84%EF%BC%9A%E6%A8%A1%E5%9E%8B%E6%9C%BA%E7%9A%84%E7%BB%84%E5%90%88%E9%80%BB%E8%BE%91%E6%8E%A7%E5%88%B6%E5%99%A8/image-20210926210520231.png" style="zoom:50%;">
-
-<img src="/2021/09/22/%E8%AE%A1%E7%BB%84%EF%BC%9A%E6%A8%A1%E5%9E%8B%E6%9C%BA%E7%9A%84%E7%BB%84%E5%90%88%E9%80%BB%E8%BE%91%E6%8E%A7%E5%88%B6%E5%99%A8/image-20210926210542208.png" style="zoom:50%;">
-
-<p><img src="/2021/09/22/%E8%AE%A1%E7%BB%84%EF%BC%9A%E6%A8%A1%E5%9E%8B%E6%9C%BA%E7%9A%84%E7%BB%84%E5%90%88%E9%80%BB%E8%BE%91%E6%8E%A7%E5%88%B6%E5%99%A8/image-20210926210558198.png"></p>
-<p><img src="/2021/09/22/%E8%AE%A1%E7%BB%84%EF%BC%9A%E6%A8%A1%E5%9E%8B%E6%9C%BA%E7%9A%84%E7%BB%84%E5%90%88%E9%80%BB%E8%BE%91%E6%8E%A7%E5%88%B6%E5%99%A8/image-20210926210627426.png"></p>
-<p><img src="/2021/09/22/%E8%AE%A1%E7%BB%84%EF%BC%9A%E6%A8%A1%E5%9E%8B%E6%9C%BA%E7%9A%84%E7%BB%84%E5%90%88%E9%80%BB%E8%BE%91%E6%8E%A7%E5%88%B6%E5%99%A8/image-20210926210644822.png"></p>
-<p><img src="/2021/09/22/%E8%AE%A1%E7%BB%84%EF%BC%9A%E6%A8%A1%E5%9E%8B%E6%9C%BA%E7%9A%84%E7%BB%84%E5%90%88%E9%80%BB%E8%BE%91%E6%8E%A7%E5%88%B6%E5%99%A8/image-20210926210703202.png"></p>
-<h3 id="DT：寻址方式（MOV、双操作数指令）"><a href="#DT：寻址方式（MOV、双操作数指令）" class="headerlink" title="DT：寻址方式（MOV、双操作数指令）"></a>DT：寻址方式（MOV、双操作数指令）</h3><p>与ST寻址方式相似</p>
-<p>区别：</p>
-<p>MOV指令：在DT中，缺少取出目的操作数一步，即M-&gt;MDR-&gt;D</p>
-<p>双操作数指令：在DT中，需要取出目的操作数（R寻 址除外）,所以，多一步操作，即 M→MDR→D。</p>
-<h3 id="ET"><a href="#ET" class="headerlink" title="ET"></a>ET</h3><p><img src="/2021/09/22/%E8%AE%A1%E7%BB%84%EF%BC%9A%E6%A8%A1%E5%9E%8B%E6%9C%BA%E7%9A%84%E7%BB%84%E5%90%88%E9%80%BB%E8%BE%91%E6%8E%A7%E5%88%B6%E5%99%A8/image-20210926213720831.png"></p>
-<img src="/2021/09/22/%E8%AE%A1%E7%BB%84%EF%BC%9A%E6%A8%A1%E5%9E%8B%E6%9C%BA%E7%9A%84%E7%BB%84%E5%90%88%E9%80%BB%E8%BE%91%E6%8E%A7%E5%88%B6%E5%99%A8/image-20210926213821574.png" style="zoom:80%;">
-
-
-
-<h2 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h2><p><img src="/2021/09/22/%E8%AE%A1%E7%BB%84%EF%BC%9A%E6%A8%A1%E5%9E%8B%E6%9C%BA%E7%9A%84%E7%BB%84%E5%90%88%E9%80%BB%E8%BE%91%E6%8E%A7%E5%88%B6%E5%99%A8/image-20210927093926395.png"></p>
-]]></content>
-      <categories>
-        <category>计算机组成原理</category>
-      </categories>
-      <tags>
-        <tag>计算机组成原理</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>计组（五）：算数逻辑运算部件</title>
-    <url>/2021/09/22/%E8%AE%A1%E7%BB%84%EF%BC%9A%E7%AE%97%E6%95%B0%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E9%83%A8%E4%BB%B6/</url>
-    <content><![CDATA[<h2 id="运算器"><a href="#运算器" class="headerlink" title="运算器"></a>运算器</h2><p><img src="/2021/09/22/%E8%AE%A1%E7%BB%84%EF%BC%9A%E7%AE%97%E6%95%B0%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E9%83%A8%E4%BB%B6/image-20210922204521682.png"> </p>
-<h2 id="加法单元"><a href="#加法单元" class="headerlink" title="加法单元"></a>加法单元</h2><p><img src="/2021/09/22/%E8%AE%A1%E7%BB%84%EF%BC%9A%E7%AE%97%E6%95%B0%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E9%83%A8%E4%BB%B6/image-20210922205023331.png"></p>
-<p><img src="/2021/09/22/%E8%AE%A1%E7%BB%84%EF%BC%9A%E7%AE%97%E6%95%B0%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E9%83%A8%E4%BB%B6/image-20210922205253204.png"></p>
-<p><img src="/2021/09/22/%E8%AE%A1%E7%BB%84%EF%BC%9A%E7%AE%97%E6%95%B0%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E9%83%A8%E4%BB%B6/image-20210922205325770.png"></p>
-<p><strong>串行加法器</strong></p>
-<p><img src="/2021/09/22/%E8%AE%A1%E7%BB%84%EF%BC%9A%E7%AE%97%E6%95%B0%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E9%83%A8%E4%BB%B6/image-20210922205717093.png"></p>
-<p><strong>并行加法器</strong></p>
-<p><img src="/2021/09/22/%E8%AE%A1%E7%BB%84%EF%BC%9A%E7%AE%97%E6%95%B0%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E9%83%A8%E4%BB%B6/image-20210922210253412.png"></p>
-<p><img src="/2021/09/22/%E8%AE%A1%E7%BB%84%EF%BC%9A%E7%AE%97%E6%95%B0%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E9%83%A8%E4%BB%B6/image-20210922211153301.png"></p>
-<p><img src="/2021/09/22/%E8%AE%A1%E7%BB%84%EF%BC%9A%E7%AE%97%E6%95%B0%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E9%83%A8%E4%BB%B6/image-20210922211320033.png"></p>
-<p><img src="/2021/09/22/%E8%AE%A1%E7%BB%84%EF%BC%9A%E7%AE%97%E6%95%B0%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E9%83%A8%E4%BB%B6/image-20210922211330310.png"></p>
-<p><img src="/2021/09/22/%E8%AE%A1%E7%BB%84%EF%BC%9A%E7%AE%97%E6%95%B0%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E9%83%A8%E4%BB%B6/image-20210922211341717.png"></p>
-<p><img src="/2021/09/22/%E8%AE%A1%E7%BB%84%EF%BC%9A%E7%AE%97%E6%95%B0%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E9%83%A8%E4%BB%B6/image-20210922212429933.png"></p>
-<p>利用低位进位的输出作为高位进位的输入</p>
-<p><img src="/2021/09/22/%E8%AE%A1%E7%BB%84%EF%BC%9A%E7%AE%97%E6%95%B0%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E9%83%A8%E4%BB%B6/image-20210922212757720.png"></p>
-<p><img src="/2021/09/22/%E8%AE%A1%E7%BB%84%EF%BC%9A%E7%AE%97%E6%95%B0%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E9%83%A8%E4%BB%B6/image-20210922212805950.png"></p>
-<p><img src="/2021/09/22/%E8%AE%A1%E7%BB%84%EF%BC%9A%E7%AE%97%E6%95%B0%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E9%83%A8%E4%BB%B6/image-20210922213027530.png"></p>
-<h2 id="ALU单元与多位ALU部件"><a href="#ALU单元与多位ALU部件" class="headerlink" title="ALU单元与多位ALU部件"></a>ALU单元与多位ALU部件</h2><p>定义：若干全加器，并行进位链，输入选择们继承在一块芯片上</p>
-<p><img src="/2021/09/22/%E8%AE%A1%E7%BB%84%EF%BC%9A%E7%AE%97%E6%95%B0%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E9%83%A8%E4%BB%B6/image-20210922213636470.png"></p>
-]]></content>
-      <categories>
-        <category>计算机组成原理</category>
-      </categories>
-      <tags>
-        <tag>计算机组成原理</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>计组（六）：运算方法</title>
-    <url>/2021/09/22/%E8%AE%A1%E7%BB%84%EF%BC%9A%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95/</url>
-    <content><![CDATA[<h2 id="定点加法运算"><a href="#定点加法运算" class="headerlink" title="定点加法运算"></a>定点加法运算</h2><p><strong>补码加减运算的基本关系式</strong></p>
-<p><img src="/2021/09/22/%E8%AE%A1%E7%BB%84%EF%BC%9A%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95/image-20210922214041390.png"></p>
-<p><img src="/2021/09/22/%E8%AE%A1%E7%BB%84%EF%BC%9A%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95/image-20210922214101337.png"></p>
-<p><strong>补码加减运算规则</strong></p>
-<p><img src="/2021/09/22/%E8%AE%A1%E7%BB%84%EF%BC%9A%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95/image-20210922214126415.png"></p>
-<p><strong>补码加减运算的逻辑实现</strong></p>
-<p><img src="/2021/09/22/%E8%AE%A1%E7%BB%84%EF%BC%9A%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95/image-20210922214200810.png"></p>
-<p><img src="/2021/09/22/%E8%AE%A1%E7%BB%84%EF%BC%9A%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95/image-20210922214226442.png"></p>
-]]></content>
-      <categories>
-        <category>计算机组成原理</category>
-      </categories>
-      <tags>
-        <tag>计算机组成原理</tag>
-      </tags>
   </entry>
 </search>

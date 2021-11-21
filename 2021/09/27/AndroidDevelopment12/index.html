@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="安卓开发（八）LitePal, cold fish">
+    <meta name="keywords" content="安卓开发（八）数据存储, cold fish">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>安卓开发（八）LitePal | cold fish</title>
+    <title>安卓开发（八）数据存储 | cold fish</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -312,12 +312,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">安卓开发（八）LitePal</h1>
+                    <h1 class="description center-align post-title">安卓开发（八）数据存储</h1>
                 </div>
             </div>
         </div>
@@ -452,21 +452,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-09-27
+                    2021-10-24
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    0
+                    1.1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    6 分
                 </div>
                 
 
@@ -491,7 +491,366 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <h1 id="SP-SharePreferences"><a href="#SP-SharePreferences" class="headerlink" title="SP(SharePreferences)"></a>SP(SharePreferences)</h1><pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> SharedPreferences <span class="token function">getSharedPreferences</span><span class="token punctuation">(</span>String name<span class="token punctuation">,</span> <span class="token keyword">int</span> mode<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">RuntimeException</span><span class="token punctuation">(</span><span class="token string">"Stub!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>name：SP的名字</p>
+<p>mode：SP保存时用的模式：</p>
+<p>常规（每次保存都会更新）：Context.MODE_PRIVATE</p>
+<p>追加（每次保存都会追加到后面）：Context.MODE_APPEND</p>
+<h2 id="添加数据"><a href="#添加数据" class="headerlink" title="添加数据"></a>添加数据</h2><p>通过apply()方法添加</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">saveToSP</span><span class="token punctuation">(</span>View view<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    SharedPreferences sp <span class="token operator">=</span> <span class="token function">getSharedPreferences</span><span class="token punctuation">(</span><span class="token string">"SPDerryName"</span><span class="token punctuation">,</span> Context<span class="token punctuation">.</span>MODE_PRIVATE<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    sp<span class="token punctuation">.</span><span class="token function">edit</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">putString</span><span class="token punctuation">(</span><span class="token string">"DerryKey"</span><span class="token punctuation">,</span><span class="token string">"九阳神功"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>添加后出现如下文件夹</p>
+<p><img src="/2021/09/27/AndroidDevelopment12/image-20211010164549464.png"></p>
+<p>数据存放在xml文件中：</p>
+<p><img src="/2021/09/27/AndroidDevelopment12/image-20211010165329481.png"></p>
+<h2 id="获取数据"><a href="#获取数据" class="headerlink" title="获取数据"></a>获取数据</h2><pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">getSPData</span><span class="token punctuation">(</span>View view<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    SharedPreferences sp <span class="token operator">=</span> <span class="token function">getSharedPreferences</span><span class="token punctuation">(</span><span class="token string">"SPDerryName"</span><span class="token punctuation">,</span> Context<span class="token punctuation">.</span>MODE_PRIVATE<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    String value <span class="token operator">=</span> sp<span class="token punctuation">.</span><span class="token function">getString</span><span class="token punctuation">(</span><span class="token string">"DerryKey"</span><span class="token punctuation">,</span> <span class="token string">"默认值"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//假设DerryKey获取值为空，则使用默认值返回</span>
+    Toast<span class="token punctuation">.</span><span class="token function">makeText</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span><span class="token string">""</span><span class="token operator">+</span>value<span class="token punctuation">,</span>Toast<span class="token punctuation">.</span>LENGTH_SHORT<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="SQLite"><a href="#SQLite" class="headerlink" title="SQLite"></a>SQLite</h1><h2 id="基本变量"><a href="#基本变量" class="headerlink" title="基本变量"></a>基本变量</h2><p>数据库名称</p>
+<p>数据库版本号</p>
+<h2 id="新建类继承于SQLiteHelper"><a href="#新建类继承于SQLiteHelper" class="headerlink" title="新建类继承于SQLiteHelper"></a>新建类继承于SQLiteHelper</h2><pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MySqliteOpenHelper</span> <span class="token keyword">extends</span> <span class="token class-name">SQLiteOpenHelper</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">static</span> SQLiteOpenHelper mInstance<span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">synchronized</span> SQLiteOpenHelper <span class="token function">getmInstance</span><span class="token punctuation">(</span>Context context<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>mInstance <span class="token operator">==</span> null<span class="token punctuation">)</span><span class="token punctuation">{</span>
+            mInstance <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">MySqliteOpenHelper</span><span class="token punctuation">(</span>context<span class="token punctuation">,</span><span class="token string">"derryDB.db"</span><span class="token punctuation">,</span>null<span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> mInstance<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">private</span> <span class="token function">MySqliteOpenHelper</span><span class="token punctuation">(</span><span class="token annotation punctuation">@Nullable</span> Context context<span class="token punctuation">,</span> <span class="token annotation punctuation">@Nullable</span> String name<span class="token punctuation">,</span> <span class="token annotation punctuation">@Nullable</span> SQLiteDatabase<span class="token punctuation">.</span>CursorFactory factory<span class="token punctuation">,</span> <span class="token keyword">int</span> version<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">super</span><span class="token punctuation">(</span>context<span class="token punctuation">,</span> name<span class="token punctuation">,</span> factory<span class="token punctuation">,</span> version<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">//创建表 表数据初始化 数据库第一次创建时调用 不会重复创建 即此函数只执行一次</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onCreate</span><span class="token punctuation">(</span>SQLiteDatabase sqLiteDatabase<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//创建表：person表 _id name</span>
+
+        <span class="token comment" spellcheck="true">//主键：primary key是唯一的</span>
+        <span class="token comment" spellcheck="true">//自动增长关键字：autoincrement</span>
+        <span class="token comment" spellcheck="true">//_id标准写法 主键只能是Integer类型</span>
+
+        String sql <span class="token operator">=</span> <span class="token string">"create table persons(_id integer primary key autoincrement,name text)"</span><span class="token punctuation">;</span>
+
+        sqLiteDatabase<span class="token punctuation">.</span><span class="token function">execSQL</span><span class="token punctuation">(</span>sql<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onUpgrade</span><span class="token punctuation">(</span>SQLiteDatabase sqLiteDatabase<span class="token punctuation">,</span> <span class="token keyword">int</span> i<span class="token punctuation">,</span> <span class="token keyword">int</span> i1<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="创库、创表"><a href="#创库、创表" class="headerlink" title="创库、创表"></a>创库、创表</h2><pre class="line-numbers language-java"><code class="language-java">SQLiteOpenHelper helper <span class="token operator">=</span> MySqliteOpenHelper<span class="token punctuation">.</span><span class="token function">getmInstance</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">//Datebase 文件夹创建</span>
+SQLiteDatabase readableDatebase <span class="token operator">=</span> helper<span class="token punctuation">.</span><span class="token function">getReadableDatabase</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="增删改查"><a href="#增删改查" class="headerlink" title="增删改查"></a>增删改查</h2><pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">//查询</span>
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">query</span><span class="token punctuation">(</span>View view<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    SQLiteOpenHelper helper <span class="token operator">=</span> MySqliteOpenHelper<span class="token punctuation">.</span><span class="token function">getmInstance</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    SQLiteDatabase db <span class="token operator">=</span> helper<span class="token punctuation">.</span><span class="token function">getReadableDatabase</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">if</span><span class="token punctuation">(</span>db<span class="token punctuation">.</span><span class="token function">isOpen</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//返回游标</span>
+        Cursor cursor <span class="token operator">=</span> db<span class="token punctuation">.</span><span class="token function">rawQuery</span><span class="token punctuation">(</span><span class="token string">"select * from persons"</span><span class="token punctuation">,</span> null<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//迭代游标 往下移来遍历数据</span>
+        <span class="token keyword">while</span> <span class="token punctuation">(</span>cursor<span class="token punctuation">.</span><span class="token function">moveToNext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token annotation punctuation">@SuppressLint</span><span class="token punctuation">(</span><span class="token string">"Range"</span><span class="token punctuation">)</span> <span class="token keyword">int</span> _id <span class="token operator">=</span> cursor<span class="token punctuation">.</span><span class="token function">getInt</span><span class="token punctuation">(</span>cursor<span class="token punctuation">.</span><span class="token function">getColumnIndex</span><span class="token punctuation">(</span><span class="token string">"_id"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token annotation punctuation">@SuppressLint</span><span class="token punctuation">(</span><span class="token string">"Range"</span><span class="token punctuation">)</span> String name <span class="token operator">=</span> cursor<span class="token punctuation">.</span><span class="token function">getString</span><span class="token punctuation">(</span>cursor<span class="token punctuation">.</span><span class="token function">getColumnIndex</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            Log<span class="token punctuation">.</span><span class="token function">d</span><span class="token punctuation">(</span><span class="token string">"derry"</span><span class="token punctuation">,</span> <span class="token string">"query:_id "</span> <span class="token operator">+</span> _id <span class="token operator">+</span><span class="token string">"  name:"</span><span class="token operator">+</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment" spellcheck="true">//游标关闭：</span>
+        cursor<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        db<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">//插入数据</span>
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">insert</span><span class="token punctuation">(</span>View view<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    SQLiteOpenHelper helper <span class="token operator">=</span> MySqliteOpenHelper<span class="token punctuation">.</span><span class="token function">getmInstance</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    SQLiteDatabase db <span class="token operator">=</span> helper<span class="token punctuation">.</span><span class="token function">getWritableDatabase</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">if</span><span class="token punctuation">(</span>db<span class="token punctuation">.</span><span class="token function">isOpen</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//插入语句</span>
+        String sql <span class="token operator">=</span><span class="token string">"insert into persons(name) values('Derry老师')"</span><span class="token punctuation">;</span>
+
+        db<span class="token punctuation">.</span><span class="token function">execSQL</span><span class="token punctuation">(</span>sql<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token punctuation">}</span>
+    db<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">//修改</span>
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">update</span><span class="token punctuation">(</span>View view<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    SQLiteOpenHelper helper <span class="token operator">=</span> MySqliteOpenHelper<span class="token punctuation">.</span><span class="token function">getmInstance</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    SQLiteDatabase db <span class="token operator">=</span> helper<span class="token punctuation">.</span><span class="token function">getWritableDatabase</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">if</span><span class="token punctuation">(</span>db<span class="token punctuation">.</span><span class="token function">isOpen</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        String sql <span class="token operator">=</span> <span class="token string">"update persons set name =? where _id =?"</span><span class="token punctuation">;</span>
+        db<span class="token punctuation">.</span><span class="token function">execSQL</span><span class="token punctuation">(</span>sql<span class="token punctuation">,</span><span class="token keyword">new</span> <span class="token class-name">Object</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">{</span><span class="token string">"李连杰"</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    db<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><img src="/2021/09/27/AndroidDevelopment12/image-20211012214032632.png"></p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">delete</span><span class="token punctuation">(</span>View view<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    SQLiteOpenHelper helper <span class="token operator">=</span> MySqliteOpenHelper<span class="token punctuation">.</span><span class="token function">getmInstance</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    SQLiteDatabase db <span class="token operator">=</span> helper<span class="token punctuation">.</span><span class="token function">getWritableDatabase</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">if</span><span class="token punctuation">(</span>db<span class="token punctuation">.</span><span class="token function">isOpen</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        String sql <span class="token operator">=</span> <span class="token string">"delete from persons where _id=?"</span><span class="token punctuation">;</span>
+        db<span class="token punctuation">.</span><span class="token function">execSQL</span><span class="token punctuation">(</span>sql<span class="token punctuation">,</span><span class="token keyword">new</span> <span class="token class-name">Object</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">{</span><span class="token number">4</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    db<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><img src="/2021/09/27/AndroidDevelopment12/image-20211012214533016.png"></p>
+<h1 id="Room"><a href="#Room" class="headerlink" title="Room"></a>Room</h1><p>Room是对SQLite数据库的抽象封装，从而实现流畅地访问数据库</p>
+<h2 id="Room的三角色"><a href="#Room的三角色" class="headerlink" title="Room的三角色"></a>Room的三角色</h2><p><strong>@Entity</strong>：表</p>
+<p><strong>@DAO</strong>：对表进行增删改查</p>
+<p><strong>@Datebase（数据库名字，版本号）</strong>：</p>
+<h2 id="Entity"><a href="#Entity" class="headerlink" title="Entity"></a>Entity</h2><pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">//一张表 (主键唯一、自动增长</span>
+<span class="token annotation punctuation">@Entity</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Student</span> <span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@PrimaryKey</span><span class="token punctuation">(</span>autoGenerate <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">//设置自动增长</span>
+    <span class="token keyword">private</span> <span class="token keyword">int</span> id<span class="token punctuation">;</span>
+
+    <span class="token keyword">private</span> String name<span class="token punctuation">;</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">int</span> age<span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token function">Student</span><span class="token punctuation">(</span><span class="token keyword">int</span> id<span class="token punctuation">,</span> String name<span class="token punctuation">,</span> <span class="token keyword">int</span> age<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>id <span class="token operator">=</span> id<span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name<span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>age <span class="token operator">=</span> age<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">getId</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> id<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setId</span><span class="token punctuation">(</span><span class="token keyword">int</span> id<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>id <span class="token operator">=</span> id<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> String <span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> name<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setName</span><span class="token punctuation">(</span>String name<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">getAge</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> age<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setAge</span><span class="token punctuation">(</span><span class="token keyword">int</span> age<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>age <span class="token operator">=</span> age<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> String <span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token string">"Student{"</span> <span class="token operator">+</span>
+                <span class="token string">"id="</span> <span class="token operator">+</span> id <span class="token operator">+</span>
+                <span class="token string">", name='"</span> <span class="token operator">+</span> name <span class="token operator">+</span> <span class="token string">'\''</span> <span class="token operator">+</span>
+                <span class="token string">", age="</span> <span class="token operator">+</span> age <span class="token operator">+</span>
+                <span class="token string">'}'</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="Dao"><a href="#Dao" class="headerlink" title="@Dao"></a>@Dao</h3><pre class="line-numbers language-java"><code class="language-java"><span class="token annotation punctuation">@Dao</span><span class="token comment" spellcheck="true">//datebase access object == 对表进行增删改查</span>
+<span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">StudentDao</span> <span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@Insert</span>
+    <span class="token keyword">void</span> <span class="token function">insertStudents</span><span class="token punctuation">(</span>Student <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> students<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@Update</span>
+    <span class="token keyword">void</span> <span class="token function">updateStudents</span><span class="token punctuation">(</span>Student <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> students<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@Delete</span>
+    <span class="token keyword">void</span> <span class="token function">deleteAllStudents</span><span class="token punctuation">(</span>Student <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> students<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@Query</span><span class="token punctuation">(</span><span class="token string">"DELETE FROM Student"</span><span class="token punctuation">)</span>
+    <span class="token keyword">void</span> <span class="token function">deleteAllStudents</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@Query</span><span class="token punctuation">(</span><span class="token string">"SELECT * FROM Student ORDER BY ID DESC"</span><span class="token punctuation">)</span>
+    List<span class="token operator">&lt;</span>Student<span class="token operator">></span> <span class="token function">getAllStudent</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="Datebase"><a href="#Datebase" class="headerlink" title="@Datebase"></a>@Datebase</h3><pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">//数据库关联前面的表、数据库信息</span>
+<span class="token annotation punctuation">@Database</span><span class="token punctuation">(</span>entities <span class="token operator">=</span> <span class="token punctuation">{</span>Student<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">}</span> <span class="token punctuation">,</span>version <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">class</span> <span class="token class-name">StudentDatebase</span> <span class="token keyword">extends</span> <span class="token class-name">RoomDatabase</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">abstract</span> StudentDao <span class="token function">getStudentDao</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+
+    <span class="token comment" spellcheck="true">//单例模式 返回DB</span>
+    <span class="token keyword">private</span> <span class="token keyword">static</span> StudentDatebase INSTANCE<span class="token punctuation">;</span>
+    <span class="token keyword">static</span> <span class="token keyword">synchronized</span> StudentDatebase <span class="token function">getInstance</span><span class="token punctuation">(</span>Context context<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>INSTANCE <span class="token operator">==</span>null<span class="token punctuation">)</span><span class="token punctuation">{</span>
+            INSTANCE <span class="token operator">=</span> Room<span class="token punctuation">.</span><span class="token function">databaseBuilder</span><span class="token punctuation">(</span>context<span class="token punctuation">.</span><span class="token function">getApplicationContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                    StudentDatebase<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span><span class="token string">"student_datebase"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment" spellcheck="true">//</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> INSTANCE<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="工具类DBEngine"><a href="#工具类DBEngine" class="headerlink" title="工具类DBEngine"></a>工具类DBEngine</h2><pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">DBEngine</span> <span class="token punctuation">{</span>
+    <span class="token keyword">private</span> StudentDao studentDao<span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token function">DBEngine</span><span class="token punctuation">(</span>Context context<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        StudentDatebase studentDatebase <span class="token operator">=</span> StudentDatebase<span class="token punctuation">.</span><span class="token function">getInstance</span><span class="token punctuation">(</span>context<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        studentDao <span class="token operator">=</span> studentDatebase<span class="token punctuation">.</span><span class="token function">getStudentDao</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">//插入</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">insertStudent</span><span class="token punctuation">(</span>Student<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> students<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">new</span> <span class="token class-name">InsertAsyncTack</span><span class="token punctuation">(</span>studentDao<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">execute</span><span class="token punctuation">(</span>students<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">InsertAsyncTack</span> <span class="token keyword">extends</span> <span class="token class-name">AsyncTask</span><span class="token operator">&lt;</span>Student<span class="token punctuation">,</span> Void<span class="token punctuation">,</span> Void<span class="token operator">></span> <span class="token punctuation">{</span>
+        <span class="token keyword">private</span> StudentDao dao<span class="token punctuation">;</span>
+
+        <span class="token keyword">public</span> <span class="token function">InsertAsyncTack</span><span class="token punctuation">(</span>StudentDao studentDao<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            dao <span class="token operator">=</span> studentDao<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token annotation punctuation">@Override</span>
+        <span class="token keyword">protected</span> Void <span class="token function">doInBackground</span><span class="token punctuation">(</span>Student<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> students<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            dao<span class="token punctuation">.</span><span class="token function">insertStudents</span><span class="token punctuation">(</span>students<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span> null<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">//更新</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">updateStudents</span><span class="token punctuation">(</span>Student<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> students<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">new</span> <span class="token class-name">UpdateAsynTack</span><span class="token punctuation">(</span>studentDao<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">execute</span><span class="token punctuation">(</span>students<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token punctuation">}</span>
+
+
+    <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">UpdateAsynTack</span> <span class="token keyword">extends</span> <span class="token class-name">AsyncTask</span><span class="token operator">&lt;</span>Student<span class="token punctuation">,</span> Void<span class="token punctuation">,</span> Void<span class="token operator">></span> <span class="token punctuation">{</span>
+        <span class="token keyword">private</span> StudentDao dao<span class="token punctuation">;</span>
+
+        <span class="token keyword">public</span> <span class="token function">UpdateAsynTack</span><span class="token punctuation">(</span>StudentDao studentDao<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            dao <span class="token operator">=</span> studentDao<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token annotation punctuation">@Override</span>
+        <span class="token keyword">protected</span> Void <span class="token function">doInBackground</span><span class="token punctuation">(</span>Student<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> students<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            dao<span class="token punctuation">.</span><span class="token function">updateStudents</span><span class="token punctuation">(</span>students<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span> null<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">//删除</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">deleteStudents</span><span class="token punctuation">(</span>Student<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> students<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">new</span> <span class="token class-name">DeleteAsynTack</span><span class="token punctuation">(</span>studentDao<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">execute</span><span class="token punctuation">(</span>students<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">DeleteAsynTack</span> <span class="token keyword">extends</span> <span class="token class-name">AsyncTask</span><span class="token operator">&lt;</span>Student<span class="token punctuation">,</span> Void<span class="token punctuation">,</span> Void<span class="token operator">></span> <span class="token punctuation">{</span>
+        <span class="token keyword">private</span> StudentDao dao<span class="token punctuation">;</span>
+
+        <span class="token keyword">public</span> <span class="token function">DeleteAsynTack</span><span class="token punctuation">(</span>StudentDao studentDao<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            dao <span class="token operator">=</span> studentDao<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token annotation punctuation">@Override</span>
+        <span class="token keyword">protected</span> Void <span class="token function">doInBackground</span><span class="token punctuation">(</span>Student<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> students<span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token comment" spellcheck="true">//有条件删除</span>
+            dao<span class="token punctuation">.</span><span class="token function">deleteStudents</span><span class="token punctuation">(</span>students<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span> null<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">//全部删除</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">deleteAllStudents</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">new</span> <span class="token class-name">DeleteAllAsyncTack</span><span class="token punctuation">(</span>studentDao<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">execute</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">DeleteAllAsyncTack</span> <span class="token keyword">extends</span> <span class="token class-name">AsyncTask</span><span class="token operator">&lt;</span>Void<span class="token punctuation">,</span> Void<span class="token punctuation">,</span> Void<span class="token operator">></span> <span class="token punctuation">{</span>
+        <span class="token keyword">private</span> StudentDao dao<span class="token punctuation">;</span>
+
+        <span class="token keyword">public</span> <span class="token function">DeleteAllAsyncTack</span><span class="token punctuation">(</span>StudentDao studentDao<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            dao <span class="token operator">=</span> studentDao<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token annotation punctuation">@Override</span>
+        <span class="token keyword">protected</span> Void <span class="token function">doInBackground</span><span class="token punctuation">(</span>Void<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> voids<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            dao<span class="token punctuation">.</span><span class="token function">deleteAllStudents</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span> null<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">//查询</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">queryAllStudents</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">new</span> <span class="token class-name">QueryAsyncTack</span><span class="token punctuation">(</span>studentDao<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">execute</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">QueryAsyncTack</span> <span class="token keyword">extends</span> <span class="token class-name">AsyncTask</span><span class="token operator">&lt;</span>Void<span class="token punctuation">,</span> Void<span class="token punctuation">,</span> Void<span class="token operator">></span> <span class="token punctuation">{</span>
+        <span class="token keyword">private</span> StudentDao dao<span class="token punctuation">;</span>
+
+        <span class="token keyword">public</span> <span class="token function">QueryAsyncTack</span><span class="token punctuation">(</span>StudentDao studentDao<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            dao <span class="token operator">=</span> studentDao<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token annotation punctuation">@Override</span>
+        <span class="token keyword">protected</span> Void <span class="token function">doInBackground</span><span class="token punctuation">(</span>Void<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> voids<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            List<span class="token operator">&lt;</span>Student<span class="token operator">></span> allStudents <span class="token operator">=</span> dao<span class="token punctuation">.</span><span class="token function">getAllStudent</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token keyword">for</span> <span class="token punctuation">(</span>Student student <span class="token operator">:</span> allStudents<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                Log<span class="token punctuation">.</span><span class="token function">i</span><span class="token punctuation">(</span><span class="token string">"Derry"</span><span class="token punctuation">,</span> <span class="token string">"doInBackground: 全部查询"</span> <span class="token operator">+</span> student<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">return</span> null<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>用法：</strong></p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">private</span> DBEngine dbEngine<span class="token punctuation">;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">insertAction</span><span class="token punctuation">(</span>View view<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    Student student <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Student</span><span class="token punctuation">(</span><span class="token string">"张三"</span><span class="token punctuation">,</span><span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    Student student1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Student</span><span class="token punctuation">(</span><span class="token string">"李四"</span><span class="token punctuation">,</span><span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    Student student2 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Student</span><span class="token punctuation">(</span><span class="token string">"王五"</span><span class="token punctuation">,</span><span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    dbEngine<span class="token punctuation">.</span><span class="token function">insertStudent</span><span class="token punctuation">(</span>student<span class="token punctuation">,</span>student1<span class="token punctuation">,</span>student2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">updateAction</span><span class="token punctuation">(</span>View view<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    Student student <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Student</span><span class="token punctuation">(</span><span class="token string">"lisi"</span><span class="token punctuation">,</span><span class="token number">40</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    student<span class="token punctuation">.</span><span class="token function">setId</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    dbEngine<span class="token punctuation">.</span><span class="token function">updateStudents</span><span class="token punctuation">(</span>student<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">queryAction</span><span class="token punctuation">(</span>View view<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    dbEngine<span class="token punctuation">.</span><span class="token function">queryAllStudents</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">deleteAction</span><span class="token punctuation">(</span>View view<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    Student student <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Student</span><span class="token punctuation">(</span>null<span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    student<span class="token punctuation">.</span><span class="token function">setId</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    dbEngine<span class="token punctuation">.</span><span class="token function">deleteStudents</span><span class="token punctuation">(</span>student<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">deleteAllAction</span><span class="token punctuation">(</span>View view<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    dbEngine<span class="token punctuation">.</span><span class="token function">deleteAllStudents</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
                 
             </div>
             <hr/>
@@ -1055,31 +1414,31 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/09/27/CompileTechnical07/">
+                <a href="/2021/10/01/AndroidDevelopment13/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="编译技术（七）">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="安卓开发（九）PopupWindow那些事">
                         
-                        <span class="card-title">编译技术（七）</span>
+                        <span class="card-title">安卓开发（九）PopupWindow那些事</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            递归的预测分析法
+                            PopupWindow的相关方法
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-09-27
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-10-01
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/" class="post-category">
-                                    编译原理
+                            <a href="/categories/Android/" class="post-category">
+                                    Android
                                 </a>
                             
                             
@@ -1089,8 +1448,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/">
-                        <span class="chip bg-color">编译原理</span>
+                    <a href="/tags/Android/">
+                        <span class="chip bg-color">Android</span>
+                    </a>
+                    
+                    <a href="/tags/PopupWindow/">
+                        <span class="chip bg-color">PopupWindow</span>
                     </a>
                     
                 </div>
@@ -1104,31 +1467,31 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/09/27/ComputerCompositionPrinciple05/">
+                <a href="/2021/09/22/DiaryInUESTC04/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="计组（八）：模型机的微程序控制器">
+                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="成电微记（四）对模板进行修改">
                         
-                        <span class="card-title">计组（八）：模型机的微程序控制器</span>
+                        <span class="card-title">成电微记（四）对模板进行修改</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            基本概念及本章复习提纲
+                            对模板进行修改
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-09-27
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-09-22
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" class="post-category">
-                                    计算机组成原理
+                            <a href="/categories/%E6%88%90%E7%94%B5%E5%BE%AE%E8%AE%B0/" class="post-category">
+                                    成电微记
                                 </a>
                             
                             
@@ -1138,8 +1501,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">
-                        <span class="chip bg-color">计算机组成原理</span>
+                    <a href="/tags/Android/">
+                        <span class="chip bg-color">Android</span>
                     </a>
                     
                 </div>
@@ -1325,7 +1688,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">24.8k</span>&nbsp;字
+                class="white-color">14.7k</span>&nbsp;字
             
             
             

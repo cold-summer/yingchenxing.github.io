@@ -465,21 +465,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-11-10
+                    2021-11-24
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    74
+                    498
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    2 分
                 </div>
                 
 
@@ -505,7 +505,94 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p>在<em>TODO界面的实现</em>中，我们对定义实体类和recyclerView已经有了一定的了解，Bill页面的基本原理也是跟TODO一样的，不过我在这里丰富了一些细节。</p>
-<h2 id="recyclerView的嵌套"><a href="#recyclerView的嵌套" class="headerlink" title="recyclerView的嵌套"></a>recyclerView的嵌套</h2><h2 id="addView窗口的实现"><a href="#addView窗口的实现" class="headerlink" title="addView窗口的实现"></a>addView窗口的实现</h2><h2 id="RadioGroup无法添加布局的问题解决"><a href="#RadioGroup无法添加布局的问题解决" class="headerlink" title="RadioGroup无法添加布局的问题解决"></a>RadioGroup无法添加布局的问题解决</h2>
+<h2 id="recyclerView的嵌套"><a href="#recyclerView的嵌套" class="headerlink" title="recyclerView的嵌套"></a>recyclerView的嵌套</h2><p> 为了实现下图的效果，需要将一个recyclerView嵌套在另一个recyclerView中。</p>
+<img src="/2021/11/10/DiaryInUESTC06/image-20211123235932489.png" style="zoom:67%;">
+
+<p>原理是在外层adapter的onBindViewHolder中配置内层rv的adapter</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onBindViewHolder</span><span class="token punctuation">(</span><span class="token annotation punctuation">@NonNull</span> BillDayAdapter<span class="token punctuation">.</span>ViewHolder holder<span class="token punctuation">,</span> <span class="token keyword">int</span> position<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+
+    <span class="token comment" spellcheck="true">//加载另一个adapter</span>
+    BillAdapter billAdapter <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BillAdapter</span><span class="token punctuation">(</span>mBillDayList<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>position<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getBillList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    layoutManager <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">LinearLayoutManager</span><span class="token punctuation">(</span>mContext<span class="token punctuation">,</span> LinearLayoutManager<span class="token punctuation">.</span>VERTICAL<span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    layoutManager<span class="token punctuation">.</span><span class="token function">setStackFromEnd</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    holder<span class="token punctuation">.</span>billList<span class="token punctuation">.</span><span class="token function">setLayoutManager</span><span class="token punctuation">(</span>layoutManager<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    holder<span class="token punctuation">.</span>billList<span class="token punctuation">.</span><span class="token function">setAdapter</span><span class="token punctuation">(</span>billAdapter<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    holder<span class="token punctuation">.</span>billList<span class="token punctuation">.</span><span class="token function">setVisibility</span><span class="token punctuation">(</span>View<span class="token punctuation">.</span>VISIBLE<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="addBill窗口的实现"><a href="#addBill窗口的实现" class="headerlink" title="addBill窗口的实现"></a>addBill窗口的实现</h2><p>为了让用户输入更加方便，我在github上找了开源的圆形seekbar作为账单的输入。</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/jenly1314/ArcSeekBar">seekBar网址</a></p>
+<p>通过布局的setVisible()方法，可以动态切换在支出收入种类变更时的窗口下方的种类变化</p>
+<p><img src="/2021/11/10/DiaryInUESTC06/image-20211124002407406.png"></p>
+<p><img src="/2021/11/10/DiaryInUESTC06/image-20211124002426028.png"></p>
+<h3 id="RadioGroup无法嵌套布局的问题解决"><a href="#RadioGroup无法嵌套布局的问题解决" class="headerlink" title="RadioGroup无法嵌套布局的问题解决"></a>RadioGroup无法嵌套布局的问题解决</h3><p>在查阅了stackOverFlow之后，发现这竟然是谷歌自己的问题，在RadioGroup中使用LinearLayout等布局时，布局中的radioButton不能被识别在RadioGroup中。</p>
+<p>针对这个问题，我提出的方案是重写一个类MRadioGroup用于管理所有的radioButton，代码如下：</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MRadioGroup</span> <span class="token punctuation">{</span>
+
+    List<span class="token operator">&lt;</span>RadioButton<span class="token operator">></span> radios <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token function">MRadioGroup</span><span class="token punctuation">(</span>RadioButton<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> radios<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span>RadioButton rb <span class="token operator">:</span> radios<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>rb <span class="token operator">!=</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                rb<span class="token punctuation">.</span><span class="token function">setOnClickListener</span><span class="token punctuation">(</span>onClick<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">this</span><span class="token punctuation">.</span>radios<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>rb<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    View<span class="token punctuation">.</span>OnClickListener onClick <span class="token operator">=</span> v <span class="token operator">-</span><span class="token operator">></span> <span class="token punctuation">{</span>
+        <span class="token function">clearCheck</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        RadioButton rb <span class="token operator">=</span> <span class="token punctuation">(</span>RadioButton<span class="token punctuation">)</span> v<span class="token punctuation">;</span>
+        rb<span class="token punctuation">.</span><span class="token function">setChecked</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">clearCheck</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span>RadioButton rb <span class="token operator">:</span> radios<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            rb<span class="token punctuation">.</span><span class="token function">setChecked</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setCheck</span><span class="token punctuation">(</span><span class="token keyword">int</span> id<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>id <span class="token operator">-</span> <span class="token number">1</span> <span class="token operator">>=</span> <span class="token number">0</span><span class="token punctuation">)</span>
+            radios<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>id <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setChecked</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+
+    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">getType</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">int</span> i<span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span>i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> radios<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>radios<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">isChecked</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+                <span class="token keyword">return</span> i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>实现效果：</p>
+<p><img src="/2021/11/10/DiaryInUESTC06/image-20211124002644054.png"></p>
+<h2 id="点击账单切换到账单详情"><a href="#点击账单切换到账单详情" class="headerlink" title="点击账单切换到账单详情"></a>点击账单切换到账单详情</h2><p>直接在账单adapter中的onBindHolder()方法中添加点击事件即可：</p>
+<pre class="line-numbers language-java"><code class="language-java">holder<span class="token punctuation">.</span>billCv<span class="token punctuation">.</span><span class="token function">setOnClickListener</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">View<span class="token punctuation">.</span>OnClickListener</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onClick</span><span class="token punctuation">(</span>View v<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        Intent intent <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Intent</span><span class="token punctuation">(</span>mContext<span class="token punctuation">,</span> BillEditActivity<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        intent<span class="token punctuation">.</span><span class="token function">putExtra</span><span class="token punctuation">(</span>BillEditActivity<span class="token punctuation">.</span>Bill_ID<span class="token punctuation">,</span> bill<span class="token punctuation">.</span><span class="token function">getBillId</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        mContext<span class="token punctuation">.</span><span class="token function">startActivity</span><span class="token punctuation">(</span>intent<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>实现效果：</p>
+<img src="/2021/11/10/DiaryInUESTC06/image-20211124003002420.png" style="zoom:67%;">
+
+
+
+<h2 id="账单月报生成"><a href="#账单月报生成" class="headerlink" title="账单月报生成"></a>账单月报生成</h2><p>这里用了一个安卓图表的开源库<a target="_blank" rel="noopener" href="https://github.com/PhilJay/MPAndroidChart">MPAndroidChart</a></p>
+<p>简单配置后的实现效果：</p>
+<img src="/2021/11/10/DiaryInUESTC06/image-20211124003321001.png" style="zoom:67%;">
+
+<p>到这里，账单部分的核心功能就介绍完毕了！</p>
+
                 
             </div>
             <hr/>
@@ -1073,7 +1160,7 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/11/21/WeiJiYuanLi01/">
+                <a href="/2021/11/21/weiji01/">
                     <div class="card-image">
                         
                         
@@ -1096,8 +1183,8 @@
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" class="post-category">
-                                    计算机组成原理
+                            <a href="/categories/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/" class="post-category">
+                                    微机原理与接口技术
                                 </a>
                             
                             
@@ -1107,8 +1194,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">
-                        <span class="chip bg-color">计算机组成原理</span>
+                    <a href="/tags/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/">
+                        <span class="chip bg-color">微机原理与接口技术</span>
                     </a>
                     
                 </div>
@@ -1343,7 +1430,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">14.7k</span>&nbsp;字
+                class="white-color">17.9k</span>&nbsp;字
             
             
             

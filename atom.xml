@@ -6,7 +6,7 @@
   <link href="https://yingchenxing.github.io/atom.xml" rel="self"/>
   
   <link href="https://yingchenxing.github.io/"/>
-  <updated>2021-11-21T15:09:40.879Z</updated>
+  <updated>2021-11-23T15:48:20.676Z</updated>
   <id>https://yingchenxing.github.io/</id>
   
   <author>
@@ -17,11 +17,259 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>逻辑运算指令</title>
+    <link href="https://yingchenxing.github.io/2021/11/23/weiji10/"/>
+    <id>https://yingchenxing.github.io/2021/11/23/weiji10/</id>
+    <published>2021-11-23T08:00:11.000Z</published>
+    <updated>2021-11-23T15:48:20.676Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;strong&gt;对操作数的要求：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;大多与MOV指令相同&lt;/p&gt;
+&lt;p&gt;”非“运算指令要求操作数不能是立即数&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;对标志位影响：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;除”非“运算指令，其余指令的执行都会影响除AF外的5个状</summary>
+        
+      
+    
+    
+    
+    <category term="微机原理与接口技术" scheme="https://yingchenxing.github.io/categories/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="微机原理与接口技术" scheme="https://yingchenxing.github.io/tags/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>乘除运算指令</title>
+    <link href="https://yingchenxing.github.io/2021/11/23/weiji09/"/>
+    <id>https://yingchenxing.github.io/2021/11/23/weiji09/</id>
+    <published>2021-11-23T07:12:03.000Z</published>
+    <updated>2021-11-23T15:48:14.304Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;有分别针对无符号和有符号数运算指令&lt;/p&gt;
+&lt;p&gt;乘除运算指令均采用隐含寻址方式&lt;/p&gt;
+&lt;h2 id=&quot;乘法指令&quot;&gt;&lt;a href=&quot;#乘法指令&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="微机原理与接口技术" scheme="https://yingchenxing.github.io/categories/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="微机原理与接口技术" scheme="https://yingchenxing.github.io/tags/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>减法指令</title>
+    <link href="https://yingchenxing.github.io/2021/11/23/weiji08/"/>
+    <id>https://yingchenxing.github.io/2021/11/23/weiji08/</id>
+    <published>2021-11-23T06:32:38.000Z</published>
+    <updated>2021-11-23T07:11:55.037Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;普通减法指令SUB&lt;/p&gt;
+&lt;p&gt;考虑借位的减法指令SBB&lt;/p&gt;
+&lt;p&gt;减1指令DEC&lt;/p&gt;
+&lt;p&gt;比较指令CMP&lt;/p&gt;
+&lt;p&gt;求补指令NEG&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;减法指令对操作数的要求与对应的加法指令相同&lt;/strong&gt;&lt;/p&gt;
+&lt;h3</summary>
+        
+      
+    
+    
+    
+    <category term="微机原理与接口技术" scheme="https://yingchenxing.github.io/categories/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="微机原理与接口技术" scheme="https://yingchenxing.github.io/tags/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>加法运算指令</title>
+    <link href="https://yingchenxing.github.io/2021/11/22/weiji07/"/>
+    <id>https://yingchenxing.github.io/2021/11/22/weiji07/</id>
+    <published>2021-11-22T12:09:38.000Z</published>
+    <updated>2021-11-23T06:34:40.016Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h3 id=&quot;标志状态位&quot;&gt;&lt;a href=&quot;#标志状态位&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="微机原理与接口技术" scheme="https://yingchenxing.github.io/categories/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="微机原理与接口技术" scheme="https://yingchenxing.github.io/tags/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>输入输出指令</title>
+    <link href="https://yingchenxing.github.io/2021/11/22/weiji06/"/>
+    <id>https://yingchenxing.github.io/2021/11/22/weiji06/</id>
+    <published>2021-11-22T11:50:35.000Z</published>
+    <updated>2021-11-22T12:10:12.028Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h3 id=&quot;关于I-O端口&quot;&gt;&lt;a href=&quot;#关于I-O端口&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="微机原理与接口技术" scheme="https://yingchenxing.github.io/categories/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="微机原理与接口技术" scheme="https://yingchenxing.github.io/tags/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>交换指令、查表指令与扩展指令</title>
+    <link href="https://yingchenxing.github.io/2021/11/22/weiji05/"/>
+    <id>https://yingchenxing.github.io/2021/11/22/weiji05/</id>
+    <published>2021-11-22T11:27:43.000Z</published>
+    <updated>2021-11-22T11:48:47.041Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h3 id=&quot;交换指令&quot;&gt;&lt;a href=&quot;#交换指令&quot; class=&quot;headerlink&quot; title=&quot;交换指令&quot;&gt;&lt;/a&gt;交换指令&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;格式：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;XCHG REG ,</summary>
+        
+      
+    
+    
+    
+    <category term="微机原理与接口技术" scheme="https://yingchenxing.github.io/categories/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="微机原理与接口技术" scheme="https://yingchenxing.github.io/tags/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>堆栈操作指令</title>
+    <link href="https://yingchenxing.github.io/2021/11/22/weiji04/"/>
+    <id>https://yingchenxing.github.io/2021/11/22/weiji04/</id>
+    <published>2021-11-22T02:39:53.000Z</published>
+    <updated>2021-11-22T11:34:00.830Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;strong&gt;堆栈操作原则：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;先进后出&lt;/p&gt;
+&lt;p&gt;以字为单位&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;堆栈操作指令：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;压栈指令：PUSH OPRD（16位寄存器或存储器两单元）&lt;/p&gt;
+&lt;p&gt;出栈指令：POP</summary>
+        
+      
+    
+    
+    
+    <category term="微机原理与接口技术" scheme="https://yingchenxing.github.io/categories/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="微机原理与接口技术" scheme="https://yingchenxing.github.io/tags/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>数据传送指令 MOV</title>
+    <link href="https://yingchenxing.github.io/2021/11/22/weiji03/"/>
+    <id>https://yingchenxing.github.io/2021/11/22/weiji03/</id>
+    <published>2021-11-22T02:39:53.000Z</published>
+    <updated>2021-11-22T11:34:05.641Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;通用数据传送指令：一般数据传送指令，堆栈传送指令，交换指令，查表转换指令，字位扩展指令&lt;/p&gt;
+&lt;p&gt;输入输出指令&lt;/p&gt;
+&lt;p&gt;地址传送指令&lt;/p&gt;
+&lt;p&gt;标志传送指令&lt;/p&gt;
+&lt;h3 id=&quot;一般数据传送指令MOV&quot;&gt;&lt;a href=&quot;#一般数据传送指令MOV&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="微机原理与接口技术" scheme="https://yingchenxing.github.io/categories/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="微机原理与接口技术" scheme="https://yingchenxing.github.io/tags/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>DOS功能调用</title>
+    <link href="https://yingchenxing.github.io/2021/11/22/weiji02/"/>
+    <id>https://yingchenxing.github.io/2021/11/22/weiji02/</id>
+    <published>2021-11-22T00:41:17.000Z</published>
+    <updated>2021-11-22T11:34:09.688Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;调用DOS功能时需要使用&lt;strong&gt;软中断指令INT 21H&lt;/strong&gt;，并 在执行该指令之前，需要将调用的功能号送入寄存器AH中，有关的参量送入指定的寄存器。&lt;/p&gt;
+&lt;h2 id=&quot;送入口参量到指定寄存器（可缺省）&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="微机原理与接口技术" scheme="https://yingchenxing.github.io/categories/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="微机原理与接口技术" scheme="https://yingchenxing.github.io/tags/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/"/>
+    
+  </entry>
+  
+  <entry>
     <title>地址传送指令</title>
-    <link href="https://yingchenxing.github.io/2021/11/21/WeiJiYuanLi01/"/>
-    <id>https://yingchenxing.github.io/2021/11/21/WeiJiYuanLi01/</id>
+    <link href="https://yingchenxing.github.io/2021/11/21/weiji01/"/>
+    <id>https://yingchenxing.github.io/2021/11/21/weiji01/</id>
     <published>2021-11-21T15:04:49.000Z</published>
-    <updated>2021-11-21T15:09:40.879Z</updated>
+    <updated>2021-11-22T11:50:01.140Z</updated>
     
     
       
@@ -36,10 +284,10 @@
     
     
     
-    <category term="计算机组成原理" scheme="https://yingchenxing.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/"/>
+    <category term="微机原理与接口技术" scheme="https://yingchenxing.github.io/categories/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/"/>
     
     
-    <category term="计算机组成原理" scheme="https://yingchenxing.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/"/>
+    <category term="微机原理与接口技术" scheme="https://yingchenxing.github.io/tags/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/"/>
     
   </entry>
   
@@ -48,7 +296,7 @@
     <link href="https://yingchenxing.github.io/2021/11/10/DiaryInUESTC06/"/>
     <id>https://yingchenxing.github.io/2021/11/10/DiaryInUESTC06/</id>
     <published>2021-11-10T12:01:57.000Z</published>
-    <updated>2021-11-10T13:35:46.728Z</updated>
+    <updated>2021-11-23T16:38:18.135Z</updated>
     
     
       
@@ -281,246 +529,6 @@
     <category term="Android" scheme="https://yingchenxing.github.io/tags/Android/"/>
     
     <category term="MateraiDesign" scheme="https://yingchenxing.github.io/tags/MateraiDesign/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>安卓开发（六）广播的最佳实例</title>
-    <link href="https://yingchenxing.github.io/2021/09/14/AndroidDevelopment10/"/>
-    <id>https://yingchenxing.github.io/2021/09/14/AndroidDevelopment10/</id>
-    <published>2021-09-14T09:06:46.000Z</published>
-    <updated>2021-09-16T03:11:10.250Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;创建AcitivityCollector类&quot;&gt;&lt;a href=&quot;#创建AcitivityCollector类&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="Android" scheme="https://yingchenxing.github.io/categories/Android/"/>
-    
-    
-    <category term="Android" scheme="https://yingchenxing.github.io/tags/Android/"/>
-    
-    <category term="Broadcast" scheme="https://yingchenxing.github.io/tags/Broadcast/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>安卓开发（六）广播</title>
-    <link href="https://yingchenxing.github.io/2021/09/13/AndroidDevelopment09/"/>
-    <id>https://yingchenxing.github.io/2021/09/13/AndroidDevelopment09/</id>
-    <published>2021-09-13T11:23:15.000Z</published>
-    <updated>2021-09-18T03:41:31.656Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;广播机制简介&quot;&gt;&lt;a href=&quot;#广播机制简介&quot; class=&quot;headerlink&quot; title=&quot;广播机制简介&quot;&gt;&lt;/a&gt;广播机制简介&lt;/h2&gt;&lt;h4 id=&quot;标准广播（Normal-broadcasts）&quot;&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="Android" scheme="https://yingchenxing.github.io/categories/Android/"/>
-    
-    
-    <category term="Android" scheme="https://yingchenxing.github.io/tags/Android/"/>
-    
-    <category term="Broadcast" scheme="https://yingchenxing.github.io/tags/Broadcast/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>成电微记（三）创建github仓库</title>
-    <link href="https://yingchenxing.github.io/2021/09/11/DiaryInUESTC03/"/>
-    <id>https://yingchenxing.github.io/2021/09/11/DiaryInUESTC03/</id>
-    <published>2021-09-11T05:20:08.000Z</published>
-    <updated>2021-10-04T08:15:01.046Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;第一步：配置身份&quot;&gt;&lt;a href=&quot;#第一步：配置身份&quot; class=&quot;headerlink&quot; title=&quot;第一步：配置身份&quot;&gt;&lt;/a&gt;第一步：配置身份&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;gti config --global</summary>
-        
-      
-    
-    
-    
-    <category term="成电微记" scheme="https://yingchenxing.github.io/categories/%E6%88%90%E7%94%B5%E5%BE%AE%E8%AE%B0/"/>
-    
-    
-    <category term="Android" scheme="https://yingchenxing.github.io/tags/Android/"/>
-    
-    <category term="git" scheme="https://yingchenxing.github.io/tags/git/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>安卓开发（五）碎片的实践</title>
-    <link href="https://yingchenxing.github.io/2021/09/10/AndroidDevelopment08/"/>
-    <id>https://yingchenxing.github.io/2021/09/10/AndroidDevelopment08/</id>
-    <published>2021-09-10T08:29:14.000Z</published>
-    <updated>2021-09-11T02:05:59.341Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;新闻内容的布局&quot;&gt;&lt;a href=&quot;#新闻内容的布局&quot; class=&quot;headerlink&quot; title=&quot;新闻内容的布局&quot;&gt;&lt;/a&gt;新闻内容的布局&lt;/h2&gt;&lt;pre class=&quot;line-numbers language-xml&quot;&gt;&lt;code</summary>
-        
-      
-    
-    
-    
-    <category term="Android" scheme="https://yingchenxing.github.io/categories/Android/"/>
-    
-    
-    <category term="Android" scheme="https://yingchenxing.github.io/tags/Android/"/>
-    
-    <category term="Fragment" scheme="https://yingchenxing.github.io/tags/Fragment/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>安卓开发（五）碎片</title>
-    <link href="https://yingchenxing.github.io/2021/09/09/AndroidDevelopment07/"/>
-    <id>https://yingchenxing.github.io/2021/09/09/AndroidDevelopment07/</id>
-    <published>2021-09-09T08:49:33.000Z</published>
-    <updated>2021-09-11T02:06:18.487Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;碎片的使用方式&quot;&gt;&lt;a href=&quot;#碎片的使用方式&quot; class=&quot;headerlink&quot; title=&quot;碎片的使用方式&quot;&gt;&lt;/a&gt;碎片的使用方式&lt;/h2&gt;&lt;h3 id=&quot;碎片的简单用法：&quot;&gt;&lt;a href=&quot;#碎片的简单用法：&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="Android" scheme="https://yingchenxing.github.io/categories/Android/"/>
-    
-    
-    <category term="Android" scheme="https://yingchenxing.github.io/tags/Android/"/>
-    
-    <category term="Fragment" scheme="https://yingchenxing.github.io/tags/Fragment/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>成电微记（二）需求分析</title>
-    <link href="https://yingchenxing.github.io/2021/09/09/DiaryInUESTC02/"/>
-    <id>https://yingchenxing.github.io/2021/09/09/DiaryInUESTC02/</id>
-    <published>2021-09-09T08:31:13.000Z</published>
-    <updated>2021-10-04T08:15:27.430Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;记账&quot;&gt;&lt;a href=&quot;#记账&quot; class=&quot;headerlink&quot; title=&quot;记账&quot;&gt;&lt;/a&gt;记账&lt;/h2&gt;&lt;h3 id=&quot;收款&quot;&gt;&lt;a href=&quot;#收款&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="成电微记" scheme="https://yingchenxing.github.io/categories/%E6%88%90%E7%94%B5%E5%BE%AE%E8%AE%B0/"/>
-    
-    
-    <category term="Android" scheme="https://yingchenxing.github.io/tags/Android/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>安卓开发（四）编写界面实践</title>
-    <link href="https://yingchenxing.github.io/2021/09/08/AndroidDevelopment06/"/>
-    <id>https://yingchenxing.github.io/2021/09/08/AndroidDevelopment06/</id>
-    <published>2021-09-08T08:58:14.000Z</published>
-    <updated>2021-09-11T02:03:05.381Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;制作Nine-Patch图片&quot;&gt;&lt;a href=&quot;#制作Nine-Patch图片&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="Android" scheme="https://yingchenxing.github.io/categories/Android/"/>
-    
-    
-    <category term="Android" scheme="https://yingchenxing.github.io/tags/Android/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>安卓开发（零）AndroidStdio项目中各个文件(夹)的作用</title>
-    <link href="https://yingchenxing.github.io/2021/09/07/AndroidDevelopment05/"/>
-    <id>https://yingchenxing.github.io/2021/09/07/AndroidDevelopment05/</id>
-    <published>2021-09-07T11:12:20.000Z</published>
-    <updated>2021-09-20T13:00:38.245Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;笔记来自于《第一行代码》&lt;/p&gt;
-&lt;img src=&quot;/2021/09/07/AndroidDevelopment05/1631014300281.png&quot; style=&quot;zoom:150%;&quot;&gt;
-
-&lt;p&gt;&lt;img</summary>
-        
-      
-    
-    
-    
-    <category term="Android" scheme="https://yingchenxing.github.io/categories/Android/"/>
-    
-    
-    <category term="Android" scheme="https://yingchenxing.github.io/tags/Android/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>安卓开发（四）UI组件—视图</title>
-    <link href="https://yingchenxing.github.io/2021/09/07/AndroidDevelopment04/"/>
-    <id>https://yingchenxing.github.io/2021/09/07/AndroidDevelopment04/</id>
-    <published>2021-09-07T01:13:43.000Z</published>
-    <updated>2021-09-14T13:29:27.418Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;ListView&quot;&gt;&lt;a href=&quot;#ListView&quot; class=&quot;headerlink&quot; title=&quot;ListView&quot;&gt;&lt;/a&gt;ListView&lt;/h1&gt;&lt;h2 id=&quot;常用属性&quot;&gt;&lt;a href=&quot;#常用属性&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="Android" scheme="https://yingchenxing.github.io/categories/Android/"/>
-    
-    
-    <category term="Android" scheme="https://yingchenxing.github.io/tags/Android/"/>
-    
-    <category term="UI" scheme="https://yingchenxing.github.io/tags/UI/"/>
     
   </entry>
   

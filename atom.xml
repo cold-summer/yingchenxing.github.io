@@ -6,7 +6,7 @@
   <link href="https://yingchenxing.github.io/atom.xml" rel="self"/>
   
   <link href="https://yingchenxing.github.io/"/>
-  <updated>2021-11-23T15:48:20.676Z</updated>
+  <updated>2021-11-28T14:02:19.541Z</updated>
   <id>https://yingchenxing.github.io/</id>
   
   <author>
@@ -15,6 +15,429 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>汇编程序设计实例</title>
+    <link href="https://yingchenxing.github.io/2021/11/28/weiji25/"/>
+    <id>https://yingchenxing.github.io/2021/11/28/weiji25/</id>
+    <published>2021-11-28T13:32:30.000Z</published>
+    <updated>2021-11-28T14:02:19.541Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;img src=&quot;/2021/11/28/weiji25/image-20211128220111597.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img</summary>
+        
+      
+    
+    
+    
+    <category term="微机原理与接口技术" scheme="https://yingchenxing.github.io/categories/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="微机原理与接口技术" scheme="https://yingchenxing.github.io/tags/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>系统功能调用</title>
+    <link href="https://yingchenxing.github.io/2021/11/28/weiji24/"/>
+    <id>https://yingchenxing.github.io/2021/11/28/weiji24/</id>
+    <published>2021-11-28T12:46:12.000Z</published>
+    <updated>2021-11-28T13:26:32.724Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;strong&gt;BIOS：驻留在ROM中的基本输入/输出系统&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;加电自检，装入引导，主要I/O设备处理程序及接口控制&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;DOS：磁盘操作系统&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;DOS功能/BIOS功能调</summary>
+        
+      
+    
+    
+    
+    <category term="微机原理与接口技术" scheme="https://yingchenxing.github.io/categories/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="微机原理与接口技术" scheme="https://yingchenxing.github.io/tags/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>其他伪指令</title>
+    <link href="https://yingchenxing.github.io/2021/11/28/weiji23/"/>
+    <id>https://yingchenxing.github.io/2021/11/28/weiji23/</id>
+    <published>2021-11-28T12:19:42.000Z</published>
+    <updated>2021-11-28T12:46:05.363Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h3 id=&quot;过程定义伪指令&quot;&gt;&lt;a href=&quot;#过程定义伪指令&quot; class=&quot;headerlink&quot; title=&quot;过程定义伪指令&quot;&gt;&lt;/a&gt;过程定义伪指令&lt;/h3&gt;&lt;p&gt;用于定义一个过程体&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;格式：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img</summary>
+        
+      
+    
+    
+    
+    <category term="微机原理与接口技术" scheme="https://yingchenxing.github.io/categories/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="微机原理与接口技术" scheme="https://yingchenxing.github.io/tags/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>基本伪指令</title>
+    <link href="https://yingchenxing.github.io/2021/11/28/weiji22/"/>
+    <id>https://yingchenxing.github.io/2021/11/28/weiji22/</id>
+    <published>2021-11-28T08:21:41.000Z</published>
+    <updated>2021-11-28T12:19:25.808Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;伪指令：由汇编程序执行的”指令系统“&lt;/p&gt;
+&lt;p&gt;作用：（帮助计算机理解助记符指令编写的汇编语言源程序）&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;定义变量&lt;/li&gt;
+&lt;li&gt;分配存储区&lt;/li&gt;
+&lt;li&gt;定义逻辑段&lt;/li&gt;
+&lt;li&gt;指示程序开始和结束&lt;/li&gt;
+&lt;li&gt;定义过程等&lt;/</summary>
+        
+      
+    
+    
+    
+    <category term="微机原理与接口技术" scheme="https://yingchenxing.github.io/categories/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="微机原理与接口技术" scheme="https://yingchenxing.github.io/tags/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>汇编语言程序</title>
+    <link href="https://yingchenxing.github.io/2021/11/28/weiji21/"/>
+    <id>https://yingchenxing.github.io/2021/11/28/weiji21/</id>
+    <published>2021-11-28T03:09:17.000Z</published>
+    <updated>2021-11-28T08:21:26.095Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h3 id=&quot;汇编语言源程序与汇编程序&quot;&gt;&lt;a href=&quot;#汇编语言源程序与汇编程序&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="微机原理与接口技术" scheme="https://yingchenxing.github.io/categories/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="微机原理与接口技术" scheme="https://yingchenxing.github.io/tags/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>指令系统小结</title>
+    <link href="https://yingchenxing.github.io/2021/11/28/weiji20/"/>
+    <id>https://yingchenxing.github.io/2021/11/28/weiji20/</id>
+    <published>2021-11-28T02:51:47.000Z</published>
+    <updated>2021-11-28T03:09:09.698Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;</summary>
+        
+      
+    
+    
+    
+    <category term="微机原理与接口技术" scheme="https://yingchenxing.github.io/categories/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="微机原理与接口技术" scheme="https://yingchenxing.github.io/tags/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>处理控制指令</title>
+    <link href="https://yingchenxing.github.io/2021/11/28/weiji19/"/>
+    <id>https://yingchenxing.github.io/2021/11/28/weiji19/</id>
+    <published>2021-11-28T02:43:48.000Z</published>
+    <updated>2021-11-28T02:51:38.981Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;这类指令用来对CPU进行控制，如修改标志寄存器，使CPU暂停，使CPU与外部设备同步&lt;/p&gt;
+&lt;p&gt;&lt;img</summary>
+        
+      
+    
+    
+    
+    <category term="微机原理与接口技术" scheme="https://yingchenxing.github.io/categories/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="微机原理与接口技术" scheme="https://yingchenxing.github.io/tags/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>中断控制指令</title>
+    <link href="https://yingchenxing.github.io/2021/11/27/weiji18/"/>
+    <id>https://yingchenxing.github.io/2021/11/27/weiji18/</id>
+    <published>2021-11-27T14:58:05.000Z</published>
+    <updated>2021-11-27T16:05:55.958Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;1引起CPU产生一次中断的指令&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;中断与过程调用&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;相似点：&lt;/p&gt;
+&lt;p&gt;从一个正在执行的过程转向另一个过程（处理程序），并在执行完后返回原程序继续执行&lt;/p&gt;
+&lt;p&gt;区别：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;中断是随机事</summary>
+        
+      
+    
+    
+    
+    <category term="微机原理与接口技术" scheme="https://yingchenxing.github.io/categories/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="微机原理与接口技术" scheme="https://yingchenxing.github.io/tags/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>过程调用指令</title>
+    <link href="https://yingchenxing.github.io/2021/11/27/weiji17/"/>
+    <id>https://yingchenxing.github.io/2021/11/27/weiji17/</id>
+    <published>2021-11-27T14:14:41.000Z</published>
+    <updated>2021-11-27T14:57:54.476Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;用于调用一个子过程&lt;/p&gt;
+&lt;p&gt;与转移指令的比较：&lt;/p&gt;
+&lt;p&gt;子过程执行结束后要返回原调用处（必须保护返回地址）&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/2021/11/27/weiji17/image-20211127222330104.png&quot;&gt;&lt;/p&gt;
+&lt;h2</summary>
+        
+      
+    
+    
+    
+    <category term="微机原理与接口技术" scheme="https://yingchenxing.github.io/categories/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="微机原理与接口技术" scheme="https://yingchenxing.github.io/tags/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>循环控制指令</title>
+    <link href="https://yingchenxing.github.io/2021/11/27/weiji16/"/>
+    <id>https://yingchenxing.github.io/2021/11/27/weiji16/</id>
+    <published>2021-11-27T13:58:27.000Z</published>
+    <updated>2021-11-27T14:14:19.454Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;循环范围：&lt;/p&gt;
+&lt;p&gt;以当前IP为中心的-128~+127范围内循环&lt;/p&gt;
+&lt;p&gt;循环次数由CX寄存器指定&lt;/p&gt;
+&lt;h2 id=&quot;无条件循环指令&quot;&gt;&lt;a href=&quot;#无条件循环指令&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="微机原理与接口技术" scheme="https://yingchenxing.github.io/categories/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="微机原理与接口技术" scheme="https://yingchenxing.github.io/tags/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>转移指令</title>
+    <link href="https://yingchenxing.github.io/2021/11/27/weiji15/"/>
+    <id>https://yingchenxing.github.io/2021/11/27/weiji15/</id>
+    <published>2021-11-27T13:07:23.000Z</published>
+    <updated>2021-11-27T13:57:59.441Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h3 id=&quot;转移指令&quot;&gt;&lt;a href=&quot;#转移指令&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="微机原理与接口技术" scheme="https://yingchenxing.github.io/categories/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="微机原理与接口技术" scheme="https://yingchenxing.github.io/tags/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>程序控制类指令</title>
+    <link href="https://yingchenxing.github.io/2021/11/27/weiji14/"/>
+    <id>https://yingchenxing.github.io/2021/11/27/weiji14/</id>
+    <published>2021-11-27T12:44:20.000Z</published>
+    <updated>2021-11-27T12:45:51.134Z</updated>
+    
+    
+    
+    
+    <category term="微机原理与接口技术" scheme="https://yingchenxing.github.io/categories/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="微机原理与接口技术" scheme="https://yingchenxing.github.io/tags/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>具体串操作指令</title>
+    <link href="https://yingchenxing.github.io/2021/11/27/weiji13/"/>
+    <id>https://yingchenxing.github.io/2021/11/27/weiji13/</id>
+    <published>2021-11-27T07:16:38.000Z</published>
+    <updated>2021-11-27T14:14:05.310Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h3 id=&quot;串传送MOVS&quot;&gt;&lt;a href=&quot;#串传送MOVS&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="微机原理与接口技术" scheme="https://yingchenxing.github.io/categories/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="微机原理与接口技术" scheme="https://yingchenxing.github.io/tags/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>串操作指令说明</title>
+    <link href="https://yingchenxing.github.io/2021/11/27/weiji12/"/>
+    <id>https://yingchenxing.github.io/2021/11/27/weiji12/</id>
+    <published>2021-11-27T06:41:00.000Z</published>
+    <updated>2021-11-27T07:16:29.393Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h3 id=&quot;串操作指令说明：&quot;&gt;&lt;a href=&quot;#串操作指令说明：&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="微机原理与接口技术" scheme="https://yingchenxing.github.io/categories/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="微机原理与接口技术" scheme="https://yingchenxing.github.io/tags/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>移位操作指令</title>
+    <link href="https://yingchenxing.github.io/2021/11/24/weiji11/"/>
+    <id>https://yingchenxing.github.io/2021/11/24/weiji11/</id>
+    <published>2021-11-24T06:41:27.000Z</published>
+    <updated>2021-11-24T10:19:23.303Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;控制二进制向左或向右移动的指令&lt;/p&gt;
+&lt;p&gt;非循环移位指令&lt;/p&gt;
+&lt;p&gt;循环移位指令&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;指令说明：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;指令格式在形式上为双操作数，本质上为单操作数&lt;/p&gt;
+&lt;p&gt;指令的目标操作数为被移动对象，源操作数为移动次数&lt;</summary>
+        
+      
+    
+    
+    
+    <category term="微机原理与接口技术" scheme="https://yingchenxing.github.io/categories/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="微机原理与接口技术" scheme="https://yingchenxing.github.io/tags/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用bison和flex完成语法分析器</title>
+    <link href="https://yingchenxing.github.io/2021/11/24/%E4%BD%BF%E7%94%A8bison%E5%92%8Cflex%E5%AE%8C%E6%88%90%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90%E5%99%A8/"/>
+    <id>https://yingchenxing.github.io/2021/11/24/%E4%BD%BF%E7%94%A8bison%E5%92%8Cflex%E5%AE%8C%E6%88%90%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90%E5%99%A8/</id>
+    <published>2021-11-24T02:46:12.000Z</published>
+    <updated>2021-11-24T04:01:38.037Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h3 id=&quot;bison的结构&quot;&gt;&lt;a href=&quot;#bison的结构&quot; class=&quot;headerlink&quot; title=&quot;bison的结构&quot;&gt;&lt;/a&gt;bison的结构&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;%&amp;#123;
+ //自定义部分，会直接输出到.c文件中
+%&amp;#125;
+</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>逻辑运算指令</title>
@@ -125,410 +548,6 @@
     
     
     <category term="微机原理与接口技术" scheme="https://yingchenxing.github.io/tags/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>输入输出指令</title>
-    <link href="https://yingchenxing.github.io/2021/11/22/weiji06/"/>
-    <id>https://yingchenxing.github.io/2021/11/22/weiji06/</id>
-    <published>2021-11-22T11:50:35.000Z</published>
-    <updated>2021-11-22T12:10:12.028Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h3 id=&quot;关于I-O端口&quot;&gt;&lt;a href=&quot;#关于I-O端口&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="微机原理与接口技术" scheme="https://yingchenxing.github.io/categories/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/"/>
-    
-    
-    <category term="微机原理与接口技术" scheme="https://yingchenxing.github.io/tags/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>交换指令、查表指令与扩展指令</title>
-    <link href="https://yingchenxing.github.io/2021/11/22/weiji05/"/>
-    <id>https://yingchenxing.github.io/2021/11/22/weiji05/</id>
-    <published>2021-11-22T11:27:43.000Z</published>
-    <updated>2021-11-22T11:48:47.041Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h3 id=&quot;交换指令&quot;&gt;&lt;a href=&quot;#交换指令&quot; class=&quot;headerlink&quot; title=&quot;交换指令&quot;&gt;&lt;/a&gt;交换指令&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;格式：&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;XCHG REG ,</summary>
-        
-      
-    
-    
-    
-    <category term="微机原理与接口技术" scheme="https://yingchenxing.github.io/categories/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/"/>
-    
-    
-    <category term="微机原理与接口技术" scheme="https://yingchenxing.github.io/tags/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>堆栈操作指令</title>
-    <link href="https://yingchenxing.github.io/2021/11/22/weiji04/"/>
-    <id>https://yingchenxing.github.io/2021/11/22/weiji04/</id>
-    <published>2021-11-22T02:39:53.000Z</published>
-    <updated>2021-11-22T11:34:00.830Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;&lt;strong&gt;堆栈操作原则：&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;先进后出&lt;/p&gt;
-&lt;p&gt;以字为单位&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;堆栈操作指令：&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;压栈指令：PUSH OPRD（16位寄存器或存储器两单元）&lt;/p&gt;
-&lt;p&gt;出栈指令：POP</summary>
-        
-      
-    
-    
-    
-    <category term="微机原理与接口技术" scheme="https://yingchenxing.github.io/categories/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/"/>
-    
-    
-    <category term="微机原理与接口技术" scheme="https://yingchenxing.github.io/tags/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>数据传送指令 MOV</title>
-    <link href="https://yingchenxing.github.io/2021/11/22/weiji03/"/>
-    <id>https://yingchenxing.github.io/2021/11/22/weiji03/</id>
-    <published>2021-11-22T02:39:53.000Z</published>
-    <updated>2021-11-22T11:34:05.641Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;通用数据传送指令：一般数据传送指令，堆栈传送指令，交换指令，查表转换指令，字位扩展指令&lt;/p&gt;
-&lt;p&gt;输入输出指令&lt;/p&gt;
-&lt;p&gt;地址传送指令&lt;/p&gt;
-&lt;p&gt;标志传送指令&lt;/p&gt;
-&lt;h3 id=&quot;一般数据传送指令MOV&quot;&gt;&lt;a href=&quot;#一般数据传送指令MOV&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="微机原理与接口技术" scheme="https://yingchenxing.github.io/categories/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/"/>
-    
-    
-    <category term="微机原理与接口技术" scheme="https://yingchenxing.github.io/tags/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>DOS功能调用</title>
-    <link href="https://yingchenxing.github.io/2021/11/22/weiji02/"/>
-    <id>https://yingchenxing.github.io/2021/11/22/weiji02/</id>
-    <published>2021-11-22T00:41:17.000Z</published>
-    <updated>2021-11-22T11:34:09.688Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;调用DOS功能时需要使用&lt;strong&gt;软中断指令INT 21H&lt;/strong&gt;，并 在执行该指令之前，需要将调用的功能号送入寄存器AH中，有关的参量送入指定的寄存器。&lt;/p&gt;
-&lt;h2 id=&quot;送入口参量到指定寄存器（可缺省）&quot;&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="微机原理与接口技术" scheme="https://yingchenxing.github.io/categories/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/"/>
-    
-    
-    <category term="微机原理与接口技术" scheme="https://yingchenxing.github.io/tags/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>地址传送指令</title>
-    <link href="https://yingchenxing.github.io/2021/11/21/weiji01/"/>
-    <id>https://yingchenxing.github.io/2021/11/21/weiji01/</id>
-    <published>2021-11-21T15:04:49.000Z</published>
-    <updated>2021-11-22T11:50:01.140Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;取近地址指针：LEA&lt;/p&gt;
-&lt;p&gt;取远地址指针：LES，LDS&lt;/p&gt;
-&lt;h2 id=&quot;取偏移地址指令LEA&quot;&gt;&lt;a href=&quot;#取偏移地址指令LEA&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="微机原理与接口技术" scheme="https://yingchenxing.github.io/categories/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/"/>
-    
-    
-    <category term="微机原理与接口技术" scheme="https://yingchenxing.github.io/tags/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>成电微记（六）Bill界面的实现</title>
-    <link href="https://yingchenxing.github.io/2021/11/10/DiaryInUESTC06/"/>
-    <id>https://yingchenxing.github.io/2021/11/10/DiaryInUESTC06/</id>
-    <published>2021-11-10T12:01:57.000Z</published>
-    <updated>2021-11-23T16:38:18.135Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;在&lt;em&gt;TODO界面的实现&lt;/em&gt;中，我们对定义实体类和recyclerView已经有了一定的了解，Bill页面的基本原理也是跟TODO一样的，不过我在这里丰富了一些细节。&lt;/p&gt;
-&lt;h2 id=&quot;recyclerView的嵌套&quot;&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="成电微记" scheme="https://yingchenxing.github.io/categories/%E6%88%90%E7%94%B5%E5%BE%AE%E8%AE%B0/"/>
-    
-    
-    <category term="Android" scheme="https://yingchenxing.github.io/tags/Android/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>HTML学习笔记（三）</title>
-    <link href="https://yingchenxing.github.io/2021/10/06/HTMLLearning03/"/>
-    <id>https://yingchenxing.github.io/2021/10/06/HTMLLearning03/</id>
-    <published>2021-10-06T07:54:42.000Z</published>
-    <updated>2021-10-06T08:39:57.035Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;表单的应用&quot;&gt;&lt;a href=&quot;#表单的应用&quot; class=&quot;headerlink&quot; title=&quot;表单的应用&quot;&gt;&lt;/a&gt;表单的应用&lt;/h1&gt;&lt;h2 id=&quot;只读模式&quot;&gt;&lt;a href=&quot;#只读模式&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="HTML" scheme="https://yingchenxing.github.io/categories/HTML/"/>
-    
-    
-    <category term="HTML" scheme="https://yingchenxing.github.io/tags/HTML/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>HTML学习笔记（二）</title>
-    <link href="https://yingchenxing.github.io/2021/10/06/HTMLLearning02/"/>
-    <id>https://yingchenxing.github.io/2021/10/06/HTMLLearning02/</id>
-    <published>2021-10-06T06:06:32.000Z</published>
-    <updated>2021-10-06T07:54:22.625Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;页面结构分析&quot;&gt;&lt;a href=&quot;#页面结构分析&quot; class=&quot;headerlink&quot; title=&quot;页面结构分析&quot;&gt;&lt;/a&gt;页面结构分析&lt;/h2&gt;&lt;p&gt;&lt;img</summary>
-        
-      
-    
-    
-    
-    <category term="HTML" scheme="https://yingchenxing.github.io/categories/HTML/"/>
-    
-    
-    <category term="HTML" scheme="https://yingchenxing.github.io/tags/HTML/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>HTML学习笔记（一）</title>
-    <link href="https://yingchenxing.github.io/2021/10/04/HTMLLearning01/"/>
-    <id>https://yingchenxing.github.io/2021/10/04/HTMLLearning01/</id>
-    <published>2021-10-04T06:12:36.000Z</published>
-    <updated>2021-10-06T06:05:46.529Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;HTML&quot;&gt;&lt;a href=&quot;#HTML&quot; class=&quot;headerlink&quot; title=&quot;HTML&quot;&gt;&lt;/a&gt;HTML&lt;/h2&gt;&lt;p&gt;Hyper Text Markup Language (超文本标记语言)&lt;/p&gt;
-&lt;h2</summary>
-        
-      
-    
-    
-    
-    <category term="HTML" scheme="https://yingchenxing.github.io/categories/HTML/"/>
-    
-    
-    <category term="HTML" scheme="https://yingchenxing.github.io/tags/HTML/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>成电微记（五）TODO界面的实现</title>
-    <link href="https://yingchenxing.github.io/2021/10/02/DiaryInUESTC05/"/>
-    <id>https://yingchenxing.github.io/2021/10/02/DiaryInUESTC05/</id>
-    <published>2021-10-02T02:33:17.000Z</published>
-    <updated>2021-11-10T12:01:07.329Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;step1：创建Todo类&quot;&gt;&lt;a href=&quot;#step1：创建Todo类&quot; class=&quot;headerlink&quot; title=&quot;step1：创建Todo类&quot;&gt;&lt;/a&gt;step1：创建Todo类&lt;/h2&gt;&lt;pre class=&quot;line-numbers</summary>
-        
-      
-    
-    
-    
-    <category term="成电微记" scheme="https://yingchenxing.github.io/categories/%E6%88%90%E7%94%B5%E5%BE%AE%E8%AE%B0/"/>
-    
-    
-    <category term="Android" scheme="https://yingchenxing.github.io/tags/Android/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>AndroidDevelopment14</title>
-    <link href="https://yingchenxing.github.io/2021/10/01/AndroidDevelopment14/"/>
-    <id>https://yingchenxing.github.io/2021/10/01/AndroidDevelopment14/</id>
-    <published>2021-10-01T10:37:52.000Z</published>
-    <updated>2021-10-04T08:17:57.843Z</updated>
-    
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>安卓开发（九）PopupWindow那些事</title>
-    <link href="https://yingchenxing.github.io/2021/10/01/AndroidDevelopment13/"/>
-    <id>https://yingchenxing.github.io/2021/10/01/AndroidDevelopment13/</id>
-    <published>2021-10-01T07:49:30.000Z</published>
-    <updated>2021-10-04T08:22:40.139Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;转载自：&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="Android" scheme="https://yingchenxing.github.io/categories/Android/"/>
-    
-    
-    <category term="Android" scheme="https://yingchenxing.github.io/tags/Android/"/>
-    
-    <category term="PopupWindow" scheme="https://yingchenxing.github.io/tags/PopupWindow/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>安卓开发（八）数据存储</title>
-    <link href="https://yingchenxing.github.io/2021/09/27/AndroidDevelopment12/"/>
-    <id>https://yingchenxing.github.io/2021/09/27/AndroidDevelopment12/</id>
-    <published>2021-09-27T03:39:20.000Z</published>
-    <updated>2021-10-24T03:13:40.660Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;SP-SharePreferences&quot;&gt;&lt;a href=&quot;#SP-SharePreferences&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>成电微记（四）对模板进行修改</title>
-    <link href="https://yingchenxing.github.io/2021/09/22/DiaryInUESTC04/"/>
-    <id>https://yingchenxing.github.io/2021/09/22/DiaryInUESTC04/</id>
-    <published>2021-09-22T07:19:35.000Z</published>
-    <updated>2021-10-04T08:14:57.763Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;&lt;strong&gt;选择Bottom Navigation Activity&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/2021/09/22/DiaryInUESTC04/image-20210922152329323.png&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="成电微记" scheme="https://yingchenxing.github.io/categories/%E6%88%90%E7%94%B5%E5%BE%AE%E8%AE%B0/"/>
-    
-    
-    <category term="Android" scheme="https://yingchenxing.github.io/tags/Android/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>安卓开发（七）MateraiDesign实践</title>
-    <link href="https://yingchenxing.github.io/2021/09/16/AndroidDevelopment11/"/>
-    <id>https://yingchenxing.github.io/2021/09/16/AndroidDevelopment11/</id>
-    <published>2021-09-16T14:14:32.000Z</published>
-    <updated>2021-09-22T08:15:50.462Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;Materai-Design实践&quot;&gt;&lt;a href=&quot;#Materai-Design实践&quot; class=&quot;headerlink&quot; title=&quot;Materai Design实践&quot;&gt;&lt;/a&gt;Materai Design实践&lt;/h1&gt;&lt;h2</summary>
-        
-      
-    
-    
-    
-    <category term="Android" scheme="https://yingchenxing.github.io/categories/Android/"/>
-    
-    
-    <category term="Android" scheme="https://yingchenxing.github.io/tags/Android/"/>
-    
-    <category term="MateraiDesign" scheme="https://yingchenxing.github.io/tags/MateraiDesign/"/>
     
   </entry>
   

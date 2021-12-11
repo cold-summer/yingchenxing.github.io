@@ -3269,6 +3269,24 @@ git merge version1.0
       </tags>
   </entry>
   <entry>
+    <title>Hello World</title>
+    <url>/2021/08/27/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class="line-numbers language-bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class="line-numbers language-bash"><code class="language-bash">$ hexo server
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class="line-numbers language-bash"><code class="language-bash">$ hexo generate
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class="line-numbers language-bash"><code class="language-bash">$ hexo deploy
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+  </entry>
+  <entry>
     <title>托福学习笔记</title>
     <url>/2021/08/29/TOEFL/</url>
     <content><![CDATA[<h1 id="试卷结构"><a href="#试卷结构" class="headerlink" title="试卷结构"></a>试卷结构</h1><p><img src="/2021/08/29/TOEFL/1.png"></p>
@@ -3449,24 +3467,6 @@ git merge version1.0
       </tags>
   </entry>
   <entry>
-    <title>Hello World</title>
-    <url>/2021/08/27/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class="line-numbers language-bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class="line-numbers language-bash"><code class="language-bash">$ hexo server
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class="line-numbers language-bash"><code class="language-bash">$ hexo generate
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class="line-numbers language-bash"><code class="language-bash">$ hexo deploy
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
-  </entry>
-  <entry>
     <title>地址传送指令</title>
     <url>/2021/11/21/weiji01/</url>
     <content><![CDATA[<p>取近地址指针：LEA</p>
@@ -3513,6 +3513,37 @@ git merge version1.0
       </tags>
   </entry>
   <entry>
+    <title>DOS功能调用</title>
+    <url>/2021/11/22/weiji02/</url>
+    <content><![CDATA[<p>调用DOS功能时需要使用<strong>软中断指令INT 21H</strong>，并 在执行该指令之前，需要将调用的功能号送入寄存器AH中，有关的参量送入指定的寄存器。</p>
+<h2 id="送入口参量到指定寄存器（可缺省）"><a href="#送入口参量到指定寄存器（可缺省）" class="headerlink" title="送入口参量到指定寄存器（可缺省）"></a>送入口参量到指定寄存器（可缺省）</h2><h3 id="带显示的键盘输入（1号功能）"><a href="#带显示的键盘输入（1号功能）" class="headerlink" title="带显示的键盘输入（1号功能）"></a>带显示的键盘输入（1号功能）</h3><p>该功能子程序将等待键盘输入，直到按下一个键。将字符的ASCII码送入AL寄存器，并在屏幕上显示该字符。</p>
+<p>如果是ctrl-c，则停止程序，该功能调用无入口参量</p>
+<p><strong>举例：</strong></p>
+<img src="/2021/11/22/weiji02/image-20211122084920168.png" style="zoom: 67%;">
+
+
+
+<h3 id="不带显示的键盘输入（8号功能）"><a href="#不带显示的键盘输入（8号功能）" class="headerlink" title="不带显示的键盘输入（8号功能）"></a>不带显示的键盘输入（8号功能）</h3><p>该功能调用与1号功能的作用相似，区别是8号功能将不显示输入的字符。该功能调用无入口参量。</p>
+<p><strong>举例：</strong></p>
+<img src="/2021/11/22/weiji02/image-20211122084958468.png" style="zoom:67%;">
+
+
+
+<h3 id="不带显示的键盘字符输入（7号功能）"><a href="#不带显示的键盘字符输入（7号功能）" class="headerlink" title="不带显示的键盘字符输入（7号功能）"></a>不带显示的键盘字符输入（7号功能）</h3><p>该功能与8号功能相似，但对ctrl-c组合键和TAB制表符无反应。该功能调用无入口参量。</p>
+<p><strong>举例</strong></p>
+<img src="/2021/11/22/weiji02/image-20211122085158144.png" style="zoom:67%;">
+
+
+
+]]></content>
+      <categories>
+        <category>微机原理与接口技术</category>
+      </categories>
+      <tags>
+        <tag>微机原理与接口技术</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>数据传送指令 MOV</title>
     <url>/2021/11/22/weiji03/</url>
     <content><![CDATA[<p>通用数据传送指令：一般数据传送指令，堆栈传送指令，交换指令，查表转换指令，字位扩展指令</p>
@@ -3535,37 +3566,6 @@ git merge version1.0
 </ol>
 <p><strong>例：</strong></p>
 <img src="/2021/11/22/weiji03/image-20211122104901933.png" style="zoom:67%;">
-
-]]></content>
-      <categories>
-        <category>微机原理与接口技术</category>
-      </categories>
-      <tags>
-        <tag>微机原理与接口技术</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>DOS功能调用</title>
-    <url>/2021/11/22/weiji02/</url>
-    <content><![CDATA[<p>调用DOS功能时需要使用<strong>软中断指令INT 21H</strong>，并 在执行该指令之前，需要将调用的功能号送入寄存器AH中，有关的参量送入指定的寄存器。</p>
-<h2 id="送入口参量到指定寄存器（可缺省）"><a href="#送入口参量到指定寄存器（可缺省）" class="headerlink" title="送入口参量到指定寄存器（可缺省）"></a>送入口参量到指定寄存器（可缺省）</h2><h3 id="带显示的键盘输入（1号功能）"><a href="#带显示的键盘输入（1号功能）" class="headerlink" title="带显示的键盘输入（1号功能）"></a>带显示的键盘输入（1号功能）</h3><p>该功能子程序将等待键盘输入，直到按下一个键。将字符的ASCII码送入AL寄存器，并在屏幕上显示该字符。</p>
-<p>如果是ctrl-c，则停止程序，该功能调用无入口参量</p>
-<p><strong>举例：</strong></p>
-<img src="/2021/11/22/weiji02/image-20211122084920168.png" style="zoom: 67%;">
-
-
-
-<h3 id="不带显示的键盘输入（8号功能）"><a href="#不带显示的键盘输入（8号功能）" class="headerlink" title="不带显示的键盘输入（8号功能）"></a>不带显示的键盘输入（8号功能）</h3><p>该功能调用与1号功能的作用相似，区别是8号功能将不显示输入的字符。该功能调用无入口参量。</p>
-<p><strong>举例：</strong></p>
-<img src="/2021/11/22/weiji02/image-20211122084958468.png" style="zoom:67%;">
-
-
-
-<h3 id="不带显示的键盘字符输入（7号功能）"><a href="#不带显示的键盘字符输入（7号功能）" class="headerlink" title="不带显示的键盘字符输入（7号功能）"></a>不带显示的键盘字符输入（7号功能）</h3><p>该功能与8号功能相似，但对ctrl-c组合键和TAB制表符无反应。该功能调用无入口参量。</p>
-<p><strong>举例</strong></p>
-<img src="/2021/11/22/weiji02/image-20211122085158144.png" style="zoom:67%;">
-
-
 
 ]]></content>
       <categories>
@@ -4474,23 +4474,6 @@ git merge version1.0
       </tags>
   </entry>
   <entry>
-    <title>汇编程序设计实例</title>
-    <url>/2021/11/28/weiji25/</url>
-    <content><![CDATA[<p><img src="/2021/11/28/weiji25/image-20211128220111597.png"></p>
-<p><img src="/2021/11/28/weiji25/image-20211128220129635.png"></p>
-<p><img src="/2021/11/28/weiji25/image-20211128220140066.png"></p>
-<p><img src="/2021/11/28/weiji25/image-20211128220149150.png"></p>
-<p><img src="/2021/11/28/weiji25/image-20211128220200619.png"></p>
-<p><img src="/2021/11/28/weiji25/image-20211128220215332.png"></p>
-]]></content>
-      <categories>
-        <category>微机原理与接口技术</category>
-      </categories>
-      <tags>
-        <tag>微机原理与接口技术</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>系统功能调用</title>
     <url>/2021/11/28/weiji24/</url>
     <content><![CDATA[<p><strong>BIOS：驻留在ROM中的基本输入/输出系统</strong></p>
@@ -4566,6 +4549,23 @@ git merge version1.0
 <li>注意不同子功能的入口、出口参数要求；</li>
 </ol>
 <p><strong>DOS和BIOS中断均可能影响AX</strong></p>
+]]></content>
+      <categories>
+        <category>微机原理与接口技术</category>
+      </categories>
+      <tags>
+        <tag>微机原理与接口技术</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>汇编程序设计实例</title>
+    <url>/2021/11/28/weiji25/</url>
+    <content><![CDATA[<p><img src="/2021/11/28/weiji25/image-20211128220111597.png"></p>
+<p><img src="/2021/11/28/weiji25/image-20211128220129635.png"></p>
+<p><img src="/2021/11/28/weiji25/image-20211128220140066.png"></p>
+<p><img src="/2021/11/28/weiji25/image-20211128220149150.png"></p>
+<p><img src="/2021/11/28/weiji25/image-20211128220200619.png"></p>
+<p><img src="/2021/11/28/weiji25/image-20211128220215332.png"></p>
 ]]></content>
       <categories>
         <category>微机原理与接口技术</category>

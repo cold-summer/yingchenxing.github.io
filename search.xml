@@ -1155,147 +1155,6 @@ msgRecyclerView<span class="token punctuation">.</span><span class="token functi
       </tags>
   </entry>
   <entry>
-    <title>安卓开发（六）广播的最佳实例</title>
-    <url>/2021/09/14/AndroidDevelopment10/</url>
-    <content><![CDATA[<h2 id="创建AcitivityCollector类"><a href="#创建AcitivityCollector类" class="headerlink" title="创建AcitivityCollector类"></a>创建AcitivityCollector类</h2><p>管理所有活动</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ActivityCollector</span> <span class="token punctuation">{</span>
-
-    <span class="token keyword">public</span> <span class="token keyword">static</span> List<span class="token operator">&lt;</span>Activity<span class="token operator">></span> activities <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">addActivity</span><span class="token punctuation">(</span>Activity activity<span class="token punctuation">)</span><span class="token punctuation">{</span>
-        activities<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>activity<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">removeActivity</span><span class="token punctuation">(</span>Activity activity<span class="token punctuation">)</span><span class="token punctuation">{</span>
-        activities<span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span>activity<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">finishAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-        <span class="token keyword">for</span><span class="token punctuation">(</span>Activity activity<span class="token operator">:</span>activities<span class="token punctuation">)</span><span class="token punctuation">{</span>
-            <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>activities<span class="token punctuation">.</span><span class="token function">isEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-                activity<span class="token punctuation">.</span><span class="token function">finish</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="创建BaseActivity作为所有活动父类"><a href="#创建BaseActivity作为所有活动父类" class="headerlink" title="创建BaseActivity作为所有活动父类"></a>创建BaseActivity作为所有活动父类</h2><pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">BaseActivity</span> <span class="token keyword">extends</span> <span class="token class-name">AppCompatActivity</span> <span class="token punctuation">{</span>
-
-    <span class="token keyword">private</span> ForceOffLineReceiver receiver<span class="token punctuation">;</span>
-
-    <span class="token annotation punctuation">@Override</span>
-    <span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">onResume</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">onResume</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        IntentFilter intentFilter <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">IntentFilter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        intentFilter<span class="token punctuation">.</span><span class="token function">addAction</span><span class="token punctuation">(</span><span class="token string">"com.example.broadcastbestpractice.FORCE_OFFLINE"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        receiver <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ForceOffLineReceiver</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token function">registerReceiver</span><span class="token punctuation">(</span>receiver<span class="token punctuation">,</span>intentFilter<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token annotation punctuation">@Override</span>
-    <span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">onPause</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">onPause</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span>receiver<span class="token operator">!=</span>null<span class="token punctuation">)</span><span class="token punctuation">{</span>
-            <span class="token function">unregisterReceiver</span><span class="token punctuation">(</span>receiver<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            receiver <span class="token operator">=</span> null<span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token annotation punctuation">@Override</span>
-    <span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">onCreate</span><span class="token punctuation">(</span><span class="token annotation punctuation">@Nullable</span> Bundle savedInstanceState<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">onCreate</span><span class="token punctuation">(</span>savedInstanceState<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        ActivityCollector<span class="token punctuation">.</span><span class="token function">addActivity</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token annotation punctuation">@Override</span>
-    <span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">onDestroy</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">onDestroy</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        ActivityCollector<span class="token punctuation">.</span><span class="token function">removeActivity</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token keyword">class</span> <span class="token class-name">ForceOffLineReceiver</span> <span class="token keyword">extends</span> <span class="token class-name">BroadcastReceiver</span><span class="token punctuation">{</span>
-        <span class="token annotation punctuation">@Override</span>
-        <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onReceive</span><span class="token punctuation">(</span>Context context<span class="token punctuation">,</span> Intent intent<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            AlertDialog<span class="token punctuation">.</span>Builder builder <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">AlertDialog<span class="token punctuation">.</span>Builder</span><span class="token punctuation">(</span>context<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            builder<span class="token punctuation">.</span><span class="token function">setTitle</span><span class="token punctuation">(</span><span class="token string">"Warning"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            builder<span class="token punctuation">.</span><span class="token function">setMessage</span><span class="token punctuation">(</span><span class="token string">"You are forced to be offline"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            builder<span class="token punctuation">.</span><span class="token function">setCancelable</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            builder<span class="token punctuation">.</span><span class="token function">setPositiveButton</span><span class="token punctuation">(</span><span class="token string">"OK"</span><span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">DialogInterface<span class="token punctuation">.</span>OnClickListener</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                <span class="token annotation punctuation">@Override</span>
-                <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onClick</span><span class="token punctuation">(</span>DialogInterface dialogInterface<span class="token punctuation">,</span> <span class="token keyword">int</span> i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                    ActivityCollector<span class="token punctuation">.</span><span class="token function">finishAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                    Intent intent <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Intent</span><span class="token punctuation">(</span>context<span class="token punctuation">,</span>LoginActivity<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                    context<span class="token punctuation">.</span><span class="token function">startActivity</span><span class="token punctuation">(</span>intent<span class="token punctuation">)</span><span class="token punctuation">;</span>
-                <span class="token punctuation">}</span>
-            <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            builder<span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="ForceOfflineReceiver"><a href="#ForceOfflineReceiver" class="headerlink" title="ForceOfflineReceiver"></a>ForceOfflineReceiver</h3><ol>
-<li>使用AlertDialog.Builder来构建一个对话框</li>
-<li>调用setCancelable（）方法将对话框设置为不可取消</li>
-<li>调用setPositiveButton（）方法来给对话框注册确定按钮</li>
-</ol>
-<h2 id="修改LoginActivity类"><a href="#修改LoginActivity类" class="headerlink" title="修改LoginActivity类"></a>修改LoginActivity类</h2><pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">LoginActivity</span> <span class="token keyword">extends</span> <span class="token class-name">BaseActivity</span> <span class="token punctuation">{</span>
-
-    <span class="token keyword">private</span> EditText accountEdit<span class="token punctuation">;</span>
-    <span class="token keyword">private</span> EditText passwordEdit<span class="token punctuation">;</span>
-    <span class="token keyword">private</span> Button login<span class="token punctuation">;</span>
-
-    <span class="token annotation punctuation">@Override</span>
-    <span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">onCreate</span><span class="token punctuation">(</span>Bundle savedInstanceState<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">onCreate</span><span class="token punctuation">(</span>savedInstanceState<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token function">setContentView</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>layout<span class="token punctuation">.</span>activity_login<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        accountEdit <span class="token operator">=</span> <span class="token function">findViewById</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>id<span class="token punctuation">.</span>account<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        passwordEdit <span class="token operator">=</span> <span class="token function">findViewById</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>id<span class="token punctuation">.</span>password<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        login <span class="token operator">=</span> <span class="token function">findViewById</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>id<span class="token punctuation">.</span>login<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        login<span class="token punctuation">.</span><span class="token function">setOnClickListener</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">View<span class="token punctuation">.</span>OnClickListener</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token annotation punctuation">@Override</span>
-            <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onClick</span><span class="token punctuation">(</span>View view<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                String account <span class="token operator">=</span> accountEdit<span class="token punctuation">.</span><span class="token function">getText</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                String password <span class="token operator">=</span> passwordEdit<span class="token punctuation">.</span><span class="token function">getText</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                <span class="token comment" spellcheck="true">//密码是123456.用户名为admin</span>
-                <span class="token keyword">if</span><span class="token punctuation">(</span>account<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span><span class="token string">"admin"</span><span class="token punctuation">)</span><span class="token operator">&amp;&amp;</span>password<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span><span class="token string">"123456"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-                    Intent intent <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Intent</span><span class="token punctuation">(</span>LoginActivity<span class="token punctuation">.</span><span class="token keyword">this</span><span class="token punctuation">,</span>MainActivity<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                    <span class="token function">startActivity</span><span class="token punctuation">(</span>intent<span class="token punctuation">)</span><span class="token punctuation">;</span>
-                    <span class="token function">finish</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
-                    Toast<span class="token punctuation">.</span><span class="token function">makeText</span><span class="token punctuation">(</span>LoginActivity<span class="token punctuation">.</span><span class="token keyword">this</span><span class="token punctuation">,</span><span class="token string">"account or password is invalid"</span><span class="token punctuation">,</span>Toast<span class="token punctuation">.</span>LENGTH_SHORT<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                <span class="token punctuation">}</span>
-            <span class="token punctuation">}</span>
-        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="修改MainActivity中的代码"><a href="#修改MainActivity中的代码" class="headerlink" title="修改MainActivity中的代码"></a>修改MainActivity中的代码</h2><pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MainActivity</span> <span class="token keyword">extends</span> <span class="token class-name">BaseActivity</span> <span class="token punctuation">{</span>
-
-    <span class="token annotation punctuation">@Override</span>
-    <span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">onCreate</span><span class="token punctuation">(</span>Bundle savedInstanceState<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">onCreate</span><span class="token punctuation">(</span>savedInstanceState<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token function">setContentView</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>layout<span class="token punctuation">.</span>activity_main<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        Button forceOffline <span class="token operator">=</span> <span class="token function">findViewById</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>id<span class="token punctuation">.</span>force_offline<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        forceOffline<span class="token punctuation">.</span><span class="token function">setOnClickListener</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">View<span class="token punctuation">.</span>OnClickListener</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token annotation punctuation">@Override</span>
-            <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onClick</span><span class="token punctuation">(</span>View view<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                Intent intent <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Intent</span><span class="token punctuation">(</span><span class="token string">"com.example.broadcastbestpractice.FORCE_OFFLINE"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                <span class="token function">sendBroadcast</span><span class="token punctuation">(</span>intent<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-]]></content>
-      <categories>
-        <category>Android</category>
-      </categories>
-      <tags>
-        <tag>Android</tag>
-        <tag>Broadcast</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>安卓开发（六）广播</title>
     <url>/2021/09/13/AndroidDevelopment09/</url>
     <content><![CDATA[<h2 id="广播机制简介"><a href="#广播机制简介" class="headerlink" title="广播机制简介"></a>广播机制简介</h2><h4 id="标准广播（Normal-broadcasts）"><a href="#标准广播（Normal-broadcasts）" class="headerlink" title="标准广播（Normal broadcasts）"></a>标准广播（Normal broadcasts）</h4><p>完全异步执行的广播，广播发出后所有的广播接收器几乎在统一时刻收到这条广播信息，<strong>无法被截断</strong>。</p>
@@ -1494,6 +1353,147 @@ msgRecyclerView<span class="token punctuation">.</span><span class="token functi
 <li><p>调用localBroadcastManager.sendBroadcast()方法发送广播</p>
 </li>
 </ol>
+]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+        <tag>Broadcast</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>安卓开发（六）广播的最佳实例</title>
+    <url>/2021/09/14/AndroidDevelopment10/</url>
+    <content><![CDATA[<h2 id="创建AcitivityCollector类"><a href="#创建AcitivityCollector类" class="headerlink" title="创建AcitivityCollector类"></a>创建AcitivityCollector类</h2><p>管理所有活动</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ActivityCollector</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">static</span> List<span class="token operator">&lt;</span>Activity<span class="token operator">></span> activities <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">addActivity</span><span class="token punctuation">(</span>Activity activity<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        activities<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>activity<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">removeActivity</span><span class="token punctuation">(</span>Activity activity<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        activities<span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span>activity<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">finishAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span>Activity activity<span class="token operator">:</span>activities<span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>activities<span class="token punctuation">.</span><span class="token function">isEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                activity<span class="token punctuation">.</span><span class="token function">finish</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="创建BaseActivity作为所有活动父类"><a href="#创建BaseActivity作为所有活动父类" class="headerlink" title="创建BaseActivity作为所有活动父类"></a>创建BaseActivity作为所有活动父类</h2><pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">BaseActivity</span> <span class="token keyword">extends</span> <span class="token class-name">AppCompatActivity</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">private</span> ForceOffLineReceiver receiver<span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">onResume</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">onResume</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        IntentFilter intentFilter <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">IntentFilter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        intentFilter<span class="token punctuation">.</span><span class="token function">addAction</span><span class="token punctuation">(</span><span class="token string">"com.example.broadcastbestpractice.FORCE_OFFLINE"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        receiver <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ForceOffLineReceiver</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">registerReceiver</span><span class="token punctuation">(</span>receiver<span class="token punctuation">,</span>intentFilter<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">onPause</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">onPause</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>receiver<span class="token operator">!=</span>null<span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token function">unregisterReceiver</span><span class="token punctuation">(</span>receiver<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            receiver <span class="token operator">=</span> null<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">onCreate</span><span class="token punctuation">(</span><span class="token annotation punctuation">@Nullable</span> Bundle savedInstanceState<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">onCreate</span><span class="token punctuation">(</span>savedInstanceState<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        ActivityCollector<span class="token punctuation">.</span><span class="token function">addActivity</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">onDestroy</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">onDestroy</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        ActivityCollector<span class="token punctuation">.</span><span class="token function">removeActivity</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">class</span> <span class="token class-name">ForceOffLineReceiver</span> <span class="token keyword">extends</span> <span class="token class-name">BroadcastReceiver</span><span class="token punctuation">{</span>
+        <span class="token annotation punctuation">@Override</span>
+        <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onReceive</span><span class="token punctuation">(</span>Context context<span class="token punctuation">,</span> Intent intent<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            AlertDialog<span class="token punctuation">.</span>Builder builder <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">AlertDialog<span class="token punctuation">.</span>Builder</span><span class="token punctuation">(</span>context<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            builder<span class="token punctuation">.</span><span class="token function">setTitle</span><span class="token punctuation">(</span><span class="token string">"Warning"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            builder<span class="token punctuation">.</span><span class="token function">setMessage</span><span class="token punctuation">(</span><span class="token string">"You are forced to be offline"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            builder<span class="token punctuation">.</span><span class="token function">setCancelable</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            builder<span class="token punctuation">.</span><span class="token function">setPositiveButton</span><span class="token punctuation">(</span><span class="token string">"OK"</span><span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">DialogInterface<span class="token punctuation">.</span>OnClickListener</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token annotation punctuation">@Override</span>
+                <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onClick</span><span class="token punctuation">(</span>DialogInterface dialogInterface<span class="token punctuation">,</span> <span class="token keyword">int</span> i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    ActivityCollector<span class="token punctuation">.</span><span class="token function">finishAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    Intent intent <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Intent</span><span class="token punctuation">(</span>context<span class="token punctuation">,</span>LoginActivity<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    context<span class="token punctuation">.</span><span class="token function">startActivity</span><span class="token punctuation">(</span>intent<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            builder<span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="ForceOfflineReceiver"><a href="#ForceOfflineReceiver" class="headerlink" title="ForceOfflineReceiver"></a>ForceOfflineReceiver</h3><ol>
+<li>使用AlertDialog.Builder来构建一个对话框</li>
+<li>调用setCancelable（）方法将对话框设置为不可取消</li>
+<li>调用setPositiveButton（）方法来给对话框注册确定按钮</li>
+</ol>
+<h2 id="修改LoginActivity类"><a href="#修改LoginActivity类" class="headerlink" title="修改LoginActivity类"></a>修改LoginActivity类</h2><pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">LoginActivity</span> <span class="token keyword">extends</span> <span class="token class-name">BaseActivity</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">private</span> EditText accountEdit<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> EditText passwordEdit<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> Button login<span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">onCreate</span><span class="token punctuation">(</span>Bundle savedInstanceState<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">onCreate</span><span class="token punctuation">(</span>savedInstanceState<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">setContentView</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>layout<span class="token punctuation">.</span>activity_login<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        accountEdit <span class="token operator">=</span> <span class="token function">findViewById</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>id<span class="token punctuation">.</span>account<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        passwordEdit <span class="token operator">=</span> <span class="token function">findViewById</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>id<span class="token punctuation">.</span>password<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        login <span class="token operator">=</span> <span class="token function">findViewById</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>id<span class="token punctuation">.</span>login<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        login<span class="token punctuation">.</span><span class="token function">setOnClickListener</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">View<span class="token punctuation">.</span>OnClickListener</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token annotation punctuation">@Override</span>
+            <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onClick</span><span class="token punctuation">(</span>View view<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                String account <span class="token operator">=</span> accountEdit<span class="token punctuation">.</span><span class="token function">getText</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                String password <span class="token operator">=</span> passwordEdit<span class="token punctuation">.</span><span class="token function">getText</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token comment" spellcheck="true">//密码是123456.用户名为admin</span>
+                <span class="token keyword">if</span><span class="token punctuation">(</span>account<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span><span class="token string">"admin"</span><span class="token punctuation">)</span><span class="token operator">&amp;&amp;</span>password<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span><span class="token string">"123456"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                    Intent intent <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Intent</span><span class="token punctuation">(</span>LoginActivity<span class="token punctuation">.</span><span class="token keyword">this</span><span class="token punctuation">,</span>MainActivity<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token function">startActivity</span><span class="token punctuation">(</span>intent<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token function">finish</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
+                    Toast<span class="token punctuation">.</span><span class="token function">makeText</span><span class="token punctuation">(</span>LoginActivity<span class="token punctuation">.</span><span class="token keyword">this</span><span class="token punctuation">,</span><span class="token string">"account or password is invalid"</span><span class="token punctuation">,</span>Toast<span class="token punctuation">.</span>LENGTH_SHORT<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="修改MainActivity中的代码"><a href="#修改MainActivity中的代码" class="headerlink" title="修改MainActivity中的代码"></a>修改MainActivity中的代码</h2><pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MainActivity</span> <span class="token keyword">extends</span> <span class="token class-name">BaseActivity</span> <span class="token punctuation">{</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">onCreate</span><span class="token punctuation">(</span>Bundle savedInstanceState<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">onCreate</span><span class="token punctuation">(</span>savedInstanceState<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">setContentView</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>layout<span class="token punctuation">.</span>activity_main<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        Button forceOffline <span class="token operator">=</span> <span class="token function">findViewById</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>id<span class="token punctuation">.</span>force_offline<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        forceOffline<span class="token punctuation">.</span><span class="token function">setOnClickListener</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">View<span class="token punctuation">.</span>OnClickListener</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token annotation punctuation">@Override</span>
+            <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onClick</span><span class="token punctuation">(</span>View view<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                Intent intent <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Intent</span><span class="token punctuation">(</span><span class="token string">"com.example.broadcastbestpractice.FORCE_OFFLINE"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token function">sendBroadcast</span><span class="token punctuation">(</span>intent<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 ]]></content>
       <categories>
         <category>Android</category>
@@ -1890,6 +1890,62 @@ swipeRefresh<span class="token punctuation">.</span><span class="token function"
       </tags>
   </entry>
   <entry>
+    <title>安卓开发（九）PopupWindow那些事</title>
+    <url>/2021/10/01/AndroidDevelopment13/</url>
+    <content><![CDATA[<p>转载自：<a href="https://blog.csdn.net/harvic880925/article/details/49272285?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522163307449116780269858046%2522%252C%2522scm%2522%253A%252220140713.130102334.pc%255Fblog.%2522%257D&request_id=163307449116780269858046&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~blog~first_rank_v2~hot_rank-1-49272285.pc_v2_rank_blog_default&utm_term=popupwindow&spm=1018.2226.3001.4450">PopUpWindow使用详解(一)——基本使用</a></p>
+<h2 id="PopupWindow的构造函数"><a href="#PopupWindow的构造函数" class="headerlink" title="PopupWindow的构造函数"></a>PopupWindow的构造函数</h2><pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">//方法一：</span>
+<span class="token keyword">public</span> <span class="token function">PopupWindow</span> <span class="token punctuation">(</span>Context context<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">//方法二：</span>
+<span class="token keyword">public</span> <span class="token function">PopupWindow</span><span class="token punctuation">(</span>View contentView<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">//方法三：</span>
+<span class="token keyword">public</span> <span class="token function">PopupWindow</span><span class="token punctuation">(</span>View contentView<span class="token punctuation">,</span> <span class="token keyword">int</span> width<span class="token punctuation">,</span> <span class="token keyword">int</span> height<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">//方法四：</span>
+<span class="token keyword">public</span> <span class="token function">PopupWindow</span><span class="token punctuation">(</span>View contentView<span class="token punctuation">,</span> <span class="token keyword">int</span> width<span class="token punctuation">,</span> <span class="token keyword">int</span> height<span class="token punctuation">,</span> <span class="token keyword">boolean</span> focusable<span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>其中contentView是设置的布局</p>
+<h2 id="PopupWindow的常用方法"><a href="#PopupWindow的常用方法" class="headerlink" title="PopupWindow的常用方法"></a>PopupWindow的常用方法</h2><h3 id="显示PopupWindow"><a href="#显示PopupWindow" class="headerlink" title="显示PopupWindow"></a>显示PopupWindow</h3><pre class="line-numbers language-java"><code class="language-java">mPopWindow<span class="token punctuation">.</span><span class="token function">showAtLocation</span><span class="token punctuation">(</span>rootview<span class="token punctuation">,</span> Gravity<span class="token punctuation">.</span>BOTTOM<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>将PopupWindow放在父容器中，显示在BOTTOM的位置</p>
+<h3 id="显示窗体showAsDropDown"><a href="#显示窗体showAsDropDown" class="headerlink" title="显示窗体showAsDropDown"></a>显示窗体showAsDropDown</h3><p><img src="/2021/10/01/AndroidDevelopment13/image-20211001160832054.png" alt="image-20211001160832054"></p>
+<pre class="line-numbers language-java"><code class="language-java">mMenuTv <span class="token operator">=</span> <span class="token punctuation">(</span>TextView<span class="token punctuation">)</span><span class="token function">findViewById</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>id<span class="token punctuation">.</span>menu<span class="token punctuation">)</span><span class="token punctuation">;</span>
+mPopWindow<span class="token punctuation">.</span><span class="token function">showAsDropDown</span><span class="token punctuation">(</span>mMenuTv<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//mPopWindow.showAsDropDown(View anchor, int xoff, int yoff)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>其中mMenuTv是菜单控件</p>
+<h3 id="为PopupWindow添加动画"><a href="#为PopupWindow添加动画" class="headerlink" title="为PopupWindow添加动画"></a>为PopupWindow添加动画</h3><pre class="line-numbers language-java"><code class="language-java">mPopWindow<span class="token punctuation">.</span><span class="token function">setAnimationStyle</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>style<span class="token punctuation">.</span>contextMenuAnim<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="为菜单添加阴影"><a href="#为菜单添加阴影" class="headerlink" title="为菜单添加阴影"></a>为菜单添加阴影</h2><ol>
+<li><p>在布局外层再包一层RelativeLayout，并添加半透明背景android:background=”#66000000”</p>
+<p>此时设置的android:layout_width和android:layout_height是无意义的，会重新设置</p>
+</li>
+<li><p>添加代码</p>
+<pre class="line-numbers language-java"><code class="language-java">mPopWindow<span class="token punctuation">.</span><span class="token function">setWidth</span><span class="token punctuation">(</span>ViewGroup<span class="token punctuation">.</span>LayoutParams<span class="token punctuation">.</span>FILL_PARENT<span class="token punctuation">)</span><span class="token punctuation">;</span>
+mPopWindow<span class="token punctuation">.</span><span class="token function">setHeight</span><span class="token punctuation">(</span>ViewGroup<span class="token punctuation">.</span>LayoutParams<span class="token punctuation">.</span>FILL_PARENT<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+</li>
+</ol>
+<h3 id="setTouchable-boolean-touchable"><a href="#setTouchable-boolean-touchable" class="headerlink" title="setTouchable(boolean touchable)"></a>setTouchable(boolean touchable)</h3><p>设置PopupWindow是否响应touch事件，默认是true，如果设置为false，所有touch事件无响应，包括点击事件</p>
+<h3 id="setFocusable-boolean-focusable"><a href="#setFocusable-boolean-focusable" class="headerlink" title="setFocusable(boolean focusable)"></a>setFocusable(boolean focusable)</h3><p>该函数的意义表示，PopupWindow是否具有获取焦点的能力，默认为False。一般来讲是没有用的，因为普通的控件是不需要获取焦点的，而对于EditText则不同，如果不能获取焦点，那么EditText将是无法编辑的。</p>
+<h3 id="setOutsideTouchable-boolean-touchable"><a href="#setOutsideTouchable-boolean-touchable" class="headerlink" title="setOutsideTouchable(boolean touchable)"></a>setOutsideTouchable(boolean touchable)</h3><p>这个函数的意义，就是指，PopupWindow以外的区域是否可点击，即如果点击PopupWindow以外的区域，PopupWindow是否会消失。</p>
+<pre class="line-numbers language-java"><code class="language-java">mPopWindow<span class="token punctuation">.</span><span class="token function">setBackgroundDrawable</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">BitmapDrawable</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+mPopWindow<span class="token punctuation">.</span><span class="token function">setOutsideTouchable</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>加上mPopWindow.setBackgroundDrawable(new BitmapDrawable());才可以点击</p>
+<h3 id="setBackgroundDrawable-Drawable-background"><a href="#setBackgroundDrawable-Drawable-background" class="headerlink" title="setBackgroundDrawable(Drawable background)"></a>setBackgroundDrawable(Drawable background)</h3><p>只有加上它之后，PopupWindow才会对手机的返回按钮有响应：即，点击手机返回按钮，可以关闭PopupWindow；如果不加setBackgroundDrawable（）将关闭的PopupWindow所在的Activity.</p>
+<p>可以填充进去各种Drawable,比如new BitmapDrawable()，new ColorDrawable(),等；</p>
+<h2 id="设置各个控件的点击响应"><a href="#设置各个控件的点击响应" class="headerlink" title="设置各个控件的点击响应"></a>设置各个控件的点击响应</h2><pre class="line-numbers language-java"><code class="language-java">TextView tv1 <span class="token operator">=</span> <span class="token punctuation">(</span>TextView<span class="token punctuation">)</span>contentView<span class="token punctuation">.</span><span class="token function">findViewById</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>id<span class="token punctuation">.</span>pop_computer<span class="token punctuation">)</span><span class="token punctuation">;</span>
+tv1<span class="token punctuation">.</span><span class="token function">setOnClickListener</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+        <tag>PopupWindow</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>安卓开发（八）数据存储</title>
     <url>/2021/09/27/AndroidDevelopment12/</url>
     <content><![CDATA[<h1 id="SP-SharePreferences"><a href="#SP-SharePreferences" class="headerlink" title="SP(SharePreferences)"></a>SP(SharePreferences)</h1><pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> SharedPreferences <span class="token function">getSharedPreferences</span><span class="token punctuation">(</span>String name<span class="token punctuation">,</span> <span class="token keyword">int</span> mode<span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -2257,62 +2313,6 @@ SQLiteDatabase readableDatebase <span class="token operator">=</span> helper<spa
     <title>AndroidDevelopment14</title>
     <url>/2021/10/01/AndroidDevelopment14/</url>
     <content><![CDATA[]]></content>
-  </entry>
-  <entry>
-    <title>安卓开发（九）PopupWindow那些事</title>
-    <url>/2021/10/01/AndroidDevelopment13/</url>
-    <content><![CDATA[<p>转载自：<a href="https://blog.csdn.net/harvic880925/article/details/49272285?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522163307449116780269858046%2522%252C%2522scm%2522%253A%252220140713.130102334.pc%255Fblog.%2522%257D&request_id=163307449116780269858046&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~blog~first_rank_v2~hot_rank-1-49272285.pc_v2_rank_blog_default&utm_term=popupwindow&spm=1018.2226.3001.4450">PopUpWindow使用详解(一)——基本使用</a></p>
-<h2 id="PopupWindow的构造函数"><a href="#PopupWindow的构造函数" class="headerlink" title="PopupWindow的构造函数"></a>PopupWindow的构造函数</h2><pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">//方法一：</span>
-<span class="token keyword">public</span> <span class="token function">PopupWindow</span> <span class="token punctuation">(</span>Context context<span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true">//方法二：</span>
-<span class="token keyword">public</span> <span class="token function">PopupWindow</span><span class="token punctuation">(</span>View contentView<span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true">//方法三：</span>
-<span class="token keyword">public</span> <span class="token function">PopupWindow</span><span class="token punctuation">(</span>View contentView<span class="token punctuation">,</span> <span class="token keyword">int</span> width<span class="token punctuation">,</span> <span class="token keyword">int</span> height<span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true">//方法四：</span>
-<span class="token keyword">public</span> <span class="token function">PopupWindow</span><span class="token punctuation">(</span>View contentView<span class="token punctuation">,</span> <span class="token keyword">int</span> width<span class="token punctuation">,</span> <span class="token keyword">int</span> height<span class="token punctuation">,</span> <span class="token keyword">boolean</span> focusable<span class="token punctuation">)</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>其中contentView是设置的布局</p>
-<h2 id="PopupWindow的常用方法"><a href="#PopupWindow的常用方法" class="headerlink" title="PopupWindow的常用方法"></a>PopupWindow的常用方法</h2><h3 id="显示PopupWindow"><a href="#显示PopupWindow" class="headerlink" title="显示PopupWindow"></a>显示PopupWindow</h3><pre class="line-numbers language-java"><code class="language-java">mPopWindow<span class="token punctuation">.</span><span class="token function">showAtLocation</span><span class="token punctuation">(</span>rootview<span class="token punctuation">,</span> Gravity<span class="token punctuation">.</span>BOTTOM<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>将PopupWindow放在父容器中，显示在BOTTOM的位置</p>
-<h3 id="显示窗体showAsDropDown"><a href="#显示窗体showAsDropDown" class="headerlink" title="显示窗体showAsDropDown"></a>显示窗体showAsDropDown</h3><p><img src="/2021/10/01/AndroidDevelopment13/image-20211001160832054.png" alt="image-20211001160832054"></p>
-<pre class="line-numbers language-java"><code class="language-java">mMenuTv <span class="token operator">=</span> <span class="token punctuation">(</span>TextView<span class="token punctuation">)</span><span class="token function">findViewById</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>id<span class="token punctuation">.</span>menu<span class="token punctuation">)</span><span class="token punctuation">;</span>
-mPopWindow<span class="token punctuation">.</span><span class="token function">showAsDropDown</span><span class="token punctuation">(</span>mMenuTv<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment" spellcheck="true">//mPopWindow.showAsDropDown(View anchor, int xoff, int yoff)</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p>其中mMenuTv是菜单控件</p>
-<h3 id="为PopupWindow添加动画"><a href="#为PopupWindow添加动画" class="headerlink" title="为PopupWindow添加动画"></a>为PopupWindow添加动画</h3><pre class="line-numbers language-java"><code class="language-java">mPopWindow<span class="token punctuation">.</span><span class="token function">setAnimationStyle</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>style<span class="token punctuation">.</span>contextMenuAnim<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h2 id="为菜单添加阴影"><a href="#为菜单添加阴影" class="headerlink" title="为菜单添加阴影"></a>为菜单添加阴影</h2><ol>
-<li><p>在布局外层再包一层RelativeLayout，并添加半透明背景android:background=”#66000000”</p>
-<p>此时设置的android:layout_width和android:layout_height是无意义的，会重新设置</p>
-</li>
-<li><p>添加代码</p>
-<pre class="line-numbers language-java"><code class="language-java">mPopWindow<span class="token punctuation">.</span><span class="token function">setWidth</span><span class="token punctuation">(</span>ViewGroup<span class="token punctuation">.</span>LayoutParams<span class="token punctuation">.</span>FILL_PARENT<span class="token punctuation">)</span><span class="token punctuation">;</span>
-mPopWindow<span class="token punctuation">.</span><span class="token function">setHeight</span><span class="token punctuation">(</span>ViewGroup<span class="token punctuation">.</span>LayoutParams<span class="token punctuation">.</span>FILL_PARENT<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-</li>
-</ol>
-<h3 id="setTouchable-boolean-touchable"><a href="#setTouchable-boolean-touchable" class="headerlink" title="setTouchable(boolean touchable)"></a>setTouchable(boolean touchable)</h3><p>设置PopupWindow是否响应touch事件，默认是true，如果设置为false，所有touch事件无响应，包括点击事件</p>
-<h3 id="setFocusable-boolean-focusable"><a href="#setFocusable-boolean-focusable" class="headerlink" title="setFocusable(boolean focusable)"></a>setFocusable(boolean focusable)</h3><p>该函数的意义表示，PopupWindow是否具有获取焦点的能力，默认为False。一般来讲是没有用的，因为普通的控件是不需要获取焦点的，而对于EditText则不同，如果不能获取焦点，那么EditText将是无法编辑的。</p>
-<h3 id="setOutsideTouchable-boolean-touchable"><a href="#setOutsideTouchable-boolean-touchable" class="headerlink" title="setOutsideTouchable(boolean touchable)"></a>setOutsideTouchable(boolean touchable)</h3><p>这个函数的意义，就是指，PopupWindow以外的区域是否可点击，即如果点击PopupWindow以外的区域，PopupWindow是否会消失。</p>
-<pre class="line-numbers language-java"><code class="language-java">mPopWindow<span class="token punctuation">.</span><span class="token function">setBackgroundDrawable</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">BitmapDrawable</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-mPopWindow<span class="token punctuation">.</span><span class="token function">setOutsideTouchable</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p>加上mPopWindow.setBackgroundDrawable(new BitmapDrawable());才可以点击</p>
-<h3 id="setBackgroundDrawable-Drawable-background"><a href="#setBackgroundDrawable-Drawable-background" class="headerlink" title="setBackgroundDrawable(Drawable background)"></a>setBackgroundDrawable(Drawable background)</h3><p>只有加上它之后，PopupWindow才会对手机的返回按钮有响应：即，点击手机返回按钮，可以关闭PopupWindow；如果不加setBackgroundDrawable（）将关闭的PopupWindow所在的Activity.</p>
-<p>可以填充进去各种Drawable,比如new BitmapDrawable()，new ColorDrawable(),等；</p>
-<h2 id="设置各个控件的点击响应"><a href="#设置各个控件的点击响应" class="headerlink" title="设置各个控件的点击响应"></a>设置各个控件的点击响应</h2><pre class="line-numbers language-java"><code class="language-java">TextView tv1 <span class="token operator">=</span> <span class="token punctuation">(</span>TextView<span class="token punctuation">)</span>contentView<span class="token punctuation">.</span><span class="token function">findViewById</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>id<span class="token punctuation">.</span>pop_computer<span class="token punctuation">)</span><span class="token punctuation">;</span>
-tv1<span class="token punctuation">.</span><span class="token function">setOnClickListener</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-]]></content>
-      <categories>
-        <category>Android</category>
-      </categories>
-      <tags>
-        <tag>Android</tag>
-        <tag>PopupWindow</tag>
-      </tags>
   </entry>
   <entry>
     <title>成电微记（一）-软件过程模型的选择</title>
@@ -4161,24 +4161,6 @@ git merge version1.0
       </tags>
   </entry>
   <entry>
-    <title>程序控制类指令</title>
-    <url>/2021/11/27/weiji14/</url>
-    <content><![CDATA[<p><strong>程序控制类指令的本质是：控制程序的执行方向</strong></p>
-<p><strong>决定程序执行方向的因素：CS,IP</strong>；同时修改CS和IP，会使程序走向另一个代码段执行</p>
-<p>程序控制类指令以“隐含”的方式修改CS和IP，以实现控制程序走向的目的</p>
-<p>通过修改IP或CS和IP，实现程序的三种基本控制结构：顺序，选择（分支），循环</p>
-<p>学习程序控制类指令需要重点关注：如何实现对CS和IP的修改</p>
-<h3 id="转移指令"><a href="#转移指令" class="headerlink" title="转移指令"></a>转移指令</h3><p>通过修改指令的偏移地址或段地址及偏移地址实现程序的转移</p>
-<p>无条件转移指令：无条件转移到目标地址</p>
-]]></content>
-      <categories>
-        <category>微机原理与接口技术</category>
-      </categories>
-      <tags>
-        <tag>微机原理与接口技术</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>转移指令</title>
     <url>/2021/11/27/weiji15/</url>
     <content><![CDATA[<h3 id="转移指令"><a href="#转移指令" class="headerlink" title="转移指令"></a>转移指令</h3><p>通过修改指令的偏移地址或段地址及偏移地址实现程序的转移</p>
@@ -4192,6 +4174,24 @@ git merge version1.0
 <p>例子</p>
 <p><img src="/2021/11/27/weiji15/image-20211127215644741.png"></p>
 <p><img src="/2021/11/27/weiji15/image-20211127215604067.png"></p>
+]]></content>
+      <categories>
+        <category>微机原理与接口技术</category>
+      </categories>
+      <tags>
+        <tag>微机原理与接口技术</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>程序控制类指令</title>
+    <url>/2021/11/27/weiji14/</url>
+    <content><![CDATA[<p><strong>程序控制类指令的本质是：控制程序的执行方向</strong></p>
+<p><strong>决定程序执行方向的因素：CS,IP</strong>；同时修改CS和IP，会使程序走向另一个代码段执行</p>
+<p>程序控制类指令以“隐含”的方式修改CS和IP，以实现控制程序走向的目的</p>
+<p>通过修改IP或CS和IP，实现程序的三种基本控制结构：顺序，选择（分支），循环</p>
+<p>学习程序控制类指令需要重点关注：如何实现对CS和IP的修改</p>
+<h3 id="转移指令"><a href="#转移指令" class="headerlink" title="转移指令"></a>转移指令</h3><p>通过修改指令的偏移地址或段地址及偏移地址实现程序的转移</p>
+<p>无条件转移指令：无条件转移到目标地址</p>
 ]]></content>
       <categories>
         <category>微机原理与接口技术</category>

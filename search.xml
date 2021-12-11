@@ -675,6 +675,37 @@ implementation &quot;com.android.support:recyclerview-v7:$recyclerviewV7Version&
       </tags>
   </entry>
   <entry>
+    <title>安卓开发（零）AndroidStdio项目中各个文件(夹)的作用</title>
+    <url>/2021/09/07/AndroidDevelopment05/</url>
+    <content><![CDATA[<p>笔记来自于《第一行代码》</p>
+<img src="/2021/09/07/AndroidDevelopment05/1631014300281.png" style="zoom:150%;">
+
+<p><img src="/2021/09/07/AndroidDevelopment05/1631014415289.png"></p>
+<p><strong>1. src</strong></p>
+<p>存放所有Java代码的地方。</p>
+<p><strong>2. gen</strong></p>
+<p>此文件夹中的内容自动生成，其中R.JAVA文件，在项目中添加的任何资源都会生成一个相应的资源id。</p>
+<p><strong>3. assets</strong></p>
+<p>主要存放一些随程序打包的文件。当程序中使用到WebView加载本地网页时，所有网页相关的文件也都存放到这个文件夹下</p>
+<p><strong>4. bin</strong></p>
+<p>包含一些在编译时自动产生的文件。其中会有一个当前项目编译好的安装包，将该文件拷到手机上就可以直接安装了。</p>
+<p><strong>5. libs</strong></p>
+<p>如果项目中用到了第三方Jar包，就需要吧这些包放到libs目录下</p>
+<p><strong>6. res</strong></p>
+<p>使用的所有图片、布局、字符串都是放在这个文件夹下，且该文件夹有很多细分的子文件夹。</p>
+<p><strong>7. AndroidManiFest.xml</strong></p>
+<p>整个安卓项目的配置文件，在程序中配置的四大组件都需要在这个文件夹注册。另外，还可以在这个文件夹中给应用程序添加权限声明，也可以重新指定创建项目时指定的程序最低兼容版本和目标版本。</p>
+<p><strong>8. project.properties</strong></p>
+<p>通过一行代码指定了编译程序时所使用的sdk</p>
+]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>安卓开发（四）编写界面实践</title>
     <url>/2021/09/08/AndroidDevelopment06/</url>
     <content><![CDATA[<h2 id="制作Nine-Patch图片"><a href="#制作Nine-Patch图片" class="headerlink" title="制作Nine-Patch图片"></a>制作Nine-Patch图片</h2><p><strong>第一步</strong></p>
@@ -790,37 +821,6 @@ implementation &quot;com.android.support:recyclerview-v7:$recyclerviewV7Version&
 adapter<span class="token punctuation">.</span><span class="token function">notifyItemInserted</span><span class="token punctuation">(</span>msgList<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//将新消息插入</span>
 msgRecyclerView<span class="token punctuation">.</span><span class="token function">scrollToPosition</span><span class="token punctuation">(</span>msgList<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//将ListView定位到最后一行</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-]]></content>
-      <categories>
-        <category>Android</category>
-      </categories>
-      <tags>
-        <tag>Android</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>安卓开发（零）AndroidStdio项目中各个文件(夹)的作用</title>
-    <url>/2021/09/07/AndroidDevelopment05/</url>
-    <content><![CDATA[<p>笔记来自于《第一行代码》</p>
-<img src="/2021/09/07/AndroidDevelopment05/1631014300281.png" style="zoom:150%;">
-
-<p><img src="/2021/09/07/AndroidDevelopment05/1631014415289.png"></p>
-<p><strong>1. src</strong></p>
-<p>存放所有Java代码的地方。</p>
-<p><strong>2. gen</strong></p>
-<p>此文件夹中的内容自动生成，其中R.JAVA文件，在项目中添加的任何资源都会生成一个相应的资源id。</p>
-<p><strong>3. assets</strong></p>
-<p>主要存放一些随程序打包的文件。当程序中使用到WebView加载本地网页时，所有网页相关的文件也都存放到这个文件夹下</p>
-<p><strong>4. bin</strong></p>
-<p>包含一些在编译时自动产生的文件。其中会有一个当前项目编译好的安装包，将该文件拷到手机上就可以直接安装了。</p>
-<p><strong>5. libs</strong></p>
-<p>如果项目中用到了第三方Jar包，就需要吧这些包放到libs目录下</p>
-<p><strong>6. res</strong></p>
-<p>使用的所有图片、布局、字符串都是放在这个文件夹下，且该文件夹有很多细分的子文件夹。</p>
-<p><strong>7. AndroidManiFest.xml</strong></p>
-<p>整个安卓项目的配置文件，在程序中配置的四大组件都需要在这个文件夹注册。另外，还可以在这个文件夹中给应用程序添加权限声明，也可以重新指定创建项目时指定的程序最低兼容版本和目标版本。</p>
-<p><strong>8. project.properties</strong></p>
-<p>通过一行代码指定了编译程序时所使用的sdk</p>
 ]]></content>
       <categories>
         <category>Android</category>
@@ -3240,6 +3240,35 @@ git merge version1.0
       </tags>
   </entry>
   <entry>
+    <title>HTML学习笔记（三）</title>
+    <url>/2021/10/06/HTMLLearning03/</url>
+    <content><![CDATA[<h1 id="表单的应用"><a href="#表单的应用" class="headerlink" title="表单的应用"></a>表单的应用</h1><h2 id="只读模式"><a href="#只读模式" class="headerlink" title="只读模式"></a>只读模式</h2><pre class="line-numbers language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>
+    name: <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>username<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>admin<span class="token punctuation">"</span></span> <span class="token attr-name">readonly</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h2 id="隐藏域"><a href="#隐藏域" class="headerlink" title="隐藏域"></a>隐藏域</h2><pre class="line-numbers language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>password:<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>password<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>password<span class="token punctuation">"</span></span> <span class="token attr-name">hidden</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><img src="/2021/10/06/HTMLLearning03/image-20211006160703423.png"></p>
+<h2 id="增强鼠标可用性"><a href="#增强鼠标可用性" class="headerlink" title="增强鼠标可用性"></a>增强鼠标可用性</h2><pre class="line-numbers language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span> <span class="token attr-name">for</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>mark<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>你点我试试<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>mark<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p><img src="/2021/10/06/HTMLLearning03/image-20211006160925407.png"></p>
+<h1 id="表单初级验证"><a href="#表单初级验证" class="headerlink" title="表单初级验证"></a>表单初级验证</h1><pre class="line-numbers language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>name:    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>username<span class="token punctuation">"</span></span> <span class="token attr-name">placeholder</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>请输入用户名<span class="token punctuation">"</span></span> <span class="token attr-name">required</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><img src="/2021/10/06/HTMLLearning03/image-20211006161748997.png"></p>
+<p>required: 非空判断</p>
+<p>pattern：正则表达式判断</p>
+]]></content>
+      <categories>
+        <category>HTML</category>
+      </categories>
+      <tags>
+        <tag>HTML</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>托福学习笔记</title>
     <url>/2021/08/29/TOEFL/</url>
     <content><![CDATA[<h1 id="试卷结构"><a href="#试卷结构" class="headerlink" title="试卷结构"></a>试卷结构</h1><p><img src="/2021/08/29/TOEFL/1.png"></p>
@@ -3438,35 +3467,6 @@ git merge version1.0
 ]]></content>
   </entry>
   <entry>
-    <title>HTML学习笔记（三）</title>
-    <url>/2021/10/06/HTMLLearning03/</url>
-    <content><![CDATA[<h1 id="表单的应用"><a href="#表单的应用" class="headerlink" title="表单的应用"></a>表单的应用</h1><h2 id="只读模式"><a href="#只读模式" class="headerlink" title="只读模式"></a>只读模式</h2><pre class="line-numbers language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>
-    name: <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>username<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>admin<span class="token punctuation">"</span></span> <span class="token attr-name">readonly</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<h2 id="隐藏域"><a href="#隐藏域" class="headerlink" title="隐藏域"></a>隐藏域</h2><pre class="line-numbers language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>password:<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>password<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>password<span class="token punctuation">"</span></span> <span class="token attr-name">hidden</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p><img src="/2021/10/06/HTMLLearning03/image-20211006160703423.png"></p>
-<h2 id="增强鼠标可用性"><a href="#增强鼠标可用性" class="headerlink" title="增强鼠标可用性"></a>增强鼠标可用性</h2><pre class="line-numbers language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span> <span class="token attr-name">for</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>mark<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>你点我试试<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>mark<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<p><img src="/2021/10/06/HTMLLearning03/image-20211006160925407.png"></p>
-<h1 id="表单初级验证"><a href="#表单初级验证" class="headerlink" title="表单初级验证"></a>表单初级验证</h1><pre class="line-numbers language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>name:    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>username<span class="token punctuation">"</span></span> <span class="token attr-name">placeholder</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>请输入用户名<span class="token punctuation">"</span></span> <span class="token attr-name">required</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p><img src="/2021/10/06/HTMLLearning03/image-20211006161748997.png"></p>
-<p>required: 非空判断</p>
-<p>pattern：正则表达式判断</p>
-]]></content>
-      <categories>
-        <category>HTML</category>
-      </categories>
-      <tags>
-        <tag>HTML</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>四川大学望江校区考点攻略</title>
     <url>/2021/12/11/toefl02/</url>
     <content><![CDATA[<h2 id="四川大学望江校区考点攻略"><a href="#四川大学望江校区考点攻略" class="headerlink" title="四川大学望江校区考点攻略"></a>四川大学望江校区考点攻略</h2><h3 id="到达川大"><a href="#到达川大" class="headerlink" title="到达川大"></a>到达川大</h3><p>坐地铁到磨子桥站，从D口出来之后，沿着路直走</p>
@@ -3547,6 +3547,37 @@ git merge version1.0
 ]]></content>
   </entry>
   <entry>
+    <title>DOS功能调用</title>
+    <url>/2021/11/22/weiji02/</url>
+    <content><![CDATA[<p>调用DOS功能时需要使用<strong>软中断指令INT 21H</strong>，并 在执行该指令之前，需要将调用的功能号送入寄存器AH中，有关的参量送入指定的寄存器。</p>
+<h2 id="送入口参量到指定寄存器（可缺省）"><a href="#送入口参量到指定寄存器（可缺省）" class="headerlink" title="送入口参量到指定寄存器（可缺省）"></a>送入口参量到指定寄存器（可缺省）</h2><h3 id="带显示的键盘输入（1号功能）"><a href="#带显示的键盘输入（1号功能）" class="headerlink" title="带显示的键盘输入（1号功能）"></a>带显示的键盘输入（1号功能）</h3><p>该功能子程序将等待键盘输入，直到按下一个键。将字符的ASCII码送入AL寄存器，并在屏幕上显示该字符。</p>
+<p>如果是ctrl-c，则停止程序，该功能调用无入口参量</p>
+<p><strong>举例：</strong></p>
+<img src="/2021/11/22/weiji02/image-20211122084920168.png" style="zoom: 67%;">
+
+
+
+<h3 id="不带显示的键盘输入（8号功能）"><a href="#不带显示的键盘输入（8号功能）" class="headerlink" title="不带显示的键盘输入（8号功能）"></a>不带显示的键盘输入（8号功能）</h3><p>该功能调用与1号功能的作用相似，区别是8号功能将不显示输入的字符。该功能调用无入口参量。</p>
+<p><strong>举例：</strong></p>
+<img src="/2021/11/22/weiji02/image-20211122084958468.png" style="zoom:67%;">
+
+
+
+<h3 id="不带显示的键盘字符输入（7号功能）"><a href="#不带显示的键盘字符输入（7号功能）" class="headerlink" title="不带显示的键盘字符输入（7号功能）"></a>不带显示的键盘字符输入（7号功能）</h3><p>该功能与8号功能相似，但对ctrl-c组合键和TAB制表符无反应。该功能调用无入口参量。</p>
+<p><strong>举例</strong></p>
+<img src="/2021/11/22/weiji02/image-20211122085158144.png" style="zoom:67%;">
+
+
+
+]]></content>
+      <categories>
+        <category>微机原理与接口技术</category>
+      </categories>
+      <tags>
+        <tag>微机原理与接口技术</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>地址传送指令</title>
     <url>/2021/11/21/weiji01/</url>
     <content><![CDATA[<p>取近地址指针：LEA</p>
@@ -3584,37 +3615,6 @@ git merge version1.0
 <p><strong>指令格式：</strong></p>
 <p>SAHF</p>
 <p><strong>将AH装入FLAGS的低8位（与LAHF相反）</strong></p>
-]]></content>
-      <categories>
-        <category>微机原理与接口技术</category>
-      </categories>
-      <tags>
-        <tag>微机原理与接口技术</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>DOS功能调用</title>
-    <url>/2021/11/22/weiji02/</url>
-    <content><![CDATA[<p>调用DOS功能时需要使用<strong>软中断指令INT 21H</strong>，并 在执行该指令之前，需要将调用的功能号送入寄存器AH中，有关的参量送入指定的寄存器。</p>
-<h2 id="送入口参量到指定寄存器（可缺省）"><a href="#送入口参量到指定寄存器（可缺省）" class="headerlink" title="送入口参量到指定寄存器（可缺省）"></a>送入口参量到指定寄存器（可缺省）</h2><h3 id="带显示的键盘输入（1号功能）"><a href="#带显示的键盘输入（1号功能）" class="headerlink" title="带显示的键盘输入（1号功能）"></a>带显示的键盘输入（1号功能）</h3><p>该功能子程序将等待键盘输入，直到按下一个键。将字符的ASCII码送入AL寄存器，并在屏幕上显示该字符。</p>
-<p>如果是ctrl-c，则停止程序，该功能调用无入口参量</p>
-<p><strong>举例：</strong></p>
-<img src="/2021/11/22/weiji02/image-20211122084920168.png" style="zoom: 67%;">
-
-
-
-<h3 id="不带显示的键盘输入（8号功能）"><a href="#不带显示的键盘输入（8号功能）" class="headerlink" title="不带显示的键盘输入（8号功能）"></a>不带显示的键盘输入（8号功能）</h3><p>该功能调用与1号功能的作用相似，区别是8号功能将不显示输入的字符。该功能调用无入口参量。</p>
-<p><strong>举例：</strong></p>
-<img src="/2021/11/22/weiji02/image-20211122084958468.png" style="zoom:67%;">
-
-
-
-<h3 id="不带显示的键盘字符输入（7号功能）"><a href="#不带显示的键盘字符输入（7号功能）" class="headerlink" title="不带显示的键盘字符输入（7号功能）"></a>不带显示的键盘字符输入（7号功能）</h3><p>该功能与8号功能相似，但对ctrl-c组合键和TAB制表符无反应。该功能调用无入口参量。</p>
-<p><strong>举例</strong></p>
-<img src="/2021/11/22/weiji02/image-20211122085158144.png" style="zoom:67%;">
-
-
-
 ]]></content>
       <categories>
         <category>微机原理与接口技术</category>
@@ -3692,36 +3692,6 @@ git merge version1.0
       </tags>
   </entry>
   <entry>
-    <title>输入输出指令</title>
-    <url>/2021/11/22/weiji06/</url>
-    <content><![CDATA[<h3 id="关于I-O端口"><a href="#关于I-O端口" class="headerlink" title="关于I/O端口"></a>关于I/O端口</h3><p>I/O接口中用于存储数据，可以直接被CPU访问的寄存器</p>
-<p>计算机输入输出系统可以包括若干接口控制电路（芯片），每个接口中都包括了1个或多个端口。</p>
-<h3 id="输入输出指令"><a href="#输入输出指令" class="headerlink" title="输入输出指令"></a>输入输出指令</h3><p>专门面向I/O端口操作的指令</p>
-<p>端口地址在指令中表示方式——寻址方式</p>
-<p><strong>指令功能：</strong></p>
-<p>从端口地址读入数据到累加器/将累加器的值输出到端口中</p>
-<p><strong>指令格式：</strong></p>
-<p>输入指令：IN ACC, PORT</p>
-<p>输出指令：OUT PORT, acc</p>
-<p><strong>指令寻址方式</strong></p>
-<p>根据端口地址码的长度，指令具有两种不同的端口地址表现形式</p>
-<p><strong>直接寻址：</strong></p>
-<p>端口地址为8位，指令中直接给出8位端口地址；</p>
-<p>寻址256个端口。</p>
-<p><strong>间接寻址：</strong></p>
-<p>端口地址为16位时，指令中的端口地址必须由DX指定</p>
-<p>可寻址64K个端口。</p>
-<p><strong>例子：</strong></p>
-<img src="/2021/11/22/weiji06/image-20211122200457312.png" style="zoom:67%;">
-]]></content>
-      <categories>
-        <category>微机原理与接口技术</category>
-      </categories>
-      <tags>
-        <tag>微机原理与接口技术</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>交换指令、查表指令与扩展指令</title>
     <url>/2021/11/22/weiji05/</url>
     <content><![CDATA[<h3 id="交换指令"><a href="#交换指令" class="headerlink" title="交换指令"></a>交换指令</h3><p><strong>格式：</strong></p>
@@ -3752,6 +3722,36 @@ git merge version1.0
 <p><strong>规则：</strong></p>
 <p>若最高位=1，则执行后DX =FFFFH</p>
 <p>若最高位=0， 则执行后DX=0000H</p>
+]]></content>
+      <categories>
+        <category>微机原理与接口技术</category>
+      </categories>
+      <tags>
+        <tag>微机原理与接口技术</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>输入输出指令</title>
+    <url>/2021/11/22/weiji06/</url>
+    <content><![CDATA[<h3 id="关于I-O端口"><a href="#关于I-O端口" class="headerlink" title="关于I/O端口"></a>关于I/O端口</h3><p>I/O接口中用于存储数据，可以直接被CPU访问的寄存器</p>
+<p>计算机输入输出系统可以包括若干接口控制电路（芯片），每个接口中都包括了1个或多个端口。</p>
+<h3 id="输入输出指令"><a href="#输入输出指令" class="headerlink" title="输入输出指令"></a>输入输出指令</h3><p>专门面向I/O端口操作的指令</p>
+<p>端口地址在指令中表示方式——寻址方式</p>
+<p><strong>指令功能：</strong></p>
+<p>从端口地址读入数据到累加器/将累加器的值输出到端口中</p>
+<p><strong>指令格式：</strong></p>
+<p>输入指令：IN ACC, PORT</p>
+<p>输出指令：OUT PORT, acc</p>
+<p><strong>指令寻址方式</strong></p>
+<p>根据端口地址码的长度，指令具有两种不同的端口地址表现形式</p>
+<p><strong>直接寻址：</strong></p>
+<p>端口地址为8位，指令中直接给出8位端口地址；</p>
+<p>寻址256个端口。</p>
+<p><strong>间接寻址：</strong></p>
+<p>端口地址为16位时，指令中的端口地址必须由DX指定</p>
+<p>可寻址64K个端口。</p>
+<p><strong>例子：</strong></p>
+<img src="/2021/11/22/weiji06/image-20211122200457312.png" style="zoom:67%;">
 ]]></content>
       <categories>
         <category>微机原理与接口技术</category>
@@ -3874,6 +3874,60 @@ git merge version1.0
       </tags>
   </entry>
   <entry>
+    <title>乘除运算指令</title>
+    <url>/2021/11/23/weiji09/</url>
+    <content><![CDATA[<p>有分别针对无符号和有符号数运算指令</p>
+<p>乘除运算指令均采用隐含寻址方式</p>
+<h2 id="乘法指令"><a href="#乘法指令" class="headerlink" title="乘法指令"></a>乘法指令</h2><p>无符号的乘法指令MUL</p>
+<p>带符号的乘法指令IMUL</p>
+<p><strong>注意点：</strong></p>
+<p>乘法指令采用隐含寻址，隐含了存放被乘数的累加器AL或AX，以及存放结果的AX或AX,DX;</p>
+<h3 id="MUL"><a href="#MUL" class="headerlink" title="MUL"></a>MUL</h3><p><strong>格式：</strong></p>
+<p>MUL OPRD</p>
+<p>OPRD不能是立即数</p>
+<p>OPRD为字节数——&gt;AL*OPRD——&gt;AX</p>
+<p>OPRD为16位数——&gt;AX*OPRD——&gt;DXAX（高符号位在DX）</p>
+<img src="/2021/11/23/weiji09/image-20211123152553656.png" style="zoom: 67%;">
+
+
+
+<h3 id="IMUL"><a href="#IMUL" class="headerlink" title="IMUL"></a>IMUL</h3><p><strong>格式：</strong></p>
+<p>IMUL OPRD</p>
+<p><strong>指令格式及对操作数的要求与MUL指令相同</strong></p>
+<p><strong>指令执行原理：</strong></p>
+<ol>
+<li>将两个操作数取补码</li>
+<li>做乘法运算</li>
+</ol>
+<h2 id="除法指令"><a href="#除法指令" class="headerlink" title="除法指令"></a>除法指令</h2><h3 id="无符号数除法指令"><a href="#无符号数除法指令" class="headerlink" title="无符号数除法指令"></a>无符号数除法指令</h3><p><strong>格式：</strong></p>
+<p>DIDV OPRD</p>
+<h3 id="有符号数除法指令"><a href="#有符号数除法指令" class="headerlink" title="有符号数除法指令"></a>有符号数除法指令</h3><p><strong>格式：</strong></p>
+<p>IDIV OPRD</p>
+<h3 id="除法指令的操作"><a href="#除法指令的操作" class="headerlink" title="除法指令的操作"></a>除法指令的操作</h3><img src="/2021/11/23/weiji09/image-20211123153641634.png" style="zoom: 80%;">
+
+
+
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p><strong>算数指令执行影响状态标志位</strong></p>
+<p>INC和DEC指令的执行不会影响CF</p>
+<p><strong>乘法指令执行结果为相乘数的双倍字长；除法指令要求被除数是除数的双倍字长。</strong></p>
+<p><img src="/2021/11/23/weiji09/image-20211123154248154.png" alt="image-20211123154248154"></p>
+<p><strong>全部双操作数指令对操作数的要求与MOV指令完全相同；</strong></p>
+<p><strong>所有单操作数指令都要求操作数：</strong></p>
+<ol>
+<li>不能是立即数</li>
+<li>如果是存储器操作数，需要声明操作数的字长（用PTR运算符）</li>
+</ol>
+<p><strong>乘法运算中，乘积是乘数的双倍字长</strong></p>
+<p><strong>除法指令要求被除数是除数的双倍字长</strong></p>
+]]></content>
+      <categories>
+        <category>微机原理与接口技术</category>
+      </categories>
+      <tags>
+        <tag>微机原理与接口技术</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>逻辑运算指令</title>
     <url>/2021/11/23/weiji10/</url>
     <content><![CDATA[<p><strong>对操作数的要求：</strong></p>
@@ -3926,60 +3980,6 @@ git merge version1.0
 <p>执行”与“运算，但运算的结果不送回目的地址</p>
 <p><strong>应用：</strong></p>
 <p>常用于测试某些位的状态</p>
-]]></content>
-      <categories>
-        <category>微机原理与接口技术</category>
-      </categories>
-      <tags>
-        <tag>微机原理与接口技术</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>乘除运算指令</title>
-    <url>/2021/11/23/weiji09/</url>
-    <content><![CDATA[<p>有分别针对无符号和有符号数运算指令</p>
-<p>乘除运算指令均采用隐含寻址方式</p>
-<h2 id="乘法指令"><a href="#乘法指令" class="headerlink" title="乘法指令"></a>乘法指令</h2><p>无符号的乘法指令MUL</p>
-<p>带符号的乘法指令IMUL</p>
-<p><strong>注意点：</strong></p>
-<p>乘法指令采用隐含寻址，隐含了存放被乘数的累加器AL或AX，以及存放结果的AX或AX,DX;</p>
-<h3 id="MUL"><a href="#MUL" class="headerlink" title="MUL"></a>MUL</h3><p><strong>格式：</strong></p>
-<p>MUL OPRD</p>
-<p>OPRD不能是立即数</p>
-<p>OPRD为字节数——&gt;AL*OPRD——&gt;AX</p>
-<p>OPRD为16位数——&gt;AX*OPRD——&gt;DXAX（高符号位在DX）</p>
-<img src="/2021/11/23/weiji09/image-20211123152553656.png" style="zoom: 67%;">
-
-
-
-<h3 id="IMUL"><a href="#IMUL" class="headerlink" title="IMUL"></a>IMUL</h3><p><strong>格式：</strong></p>
-<p>IMUL OPRD</p>
-<p><strong>指令格式及对操作数的要求与MUL指令相同</strong></p>
-<p><strong>指令执行原理：</strong></p>
-<ol>
-<li>将两个操作数取补码</li>
-<li>做乘法运算</li>
-</ol>
-<h2 id="除法指令"><a href="#除法指令" class="headerlink" title="除法指令"></a>除法指令</h2><h3 id="无符号数除法指令"><a href="#无符号数除法指令" class="headerlink" title="无符号数除法指令"></a>无符号数除法指令</h3><p><strong>格式：</strong></p>
-<p>DIDV OPRD</p>
-<h3 id="有符号数除法指令"><a href="#有符号数除法指令" class="headerlink" title="有符号数除法指令"></a>有符号数除法指令</h3><p><strong>格式：</strong></p>
-<p>IDIV OPRD</p>
-<h3 id="除法指令的操作"><a href="#除法指令的操作" class="headerlink" title="除法指令的操作"></a>除法指令的操作</h3><img src="/2021/11/23/weiji09/image-20211123153641634.png" style="zoom: 80%;">
-
-
-
-<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p><strong>算数指令执行影响状态标志位</strong></p>
-<p>INC和DEC指令的执行不会影响CF</p>
-<p><strong>乘法指令执行结果为相乘数的双倍字长；除法指令要求被除数是除数的双倍字长。</strong></p>
-<p><img src="/2021/11/23/weiji09/image-20211123154248154.png" alt="image-20211123154248154"></p>
-<p><strong>全部双操作数指令对操作数的要求与MOV指令完全相同；</strong></p>
-<p><strong>所有单操作数指令都要求操作数：</strong></p>
-<ol>
-<li>不能是立即数</li>
-<li>如果是存储器操作数，需要声明操作数的字长（用PTR运算符）</li>
-</ol>
-<p><strong>乘法运算中，乘积是乘数的双倍字长</strong></p>
-<p><strong>除法指令要求被除数是除数的双倍字长</strong></p>
 ]]></content>
       <categories>
         <category>微机原理与接口技术</category>

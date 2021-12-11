@@ -1,35 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>安卓开发（三）UI组件—布局</title>
-    <url>/2021/09/03/AndroidDevelopment01/</url>
-    <content><![CDATA[<h1 id="布局管理器"><a href="#布局管理器" class="headerlink" title="布局管理器"></a>布局管理器</h1><h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><ol>
-<li><p>线性布局</p>
-</li>
-<li><p>相对布局</p>
-</li>
-</ol>
-<h2 id="线性布局（LinearLayout）"><a href="#线性布局（LinearLayout）" class="headerlink" title="线性布局（LinearLayout）"></a>线性布局（LinearLayout）</h2><h3 id="常用属性"><a href="#常用属性" class="headerlink" title="常用属性"></a>常用属性</h3><p><img src="/2021/09/03/AndroidDevelopment01/1630639147085.png"></p>
-<p>layout_height、width：控制长、宽</p>
-<p>layout_padding：控制边距</p>
-<p>layout_orientation：排列方式（纵向、横向）</p>
-<p>layout_margin：组件外边距</p>
-<p>background：背景颜色</p>
-<p>gravity：调整位置</p>
-<p>layout_weight：权重</p>
-<h2 id="相对布局（RelativeLayout）"><a href="#相对布局（RelativeLayout）" class="headerlink" title="相对布局（RelativeLayout）"></a>相对布局（RelativeLayout）</h2><h3 id="常用属性-1"><a href="#常用属性-1" class="headerlink" title="常用属性"></a>常用属性</h3><p><img src="/2021/09/03/AndroidDevelopment01/1630672158326.png"></p>
-<p>layout_toRightOf：放在……右边</p>
-<p>layout_align: 边缘对齐</p>
-]]></content>
-      <categories>
-        <category>Android</category>
-      </categories>
-      <tags>
-        <tag>Android</tag>
-        <tag>UI</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>安卓开发（二）UI组件—组件</title>
     <url>/2021/09/03/AndroidDevelopment02/</url>
     <content><![CDATA[<h1 id="TextView"><a href="#TextView" class="headerlink" title="TextView"></a>TextView</h1><pre class="line-numbers language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>TextView</span>
@@ -399,6 +370,35 @@ mRg1<span class="token punctuation">.</span><span class="token function">setOnCh
 <pre class="line-numbers language-java"><code class="language-java">mIv4<span class="token operator">=</span><span class="token function">findViewById</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>id<span class="token punctuation">.</span>iv_3<span class="token punctuation">)</span><span class="token punctuation">;</span>
 Glide<span class="token punctuation">.</span><span class="token function">with</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">load</span><span class="token punctuation">(</span><span class="token string">"https://ss3.baidu.com/-fo3dSag_xI4khGko9WTAnF6hhy/zhidao/pic/item/48540923dd54564e3cf222ffb1de9c82d0584f65.jpg"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">into</span><span class="token punctuation">(</span>mIv4<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+        <tag>UI</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>安卓开发（三）UI组件—布局</title>
+    <url>/2021/09/03/AndroidDevelopment01/</url>
+    <content><![CDATA[<h1 id="布局管理器"><a href="#布局管理器" class="headerlink" title="布局管理器"></a>布局管理器</h1><h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><ol>
+<li><p>线性布局</p>
+</li>
+<li><p>相对布局</p>
+</li>
+</ol>
+<h2 id="线性布局（LinearLayout）"><a href="#线性布局（LinearLayout）" class="headerlink" title="线性布局（LinearLayout）"></a>线性布局（LinearLayout）</h2><h3 id="常用属性"><a href="#常用属性" class="headerlink" title="常用属性"></a>常用属性</h3><p><img src="/2021/09/03/AndroidDevelopment01/1630639147085.png"></p>
+<p>layout_height、width：控制长、宽</p>
+<p>layout_padding：控制边距</p>
+<p>layout_orientation：排列方式（纵向、横向）</p>
+<p>layout_margin：组件外边距</p>
+<p>background：背景颜色</p>
+<p>gravity：调整位置</p>
+<p>layout_weight：权重</p>
+<h2 id="相对布局（RelativeLayout）"><a href="#相对布局（RelativeLayout）" class="headerlink" title="相对布局（RelativeLayout）"></a>相对布局（RelativeLayout）</h2><h3 id="常用属性-1"><a href="#常用属性-1" class="headerlink" title="常用属性"></a>常用属性</h3><p><img src="/2021/09/03/AndroidDevelopment01/1630672158326.png"></p>
+<p>layout_toRightOf：放在……右边</p>
+<p>layout_align: 边缘对齐</p>
 ]]></content>
       <categories>
         <category>Android</category>
@@ -2889,105 +2889,6 @@ git merge version1.0
       </tags>
   </entry>
   <entry>
-    <title>成电微记（六）Bill界面的实现</title>
-    <url>/2021/11/10/DiaryInUESTC06/</url>
-    <content><![CDATA[<p>在<em>TODO界面的实现</em>中，我们对定义实体类和recyclerView已经有了一定的了解，Bill页面的基本原理也是跟TODO一样的，不过我在这里丰富了一些细节。</p>
-<h2 id="recyclerView的嵌套"><a href="#recyclerView的嵌套" class="headerlink" title="recyclerView的嵌套"></a>recyclerView的嵌套</h2><p> 为了实现下图的效果，需要将一个recyclerView嵌套在另一个recyclerView中。</p>
-<img src="/2021/11/10/DiaryInUESTC06/image-20211123235932489.png" style="zoom:67%;">
-
-<p>原理是在外层adapter的onBindViewHolder中配置内层rv的adapter</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onBindViewHolder</span><span class="token punctuation">(</span><span class="token annotation punctuation">@NonNull</span> BillDayAdapter<span class="token punctuation">.</span>ViewHolder holder<span class="token punctuation">,</span> <span class="token keyword">int</span> position<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-
-    <span class="token comment" spellcheck="true">//加载另一个adapter</span>
-    BillAdapter billAdapter <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BillAdapter</span><span class="token punctuation">(</span>mBillDayList<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>position<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getBillList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    layoutManager <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">LinearLayoutManager</span><span class="token punctuation">(</span>mContext<span class="token punctuation">,</span> LinearLayoutManager<span class="token punctuation">.</span>VERTICAL<span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    layoutManager<span class="token punctuation">.</span><span class="token function">setStackFromEnd</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    holder<span class="token punctuation">.</span>billList<span class="token punctuation">.</span><span class="token function">setLayoutManager</span><span class="token punctuation">(</span>layoutManager<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    holder<span class="token punctuation">.</span>billList<span class="token punctuation">.</span><span class="token function">setAdapter</span><span class="token punctuation">(</span>billAdapter<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    holder<span class="token punctuation">.</span>billList<span class="token punctuation">.</span><span class="token function">setVisibility</span><span class="token punctuation">(</span>View<span class="token punctuation">.</span>VISIBLE<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="addBill窗口的实现"><a href="#addBill窗口的实现" class="headerlink" title="addBill窗口的实现"></a>addBill窗口的实现</h2><p>为了让用户输入更加方便，我在github上找了开源的圆形seekbar作为账单的输入。</p>
-<p><a href="https://github.com/jenly1314/ArcSeekBar">seekBar网址</a></p>
-<p>通过布局的setVisible()方法，可以动态切换在支出收入种类变更时的窗口下方的种类变化</p>
-<p><img src="/2021/11/10/DiaryInUESTC06/image-20211124002407406.png"></p>
-<p><img src="/2021/11/10/DiaryInUESTC06/image-20211124002426028.png"></p>
-<h3 id="RadioGroup无法嵌套布局的问题解决"><a href="#RadioGroup无法嵌套布局的问题解决" class="headerlink" title="RadioGroup无法嵌套布局的问题解决"></a>RadioGroup无法嵌套布局的问题解决</h3><p>在查阅了stackOverFlow之后，发现这竟然是谷歌自己的问题，在RadioGroup中使用LinearLayout等布局时，布局中的radioButton不能被识别在RadioGroup中。</p>
-<p>针对这个问题，我提出的方案是重写一个类MRadioGroup用于管理所有的radioButton，代码如下：</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MRadioGroup</span> <span class="token punctuation">{</span>
-
-    List<span class="token operator">&lt;</span>RadioButton<span class="token operator">></span> radios <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-    <span class="token keyword">public</span> <span class="token function">MRadioGroup</span><span class="token punctuation">(</span>RadioButton<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> radios<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">for</span> <span class="token punctuation">(</span>RadioButton rb <span class="token operator">:</span> radios<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span>rb <span class="token operator">!=</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                rb<span class="token punctuation">.</span><span class="token function">setOnClickListener</span><span class="token punctuation">(</span>onClick<span class="token punctuation">)</span><span class="token punctuation">;</span>
-                <span class="token keyword">this</span><span class="token punctuation">.</span>radios<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>rb<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-
-    View<span class="token punctuation">.</span>OnClickListener onClick <span class="token operator">=</span> v <span class="token operator">-</span><span class="token operator">></span> <span class="token punctuation">{</span>
-        <span class="token function">clearCheck</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        RadioButton rb <span class="token operator">=</span> <span class="token punctuation">(</span>RadioButton<span class="token punctuation">)</span> v<span class="token punctuation">;</span>
-        rb<span class="token punctuation">.</span><span class="token function">setChecked</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span><span class="token punctuation">;</span>
-
-    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">clearCheck</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">for</span> <span class="token punctuation">(</span>RadioButton rb <span class="token operator">:</span> radios<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            rb<span class="token punctuation">.</span><span class="token function">setChecked</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setCheck</span><span class="token punctuation">(</span><span class="token keyword">int</span> id<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>id <span class="token operator">-</span> <span class="token number">1</span> <span class="token operator">>=</span> <span class="token number">0</span><span class="token punctuation">)</span>
-            radios<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>id <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setChecked</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-
-    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">getType</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">int</span> i<span class="token punctuation">;</span>
-        <span class="token keyword">for</span> <span class="token punctuation">(</span>i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> radios<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span>radios<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">isChecked</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-                <span class="token keyword">return</span> i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>实现效果：</p>
-<p><img src="/2021/11/10/DiaryInUESTC06/image-20211124002644054.png"></p>
-<h2 id="点击账单切换到账单详情"><a href="#点击账单切换到账单详情" class="headerlink" title="点击账单切换到账单详情"></a>点击账单切换到账单详情</h2><p>直接在账单adapter中的onBindHolder()方法中添加点击事件即可：</p>
-<pre class="line-numbers language-java"><code class="language-java">holder<span class="token punctuation">.</span>billCv<span class="token punctuation">.</span><span class="token function">setOnClickListener</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">View<span class="token punctuation">.</span>OnClickListener</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token annotation punctuation">@Override</span>
-    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onClick</span><span class="token punctuation">(</span>View v<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        Intent intent <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Intent</span><span class="token punctuation">(</span>mContext<span class="token punctuation">,</span> BillEditActivity<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        intent<span class="token punctuation">.</span><span class="token function">putExtra</span><span class="token punctuation">(</span>BillEditActivity<span class="token punctuation">.</span>Bill_ID<span class="token punctuation">,</span> bill<span class="token punctuation">.</span><span class="token function">getBillId</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        mContext<span class="token punctuation">.</span><span class="token function">startActivity</span><span class="token punctuation">(</span>intent<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>实现效果：</p>
-<img src="/2021/11/10/DiaryInUESTC06/image-20211124003002420.png" style="zoom:67%;">
-
-
-
-<h2 id="账单月报生成"><a href="#账单月报生成" class="headerlink" title="账单月报生成"></a>账单月报生成</h2><p>这里用了一个安卓图表的开源库<a href="https://github.com/PhilJay/MPAndroidChart">MPAndroidChart</a></p>
-<p>简单配置后的实现效果：</p>
-<img src="/2021/11/10/DiaryInUESTC06/image-20211124003321001.png" style="zoom:67%;">
-
-<p>到这里，账单部分的核心功能就介绍完毕了！</p>
-]]></content>
-      <categories>
-        <category>成电微记</category>
-      </categories>
-      <tags>
-        <tag>Android</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>HTML学习笔记（一）</title>
     <url>/2021/10/04/HTMLLearning01/</url>
     <content><![CDATA[<h2 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h2><p>Hyper Text Markup Language (超文本标记语言)</p>
@@ -3237,6 +3138,105 @@ git merge version1.0
       </categories>
       <tags>
         <tag>HTML</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>成电微记（六）Bill界面的实现</title>
+    <url>/2021/11/10/DiaryInUESTC06/</url>
+    <content><![CDATA[<p>在<em>TODO界面的实现</em>中，我们对定义实体类和recyclerView已经有了一定的了解，Bill页面的基本原理也是跟TODO一样的，不过我在这里丰富了一些细节。</p>
+<h2 id="recyclerView的嵌套"><a href="#recyclerView的嵌套" class="headerlink" title="recyclerView的嵌套"></a>recyclerView的嵌套</h2><p> 为了实现下图的效果，需要将一个recyclerView嵌套在另一个recyclerView中。</p>
+<img src="/2021/11/10/DiaryInUESTC06/image-20211123235932489.png" style="zoom:67%;">
+
+<p>原理是在外层adapter的onBindViewHolder中配置内层rv的adapter</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onBindViewHolder</span><span class="token punctuation">(</span><span class="token annotation punctuation">@NonNull</span> BillDayAdapter<span class="token punctuation">.</span>ViewHolder holder<span class="token punctuation">,</span> <span class="token keyword">int</span> position<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+
+    <span class="token comment" spellcheck="true">//加载另一个adapter</span>
+    BillAdapter billAdapter <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BillAdapter</span><span class="token punctuation">(</span>mBillDayList<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>position<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getBillList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    layoutManager <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">LinearLayoutManager</span><span class="token punctuation">(</span>mContext<span class="token punctuation">,</span> LinearLayoutManager<span class="token punctuation">.</span>VERTICAL<span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    layoutManager<span class="token punctuation">.</span><span class="token function">setStackFromEnd</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    holder<span class="token punctuation">.</span>billList<span class="token punctuation">.</span><span class="token function">setLayoutManager</span><span class="token punctuation">(</span>layoutManager<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    holder<span class="token punctuation">.</span>billList<span class="token punctuation">.</span><span class="token function">setAdapter</span><span class="token punctuation">(</span>billAdapter<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    holder<span class="token punctuation">.</span>billList<span class="token punctuation">.</span><span class="token function">setVisibility</span><span class="token punctuation">(</span>View<span class="token punctuation">.</span>VISIBLE<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="addBill窗口的实现"><a href="#addBill窗口的实现" class="headerlink" title="addBill窗口的实现"></a>addBill窗口的实现</h2><p>为了让用户输入更加方便，我在github上找了开源的圆形seekbar作为账单的输入。</p>
+<p><a href="https://github.com/jenly1314/ArcSeekBar">seekBar网址</a></p>
+<p>通过布局的setVisible()方法，可以动态切换在支出收入种类变更时的窗口下方的种类变化</p>
+<p><img src="/2021/11/10/DiaryInUESTC06/image-20211124002407406.png"></p>
+<p><img src="/2021/11/10/DiaryInUESTC06/image-20211124002426028.png"></p>
+<h3 id="RadioGroup无法嵌套布局的问题解决"><a href="#RadioGroup无法嵌套布局的问题解决" class="headerlink" title="RadioGroup无法嵌套布局的问题解决"></a>RadioGroup无法嵌套布局的问题解决</h3><p>在查阅了stackOverFlow之后，发现这竟然是谷歌自己的问题，在RadioGroup中使用LinearLayout等布局时，布局中的radioButton不能被识别在RadioGroup中。</p>
+<p>针对这个问题，我提出的方案是重写一个类MRadioGroup用于管理所有的radioButton，代码如下：</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MRadioGroup</span> <span class="token punctuation">{</span>
+
+    List<span class="token operator">&lt;</span>RadioButton<span class="token operator">></span> radios <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token function">MRadioGroup</span><span class="token punctuation">(</span>RadioButton<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> radios<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span>RadioButton rb <span class="token operator">:</span> radios<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>rb <span class="token operator">!=</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                rb<span class="token punctuation">.</span><span class="token function">setOnClickListener</span><span class="token punctuation">(</span>onClick<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">this</span><span class="token punctuation">.</span>radios<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>rb<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    View<span class="token punctuation">.</span>OnClickListener onClick <span class="token operator">=</span> v <span class="token operator">-</span><span class="token operator">></span> <span class="token punctuation">{</span>
+        <span class="token function">clearCheck</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        RadioButton rb <span class="token operator">=</span> <span class="token punctuation">(</span>RadioButton<span class="token punctuation">)</span> v<span class="token punctuation">;</span>
+        rb<span class="token punctuation">.</span><span class="token function">setChecked</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">clearCheck</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span>RadioButton rb <span class="token operator">:</span> radios<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            rb<span class="token punctuation">.</span><span class="token function">setChecked</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setCheck</span><span class="token punctuation">(</span><span class="token keyword">int</span> id<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>id <span class="token operator">-</span> <span class="token number">1</span> <span class="token operator">>=</span> <span class="token number">0</span><span class="token punctuation">)</span>
+            radios<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>id <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setChecked</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+
+    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">getType</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">int</span> i<span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span>i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> radios<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>radios<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">isChecked</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+                <span class="token keyword">return</span> i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>实现效果：</p>
+<p><img src="/2021/11/10/DiaryInUESTC06/image-20211124002644054.png"></p>
+<h2 id="点击账单切换到账单详情"><a href="#点击账单切换到账单详情" class="headerlink" title="点击账单切换到账单详情"></a>点击账单切换到账单详情</h2><p>直接在账单adapter中的onBindHolder()方法中添加点击事件即可：</p>
+<pre class="line-numbers language-java"><code class="language-java">holder<span class="token punctuation">.</span>billCv<span class="token punctuation">.</span><span class="token function">setOnClickListener</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">View<span class="token punctuation">.</span>OnClickListener</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onClick</span><span class="token punctuation">(</span>View v<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        Intent intent <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Intent</span><span class="token punctuation">(</span>mContext<span class="token punctuation">,</span> BillEditActivity<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        intent<span class="token punctuation">.</span><span class="token function">putExtra</span><span class="token punctuation">(</span>BillEditActivity<span class="token punctuation">.</span>Bill_ID<span class="token punctuation">,</span> bill<span class="token punctuation">.</span><span class="token function">getBillId</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        mContext<span class="token punctuation">.</span><span class="token function">startActivity</span><span class="token punctuation">(</span>intent<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>实现效果：</p>
+<img src="/2021/11/10/DiaryInUESTC06/image-20211124003002420.png" style="zoom:67%;">
+
+
+
+<h2 id="账单月报生成"><a href="#账单月报生成" class="headerlink" title="账单月报生成"></a>账单月报生成</h2><p>这里用了一个安卓图表的开源库<a href="https://github.com/PhilJay/MPAndroidChart">MPAndroidChart</a></p>
+<p>简单配置后的实现效果：</p>
+<img src="/2021/11/10/DiaryInUESTC06/image-20211124003321001.png" style="zoom:67%;">
+
+<p>到这里，账单部分的核心功能就介绍完毕了！</p>
+]]></content>
+      <categories>
+        <category>成电微记</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
       </tags>
   </entry>
   <entry>
@@ -3513,37 +3513,6 @@ git merge version1.0
       </tags>
   </entry>
   <entry>
-    <title>DOS功能调用</title>
-    <url>/2021/11/22/weiji02/</url>
-    <content><![CDATA[<p>调用DOS功能时需要使用<strong>软中断指令INT 21H</strong>，并 在执行该指令之前，需要将调用的功能号送入寄存器AH中，有关的参量送入指定的寄存器。</p>
-<h2 id="送入口参量到指定寄存器（可缺省）"><a href="#送入口参量到指定寄存器（可缺省）" class="headerlink" title="送入口参量到指定寄存器（可缺省）"></a>送入口参量到指定寄存器（可缺省）</h2><h3 id="带显示的键盘输入（1号功能）"><a href="#带显示的键盘输入（1号功能）" class="headerlink" title="带显示的键盘输入（1号功能）"></a>带显示的键盘输入（1号功能）</h3><p>该功能子程序将等待键盘输入，直到按下一个键。将字符的ASCII码送入AL寄存器，并在屏幕上显示该字符。</p>
-<p>如果是ctrl-c，则停止程序，该功能调用无入口参量</p>
-<p><strong>举例：</strong></p>
-<img src="/2021/11/22/weiji02/image-20211122084920168.png" style="zoom: 67%;">
-
-
-
-<h3 id="不带显示的键盘输入（8号功能）"><a href="#不带显示的键盘输入（8号功能）" class="headerlink" title="不带显示的键盘输入（8号功能）"></a>不带显示的键盘输入（8号功能）</h3><p>该功能调用与1号功能的作用相似，区别是8号功能将不显示输入的字符。该功能调用无入口参量。</p>
-<p><strong>举例：</strong></p>
-<img src="/2021/11/22/weiji02/image-20211122084958468.png" style="zoom:67%;">
-
-
-
-<h3 id="不带显示的键盘字符输入（7号功能）"><a href="#不带显示的键盘字符输入（7号功能）" class="headerlink" title="不带显示的键盘字符输入（7号功能）"></a>不带显示的键盘字符输入（7号功能）</h3><p>该功能与8号功能相似，但对ctrl-c组合键和TAB制表符无反应。该功能调用无入口参量。</p>
-<p><strong>举例</strong></p>
-<img src="/2021/11/22/weiji02/image-20211122085158144.png" style="zoom:67%;">
-
-
-
-]]></content>
-      <categories>
-        <category>微机原理与接口技术</category>
-      </categories>
-      <tags>
-        <tag>微机原理与接口技术</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>数据传送指令 MOV</title>
     <url>/2021/11/22/weiji03/</url>
     <content><![CDATA[<p>通用数据传送指令：一般数据传送指令，堆栈传送指令，交换指令，查表转换指令，字位扩展指令</p>
@@ -3566,6 +3535,37 @@ git merge version1.0
 </ol>
 <p><strong>例：</strong></p>
 <img src="/2021/11/22/weiji03/image-20211122104901933.png" style="zoom:67%;">
+
+]]></content>
+      <categories>
+        <category>微机原理与接口技术</category>
+      </categories>
+      <tags>
+        <tag>微机原理与接口技术</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>DOS功能调用</title>
+    <url>/2021/11/22/weiji02/</url>
+    <content><![CDATA[<p>调用DOS功能时需要使用<strong>软中断指令INT 21H</strong>，并 在执行该指令之前，需要将调用的功能号送入寄存器AH中，有关的参量送入指定的寄存器。</p>
+<h2 id="送入口参量到指定寄存器（可缺省）"><a href="#送入口参量到指定寄存器（可缺省）" class="headerlink" title="送入口参量到指定寄存器（可缺省）"></a>送入口参量到指定寄存器（可缺省）</h2><h3 id="带显示的键盘输入（1号功能）"><a href="#带显示的键盘输入（1号功能）" class="headerlink" title="带显示的键盘输入（1号功能）"></a>带显示的键盘输入（1号功能）</h3><p>该功能子程序将等待键盘输入，直到按下一个键。将字符的ASCII码送入AL寄存器，并在屏幕上显示该字符。</p>
+<p>如果是ctrl-c，则停止程序，该功能调用无入口参量</p>
+<p><strong>举例：</strong></p>
+<img src="/2021/11/22/weiji02/image-20211122084920168.png" style="zoom: 67%;">
+
+
+
+<h3 id="不带显示的键盘输入（8号功能）"><a href="#不带显示的键盘输入（8号功能）" class="headerlink" title="不带显示的键盘输入（8号功能）"></a>不带显示的键盘输入（8号功能）</h3><p>该功能调用与1号功能的作用相似，区别是8号功能将不显示输入的字符。该功能调用无入口参量。</p>
+<p><strong>举例：</strong></p>
+<img src="/2021/11/22/weiji02/image-20211122084958468.png" style="zoom:67%;">
+
+
+
+<h3 id="不带显示的键盘字符输入（7号功能）"><a href="#不带显示的键盘字符输入（7号功能）" class="headerlink" title="不带显示的键盘字符输入（7号功能）"></a>不带显示的键盘字符输入（7号功能）</h3><p>该功能与8号功能相似，但对ctrl-c组合键和TAB制表符无反应。该功能调用无入口参量。</p>
+<p><strong>举例</strong></p>
+<img src="/2021/11/22/weiji02/image-20211122085158144.png" style="zoom:67%;">
+
+
 
 ]]></content>
       <categories>
@@ -3794,67 +3794,6 @@ git merge version1.0
       </tags>
   </entry>
   <entry>
-    <title>逻辑运算指令</title>
-    <url>/2021/11/23/weiji10/</url>
-    <content><![CDATA[<p><strong>对操作数的要求：</strong></p>
-<p>大多与MOV指令相同</p>
-<p>”非“运算指令要求操作数不能是立即数</p>
-<p><strong>对标志位影响：</strong></p>
-<p>除”非“运算指令，其余指令的执行都会影响除AF外的5个状态位标志</p>
-<p>无论运算结果如何，都会使OF=CF=0</p>
-<p>”非“运算指令的执行不影响标志位</p>
-<h3 id="”与“指令："><a href="#”与“指令：" class="headerlink" title="”与“指令："></a>”与“指令：</h3><p><strong>格式：</strong></p>
-<p>AND OPRD1,OPRD2</p>
-<p><strong>操作：</strong></p>
-<p>两操作数相“与”，结果送目的地址</p>
-<p><strong>应用：</strong></p>
-<p>实现两操作数按位相”与“的运算：</p>
-<p>AND BL,[SI]</p>
-<p>使目的操作数的某些位不变，某些位清零：</p>
-<p>AND AL, 0FH</p>
-<p>在操作数不变的情况下使CF和OF清零：</p>
-<p>AND AX,AX</p>
-<h3 id="”或“指令"><a href="#”或“指令" class="headerlink" title="”或“指令"></a>”或“指令</h3><p><strong>格式：</strong></p>
-<p>OR  OPRD1,OPRD2</p>
-<p><strong>操作：</strong></p>
-<p>两操作数相”或“，结果送目标地址</p>
-<p><strong>应用：</strong></p>
-<p>实现两操作数相”或“的运算</p>
-<p>OR AX,[DI]</p>
-<p>使某些位不变，某些位置”1“</p>
-<p>OR CL,0FH</p>
-<p>在不改变操作数的情况下使OF = CF = 0</p>
-<p>OR AX,AX</p>
-<h3 id="”非“运算指令"><a href="#”非“运算指令" class="headerlink" title="”非“运算指令"></a>”非“运算指令</h3><p><strong>格式：</strong></p>
-<p>NOT OPRD</p>
-<p><strong>操作;</strong></p>
-<p>操作数按位取反再送原地址</p>
-<p><strong>注：</strong></p>
-<p>指令的执行对标志位无影响</p>
-<p><strong>例：</strong></p>
-<p>NOT BYTE PTR[BX]</p>
-<h3 id="“异或”运算指令"><a href="#“异或”运算指令" class="headerlink" title="“异或”运算指令"></a>“异或”运算指令</h3><p><strong>格式：</strong></p>
-<p>XOR OPRD1,OPRD2</p>
-<p><strong>操作：</strong></p>
-<p>两操作数相“异或”，结果送目标地址</p>
-<p><strong>例：</strong></p>
-<p>XOR BL,80H</p>
-<p>XOR AX,AX（对AX清零）</p>
-<h3 id="”测试“指令"><a href="#”测试“指令" class="headerlink" title="”测试“指令"></a>”测试“指令</h3><p><strong>格式：</strong></p>
-<p>TEST OPRD1,OPRD2</p>
-<p><strong>操作：</strong></p>
-<p>执行”与“运算，但运算的结果不送回目的地址</p>
-<p><strong>应用：</strong></p>
-<p>常用于测试某些位的状态</p>
-]]></content>
-      <categories>
-        <category>微机原理与接口技术</category>
-      </categories>
-      <tags>
-        <tag>微机原理与接口技术</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>乘除运算指令</title>
     <url>/2021/11/23/weiji09/</url>
     <content><![CDATA[<p>有分别针对无符号和有符号数运算指令</p>
@@ -3909,47 +3848,58 @@ git merge version1.0
       </tags>
   </entry>
   <entry>
-    <title>移位操作指令</title>
-    <url>/2021/11/24/weiji11/</url>
-    <content><![CDATA[<p>控制二进制向左或向右移动的指令</p>
-<p>非循环移位指令</p>
-<p>循环移位指令</p>
-<p><strong>指令说明：</strong></p>
-<p>指令格式在形式上为双操作数，本质上为单操作数</p>
-<p>指令的目标操作数为被移动对象，源操作数为移动次数</p>
-<p><strong>当目标为存储器操作数时，需要说明其字长</strong></p>
-<p>移动1位时由指令直接给出，移动两位及以上时，两位次数必须由CL指定，<strong>指令源操作数只能是1或CL</strong></p>
-<h3 id="非循环移位指令"><a href="#非循环移位指令" class="headerlink" title="非循环移位指令"></a>非循环移位指令</h3><p>逻辑左移</p>
-<p>算术左移</p>
-<p>逻辑右移</p>
-<p>算术右移</p>
-<h4 id="算术左移："><a href="#算术左移：" class="headerlink" title="算术左移："></a>算术左移：</h4><p>针对有符号数</p>
-<p>SAL OPRD, 1</p>
-<p>SAL OPRD, CL</p>
-<h4 id="逻辑左移："><a href="#逻辑左移：" class="headerlink" title="逻辑左移："></a>逻辑左移：</h4><p>针对无符号数</p>
-<p>SHL OPRD, 1</p>
-<p>SHL OPRD, CL</p>
-<p><img src="/2021/11/24/weiji11/image-20211124153255155.png"></p>
-<p><strong>每一次左移时最高位移至CF，右边补0</strong></p>
-<h4 id="算术右移"><a href="#算术右移" class="headerlink" title="算术右移"></a>算术右移</h4><p>针对有符号数</p>
-<p>SAR OPRD, 1</p>
-<p>SAR OPRD, CL</p>
-<p><strong>每一次右移时最低位移至CF,左边补0后将第一位变成符号位</strong></p>
-<p><img src="/2021/11/24/weiji11/image-20211124153601761.png"></p>
-<h4 id="逻辑右移"><a href="#逻辑右移" class="headerlink" title="逻辑右移"></a>逻辑右移</h4><p>针对无符号数</p>
-<p>SHR OPRD, 1</p>
-<p>SHR OPRD, CL</p>
-<p><strong>每一次右移时最低位移至CF,左边补0</strong></p>
-<p><img src="/2021/11/24/weiji11/image-20211124153316342.png"></p>
-<h3 id="循环移位指令"><a href="#循环移位指令" class="headerlink" title="循环移位指令"></a>循环移位指令</h3><h4 id="不带进位位的循环移位"><a href="#不带进位位的循环移位" class="headerlink" title="不带进位位的循环移位"></a>不带进位位的循环移位</h4><p><img src="/2021/11/24/weiji11/image-20211124153847562.png"></p>
-<p>左移：ROL</p>
-<p>最高位移入CF, 同时最高位移到最低位</p>
-<p>右移：ROR</p>
-<p>对低位移入CF，同时最低位移到最高位</p>
-<h4 id="带进位位的循环移位"><a href="#带进位位的循环移位" class="headerlink" title="带进位位的循环移位"></a>带进位位的循环移位</h4><p><img src="/2021/11/24/weiji11/image-20211124153900627.png"></p>
-<p>左移：RCL</p>
-<p>先把CF移入最低位，再将最高位移入CF</p>
-<p>右移：RCR</p>
+    <title>逻辑运算指令</title>
+    <url>/2021/11/23/weiji10/</url>
+    <content><![CDATA[<p><strong>对操作数的要求：</strong></p>
+<p>大多与MOV指令相同</p>
+<p>”非“运算指令要求操作数不能是立即数</p>
+<p><strong>对标志位影响：</strong></p>
+<p>除”非“运算指令，其余指令的执行都会影响除AF外的5个状态位标志</p>
+<p>无论运算结果如何，都会使OF=CF=0</p>
+<p>”非“运算指令的执行不影响标志位</p>
+<h3 id="”与“指令："><a href="#”与“指令：" class="headerlink" title="”与“指令："></a>”与“指令：</h3><p><strong>格式：</strong></p>
+<p>AND OPRD1,OPRD2</p>
+<p><strong>操作：</strong></p>
+<p>两操作数相“与”，结果送目的地址</p>
+<p><strong>应用：</strong></p>
+<p>实现两操作数按位相”与“的运算：</p>
+<p>AND BL,[SI]</p>
+<p>使目的操作数的某些位不变，某些位清零：</p>
+<p>AND AL, 0FH</p>
+<p>在操作数不变的情况下使CF和OF清零：</p>
+<p>AND AX,AX</p>
+<h3 id="”或“指令"><a href="#”或“指令" class="headerlink" title="”或“指令"></a>”或“指令</h3><p><strong>格式：</strong></p>
+<p>OR  OPRD1,OPRD2</p>
+<p><strong>操作：</strong></p>
+<p>两操作数相”或“，结果送目标地址</p>
+<p><strong>应用：</strong></p>
+<p>实现两操作数相”或“的运算</p>
+<p>OR AX,[DI]</p>
+<p>使某些位不变，某些位置”1“</p>
+<p>OR CL,0FH</p>
+<p>在不改变操作数的情况下使OF = CF = 0</p>
+<p>OR AX,AX</p>
+<h3 id="”非“运算指令"><a href="#”非“运算指令" class="headerlink" title="”非“运算指令"></a>”非“运算指令</h3><p><strong>格式：</strong></p>
+<p>NOT OPRD</p>
+<p><strong>操作;</strong></p>
+<p>操作数按位取反再送原地址</p>
+<p><strong>注：</strong></p>
+<p>指令的执行对标志位无影响</p>
+<p><strong>例：</strong></p>
+<p>NOT BYTE PTR[BX]</p>
+<h3 id="“异或”运算指令"><a href="#“异或”运算指令" class="headerlink" title="“异或”运算指令"></a>“异或”运算指令</h3><p><strong>格式：</strong></p>
+<p>XOR OPRD1,OPRD2</p>
+<p><strong>操作：</strong></p>
+<p>两操作数相“异或”，结果送目标地址</p>
+<p><strong>例：</strong></p>
+<p>XOR BL,80H</p>
+<p>XOR AX,AX（对AX清零）</p>
+<h3 id="”测试“指令"><a href="#”测试“指令" class="headerlink" title="”测试“指令"></a>”测试“指令</h3><p><strong>格式：</strong></p>
+<p>TEST OPRD1,OPRD2</p>
+<p><strong>操作：</strong></p>
+<p>执行”与“运算，但运算的结果不送回目的地址</p>
+<p><strong>应用：</strong></p>
+<p>常用于测试某些位的状态</p>
 ]]></content>
       <categories>
         <category>微机原理与接口技术</category>
@@ -4081,28 +4031,6 @@ git merge version1.0
       </tags>
   </entry>
   <entry>
-    <title>转移指令</title>
-    <url>/2021/11/27/weiji15/</url>
-    <content><![CDATA[<h3 id="转移指令"><a href="#转移指令" class="headerlink" title="转移指令"></a>转移指令</h3><p>通过修改指令的偏移地址或段地址及偏移地址实现程序的转移</p>
-<p>无条件转移指令：无条件转移到目标地址</p>
-<p>条件转移指令：当具备一定条件（通常指状态标志位）时转移到目标地址</p>
-<h4 id="无条件转移指令"><a href="#无条件转移指令" class="headerlink" title="无条件转移指令"></a>无条件转移指令</h4><p><strong>格式：</strong></p>
-<p>JMP OPRD  可以实现在当前代码段内或段间转移</p>
-<h5 id="无条件段内转移"><a href="#无条件段内转移" class="headerlink" title="无条件段内转移"></a>无条件段内转移</h5><p>JMP Label</p>
-<p><img src="/2021/11/27/weiji15/image-20211127215736044.png"></p>
-<p><img src="/2021/11/27/weiji15/image-20211127215746654.png"></p>
-<p>例子</p>
-<p><img src="/2021/11/27/weiji15/image-20211127215644741.png"></p>
-<p><img src="/2021/11/27/weiji15/image-20211127215604067.png"></p>
-]]></content>
-      <categories>
-        <category>微机原理与接口技术</category>
-      </categories>
-      <tags>
-        <tag>微机原理与接口技术</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>程序控制类指令</title>
     <url>/2021/11/27/weiji14/</url>
     <content><![CDATA[<p><strong>程序控制类指令的本质是：控制程序的执行方向</strong></p>
@@ -4121,27 +4049,69 @@ git merge version1.0
       </tags>
   </entry>
   <entry>
-    <title>循环控制指令</title>
-    <url>/2021/11/27/weiji16/</url>
-    <content><![CDATA[<p>循环范围：</p>
-<p>以当前IP为中心的-128~+127范围内循环</p>
-<p>循环次数由CX寄存器指定</p>
-<h2 id="无条件循环指令"><a href="#无条件循环指令" class="headerlink" title="无条件循环指令"></a>无条件循环指令</h2><p><strong>格式：</strong></p>
-<p>LOOP LABEL</p>
-<p><strong>循环条件：</strong></p>
-<p>CX!=0</p>
-<p><strong>操作;</strong></p>
-<p>完全相当于:</p>
-<p>DEX CX</p>
-<p>JNZ 符号地址</p>
-<h3 id="条件循环指令"><a href="#条件循环指令" class="headerlink" title="条件循环指令"></a>条件循环指令</h3><p><strong>功能：</strong></p>
-<p>先使CX-1，再根据CX中的值及ZF中的值来决定是否继续循环</p>
-<p><strong>格式：</strong></p>
-<img src="/2021/11/27/weiji16/image-20211127220618521.png" style="zoom:67%;">
-
-<p>例子：</p>
-<p><img src="/2021/11/27/weiji16/image-20211127220652302.png"></p>
-<p><img src="/2021/11/27/weiji16/image-20211127220931345.png"></p>
+    <title>移位操作指令</title>
+    <url>/2021/11/24/weiji11/</url>
+    <content><![CDATA[<p>控制二进制向左或向右移动的指令</p>
+<p>非循环移位指令</p>
+<p>循环移位指令</p>
+<p><strong>指令说明：</strong></p>
+<p>指令格式在形式上为双操作数，本质上为单操作数</p>
+<p>指令的目标操作数为被移动对象，源操作数为移动次数</p>
+<p><strong>当目标为存储器操作数时，需要说明其字长</strong></p>
+<p>移动1位时由指令直接给出，移动两位及以上时，两位次数必须由CL指定，<strong>指令源操作数只能是1或CL</strong></p>
+<h3 id="非循环移位指令"><a href="#非循环移位指令" class="headerlink" title="非循环移位指令"></a>非循环移位指令</h3><p>逻辑左移</p>
+<p>算术左移</p>
+<p>逻辑右移</p>
+<p>算术右移</p>
+<h4 id="算术左移："><a href="#算术左移：" class="headerlink" title="算术左移："></a>算术左移：</h4><p>针对有符号数</p>
+<p>SAL OPRD, 1</p>
+<p>SAL OPRD, CL</p>
+<h4 id="逻辑左移："><a href="#逻辑左移：" class="headerlink" title="逻辑左移："></a>逻辑左移：</h4><p>针对无符号数</p>
+<p>SHL OPRD, 1</p>
+<p>SHL OPRD, CL</p>
+<p><img src="/2021/11/24/weiji11/image-20211124153255155.png"></p>
+<p><strong>每一次左移时最高位移至CF，右边补0</strong></p>
+<h4 id="算术右移"><a href="#算术右移" class="headerlink" title="算术右移"></a>算术右移</h4><p>针对有符号数</p>
+<p>SAR OPRD, 1</p>
+<p>SAR OPRD, CL</p>
+<p><strong>每一次右移时最低位移至CF,左边补0后将第一位变成符号位</strong></p>
+<p><img src="/2021/11/24/weiji11/image-20211124153601761.png"></p>
+<h4 id="逻辑右移"><a href="#逻辑右移" class="headerlink" title="逻辑右移"></a>逻辑右移</h4><p>针对无符号数</p>
+<p>SHR OPRD, 1</p>
+<p>SHR OPRD, CL</p>
+<p><strong>每一次右移时最低位移至CF,左边补0</strong></p>
+<p><img src="/2021/11/24/weiji11/image-20211124153316342.png"></p>
+<h3 id="循环移位指令"><a href="#循环移位指令" class="headerlink" title="循环移位指令"></a>循环移位指令</h3><h4 id="不带进位位的循环移位"><a href="#不带进位位的循环移位" class="headerlink" title="不带进位位的循环移位"></a>不带进位位的循环移位</h4><p><img src="/2021/11/24/weiji11/image-20211124153847562.png"></p>
+<p>左移：ROL</p>
+<p>最高位移入CF, 同时最高位移到最低位</p>
+<p>右移：ROR</p>
+<p>对低位移入CF，同时最低位移到最高位</p>
+<h4 id="带进位位的循环移位"><a href="#带进位位的循环移位" class="headerlink" title="带进位位的循环移位"></a>带进位位的循环移位</h4><p><img src="/2021/11/24/weiji11/image-20211124153900627.png"></p>
+<p>左移：RCL</p>
+<p>先把CF移入最低位，再将最高位移入CF</p>
+<p>右移：RCR</p>
+]]></content>
+      <categories>
+        <category>微机原理与接口技术</category>
+      </categories>
+      <tags>
+        <tag>微机原理与接口技术</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>转移指令</title>
+    <url>/2021/11/27/weiji15/</url>
+    <content><![CDATA[<h3 id="转移指令"><a href="#转移指令" class="headerlink" title="转移指令"></a>转移指令</h3><p>通过修改指令的偏移地址或段地址及偏移地址实现程序的转移</p>
+<p>无条件转移指令：无条件转移到目标地址</p>
+<p>条件转移指令：当具备一定条件（通常指状态标志位）时转移到目标地址</p>
+<h4 id="无条件转移指令"><a href="#无条件转移指令" class="headerlink" title="无条件转移指令"></a>无条件转移指令</h4><p><strong>格式：</strong></p>
+<p>JMP OPRD  可以实现在当前代码段内或段间转移</p>
+<h5 id="无条件段内转移"><a href="#无条件段内转移" class="headerlink" title="无条件段内转移"></a>无条件段内转移</h5><p>JMP Label</p>
+<p><img src="/2021/11/27/weiji15/image-20211127215736044.png"></p>
+<p><img src="/2021/11/27/weiji15/image-20211127215746654.png"></p>
+<p>例子</p>
+<p><img src="/2021/11/27/weiji15/image-20211127215644741.png"></p>
+<p><img src="/2021/11/27/weiji15/image-20211127215604067.png"></p>
 ]]></content>
       <categories>
         <category>微机原理与接口技术</category>
@@ -4184,6 +4154,36 @@ git merge version1.0
 <p><strong>格式：</strong></p>
 <p>RET</p>
 <p><strong>子程序最后一条指令必须是RET</strong></p>
+]]></content>
+      <categories>
+        <category>微机原理与接口技术</category>
+      </categories>
+      <tags>
+        <tag>微机原理与接口技术</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>循环控制指令</title>
+    <url>/2021/11/27/weiji16/</url>
+    <content><![CDATA[<p>循环范围：</p>
+<p>以当前IP为中心的-128~+127范围内循环</p>
+<p>循环次数由CX寄存器指定</p>
+<h2 id="无条件循环指令"><a href="#无条件循环指令" class="headerlink" title="无条件循环指令"></a>无条件循环指令</h2><p><strong>格式：</strong></p>
+<p>LOOP LABEL</p>
+<p><strong>循环条件：</strong></p>
+<p>CX!=0</p>
+<p><strong>操作;</strong></p>
+<p>完全相当于:</p>
+<p>DEX CX</p>
+<p>JNZ 符号地址</p>
+<h3 id="条件循环指令"><a href="#条件循环指令" class="headerlink" title="条件循环指令"></a>条件循环指令</h3><p><strong>功能：</strong></p>
+<p>先使CX-1，再根据CX中的值及ZF中的值来决定是否继续循环</p>
+<p><strong>格式：</strong></p>
+<img src="/2021/11/27/weiji16/image-20211127220618521.png" style="zoom:67%;">
+
+<p>例子：</p>
+<p><img src="/2021/11/27/weiji16/image-20211127220652302.png"></p>
+<p><img src="/2021/11/27/weiji16/image-20211127220931345.png"></p>
 ]]></content>
       <categories>
         <category>微机原理与接口技术</category>
@@ -4243,6 +4243,19 @@ git merge version1.0
       </tags>
   </entry>
   <entry>
+    <title>处理控制指令</title>
+    <url>/2021/11/28/weiji19/</url>
+    <content><![CDATA[<p>这类指令用来对CPU进行控制，如修改标志寄存器，使CPU暂停，使CPU与外部设备同步</p>
+<p><img src="/2021/11/28/weiji19/image-20211128104818080.png"></p>
+]]></content>
+      <categories>
+        <category>微机原理与接口技术</category>
+      </categories>
+      <tags>
+        <tag>微机原理与接口技术</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>指令系统小结</title>
     <url>/2021/11/28/weiji20/</url>
     <content><![CDATA[<p> <strong>基本概念</strong></p>
@@ -4270,19 +4283,6 @@ git merge version1.0
 <li><p>处理器控制指令的使用</p>
 </li>
 </ol>
-]]></content>
-      <categories>
-        <category>微机原理与接口技术</category>
-      </categories>
-      <tags>
-        <tag>微机原理与接口技术</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>处理控制指令</title>
-    <url>/2021/11/28/weiji19/</url>
-    <content><![CDATA[<p>这类指令用来对CPU进行控制，如修改标志寄存器，使CPU暂停，使CPU与外部设备同步</p>
-<p><img src="/2021/11/28/weiji19/image-20211128104818080.png"></p>
 ]]></content>
       <categories>
         <category>微机原理与接口技术</category>

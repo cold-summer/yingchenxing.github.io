@@ -2254,11 +2254,6 @@ SQLiteDatabase readableDatebase <span class="token operator">=</span> helper<spa
 ]]></content>
   </entry>
   <entry>
-    <title>AndroidDevelopment14</title>
-    <url>/2021/10/01/AndroidDevelopment14/</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
     <title>安卓开发（九）PopupWindow那些事</title>
     <url>/2021/10/01/AndroidDevelopment13/</url>
     <content><![CDATA[<p>转载自：<a href="https://blog.csdn.net/harvic880925/article/details/49272285?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522163307449116780269858046%2522%252C%2522scm%2522%253A%252220140713.130102334.pc%255Fblog.%2522%257D&request_id=163307449116780269858046&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~blog~first_rank_v2~hot_rank-1-49272285.pc_v2_rank_blog_default&utm_term=popupwindow&spm=1018.2226.3001.4450">PopUpWindow使用详解(一)——基本使用</a></p>
@@ -2313,6 +2308,11 @@ tv1<span class="token punctuation">.</span><span class="token function">setOnCli
         <tag>Android</tag>
         <tag>PopupWindow</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>AndroidDevelopment14</title>
+    <url>/2021/10/01/AndroidDevelopment14/</url>
+    <content><![CDATA[]]></content>
   </entry>
   <entry>
     <title>成电微记（一）-软件过程模型的选择</title>
@@ -3467,37 +3467,6 @@ git merge version1.0
 ]]></content>
   </entry>
   <entry>
-    <title>DOS功能调用</title>
-    <url>/2021/11/22/weiji02/</url>
-    <content><![CDATA[<p>调用DOS功能时需要使用<strong>软中断指令INT 21H</strong>，并 在执行该指令之前，需要将调用的功能号送入寄存器AH中，有关的参量送入指定的寄存器。</p>
-<h2 id="送入口参量到指定寄存器（可缺省）"><a href="#送入口参量到指定寄存器（可缺省）" class="headerlink" title="送入口参量到指定寄存器（可缺省）"></a>送入口参量到指定寄存器（可缺省）</h2><h3 id="带显示的键盘输入（1号功能）"><a href="#带显示的键盘输入（1号功能）" class="headerlink" title="带显示的键盘输入（1号功能）"></a>带显示的键盘输入（1号功能）</h3><p>该功能子程序将等待键盘输入，直到按下一个键。将字符的ASCII码送入AL寄存器，并在屏幕上显示该字符。</p>
-<p>如果是ctrl-c，则停止程序，该功能调用无入口参量</p>
-<p><strong>举例：</strong></p>
-<img src="/2021/11/22/weiji02/image-20211122084920168.png" style="zoom: 67%;">
-
-
-
-<h3 id="不带显示的键盘输入（8号功能）"><a href="#不带显示的键盘输入（8号功能）" class="headerlink" title="不带显示的键盘输入（8号功能）"></a>不带显示的键盘输入（8号功能）</h3><p>该功能调用与1号功能的作用相似，区别是8号功能将不显示输入的字符。该功能调用无入口参量。</p>
-<p><strong>举例：</strong></p>
-<img src="/2021/11/22/weiji02/image-20211122084958468.png" style="zoom:67%;">
-
-
-
-<h3 id="不带显示的键盘字符输入（7号功能）"><a href="#不带显示的键盘字符输入（7号功能）" class="headerlink" title="不带显示的键盘字符输入（7号功能）"></a>不带显示的键盘字符输入（7号功能）</h3><p>该功能与8号功能相似，但对ctrl-c组合键和TAB制表符无反应。该功能调用无入口参量。</p>
-<p><strong>举例</strong></p>
-<img src="/2021/11/22/weiji02/image-20211122085158144.png" style="zoom:67%;">
-
-
-
-]]></content>
-      <categories>
-        <category>微机原理与接口技术</category>
-      </categories>
-      <tags>
-        <tag>微机原理与接口技术</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>地址传送指令</title>
     <url>/2021/11/21/weiji01/</url>
     <content><![CDATA[<p>取近地址指针：LEA</p>
@@ -3535,6 +3504,37 @@ git merge version1.0
 <p><strong>指令格式：</strong></p>
 <p>SAHF</p>
 <p><strong>将AH装入FLAGS的低8位（与LAHF相反）</strong></p>
+]]></content>
+      <categories>
+        <category>微机原理与接口技术</category>
+      </categories>
+      <tags>
+        <tag>微机原理与接口技术</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>DOS功能调用</title>
+    <url>/2021/11/22/weiji02/</url>
+    <content><![CDATA[<p>调用DOS功能时需要使用<strong>软中断指令INT 21H</strong>，并 在执行该指令之前，需要将调用的功能号送入寄存器AH中，有关的参量送入指定的寄存器。</p>
+<h2 id="送入口参量到指定寄存器（可缺省）"><a href="#送入口参量到指定寄存器（可缺省）" class="headerlink" title="送入口参量到指定寄存器（可缺省）"></a>送入口参量到指定寄存器（可缺省）</h2><h3 id="带显示的键盘输入（1号功能）"><a href="#带显示的键盘输入（1号功能）" class="headerlink" title="带显示的键盘输入（1号功能）"></a>带显示的键盘输入（1号功能）</h3><p>该功能子程序将等待键盘输入，直到按下一个键。将字符的ASCII码送入AL寄存器，并在屏幕上显示该字符。</p>
+<p>如果是ctrl-c，则停止程序，该功能调用无入口参量</p>
+<p><strong>举例：</strong></p>
+<img src="/2021/11/22/weiji02/image-20211122084920168.png" style="zoom: 67%;">
+
+
+
+<h3 id="不带显示的键盘输入（8号功能）"><a href="#不带显示的键盘输入（8号功能）" class="headerlink" title="不带显示的键盘输入（8号功能）"></a>不带显示的键盘输入（8号功能）</h3><p>该功能调用与1号功能的作用相似，区别是8号功能将不显示输入的字符。该功能调用无入口参量。</p>
+<p><strong>举例：</strong></p>
+<img src="/2021/11/22/weiji02/image-20211122084958468.png" style="zoom:67%;">
+
+
+
+<h3 id="不带显示的键盘字符输入（7号功能）"><a href="#不带显示的键盘字符输入（7号功能）" class="headerlink" title="不带显示的键盘字符输入（7号功能）"></a>不带显示的键盘字符输入（7号功能）</h3><p>该功能与8号功能相似，但对ctrl-c组合键和TAB制表符无反应。该功能调用无入口参量。</p>
+<p><strong>举例</strong></p>
+<img src="/2021/11/22/weiji02/image-20211122085158144.png" style="zoom:67%;">
+
+
+
 ]]></content>
       <categories>
         <category>微机原理与接口技术</category>
@@ -3909,6 +3909,90 @@ git merge version1.0
       </tags>
   </entry>
   <entry>
+    <title>具体串操作指令</title>
+    <url>/2021/11/27/weiji13/</url>
+    <content><![CDATA[<h3 id="串传送MOVS"><a href="#串传送MOVS" class="headerlink" title="串传送MOVS"></a>串传送MOVS</h3><p><strong>功能：</strong></p>
+<p>将源数据串传送到目的地址</p>
+<p><strong>格式;</strong></p>
+<p>MOVS OPRD1,OPRD2 此格式仅用于源操作数需要段重设的情况下</p>
+<p>MOVS [DI],  [SI]  </p>
+<p>MOVSB 按字节传送</p>
+<p>MOVSW 按字传送</p>
+<p><strong>串传送指令常与无条件重复前缀连用</strong></p>
+<p><strong>例子：</strong></p>
+<p><img src="/2021/11/27/weiji13/image-20211127152309373.png"></p>
+<p>MOVSB完成红框内前四条指令，也就是传送与修改指针</p>
+<p>REP完成红框内后两条指令，判断条件</p>
+<h3 id="串比较CMPS"><a href="#串比较CMPS" class="headerlink" title="串比较CMPS"></a>串比较CMPS</h3><p><strong>功能：</strong></p>
+<p>用于实现两个数据串的比较</p>
+<p><strong>操作：</strong></p>
+<p>目标串-源串，结果不写回目的地址</p>
+<p>常与条件重复前缀连用</p>
+<p><strong>格式：</strong></p>
+<p>CMPS OPRD1,OPRD2</p>
+<p>CMPSB</p>
+<p>CMPSW</p>
+<p><strong>前缀的操作对标志位不影响</strong></p>
+<p>例子：</p>
+<img src="/2021/11/27/weiji13/image-20211127153212985.png" style="zoom:67%;">
+
+
+
+<h3 id="串扫描SCAS"><a href="#串扫描SCAS" class="headerlink" title="串扫描SCAS"></a>串扫描SCAS</h3><p>常用于在指定存储区域中寻找某个关键字</p>
+<p><strong>格式：</strong></p>
+<p>SCAS OPRD</p>
+<p>SCASB</p>
+<p>SCASW</p>
+<p><strong>执行与CMPS指令相似，区别是这里的源操作数地址是AX或AL</strong></p>
+<p>例子：</p>
+<p><img src="/2021/11/27/weiji13/image-20211127154929455.png"></p>
+<p><img src="/2021/11/27/weiji13/image-20211127154947698.png"></p>
+<h3 id="串装入LODS"><a href="#串装入LODS" class="headerlink" title="串装入LODS"></a>串装入LODS</h3><p>用于将内存某个区域的数据串依次装入累加器，以便显示或输出到接口</p>
+<p>LODS指令一般不加重复前缀</p>
+<p><strong>格式;</strong></p>
+<p>LODS OPRD</p>
+<p>LODSB</p>
+<p>LODSW</p>
+<p><strong>操作：</strong></p>
+<p>对字节:AL &lt;-[DS:SI]</p>
+<p>对字:Ax &lt;-[DS:SI]</p>
+<p>修改SI</p>
+<h3 id="串送存STOS"><a href="#串送存STOS" class="headerlink" title="串送存STOS"></a>串送存STOS</h3><p>常用于将内存某个区域置同样的值：</p>
+<ol>
+<li>将待送存的数据放入AL或AX</li>
+<li>确定操作方向和区域大小</li>
+<li>使用串存储指令+无条件重复前缀，实现数据传送。 </li>
+</ol>
+<p> <strong>格式：</strong></p>
+<p>STOS OPRD</p>
+<p>STOSB</p>
+<p>STOSW</p>
+<p><strong>操作：</strong></p>
+<p>对字节：AL-&gt;[ES:DI]</p>
+<p>对字：AX-&gt;[ES:DI]</p>
+<h3 id="串操作指令应用注意事项"><a href="#串操作指令应用注意事项" class="headerlink" title="串操作指令应用注意事项"></a>串操作指令应用注意事项</h3><ol>
+<li><p>需要定义附加段：目标操作数必须在附加段上</p>
+</li>
+<li><p>需要设置数据的操作方向：确认DF的状态</p>
+</li>
+<li><p>源串和目标串指针分别为SI和DI</p>
+</li>
+<li><p>串长度必须由CX给出</p>
+</li>
+<li><p>注意重复前缀的使用方法</p>
+<p>传送类指令前加无条件重复前缀</p>
+<p>串比较类指令前加条件重复前缀，但前缀不影响ZF状态</p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>微机原理与接口技术</category>
+      </categories>
+      <tags>
+        <tag>微机原理与接口技术</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>移位操作指令</title>
     <url>/2021/11/24/weiji11/</url>
     <content><![CDATA[<p>控制二进制向左或向右移动的指令</p>
@@ -3997,93 +4081,16 @@ git merge version1.0
       </tags>
   </entry>
   <entry>
-    <title>具体串操作指令</title>
-    <url>/2021/11/27/weiji13/</url>
-    <content><![CDATA[<h3 id="串传送MOVS"><a href="#串传送MOVS" class="headerlink" title="串传送MOVS"></a>串传送MOVS</h3><p><strong>功能：</strong></p>
-<p>将源数据串传送到目的地址</p>
-<p><strong>格式;</strong></p>
-<p>MOVS OPRD1,OPRD2 此格式仅用于源操作数需要段重设的情况下</p>
-<p>MOVS [DI],  [SI]  </p>
-<p>MOVSB 按字节传送</p>
-<p>MOVSW 按字传送</p>
-<p><strong>串传送指令常与无条件重复前缀连用</strong></p>
-<p><strong>例子：</strong></p>
-<p><img src="/2021/11/27/weiji13/image-20211127152309373.png"></p>
-<p>MOVSB完成红框内前四条指令，也就是传送与修改指针</p>
-<p>REP完成红框内后两条指令，判断条件</p>
-<h3 id="串比较CMPS"><a href="#串比较CMPS" class="headerlink" title="串比较CMPS"></a>串比较CMPS</h3><p><strong>功能：</strong></p>
-<p>用于实现两个数据串的比较</p>
-<p><strong>操作：</strong></p>
-<p>目标串-源串，结果不写回目的地址</p>
-<p>常与条件重复前缀连用</p>
-<p><strong>格式：</strong></p>
-<p>CMPS OPRD1,OPRD2</p>
-<p>CMPSB</p>
-<p>CMPSW</p>
-<p><strong>前缀的操作对标志位不影响</strong></p>
-<p>例子：</p>
-<img src="/2021/11/27/weiji13/image-20211127153212985.png" style="zoom:67%;">
-
-
-
-<h3 id="串扫描SCAS"><a href="#串扫描SCAS" class="headerlink" title="串扫描SCAS"></a>串扫描SCAS</h3><p>常用于在指定存储区域中寻找某个关键字</p>
-<p><strong>格式：</strong></p>
-<p>SCAS OPRD</p>
-<p>SCASB</p>
-<p>SCASW</p>
-<p><strong>执行与CMPS指令相似，区别是这里的源操作数地址是AX或AL</strong></p>
-<p>例子：</p>
-<p><img src="/2021/11/27/weiji13/image-20211127154929455.png"></p>
-<p><img src="/2021/11/27/weiji13/image-20211127154947698.png"></p>
-<h3 id="串装入LODS"><a href="#串装入LODS" class="headerlink" title="串装入LODS"></a>串装入LODS</h3><p>用于将内存某个区域的数据串依次装入累加器，以便显示或输出到接口</p>
-<p>LODS指令一般不加重复前缀</p>
-<p><strong>格式;</strong></p>
-<p>LODS OPRD</p>
-<p>LODSB</p>
-<p>LODSW</p>
-<p><strong>操作：</strong></p>
-<p>对字节:AL &lt;-[DS:SI]</p>
-<p>对字:Ax &lt;-[DS:SI]</p>
-<p>修改SI</p>
-<h3 id="串送存STOS"><a href="#串送存STOS" class="headerlink" title="串送存STOS"></a>串送存STOS</h3><p>常用于将内存某个区域置同样的值：</p>
-<ol>
-<li>将待送存的数据放入AL或AX</li>
-<li>确定操作方向和区域大小</li>
-<li>使用串存储指令+无条件重复前缀，实现数据传送。 </li>
-</ol>
-<p> <strong>格式：</strong></p>
-<p>STOS OPRD</p>
-<p>STOSB</p>
-<p>STOSW</p>
-<p><strong>操作：</strong></p>
-<p>对字节：AL-&gt;[ES:DI]</p>
-<p>对字：AX-&gt;[ES:DI]</p>
-<h3 id="串操作指令应用注意事项"><a href="#串操作指令应用注意事项" class="headerlink" title="串操作指令应用注意事项"></a>串操作指令应用注意事项</h3><ol>
-<li><p>需要定义附加段：目标操作数必须在附加段上</p>
-</li>
-<li><p>需要设置数据的操作方向：确认DF的状态</p>
-</li>
-<li><p>源串和目标串指针分别为SI和DI</p>
-</li>
-<li><p>串长度必须由CX给出</p>
-</li>
-<li><p>注意重复前缀的使用方法</p>
-<p>传送类指令前加无条件重复前缀</p>
-<p>串比较类指令前加条件重复前缀，但前缀不影响ZF状态</p>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>微机原理与接口技术</category>
-      </categories>
-      <tags>
-        <tag>微机原理与接口技术</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>程序控制类指令</title>
     <url>/2021/11/27/weiji14/</url>
-    <content><![CDATA[]]></content>
+    <content><![CDATA[<p><strong>程序控制类指令的本质是：控制程序的执行方向</strong></p>
+<p><strong>决定程序执行方向的因素：CS,IP</strong>；同时修改CS和IP，会使程序走向另一个代码段执行</p>
+<p>程序控制类指令以“隐含”的方式修改CS和IP，以实现控制程序走向的目的</p>
+<p>通过修改IP或CS和IP，实现程序的三种基本控制结构：顺序，选择（分支），循环</p>
+<p>学习程序控制类指令需要重点关注：如何实现对CS和IP的修改</p>
+<h3 id="转移指令"><a href="#转移指令" class="headerlink" title="转移指令"></a>转移指令</h3><p>通过修改指令的偏移地址或段地址及偏移地址实现程序的转移</p>
+<p>无条件转移指令：无条件转移到目标地址</p>
+]]></content>
       <categories>
         <category>微机原理与接口技术</category>
       </categories>
@@ -4285,64 +4292,6 @@ git merge version1.0
       </tags>
   </entry>
   <entry>
-    <title>汇编语言程序</title>
-    <url>/2021/11/28/weiji21/</url>
-    <content><![CDATA[<h3 id="汇编语言源程序与汇编程序"><a href="#汇编语言源程序与汇编程序" class="headerlink" title="汇编语言源程序与汇编程序"></a>汇编语言源程序与汇编程序</h3><p>汇编语言源程序————&gt;用助记符编写</p>
-<p>汇编程序————&gt;源程序的编译程序</p>
-<p><img src="/2021/11/28/weiji21/image-20211128111201964.png" alt="、"></p>
-<h3 id="汇编语言程序设计与执行过程"><a href="#汇编语言程序设计与执行过程" class="headerlink" title="汇编语言程序设计与执行过程"></a>汇编语言程序设计与执行过程</h3><ol>
-<li>输入汇编语言源程序（EDIT）—-&gt;源文件.ASM</li>
-<li>汇编（MASM）—-&gt;目标文件（机器语言）.OBJ</li>
-<li>链接（LINK）—-&gt;可执行文件.EXE</li>
-<li>调试（TD）—-&gt;最终程序</li>
-</ol>
-<h3 id="汇编语言语句的语句类型和格式"><a href="#汇编语言语句的语句类型和格式" class="headerlink" title="汇编语言语句的语句类型和格式"></a>汇编语言语句的语句类型和格式</h3><h4 id="语句类型："><a href="#语句类型：" class="headerlink" title="语句类型："></a><strong>语句类型：</strong></h4><ol>
-<li><p>指令性语句：CPU执行的语句，能够生成目标代码</p>
-</li>
-<li><p>指示性语句：CPU不执行，而由汇编程序执行的语句，不生成目标代码</p>
-</li>
-</ol>
-<h4 id="格式："><a href="#格式：" class="headerlink" title="格式："></a>格式：</h4><p>指令性语句;</p>
-<p><img src="/2021/11/28/weiji21/image-20211128111828074.png"></p>
-<p>指示性语句：</p>
-<p><img src="/2021/11/28/weiji21/image-20211128111921867.png"></p>
-<h3 id="汇编语言语句中的操作数"><a href="#汇编语言语句中的操作数" class="headerlink" title="汇编语言语句中的操作数"></a>汇编语言语句中的操作数</h3><h4 id="寄存器"><a href="#寄存器" class="headerlink" title="寄存器"></a>寄存器</h4><h4 id="存储器单元"><a href="#存储器单元" class="headerlink" title="存储器单元"></a>存储器单元</h4><h4 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h4><p>数字常量</p>
-<p>字符串常量——–&gt;用单引号引起的字符或字符串</p>
-<p>例：</p>
-<p>MOV AL,’A’   ——&gt;AL=41H</p>
-<p>例：</p>
-<p>定义字符串：’ABCD’——-&gt;翻译成41H,42H,43H,44H</p>
-<h4 id="变量或标号"><a href="#变量或标号" class="headerlink" title="变量或标号"></a>变量或标号</h4><p>内存单元的符号地址，为存储器操作数</p>
-<p><strong>变量的属性：</strong></p>
-<p>段值：变量所在段的段地址</p>
-<p>偏移值：变量所指单元的偏移地址</p>
-<p>类型：字节型，字型，双字型</p>
-<h4 id="表达式"><a href="#表达式" class="headerlink" title="表达式"></a>表达式</h4><p>算术运算</p>
-<p>逻辑运算</p>
-<p>关系运算</p>
-<p>其他运算</p>
-<p><strong>取值运算符：</strong></p>
-<p>获取变量的属性值：</p>
-<p>OFFSET—&gt;取得其后变量或标号的偏移地址</p>
-<p>SEG——–&gt;取得其后变量或标号的段地址</p>
-<img src="/2021/11/28/weiji21/image-20211128161740723.png" style="zoom:67%;">
-
-
-
-<p><strong>属性运算符：</strong></p>
-<p>用于指定其后存储器操作数的类型</p>
-<p>运算符：PTR</p>
-<p><strong>例：</strong></p>
-<p><img src="/2021/11/28/weiji21/image-20211128161917117.png"></p>
-]]></content>
-      <categories>
-        <category>微机原理与接口技术</category>
-      </categories>
-      <tags>
-        <tag>微机原理与接口技术</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>基本伪指令</title>
     <url>/2021/11/28/weiji22/</url>
     <content><![CDATA[<p>伪指令：由汇编程序执行的”指令系统“</p>
@@ -4425,6 +4374,64 @@ git merge version1.0
 <h3 id="结束伪指令"><a href="#结束伪指令" class="headerlink" title="结束伪指令"></a>结束伪指令</h3><p>表示源程序结束</p>
 <p><strong>格式：</strong></p>
 <p>END [标号]</p>
+]]></content>
+      <categories>
+        <category>微机原理与接口技术</category>
+      </categories>
+      <tags>
+        <tag>微机原理与接口技术</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>汇编语言程序</title>
+    <url>/2021/11/28/weiji21/</url>
+    <content><![CDATA[<h3 id="汇编语言源程序与汇编程序"><a href="#汇编语言源程序与汇编程序" class="headerlink" title="汇编语言源程序与汇编程序"></a>汇编语言源程序与汇编程序</h3><p>汇编语言源程序————&gt;用助记符编写</p>
+<p>汇编程序————&gt;源程序的编译程序</p>
+<p><img src="/2021/11/28/weiji21/image-20211128111201964.png" alt="、"></p>
+<h3 id="汇编语言程序设计与执行过程"><a href="#汇编语言程序设计与执行过程" class="headerlink" title="汇编语言程序设计与执行过程"></a>汇编语言程序设计与执行过程</h3><ol>
+<li>输入汇编语言源程序（EDIT）—-&gt;源文件.ASM</li>
+<li>汇编（MASM）—-&gt;目标文件（机器语言）.OBJ</li>
+<li>链接（LINK）—-&gt;可执行文件.EXE</li>
+<li>调试（TD）—-&gt;最终程序</li>
+</ol>
+<h3 id="汇编语言语句的语句类型和格式"><a href="#汇编语言语句的语句类型和格式" class="headerlink" title="汇编语言语句的语句类型和格式"></a>汇编语言语句的语句类型和格式</h3><h4 id="语句类型："><a href="#语句类型：" class="headerlink" title="语句类型："></a><strong>语句类型：</strong></h4><ol>
+<li><p>指令性语句：CPU执行的语句，能够生成目标代码</p>
+</li>
+<li><p>指示性语句：CPU不执行，而由汇编程序执行的语句，不生成目标代码</p>
+</li>
+</ol>
+<h4 id="格式："><a href="#格式：" class="headerlink" title="格式："></a>格式：</h4><p>指令性语句;</p>
+<p><img src="/2021/11/28/weiji21/image-20211128111828074.png"></p>
+<p>指示性语句：</p>
+<p><img src="/2021/11/28/weiji21/image-20211128111921867.png"></p>
+<h3 id="汇编语言语句中的操作数"><a href="#汇编语言语句中的操作数" class="headerlink" title="汇编语言语句中的操作数"></a>汇编语言语句中的操作数</h3><h4 id="寄存器"><a href="#寄存器" class="headerlink" title="寄存器"></a>寄存器</h4><h4 id="存储器单元"><a href="#存储器单元" class="headerlink" title="存储器单元"></a>存储器单元</h4><h4 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h4><p>数字常量</p>
+<p>字符串常量——–&gt;用单引号引起的字符或字符串</p>
+<p>例：</p>
+<p>MOV AL,’A’   ——&gt;AL=41H</p>
+<p>例：</p>
+<p>定义字符串：’ABCD’——-&gt;翻译成41H,42H,43H,44H</p>
+<h4 id="变量或标号"><a href="#变量或标号" class="headerlink" title="变量或标号"></a>变量或标号</h4><p>内存单元的符号地址，为存储器操作数</p>
+<p><strong>变量的属性：</strong></p>
+<p>段值：变量所在段的段地址</p>
+<p>偏移值：变量所指单元的偏移地址</p>
+<p>类型：字节型，字型，双字型</p>
+<h4 id="表达式"><a href="#表达式" class="headerlink" title="表达式"></a>表达式</h4><p>算术运算</p>
+<p>逻辑运算</p>
+<p>关系运算</p>
+<p>其他运算</p>
+<p><strong>取值运算符：</strong></p>
+<p>获取变量的属性值：</p>
+<p>OFFSET—&gt;取得其后变量或标号的偏移地址</p>
+<p>SEG——–&gt;取得其后变量或标号的段地址</p>
+<img src="/2021/11/28/weiji21/image-20211128161740723.png" style="zoom:67%;">
+
+
+
+<p><strong>属性运算符：</strong></p>
+<p>用于指定其后存储器操作数的类型</p>
+<p>运算符：PTR</p>
+<p><strong>例：</strong></p>
+<p><img src="/2021/11/28/weiji21/image-20211128161917117.png"></p>
 ]]></content>
       <categories>
         <category>微机原理与接口技术</category>
@@ -4588,5 +4595,93 @@ expr:    NUMBER            &#123; $$ = $1; &#125;
 </code></pre>
 <p>语法规则中，｛$$ = $1 + $3｝为语义行为，上文中$1表示前面的expr， $3表示后面的expr</p>
 ]]></content>
+  </entry>
+  <entry>
+    <title>托福攻略</title>
+    <url>/2021/12/11/%E6%89%98%E7%A6%8F%E6%94%BB%E7%95%A5/</url>
+    <content><![CDATA[<h2 id="四川大学望江校区考点攻略"><a href="#四川大学望江校区考点攻略" class="headerlink" title="四川大学望江校区考点攻略"></a>四川大学望江校区考点攻略</h2><h3 id="到达川大"><a href="#到达川大" class="headerlink" title="到达川大"></a>到达川大</h3><p>坐地铁到磨子桥站，从D口出来之后，沿着路直走</p>
+<p><img src="/2021/12/11/%E6%89%98%E7%A6%8F%E6%94%BB%E7%95%A5/%E6%89%98%E7%A6%8FIMG_20211210_160536.jpg" alt="磨子桥 D口"></p>
+<p>一直走到第一个路口，可以看到马路对面的小米体验店</p>
+<p><img src="/2021/12/11/%E6%89%98%E7%A6%8F%E6%94%BB%E7%95%A5/Inked%E6%89%98%E7%A6%8FIMG_20211210_160901_LI.jpg" alt="小米旗舰店"></p>
+<p>此时四川大学北门（规定入口）在你的斜对面</p>
+<p><img src="/2021/12/11/%E6%89%98%E7%A6%8F%E6%94%BB%E7%95%A5/qq_pic_merged_1639210272939.jpg" alt="路口"></p>
+<p>到达<code>川大北门</code></p>
+<p><img src="/2021/12/11/%E6%89%98%E7%A6%8F%E6%94%BB%E7%95%A5/%E6%89%98%E7%A6%8FIMG_20211210_161517.jpg" alt="川大北门"></p>
+<p>考试时要走左侧<code>考试通道</code></p>
+<p><img src="/2021/12/11/%E6%89%98%E7%A6%8F%E6%94%BB%E7%95%A5/%E6%89%98%E7%A6%8FIMG_20211210_161455.jpg" alt="考试通道"></p>
+<h3 id="进入考场"><a href="#进入考场" class="headerlink" title="进入考场"></a>进入考场</h3><p><strong>ps：记得带<code>确认信</code>和<code>身份证</code>，并且有<code>48h核酸证明</code></strong></p>
+<ol>
+<li><p>在考试通道签名后有专门的电瓶车去<code>出国培训部大楼</code>。</p>
+</li>
+<li><p>在一楼大堂签名测温后拿<code>储物柜钥匙</code>、<code>检验清单</code>（一张记录人脸识别、安检那些的小纸条），到二楼。</p>
+</li>
+<li><p>储物柜处一定要看<code>储物规范</code>，主要可以带如下物品：</p>
+<ul>
+<li>身份证</li>
+<li>储物柜钥匙</li>
+<li>检验清单</li>
+<li>饮料和食品（不能拿进考场，但可以拿到候考室）</li>
+</ul>
+<p><strong>可以带饮料和食品到3楼候考室！！！</strong></p>
+<p><strong>可以带饮料和食品到3楼候考室！！！</strong></p>
+<p><strong>可以带饮料和食品到3楼候考室！！！</strong></p>
+</li>
+</ol>
+<h3 id="开始考试"><a href="#开始考试" class="headerlink" title="开始考试"></a>开始考试</h3><p>考试设备：</p>
+<ul>
+<li>普通头戴式耳机</li>
+<li>铅笔（铅笔种类见下图）</li>
+<li>机械键盘（按压力度小）</li>
+<li>3张黄色草稿纸，比A4略小，不能要求添加但可以更换</li>
+</ul>
+<img src="/2021/12/11/%E6%89%98%E7%A6%8F%E6%94%BB%E7%95%A5/image-20211211164547272.png" alt="淘宝随便找的" style="zoom: 50%;">
+
+
+
+
+
+<ol>
+<li><p>每个人的考试开始时间不一样。你的电脑界面有一个<code>confirm按钮</code>，按下后，输入<code>耳机号码</code>（一般在耳机框上），然后等待监考人员到你的电脑<code>输入密码</code>后正式开始考试。</p>
+</li>
+<li><p>考试过程中可以听到其他人的声音，特别是别人比你先做完的情况。做好心理准备！</p>
+</li>
+<li><p>做完阅读和听力后，举手示意，中间有<code>10min强制休息</code>时间（在候考室），可以吃自己的食物和饮料。</p>
+</li>
+<li><p>口语时，可以听到别人的声音，但影响不大（主观）</p>
+</li>
+<li><p>写作时，键盘声很大，而且很快。</p>
+</li>
+<li><p>考完后，即时出阅读和听力成绩，可选择<code>report score</code>和<code>cancel score</code>，选择完毕后考试结束。</p>
+</li>
+<li><p>排队坐电瓶车去门口。</p>
+<p><strong>问清楚车去哪个门！！！</strong></p>
+<p><strong>问清楚车去哪个门！！！</strong></p>
+<p><strong>问清楚车去哪个门！！！</strong>别问我怎么知道的</p>
+</li>
+</ol>
+<h3 id="住宿（仅供参考）"><a href="#住宿（仅供参考）" class="headerlink" title="住宿（仅供参考）"></a>住宿（仅供参考）</h3><p><strong>没有恰饭！！！</strong></p>
+<p><strong>没有恰饭！！！</strong></p>
+<p><strong>没有恰饭！！！</strong></p>
+<p><strong>答案酒店，就在过来时的路口旁边，与地铁站同侧。</strong></p>
+<p><strong>我住的时候大概是200一晚</strong></p>
+<p><img src="/2021/12/11/%E6%89%98%E7%A6%8F%E6%94%BB%E7%95%A5/qq_pic_merged_1639213291883.jpg" alt="答案酒店"></p>
+<p><strong>住宿环境</strong></p>
+<p><img src="/2021/12/11/%E6%89%98%E7%A6%8F%E6%94%BB%E7%95%A5/%E6%89%98%E7%A6%8FIMG_20211210_162649.jpg"></p>
+<p><img src="/2021/12/11/%E6%89%98%E7%A6%8F%E6%94%BB%E7%95%A5/%E6%89%98%E7%A6%8FIMG_20211210_162542.jpg"></p>
+<p><strong>优点：</strong></p>
+<p>早饭可以直接到楼下肯德基和麦当劳（但是午饭很多人）。</p>
+<p>离川大北门、地铁站近。</p>
+<p>13点退房，不耽误考试。（加试一项大概12点半考完）</p>
+<p><strong>缺点：</strong></p>
+<p>窗户隔音一般，建议让前台开背面的房间。</p>
+<p>空调控制器总是响。</p>
+<p>祝考试顺利！</p>
+]]></content>
+      <categories>
+        <category>托福</category>
+      </categories>
+      <tags>
+        <tag>托福</tag>
+      </tags>
   </entry>
 </search>

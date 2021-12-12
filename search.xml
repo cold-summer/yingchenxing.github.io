@@ -3930,44 +3930,6 @@ git config --global --unset https.proxy
       </tags>
   </entry>
   <entry>
-    <title>串操作指令说明</title>
-    <url>/2021/11/27/weiji12/</url>
-    <content><![CDATA[<h3 id="串操作指令说明："><a href="#串操作指令说明：" class="headerlink" title="串操作指令说明："></a><strong>串操作指令说明：</strong></h3><p>针对数据块或字符串的操作</p>
-<p>可实现存储器到存储器的数据传送</p>
-<p>待操作的数据串称为源串，目标地址称为目的串</p>
-<p>串操作指令的操作对象是多个字节数，因此指令的执行需要确定：</p>
-<ol>
-<li>串所在位置</li>
-<li>串的首地址</li>
-<li>串长度</li>
-<li>串的操作方向</li>
-</ol>
-<h3 id="串操作的要求"><a href="#串操作的要求" class="headerlink" title="串操作的要求"></a>串操作的要求</h3><p><strong>串所在区域及首地址：</strong></p>
-<p>源串一般存放在数据段，偏移地址由SI指定，允许段重设。</p>
-<p>目标串必须在附加段，偏移地址由DI指定。</p>
-<p><strong>串长度：</strong></p>
-<p>串长度值由CX指定</p>
-<p><strong>串的操作方向：</strong></p>
-<p>由DF标志位决定。指令根据DF状态自动修改地址指针</p>
-<p>DF=0-&gt;增地址方向</p>
-<p>DF=1-&gt;减地址方向</p>
-<p><img src="/2021/11/27/weiji12/image-20211127145134067.png"></p>
-<h3 id="重复前缀"><a href="#重复前缀" class="headerlink" title="重复前缀"></a>重复前缀</h3><h4 id="无条件前缀"><a href="#无条件前缀" class="headerlink" title="无条件前缀"></a>无条件前缀</h4><p>REP</p>
-<p>当CX不为0时，REP后的指令将继续执行</p>
-<p>常用语传送类指令前-&gt;未传完则继续传送</p>
-<h4 id="条件重复"><a href="#条件重复" class="headerlink" title="条件重复"></a>条件重复</h4><p>相等（为零）重复：REPE  (REPZ)</p>
-<p>CX不为0并且ZF=1,则前缀后的指令将继续重复执行<img src="/2021/11/27/weiji12/image-20211127145935633.png"></p>
-<h3 id="串操作指令流程"><a href="#串操作指令流程" class="headerlink" title="串操作指令流程"></a>串操作指令流程</h3><p><img src="/2021/11/27/weiji12/image-20211127150603868.png"></p>
-<p><img src="/2021/11/27/weiji12/image-20211127151552001.png"></p>
-<h2 id="串操作指令"><a href="#串操作指令" class="headerlink" title="串操作指令"></a>串操作指令</h2><h3 id="串传送MOVS"><a href="#串传送MOVS" class="headerlink" title="串传送MOVS"></a>串传送MOVS</h3><h3 id="串比较CMPS"><a href="#串比较CMPS" class="headerlink" title="串比较CMPS"></a>串比较CMPS</h3><h3 id="串扫描SCAS"><a href="#串扫描SCAS" class="headerlink" title="串扫描SCAS"></a>串扫描SCAS</h3><h3 id="串装入LODS"><a href="#串装入LODS" class="headerlink" title="串装入LODS"></a>串装入LODS</h3><h3 id="串送存STOS"><a href="#串送存STOS" class="headerlink" title="串送存STOS"></a>串送存STOS</h3>]]></content>
-      <categories>
-        <category>微机原理与接口技术</category>
-      </categories>
-      <tags>
-        <tag>微机原理与接口技术</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>移位操作指令</title>
     <url>/2021/11/24/weiji11/</url>
     <content><![CDATA[<p>控制二进制向左或向右移动的指令</p>
@@ -4010,6 +3972,44 @@ git config --global --unset https.proxy
 <p>先把CF移入最低位，再将最高位移入CF</p>
 <p>右移：RCR</p>
 ]]></content>
+      <categories>
+        <category>微机原理与接口技术</category>
+      </categories>
+      <tags>
+        <tag>微机原理与接口技术</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>串操作指令说明</title>
+    <url>/2021/11/27/weiji12/</url>
+    <content><![CDATA[<h3 id="串操作指令说明："><a href="#串操作指令说明：" class="headerlink" title="串操作指令说明："></a><strong>串操作指令说明：</strong></h3><p>针对数据块或字符串的操作</p>
+<p>可实现存储器到存储器的数据传送</p>
+<p>待操作的数据串称为源串，目标地址称为目的串</p>
+<p>串操作指令的操作对象是多个字节数，因此指令的执行需要确定：</p>
+<ol>
+<li>串所在位置</li>
+<li>串的首地址</li>
+<li>串长度</li>
+<li>串的操作方向</li>
+</ol>
+<h3 id="串操作的要求"><a href="#串操作的要求" class="headerlink" title="串操作的要求"></a>串操作的要求</h3><p><strong>串所在区域及首地址：</strong></p>
+<p>源串一般存放在数据段，偏移地址由SI指定，允许段重设。</p>
+<p>目标串必须在附加段，偏移地址由DI指定。</p>
+<p><strong>串长度：</strong></p>
+<p>串长度值由CX指定</p>
+<p><strong>串的操作方向：</strong></p>
+<p>由DF标志位决定。指令根据DF状态自动修改地址指针</p>
+<p>DF=0-&gt;增地址方向</p>
+<p>DF=1-&gt;减地址方向</p>
+<p><img src="/2021/11/27/weiji12/image-20211127145134067.png"></p>
+<h3 id="重复前缀"><a href="#重复前缀" class="headerlink" title="重复前缀"></a>重复前缀</h3><h4 id="无条件前缀"><a href="#无条件前缀" class="headerlink" title="无条件前缀"></a>无条件前缀</h4><p>REP</p>
+<p>当CX不为0时，REP后的指令将继续执行</p>
+<p>常用语传送类指令前-&gt;未传完则继续传送</p>
+<h4 id="条件重复"><a href="#条件重复" class="headerlink" title="条件重复"></a>条件重复</h4><p>相等（为零）重复：REPE  (REPZ)</p>
+<p>CX不为0并且ZF=1,则前缀后的指令将继续重复执行<img src="/2021/11/27/weiji12/image-20211127145935633.png"></p>
+<h3 id="串操作指令流程"><a href="#串操作指令流程" class="headerlink" title="串操作指令流程"></a>串操作指令流程</h3><p><img src="/2021/11/27/weiji12/image-20211127150603868.png"></p>
+<p><img src="/2021/11/27/weiji12/image-20211127151552001.png"></p>
+<h2 id="串操作指令"><a href="#串操作指令" class="headerlink" title="串操作指令"></a>串操作指令</h2><h3 id="串传送MOVS"><a href="#串传送MOVS" class="headerlink" title="串传送MOVS"></a>串传送MOVS</h3><h3 id="串比较CMPS"><a href="#串比较CMPS" class="headerlink" title="串比较CMPS"></a>串比较CMPS</h3><h3 id="串扫描SCAS"><a href="#串扫描SCAS" class="headerlink" title="串扫描SCAS"></a>串扫描SCAS</h3><h3 id="串装入LODS"><a href="#串装入LODS" class="headerlink" title="串装入LODS"></a>串装入LODS</h3><h3 id="串送存STOS"><a href="#串送存STOS" class="headerlink" title="串送存STOS"></a>串送存STOS</h3>]]></content>
       <categories>
         <category>微机原理与接口技术</category>
       </categories>
@@ -4142,36 +4142,6 @@ git config --global --unset https.proxy
       </tags>
   </entry>
   <entry>
-    <title>循环控制指令</title>
-    <url>/2021/11/27/weiji16/</url>
-    <content><![CDATA[<p>循环范围：</p>
-<p>以当前IP为中心的-128~+127范围内循环</p>
-<p>循环次数由CX寄存器指定</p>
-<h2 id="无条件循环指令"><a href="#无条件循环指令" class="headerlink" title="无条件循环指令"></a>无条件循环指令</h2><p><strong>格式：</strong></p>
-<p>LOOP LABEL</p>
-<p><strong>循环条件：</strong></p>
-<p>CX!=0</p>
-<p><strong>操作;</strong></p>
-<p>完全相当于:</p>
-<p>DEX CX</p>
-<p>JNZ 符号地址</p>
-<h3 id="条件循环指令"><a href="#条件循环指令" class="headerlink" title="条件循环指令"></a>条件循环指令</h3><p><strong>功能：</strong></p>
-<p>先使CX-1，再根据CX中的值及ZF中的值来决定是否继续循环</p>
-<p><strong>格式：</strong></p>
-<img src="/2021/11/27/weiji16/image-20211127220618521.png" style="zoom:67%;">
-
-<p>例子：</p>
-<p><img src="/2021/11/27/weiji16/image-20211127220652302.png"></p>
-<p><img src="/2021/11/27/weiji16/image-20211127220931345.png"></p>
-]]></content>
-      <categories>
-        <category>微机原理与接口技术</category>
-      </categories>
-      <tags>
-        <tag>微机原理与接口技术</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>过程调用指令</title>
     <url>/2021/11/27/weiji17/</url>
     <content><![CDATA[<p>用于调用一个子过程</p>
@@ -4205,6 +4175,36 @@ git config --global --unset https.proxy
 <p><strong>格式：</strong></p>
 <p>RET</p>
 <p><strong>子程序最后一条指令必须是RET</strong></p>
+]]></content>
+      <categories>
+        <category>微机原理与接口技术</category>
+      </categories>
+      <tags>
+        <tag>微机原理与接口技术</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>循环控制指令</title>
+    <url>/2021/11/27/weiji16/</url>
+    <content><![CDATA[<p>循环范围：</p>
+<p>以当前IP为中心的-128~+127范围内循环</p>
+<p>循环次数由CX寄存器指定</p>
+<h2 id="无条件循环指令"><a href="#无条件循环指令" class="headerlink" title="无条件循环指令"></a>无条件循环指令</h2><p><strong>格式：</strong></p>
+<p>LOOP LABEL</p>
+<p><strong>循环条件：</strong></p>
+<p>CX!=0</p>
+<p><strong>操作;</strong></p>
+<p>完全相当于:</p>
+<p>DEX CX</p>
+<p>JNZ 符号地址</p>
+<h3 id="条件循环指令"><a href="#条件循环指令" class="headerlink" title="条件循环指令"></a>条件循环指令</h3><p><strong>功能：</strong></p>
+<p>先使CX-1，再根据CX中的值及ZF中的值来决定是否继续循环</p>
+<p><strong>格式：</strong></p>
+<img src="/2021/11/27/weiji16/image-20211127220618521.png" style="zoom:67%;">
+
+<p>例子：</p>
+<p><img src="/2021/11/27/weiji16/image-20211127220652302.png"></p>
+<p><img src="/2021/11/27/weiji16/image-20211127220931345.png"></p>
 ]]></content>
       <categories>
         <category>微机原理与接口技术</category>
@@ -4264,6 +4264,19 @@ git config --global --unset https.proxy
       </tags>
   </entry>
   <entry>
+    <title>处理控制指令</title>
+    <url>/2021/11/28/weiji19/</url>
+    <content><![CDATA[<p>这类指令用来对CPU进行控制，如修改标志寄存器，使CPU暂停，使CPU与外部设备同步</p>
+<p><img src="/2021/11/28/weiji19/image-20211128104818080.png"></p>
+]]></content>
+      <categories>
+        <category>微机原理与接口技术</category>
+      </categories>
+      <tags>
+        <tag>微机原理与接口技术</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>指令系统小结</title>
     <url>/2021/11/28/weiji20/</url>
     <content><![CDATA[<p> <strong>基本概念</strong></p>
@@ -4291,19 +4304,6 @@ git config --global --unset https.proxy
 <li><p>处理器控制指令的使用</p>
 </li>
 </ol>
-]]></content>
-      <categories>
-        <category>微机原理与接口技术</category>
-      </categories>
-      <tags>
-        <tag>微机原理与接口技术</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>处理控制指令</title>
-    <url>/2021/11/28/weiji19/</url>
-    <content><![CDATA[<p>这类指令用来对CPU进行控制，如修改标志寄存器，使CPU暂停，使CPU与外部设备同步</p>
-<p><img src="/2021/11/28/weiji19/image-20211128104818080.png"></p>
 ]]></content>
       <categories>
         <category>微机原理与接口技术</category>

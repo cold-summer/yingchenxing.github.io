@@ -6,7 +6,7 @@
   <link href="https://yingchenxing.github.io/atom.xml" rel="self"/>
   
   <link href="https://yingchenxing.github.io/"/>
-  <updated>2021-12-11T10:45:50.774Z</updated>
+  <updated>2021-12-12T03:39:28.537Z</updated>
   <id>https://yingchenxing.github.io/</id>
   
   <author>
@@ -15,6 +15,19 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>MySQL01</title>
+    <link href="https://yingchenxing.github.io/2021/12/12/MySQL01/"/>
+    <id>https://yingchenxing.github.io/2021/12/12/MySQL01/</id>
+    <published>2021-12-12T03:39:28.000Z</published>
+    <updated>2021-12-12T03:39:28.537Z</updated>
+    
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>关于OpenSSL SSL_connect: Connection was reset in connection to github.com:443的解决方法</title>
@@ -512,33 +525,6 @@ git config --global https.proxy</summary>
 &lt;p&gt;”非“运算指令要求操作数不能是立即数&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;对标志位影响：&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;除”非“运算指令，其余指令的执行都会影响除AF外的5个状</summary>
-        
-      
-    
-    
-    
-    <category term="微机原理与接口技术" scheme="https://yingchenxing.github.io/categories/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/"/>
-    
-    
-    <category term="微机原理与接口技术" scheme="https://yingchenxing.github.io/tags/%E5%BE%AE%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>乘除运算指令</title>
-    <link href="https://yingchenxing.github.io/2021/11/23/weiji09/"/>
-    <id>https://yingchenxing.github.io/2021/11/23/weiji09/</id>
-    <published>2021-11-23T07:12:03.000Z</published>
-    <updated>2021-11-23T15:48:14.304Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;有分别针对无符号和有符号数运算指令&lt;/p&gt;
-&lt;p&gt;乘除运算指令均采用隐含寻址方式&lt;/p&gt;
-&lt;h2 id=&quot;乘法指令&quot;&gt;&lt;a href=&quot;#乘法指令&quot; class=&quot;headerlink&quot;</summary>
         
       
     

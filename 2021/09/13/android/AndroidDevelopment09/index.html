@@ -505,9 +505,9 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h2 id="广播机制简介"><a href="#广播机制简介" class="headerlink" title="广播机制简介"></a>广播机制简介</h2><h4 id="标准广播（Normal-broadcasts）"><a href="#标准广播（Normal-broadcasts）" class="headerlink" title="标准广播（Normal broadcasts）"></a>标准广播（Normal broadcasts）</h4><p>完全异步执行的广播，广播发出后所有的广播接收器几乎在统一时刻收到这条广播信息，<strong>无法被截断</strong>。</p>
-<p><img src="AndroidDevelopment09/image-20210914171353061.png"></p>
+<p><img src="/2021/09/13/android/AndroidDevelopment09/image-20210914171353061.png"></p>
 <h4 id="有序广播（Ordered-broadcasts"><a href="#有序广播（Ordered-broadcasts" class="headerlink" title="有序广播（Ordered broadcasts)"></a>有序广播（Ordered broadcasts)</h4><p>同步执行的广播，广播发出后，同一时刻只会有一个广播接收器能收到这条广播消息，当广播接收器中的逻辑执行完毕后，广播才会继续传递。</p>
-<p><img src="AndroidDevelopment09/1631611053996.png"></p>
+<p><img src="/2021/09/13/android/AndroidDevelopment09/1631611053996.png"></p>
 <h2 id="接收系统广播"><a href="#接收系统广播" class="headerlink" title="接收系统广播"></a>接收系统广播</h2><p>Android内置很多系统级别的广播，我们可以在应用程序中监听这些广播。这就需要广播接收器，下面将介绍其用法：</p>
 <p>广播接受器可以对自己感兴趣的广播进行注册，这样当有相应广播发出时，接收器就能够收到。</p>
 <p>注册广播的方式一般有两种，在代码中注册和在AndroidManifest.xml中注册，前者被称为动态注册，后者被称为静态注册</p>
@@ -583,7 +583,7 @@
 <pre class="line-numbers language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>uses-permission</span> <span class="token attr-name"><span class="token namespace">android:</span>name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>android.permission.ACCESS_NETWORK_STATE<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h3 id="静态注册实现开机启动"><a href="#静态注册实现开机启动" class="headerlink" title="静态注册实现开机启动"></a>静态注册实现开机启动</h3><p><strong>创建广播接收器</strong></p>
-<p><img src="AndroidDevelopment09/image-20210914235953016.png"></p>
+<p><img src="/2021/09/13/android/AndroidDevelopment09/image-20210914235953016.png"></p>
 <p>Exported：是否允许广播接收器接受程序以外信息</p>
 <p>Enabled：是否启用这个广播接收器</p>
 <p><strong>修改BootCompleteReceiver中的代码</strong></p>
@@ -1351,12 +1351,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Android/">
-                        <span class="chip bg-color">Android</span>
-                    </a>
-                    
                     <a href="/tags/git/">
                         <span class="chip bg-color">git</span>
+                    </a>
+                    
+                    <a href="/tags/Android/">
+                        <span class="chip bg-color">Android</span>
                     </a>
                     
                 </div>
@@ -1533,7 +1533,7 @@
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-                <span id="year">2021</span>
+                <span id="year">2021-2022</span>
             
             <span id="year">2021</span>
             <a href="/about" target="_blank">cold fish</a>

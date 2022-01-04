@@ -519,9 +519,9 @@
 <span class="token punctuation">}</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p>添加后出现如下文件夹</p>
-<p><img src="AndroidDevelopment12/image-20211010164549464.png"></p>
+<p><img src="/2021/09/27/android/AndroidDevelopment12/image-20211010164549464.png"></p>
 <p>数据存放在xml文件中：</p>
-<p><img src="AndroidDevelopment12/image-20211010165329481.png"></p>
+<p><img src="/2021/09/27/android/AndroidDevelopment12/image-20211010165329481.png"></p>
 <h2 id="获取数据"><a href="#获取数据" class="headerlink" title="获取数据"></a>获取数据</h2><pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">getSPData</span><span class="token punctuation">(</span>View view<span class="token punctuation">)</span> <span class="token punctuation">{</span>
     SharedPreferences sp <span class="token operator">=</span> <span class="token function">getSharedPreferences</span><span class="token punctuation">(</span><span class="token string">"SPDerryName"</span><span class="token punctuation">,</span> Context<span class="token punctuation">.</span>MODE_PRIVATE<span class="token punctuation">)</span><span class="token punctuation">;</span>
     String value <span class="token operator">=</span> sp<span class="token punctuation">.</span><span class="token function">getString</span><span class="token punctuation">(</span><span class="token string">"DerryKey"</span><span class="token punctuation">,</span> <span class="token string">"默认值"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//假设DerryKey获取值为空，则使用默认值返回</span>
@@ -618,7 +618,7 @@ SQLiteDatabase readableDatebase <span class="token operator">=</span> helper<spa
     db<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><img src="AndroidDevelopment12/image-20211012214032632.png"></p>
+<p><img src="/2021/09/27/android/AndroidDevelopment12/image-20211012214032632.png"></p>
 <pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">delete</span><span class="token punctuation">(</span>View view<span class="token punctuation">)</span> <span class="token punctuation">{</span>
     SQLiteOpenHelper helper <span class="token operator">=</span> MySqliteOpenHelper<span class="token punctuation">.</span><span class="token function">getmInstance</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     SQLiteDatabase db <span class="token operator">=</span> helper<span class="token punctuation">.</span><span class="token function">getWritableDatabase</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -631,7 +631,7 @@ SQLiteDatabase readableDatebase <span class="token operator">=</span> helper<spa
     db<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><img src="AndroidDevelopment12/image-20211012214533016.png"></p>
+<p><img src="/2021/09/27/android/AndroidDevelopment12/image-20211012214533016.png"></p>
 <h1 id="Room"><a href="#Room" class="headerlink" title="Room"></a>Room</h1><p>Room是对SQLite数据库的抽象封装，从而实现流畅地访问数据库</p>
 <h2 id="Room的三角色"><a href="#Room的三角色" class="headerlink" title="Room的三角色"></a>Room的三角色</h2><p><strong>@Entity</strong>：表</p>
 <p><strong>@DAO</strong>：对表进行增删改查</p>
@@ -1692,7 +1692,7 @@ SQLiteDatabase readableDatebase <span class="token operator">=</span> helper<spa
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-                <span id="year">2021</span>
+                <span id="year">2021-2022</span>
             
             <span id="year">2021</span>
             <a href="/about" target="_blank">cold fish</a>

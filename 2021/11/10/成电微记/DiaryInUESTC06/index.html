@@ -465,7 +465,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-11-24
+                    2022-01-05
                 </div>
                 
 
@@ -506,7 +506,8 @@
             <div id="articleContent">
                 <p>在<em>TODO界面的实现</em>中，我们对定义实体类和recyclerView已经有了一定的了解，Bill页面的基本原理也是跟TODO一样的，不过我在这里丰富了一些细节。</p>
 <h2 id="recyclerView的嵌套"><a href="#recyclerView的嵌套" class="headerlink" title="recyclerView的嵌套"></a>recyclerView的嵌套</h2><p> 为了实现下图的效果，需要将一个recyclerView嵌套在另一个recyclerView中。</p>
-<img src="DiaryInUESTC06/image-20211123235932489.png" style="zoom:67%;" />
+<img src="/2021/11/10/%E6%88%90%E7%94%B5%E5%BE%AE%E8%AE%B0/DiaryInUESTC06/image-20211123235932489.png" style="zoom:67%;">
+
 
 <p>原理是在外层adapter的onBindViewHolder中配置内层rv的adapter</p>
 <pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onBindViewHolder</span><span class="token punctuation">(</span><span class="token annotation punctuation">@NonNull</span> BillDayAdapter<span class="token punctuation">.</span>ViewHolder holder<span class="token punctuation">,</span> <span class="token keyword">int</span> position<span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -524,8 +525,8 @@
 <h2 id="addBill窗口的实现"><a href="#addBill窗口的实现" class="headerlink" title="addBill窗口的实现"></a>addBill窗口的实现</h2><p>为了让用户输入更加方便，我在github上找了开源的圆形seekbar作为账单的输入。</p>
 <p><a target="_blank" rel="noopener" href="https://github.com/jenly1314/ArcSeekBar">seekBar网址</a></p>
 <p>通过布局的setVisible()方法，可以动态切换在支出收入种类变更时的窗口下方的种类变化</p>
-<p><img src="DiaryInUESTC06/image-20211124002407406.png"></p>
-<p><img src="DiaryInUESTC06/image-20211124002426028.png"></p>
+<p><img src="/2021/11/10/%E6%88%90%E7%94%B5%E5%BE%AE%E8%AE%B0/DiaryInUESTC06/image-20211124002407406.png"></p>
+<p><img src="/2021/11/10/%E6%88%90%E7%94%B5%E5%BE%AE%E8%AE%B0/DiaryInUESTC06/image-20211124002426028.png"></p>
 <h3 id="RadioGroup无法嵌套布局的问题解决"><a href="#RadioGroup无法嵌套布局的问题解决" class="headerlink" title="RadioGroup无法嵌套布局的问题解决"></a>RadioGroup无法嵌套布局的问题解决</h3><p>在查阅了stackOverFlow之后，发现这竟然是谷歌自己的问题，在RadioGroup中使用LinearLayout等布局时，布局中的radioButton不能被识别在RadioGroup中。</p>
 <p>针对这个问题，我提出的方案是重写一个类MRadioGroup用于管理所有的radioButton，代码如下：</p>
 <pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MRadioGroup</span> <span class="token punctuation">{</span>
@@ -571,7 +572,7 @@
 <span class="token punctuation">}</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>实现效果：</p>
-<p><img src="DiaryInUESTC06/image-20211124002644054.png"></p>
+<p><img src="/2021/11/10/%E6%88%90%E7%94%B5%E5%BE%AE%E8%AE%B0/DiaryInUESTC06/image-20211124002644054.png"></p>
 <h2 id="点击账单切换到账单详情"><a href="#点击账单切换到账单详情" class="headerlink" title="点击账单切换到账单详情"></a>点击账单切换到账单详情</h2><p>直接在账单adapter中的onBindHolder()方法中添加点击事件即可：</p>
 <pre class="line-numbers language-java"><code class="language-java">holder<span class="token punctuation">.</span>billCv<span class="token punctuation">.</span><span class="token function">setOnClickListener</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">View<span class="token punctuation">.</span>OnClickListener</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token annotation punctuation">@Override</span>
@@ -583,13 +584,13 @@
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>实现效果：</p>
-<img src="DiaryInUESTC06/image-20211124003002420.png" style="zoom:67%;" />
+<img src="/2021/11/10/%E6%88%90%E7%94%B5%E5%BE%AE%E8%AE%B0/DiaryInUESTC06/image-20211124003002420.png" style="zoom:67%;">
 
 
 
 <h2 id="账单月报生成"><a href="#账单月报生成" class="headerlink" title="账单月报生成"></a>账单月报生成</h2><p>这里用了一个安卓图表的开源库<a target="_blank" rel="noopener" href="https://github.com/PhilJay/MPAndroidChart">MPAndroidChart</a></p>
 <p>简单配置后的实现效果：</p>
-<img src="DiaryInUESTC06/image-20211124003321001.png" style="zoom:67%;" />
+<img src="/2021/11/10/%E6%88%90%E7%94%B5%E5%BE%AE%E8%AE%B0/DiaryInUESTC06/image-20211124003321001.png" style="zoom:67%;">
 
 <p>到这里，账单部分的核心功能就介绍完毕了！</p>
 
@@ -1409,7 +1410,7 @@
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-                <span id="year">2021</span>
+                <span id="year">2021-2022</span>
             
             <span id="year">2021</span>
             <a href="/about" target="_blank">cold fish</a>

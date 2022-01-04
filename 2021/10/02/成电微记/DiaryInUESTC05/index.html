@@ -540,7 +540,7 @@
 <span class="token punctuation">}</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="step2：添加recyclarView"><a href="#step2：添加recyclarView" class="headerlink" title="step2：添加recyclarView"></a>step2：添加recyclarView</h2><p>创建recyclarView的过程这里不再赘述，效果如下</p>
-<p><img src="DiaryInUESTC05/image-20211002104008745.png" alt="1"></p>
+<p><img src="/2021/10/02/%E6%88%90%E7%94%B5%E5%BE%AE%E8%AE%B0/DiaryInUESTC05/image-20211002104008745.png" alt="1"></p>
 <h2 id="step3：实现todo的点击效果"><a href="#step3：实现todo的点击效果" class="headerlink" title="step3：实现todo的点击效果"></a>step3：实现todo的点击效果</h2><p>在adapter的onBindViewHolder（）中添加点击事件</p>
 <pre class="line-numbers language-java"><code class="language-java">holder<span class="token punctuation">.</span>todoContent<span class="token punctuation">.</span><span class="token function">setOnCheckedChangeListener</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">CompoundButton<span class="token punctuation">.</span>OnCheckedChangeListener</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token annotation punctuation">@Override</span>
@@ -558,9 +558,9 @@
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>实现效果如下：</p>
-<p><img src="DiaryInUESTC05/image-20211002104701684.png"></p>
+<p><img src="/2021/10/02/%E6%88%90%E7%94%B5%E5%BE%AE%E8%AE%B0/DiaryInUESTC05/image-20211002104701684.png"></p>
 <h2 id="step4：添加悬浮按钮以及添加todo事件"><a href="#step4：添加悬浮按钮以及添加todo事件" class="headerlink" title="step4：添加悬浮按钮以及添加todo事件"></a>step4：添加悬浮按钮以及添加todo事件</h2><p>如何添加悬浮按钮这里不再阐述，效果如下：</p>
-<p><img src="DiaryInUESTC05/image-20211002104855671.png"></p>
+<p><img src="/2021/10/02/%E6%88%90%E7%94%B5%E5%BE%AE%E8%AE%B0/DiaryInUESTC05/image-20211002104855671.png"></p>
 <p>在添加对应的点击事件时，一开始我打算将布局放在fragment上，但是在弹出返回栈时会直接切换到Diary界面。</p>
 <p>于是选择通过新建activity实现，但是新建activity后原来todo界面的背景会被activity的背景覆盖，不太美观。</p>
 <p>最后，我们决定通过popupWindow实现，这样就一次性解决了返回退出的几个问题。相关代码：</p>
@@ -608,7 +608,7 @@
     <span class="token punctuation">}</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>实现效果：</p>
-<img src="DiaryInUESTC05/image-20211002105638844.png" style="zoom:50%;" />
+<img src="/2021/10/02/%E6%88%90%E7%94%B5%E5%BE%AE%E8%AE%B0/DiaryInUESTC05/image-20211002105638844.png" style="zoom:50%;">
 
 
 
@@ -1561,7 +1561,7 @@
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-                <span id="year">2021</span>
+                <span id="year">2021-2022</span>
             
             <span id="year">2021</span>
             <a href="/about" target="_blank">cold fish</a>

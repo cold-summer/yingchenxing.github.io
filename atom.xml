@@ -389,9 +389,9 @@ git config --global https.proxy</summary>
     <category term="成电微记" scheme="https://yingchenxing.github.io/categories/%E6%88%90%E7%94%B5%E5%BE%AE%E8%AE%B0/"/>
     
     
-    <category term="git" scheme="https://yingchenxing.github.io/tags/git/"/>
-    
     <category term="Android" scheme="https://yingchenxing.github.io/tags/Android/"/>
+    
+    <category term="git" scheme="https://yingchenxing.github.io/tags/git/"/>
     
   </entry>
   

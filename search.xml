@@ -271,35 +271,6 @@
       </tags>
   </entry>
   <entry>
-    <title>UI组件—布局</title>
-    <url>/2021/09/03/android/AndroidDevelopment01/</url>
-    <content><![CDATA[<h1 id="布局管理器"><a href="#布局管理器" class="headerlink" title="布局管理器"></a>布局管理器</h1><h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><ol>
-<li><p>线性布局</p>
-</li>
-<li><p>相对布局</p>
-</li>
-</ol>
-<h2 id="线性布局（LinearLayout）"><a href="#线性布局（LinearLayout）" class="headerlink" title="线性布局（LinearLayout）"></a>线性布局（LinearLayout）</h2><h3 id="常用属性"><a href="#常用属性" class="headerlink" title="常用属性"></a>常用属性</h3><p><img src="/2021/09/03/android/AndroidDevelopment01/1630639147085.png"></p>
-<p>layout_height、width：控制长、宽</p>
-<p>layout_padding：控制边距</p>
-<p>layout_orientation：排列方式（纵向、横向）</p>
-<p>layout_margin：组件外边距</p>
-<p>background：背景颜色</p>
-<p>gravity：调整位置</p>
-<p>layout_weight：权重</p>
-<h2 id="相对布局（RelativeLayout）"><a href="#相对布局（RelativeLayout）" class="headerlink" title="相对布局（RelativeLayout）"></a>相对布局（RelativeLayout）</h2><h3 id="常用属性-1"><a href="#常用属性-1" class="headerlink" title="常用属性"></a>常用属性</h3><p><img src="/2021/09/03/android/AndroidDevelopment01/1630672158326.png"></p>
-<p>layout_toRightOf：放在……右边</p>
-<p>layout_align: 边缘对齐</p>
-]]></content>
-      <categories>
-        <category>Android</category>
-      </categories>
-      <tags>
-        <tag>Android</tag>
-        <tag>UI</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>HTML学习笔记（三）</title>
     <url>/2021/10/06/HTML/HTMLLearning03/</url>
     <content><![CDATA[<h1 id="表单的应用"><a href="#表单的应用" class="headerlink" title="表单的应用"></a>表单的应用</h1><h2 id="只读模式"><a href="#只读模式" class="headerlink" title="只读模式"></a>只读模式</h2><pre class="line-numbers language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>
@@ -329,19 +300,32 @@
       </tags>
   </entry>
   <entry>
-    <title>关于OpenSSL SSL_connect: Connection was reset in connection to github.com:443的解决方法</title>
-    <url>/2021/12/11/git%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB/gitQuestion01/</url>
-    <content><![CDATA[<p>重新设置代理端口 </p>
-<pre><code>git config --global http.proxy 127.0.0.1:4780
-git config --global https.proxy 127.0.0.1:4780
-</code></pre>
-<p>已经设定的情况要先unset</p>
-<pre><code>git config --global --unset http.proxy
-git config --global --unset https.proxy
-</code></pre>
+    <title>UI组件—布局</title>
+    <url>/2021/09/03/android/AndroidDevelopment01/</url>
+    <content><![CDATA[<h1 id="布局管理器"><a href="#布局管理器" class="headerlink" title="布局管理器"></a>布局管理器</h1><h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><ol>
+<li><p>线性布局</p>
+</li>
+<li><p>相对布局</p>
+</li>
+</ol>
+<h2 id="线性布局（LinearLayout）"><a href="#线性布局（LinearLayout）" class="headerlink" title="线性布局（LinearLayout）"></a>线性布局（LinearLayout）</h2><h3 id="常用属性"><a href="#常用属性" class="headerlink" title="常用属性"></a>常用属性</h3><p><img src="/2021/09/03/android/AndroidDevelopment01/1630639147085.png"></p>
+<p>layout_height、width：控制长、宽</p>
+<p>layout_padding：控制边距</p>
+<p>layout_orientation：排列方式（纵向、横向）</p>
+<p>layout_margin：组件外边距</p>
+<p>background：背景颜色</p>
+<p>gravity：调整位置</p>
+<p>layout_weight：权重</p>
+<h2 id="相对布局（RelativeLayout）"><a href="#相对布局（RelativeLayout）" class="headerlink" title="相对布局（RelativeLayout）"></a>相对布局（RelativeLayout）</h2><h3 id="常用属性-1"><a href="#常用属性-1" class="headerlink" title="常用属性"></a>常用属性</h3><p><img src="/2021/09/03/android/AndroidDevelopment01/1630672158326.png"></p>
+<p>layout_toRightOf：放在……右边</p>
+<p>layout_align: 边缘对齐</p>
 ]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
       <tags>
-        <tag>git</tag>
+        <tag>Android</tag>
+        <tag>UI</tag>
       </tags>
   </entry>
   <entry>
@@ -1280,146 +1264,6 @@ msgRecyclerView<span class="token punctuation">.</span><span class="token functi
       </tags>
   </entry>
   <entry>
-    <title>广播的最佳实例</title>
-    <url>/2021/09/14/android/AndroidDevelopment10/</url>
-    <content><![CDATA[<h2 id="创建AcitivityCollector类"><a href="#创建AcitivityCollector类" class="headerlink" title="创建AcitivityCollector类"></a>创建AcitivityCollector类</h2><p>管理所有活动</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ActivityCollector</span> <span class="token punctuation">{</span>
-
-    <span class="token keyword">public</span> <span class="token keyword">static</span> List<span class="token operator">&lt;</span>Activity<span class="token operator">></span> activities <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">addActivity</span><span class="token punctuation">(</span>Activity activity<span class="token punctuation">)</span><span class="token punctuation">{</span>
-        activities<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>activity<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">removeActivity</span><span class="token punctuation">(</span>Activity activity<span class="token punctuation">)</span><span class="token punctuation">{</span>
-        activities<span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span>activity<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">finishAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-        <span class="token keyword">for</span><span class="token punctuation">(</span>Activity activity<span class="token operator">:</span>activities<span class="token punctuation">)</span><span class="token punctuation">{</span>
-            <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>activities<span class="token punctuation">.</span><span class="token function">isEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-                activity<span class="token punctuation">.</span><span class="token function">finish</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="创建BaseActivity作为所有活动父类"><a href="#创建BaseActivity作为所有活动父类" class="headerlink" title="创建BaseActivity作为所有活动父类"></a>创建BaseActivity作为所有活动父类</h2><pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">BaseActivity</span> <span class="token keyword">extends</span> <span class="token class-name">AppCompatActivity</span> <span class="token punctuation">{</span>
-
-    <span class="token keyword">private</span> ForceOffLineReceiver receiver<span class="token punctuation">;</span>
-
-    <span class="token annotation punctuation">@Override</span>
-    <span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">onResume</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">onResume</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        IntentFilter intentFilter <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">IntentFilter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        intentFilter<span class="token punctuation">.</span><span class="token function">addAction</span><span class="token punctuation">(</span><span class="token string">"com.example.broadcastbestpractice.FORCE_OFFLINE"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        receiver <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ForceOffLineReceiver</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token function">registerReceiver</span><span class="token punctuation">(</span>receiver<span class="token punctuation">,</span>intentFilter<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token annotation punctuation">@Override</span>
-    <span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">onPause</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">onPause</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span>receiver<span class="token operator">!=</span>null<span class="token punctuation">)</span><span class="token punctuation">{</span>
-            <span class="token function">unregisterReceiver</span><span class="token punctuation">(</span>receiver<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            receiver <span class="token operator">=</span> null<span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token annotation punctuation">@Override</span>
-    <span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">onCreate</span><span class="token punctuation">(</span><span class="token annotation punctuation">@Nullable</span> Bundle savedInstanceState<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">onCreate</span><span class="token punctuation">(</span>savedInstanceState<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        ActivityCollector<span class="token punctuation">.</span><span class="token function">addActivity</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token annotation punctuation">@Override</span>
-    <span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">onDestroy</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">onDestroy</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        ActivityCollector<span class="token punctuation">.</span><span class="token function">removeActivity</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token keyword">class</span> <span class="token class-name">ForceOffLineReceiver</span> <span class="token keyword">extends</span> <span class="token class-name">BroadcastReceiver</span><span class="token punctuation">{</span>
-        <span class="token annotation punctuation">@Override</span>
-        <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onReceive</span><span class="token punctuation">(</span>Context context<span class="token punctuation">,</span> Intent intent<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            AlertDialog<span class="token punctuation">.</span>Builder builder <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">AlertDialog<span class="token punctuation">.</span>Builder</span><span class="token punctuation">(</span>context<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            builder<span class="token punctuation">.</span><span class="token function">setTitle</span><span class="token punctuation">(</span><span class="token string">"Warning"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            builder<span class="token punctuation">.</span><span class="token function">setMessage</span><span class="token punctuation">(</span><span class="token string">"You are forced to be offline"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            builder<span class="token punctuation">.</span><span class="token function">setCancelable</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            builder<span class="token punctuation">.</span><span class="token function">setPositiveButton</span><span class="token punctuation">(</span><span class="token string">"OK"</span><span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">DialogInterface<span class="token punctuation">.</span>OnClickListener</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                <span class="token annotation punctuation">@Override</span>
-                <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onClick</span><span class="token punctuation">(</span>DialogInterface dialogInterface<span class="token punctuation">,</span> <span class="token keyword">int</span> i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                    ActivityCollector<span class="token punctuation">.</span><span class="token function">finishAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                    Intent intent <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Intent</span><span class="token punctuation">(</span>context<span class="token punctuation">,</span>LoginActivity<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                    context<span class="token punctuation">.</span><span class="token function">startActivity</span><span class="token punctuation">(</span>intent<span class="token punctuation">)</span><span class="token punctuation">;</span>
-                <span class="token punctuation">}</span>
-            <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            builder<span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="ForceOfflineReceiver"><a href="#ForceOfflineReceiver" class="headerlink" title="ForceOfflineReceiver"></a>ForceOfflineReceiver</h3><ol>
-<li>使用AlertDialog.Builder来构建一个对话框</li>
-<li>调用setCancelable（）方法将对话框设置为不可取消</li>
-<li>调用setPositiveButton（）方法来给对话框注册确定按钮</li>
-</ol>
-<h2 id="修改LoginActivity类"><a href="#修改LoginActivity类" class="headerlink" title="修改LoginActivity类"></a>修改LoginActivity类</h2><pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">LoginActivity</span> <span class="token keyword">extends</span> <span class="token class-name">BaseActivity</span> <span class="token punctuation">{</span>
-
-    <span class="token keyword">private</span> EditText accountEdit<span class="token punctuation">;</span>
-    <span class="token keyword">private</span> EditText passwordEdit<span class="token punctuation">;</span>
-    <span class="token keyword">private</span> Button login<span class="token punctuation">;</span>
-
-    <span class="token annotation punctuation">@Override</span>
-    <span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">onCreate</span><span class="token punctuation">(</span>Bundle savedInstanceState<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">onCreate</span><span class="token punctuation">(</span>savedInstanceState<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token function">setContentView</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>layout<span class="token punctuation">.</span>activity_login<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        accountEdit <span class="token operator">=</span> <span class="token function">findViewById</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>id<span class="token punctuation">.</span>account<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        passwordEdit <span class="token operator">=</span> <span class="token function">findViewById</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>id<span class="token punctuation">.</span>password<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        login <span class="token operator">=</span> <span class="token function">findViewById</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>id<span class="token punctuation">.</span>login<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        login<span class="token punctuation">.</span><span class="token function">setOnClickListener</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">View<span class="token punctuation">.</span>OnClickListener</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token annotation punctuation">@Override</span>
-            <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onClick</span><span class="token punctuation">(</span>View view<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                String account <span class="token operator">=</span> accountEdit<span class="token punctuation">.</span><span class="token function">getText</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                String password <span class="token operator">=</span> passwordEdit<span class="token punctuation">.</span><span class="token function">getText</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                <span class="token comment" spellcheck="true">//密码是123456.用户名为admin</span>
-                <span class="token keyword">if</span><span class="token punctuation">(</span>account<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span><span class="token string">"admin"</span><span class="token punctuation">)</span><span class="token operator">&amp;&amp;</span>password<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span><span class="token string">"123456"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-                    Intent intent <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Intent</span><span class="token punctuation">(</span>LoginActivity<span class="token punctuation">.</span><span class="token keyword">this</span><span class="token punctuation">,</span>MainActivity<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                    <span class="token function">startActivity</span><span class="token punctuation">(</span>intent<span class="token punctuation">)</span><span class="token punctuation">;</span>
-                    <span class="token function">finish</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
-                    Toast<span class="token punctuation">.</span><span class="token function">makeText</span><span class="token punctuation">(</span>LoginActivity<span class="token punctuation">.</span><span class="token keyword">this</span><span class="token punctuation">,</span><span class="token string">"account or password is invalid"</span><span class="token punctuation">,</span>Toast<span class="token punctuation">.</span>LENGTH_SHORT<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                <span class="token punctuation">}</span>
-            <span class="token punctuation">}</span>
-        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="修改MainActivity中的代码"><a href="#修改MainActivity中的代码" class="headerlink" title="修改MainActivity中的代码"></a>修改MainActivity中的代码</h2><pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MainActivity</span> <span class="token keyword">extends</span> <span class="token class-name">BaseActivity</span> <span class="token punctuation">{</span>
-
-    <span class="token annotation punctuation">@Override</span>
-    <span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">onCreate</span><span class="token punctuation">(</span>Bundle savedInstanceState<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">onCreate</span><span class="token punctuation">(</span>savedInstanceState<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token function">setContentView</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>layout<span class="token punctuation">.</span>activity_main<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        Button forceOffline <span class="token operator">=</span> <span class="token function">findViewById</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>id<span class="token punctuation">.</span>force_offline<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        forceOffline<span class="token punctuation">.</span><span class="token function">setOnClickListener</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">View<span class="token punctuation">.</span>OnClickListener</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token annotation punctuation">@Override</span>
-            <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onClick</span><span class="token punctuation">(</span>View view<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                Intent intent <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Intent</span><span class="token punctuation">(</span><span class="token string">"com.example.broadcastbestpractice.FORCE_OFFLINE"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                <span class="token function">sendBroadcast</span><span class="token punctuation">(</span>intent<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-]]></content>
-      <categories>
-        <category>Android</category>
-      </categories>
-      <tags>
-        <tag>Android</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>碎片的实践</title>
     <url>/2021/09/10/android/AndroidDevelopment08/</url>
     <content><![CDATA[<h2 id="新闻内容的布局"><a href="#新闻内容的布局" class="headerlink" title="新闻内容的布局"></a>新闻内容的布局</h2><pre class="line-numbers language-xml"><code class="language-xml"><span class="token prolog">&lt;?xml version="1.0" encoding="utf-8"?></span>
@@ -1605,6 +1449,353 @@ msgRecyclerView<span class="token punctuation">.</span><span class="token functi
       <tags>
         <tag>Android</tag>
         <tag>Fragment</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>广播</title>
+    <url>/2021/09/13/android/AndroidDevelopment09/</url>
+    <content><![CDATA[<h2 id="广播机制简介"><a href="#广播机制简介" class="headerlink" title="广播机制简介"></a>广播机制简介</h2><h4 id="标准广播（Normal-broadcasts）"><a href="#标准广播（Normal-broadcasts）" class="headerlink" title="标准广播（Normal broadcasts）"></a>标准广播（Normal broadcasts）</h4><p>完全异步执行的广播，广播发出后所有的广播接收器几乎在统一时刻收到这条广播信息，<strong>无法被截断</strong>。</p>
+<p><img src="/2021/09/13/android/AndroidDevelopment09/image-20210914171353061.png"></p>
+<h4 id="有序广播（Ordered-broadcasts"><a href="#有序广播（Ordered-broadcasts" class="headerlink" title="有序广播（Ordered broadcasts)"></a>有序广播（Ordered broadcasts)</h4><p>同步执行的广播，广播发出后，同一时刻只会有一个广播接收器能收到这条广播消息，当广播接收器中的逻辑执行完毕后，广播才会继续传递。</p>
+<p><img src="/2021/09/13/android/AndroidDevelopment09/1631611053996.png"></p>
+<h2 id="接收系统广播"><a href="#接收系统广播" class="headerlink" title="接收系统广播"></a>接收系统广播</h2><p>Android内置很多系统级别的广播，我们可以在应用程序中监听这些广播。这就需要广播接收器，下面将介绍其用法：</p>
+<p>广播接受器可以对自己感兴趣的广播进行注册，这样当有相应广播发出时，接收器就能够收到。</p>
+<p>注册广播的方式一般有两种，在代码中注册和在AndroidManifest.xml中注册，前者被称为动态注册，后者被称为静态注册</p>
+<h3 id="动态注册监听网络变化"><a href="#动态注册监听网络变化" class="headerlink" title="动态注册监听网络变化"></a>动态注册监听网络变化</h3><pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MainActivity</span> <span class="token keyword">extends</span> <span class="token class-name">AppCompatActivity</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">private</span> IntentFilter intentFiler<span class="token punctuation">;</span>
+
+    <span class="token keyword">private</span> NetworkChangeReceiver networkchangeReceiver<span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">onCreate</span><span class="token punctuation">(</span>Bundle savedInstanceState<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">onCreate</span><span class="token punctuation">(</span>savedInstanceState<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">setContentView</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>layout<span class="token punctuation">.</span>activity_main<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        intentFiler <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">IntentFilter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        intentFiler<span class="token punctuation">.</span><span class="token function">addAction</span><span class="token punctuation">(</span><span class="token string">"android.net.conn.CONNECTIVITY_CHANGE"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        networkchangeReceiver <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">NetworkChangeReceiver</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">registerReceiver</span><span class="token punctuation">(</span>networkchangeReceiver<span class="token punctuation">,</span>intentFiler<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">onDestroy</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">onDestroy</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">unregisterReceiver</span><span class="token punctuation">(</span>networkchangeReceiver<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">class</span> <span class="token class-name">NetworkChangeReceiver</span> <span class="token keyword">extends</span> <span class="token class-name">BroadcastReceiver</span><span class="token punctuation">{</span>
+        <span class="token annotation punctuation">@Override</span>
+        <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onReceive</span><span class="token punctuation">(</span>Context context<span class="token punctuation">,</span> Intent intent<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            Toast<span class="token punctuation">.</span><span class="token function">makeText</span><span class="token punctuation">(</span>context<span class="token punctuation">,</span><span class="token string">"network changes"</span><span class="token punctuation">,</span>Toast<span class="token punctuation">.</span>LENGTH_SHORT<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol>
+<li><p>定义类NetworkChangeReceiver继承自BroadcastReceiver，重写onReceive（）方法得到信息</p>
+</li>
+<li><p>在onCreat（）方法中创建IntentFiler的实例。添加监听的广播</p>
+</li>
+<li><p>创建NetworkChangeReceiver的实例</p>
+</li>
+<li><p>调用registerReceiver（）方法注册，将NetworkChangeReceive和InterFilter的实例传进去。</p>
+</li>
+<li><p>此时，NetworkChangeReceive就可以收到指定值的广播。</p>
+</li>
+<li><p>重写onDestroy（）方法，加入</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token function">unregisterReceiver</span><span class="token punctuation">(</span>networkchangeReceiver<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>取消注册</p>
+</li>
+</ol>
+<p><strong>优化代码</strong></p>
+<p>重写NetworkChangeReceiver类</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">NetworkChangeReceiver</span> <span class="token keyword">extends</span> <span class="token class-name">BroadcastReceiver</span><span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onReceive</span><span class="token punctuation">(</span>Context context<span class="token punctuation">,</span> Intent intent<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        ConnectivityManager connectivityManager <span class="token operator">=</span> <span class="token punctuation">(</span>ConnectivityManager<span class="token punctuation">)</span>
+                <span class="token function">getSystemService</span><span class="token punctuation">(</span>Context<span class="token punctuation">.</span>CONNECTIVITY_SERVICE<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        NetworkInfo networkInfo <span class="token operator">=</span> connectivityManager<span class="token punctuation">.</span><span class="token function">getActiveNetworkInfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>networkInfo <span class="token operator">!=</span> null <span class="token operator">&amp;&amp;</span> networkInfo<span class="token punctuation">.</span><span class="token function">isAvailable</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            Toast<span class="token punctuation">.</span><span class="token function">makeText</span><span class="token punctuation">(</span>context<span class="token punctuation">,</span><span class="token string">"network is available"</span><span class="token punctuation">,</span>Toast<span class="token punctuation">.</span>LENGTH_SHORT<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
+            Toast<span class="token punctuation">.</span><span class="token function">makeText</span><span class="token punctuation">(</span>context<span class="token punctuation">,</span><span class="token string">"network is not available"</span><span class="token punctuation">,</span>Toast<span class="token punctuation">.</span>LENGTH_SHORT<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol>
+<li>通过getSystemService（）方法得到了ConnectivityManager的实例，这是一个系统服务类，专门用于管理网络连接。</li>
+<li>调用ConnectivityManager的getActiveNetworkInfo（）方法得到NetworkInfo实例</li>
+<li>接着调用NetworkInfo的isAvailable（）方法，判断是否有网络</li>
+</ol>
+<p>在AndroidManifest,xml文件中加入权限：</p>
+<pre class="line-numbers language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>uses-permission</span> <span class="token attr-name"><span class="token namespace">android:</span>name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>android.permission.ACCESS_NETWORK_STATE<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="静态注册实现开机启动"><a href="#静态注册实现开机启动" class="headerlink" title="静态注册实现开机启动"></a>静态注册实现开机启动</h3><p><strong>创建广播接收器</strong></p>
+<p><img src="/2021/09/13/android/AndroidDevelopment09/image-20210914235953016.png"></p>
+<p>Exported：是否允许广播接收器接受程序以外信息</p>
+<p>Enabled：是否启用这个广播接收器</p>
+<p><strong>修改BootCompleteReceiver中的代码</strong></p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">BootCompleteReceiver</span> <span class="token keyword">extends</span> <span class="token class-name">BroadcastReceiver</span> <span class="token punctuation">{</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onReceive</span><span class="token punctuation">(</span>Context context<span class="token punctuation">,</span> Intent intent<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">// TODO: This method is called when the BroadcastReceiver is receiving</span>
+        <span class="token comment" spellcheck="true">// an Intent broadcast.</span>
+        Toast<span class="token punctuation">.</span><span class="token function">makeText</span><span class="token punctuation">(</span>context<span class="token punctuation">,</span><span class="token string">"Boot Complete"</span><span class="token punctuation">,</span>Toast<span class="token punctuation">.</span>LENGTH_SHORT<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>添加权限</p>
+<pre class="line-numbers language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>uses-permission</span> <span class="token attr-name"><span class="token namespace">android:</span>name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>android.permission.RECEIVE_BOOT_COMPLETED<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>修改AndroidManifest.xml</p>
+<pre class="line-numbers language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>receiver</span>
+    <span class="token attr-name"><span class="token namespace">android:</span>name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>.BootCompleteReceiver<span class="token punctuation">"</span></span>
+    <span class="token attr-name"><span class="token namespace">android:</span>enabled</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span>
+    <span class="token attr-name"><span class="token namespace">android:</span>exported</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>intent-filter</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>action</span> <span class="token attr-name"><span class="token namespace">android:</span>name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>android.intent.action.BOOT_COMPLETED<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>intent-filter</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>receiver</span><span class="token punctuation">></span></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="发送自定义广播"><a href="#发送自定义广播" class="headerlink" title="发送自定义广播"></a>发送自定义广播</h2><ol>
+<li><p>新建广播接收器</p>
+</li>
+<li><p>在AndroidManifest.xml中</p>
+</li>
+</ol>
+<pre class="line-numbers language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>receiver</span>
+    <span class="token attr-name"><span class="token namespace">android:</span>name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>.MyBroadcastReceiver<span class="token punctuation">"</span></span>
+    <span class="token attr-name"><span class="token namespace">android:</span>enabled</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span>
+    <span class="token attr-name"><span class="token namespace">android:</span>exported</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>intent-filter</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>action</span> <span class="token attr-name"><span class="token namespace">android:</span>name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>com.example.broadcasttest.MY_BROADCAST<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>intent-filter</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>receiver</span><span class="token punctuation">></span></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>自定义广播名</p>
+<ol start="3">
+<li>发出对应的广播”com.example.broadcasttest.MY_BROADCAST”时接收器可以收到该广播</li>
+</ol>
+<h4 id="对于无法接收静态广播的情况（Android-8-0后）："><a href="#对于无法接收静态广播的情况（Android-8-0后）：" class="headerlink" title="对于无法接收静态广播的情况（Android 8.0后）："></a>对于无法接收静态广播的情况（Android 8.0后）：</h4><p>加入</p>
+<pre class="line-numbers language-java"><code class="language-java">intent<span class="token punctuation">.</span><span class="token function">setComponent</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">ComponentName</span><span class="token punctuation">(</span><span class="token function">getPackageName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">"包名"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="发送有序广播"><a href="#发送有序广播" class="headerlink" title="发送有序广播"></a>发送有序广播</h2><ol>
+<li>将sendBroadcast()方法改为sendOrderBroadcast()方法，接收intent和null</li>
+<li>设置优先级</li>
+</ol>
+<pre class="line-numbers language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>receiver</span>
+    <span class="token attr-name"><span class="token namespace">android:</span>name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>.MyBroadcastReceiver<span class="token punctuation">"</span></span>
+    <span class="token attr-name"><span class="token namespace">android:</span>enabled</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span>
+    <span class="token attr-name"><span class="token namespace">android:</span>exported</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>intent-filter</span> <span class="token attr-name"><span class="token namespace">android:</span>priority</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>100<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>action</span> <span class="token attr-name"><span class="token namespace">android:</span>name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>com.example.broadcasttest01.MY_BROADCAST<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>intent-filter</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>receiver</span><span class="token punctuation">></span></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="3">
+<li>截断代码，在OnReceive()方法中添加abortBroadcast（）方法。</li>
+</ol>
+<h2 id="使用本地广播"><a href="#使用本地广播" class="headerlink" title="使用本地广播"></a>使用本地广播</h2><pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MainActivity</span> <span class="token keyword">extends</span> <span class="token class-name">AppCompatActivity</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">private</span> IntentFilter intentFilter<span class="token punctuation">;</span>
+
+    <span class="token keyword">private</span> LocalReceiver localReceiver<span class="token punctuation">;</span>
+
+    <span class="token keyword">private</span> LocalBroadcastManager localBroadcastManager<span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">onCreate</span><span class="token punctuation">(</span>Bundle savedInstanceState<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">onCreate</span><span class="token punctuation">(</span>savedInstanceState<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">setContentView</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>layout<span class="token punctuation">.</span>activity_main<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        Button button <span class="token operator">=</span> <span class="token function">findViewById</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>id<span class="token punctuation">.</span>button<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        localBroadcastManager <span class="token operator">=</span> LocalBroadcastManager<span class="token punctuation">.</span><span class="token function">getInstance</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        button<span class="token punctuation">.</span><span class="token function">setOnClickListener</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">View<span class="token punctuation">.</span>OnClickListener</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token annotation punctuation">@Override</span>
+            <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onClick</span><span class="token punctuation">(</span>View view<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                Intent intent <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Intent</span><span class="token punctuation">(</span><span class="token string">"com.example.LOCAL_BROADCAST"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                localBroadcastManager<span class="token punctuation">.</span><span class="token function">sendBroadcast</span><span class="token punctuation">(</span>intent<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        intentFilter <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">IntentFilter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        intentFilter<span class="token punctuation">.</span><span class="token function">addAction</span><span class="token punctuation">(</span><span class="token string">"com.example.LOCAL_BROADCAST"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        localReceiver <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">LocalReceiver</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        localBroadcastManager<span class="token punctuation">.</span><span class="token function">registerReceiver</span><span class="token punctuation">(</span>localReceiver<span class="token punctuation">,</span>intentFilter<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">onDestroy</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">onDestroy</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        localBroadcastManager<span class="token punctuation">.</span><span class="token function">unregisterReceiver</span><span class="token punctuation">(</span>localReceiver<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">class</span> <span class="token class-name">LocalReceiver</span> <span class="token keyword">extends</span> <span class="token class-name">BroadcastReceiver</span><span class="token punctuation">{</span>
+        <span class="token annotation punctuation">@Override</span>
+        <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onReceive</span><span class="token punctuation">(</span>Context context<span class="token punctuation">,</span> Intent intent<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            Toast<span class="token punctuation">.</span><span class="token function">makeText</span><span class="token punctuation">(</span>context<span class="token punctuation">,</span><span class="token string">"received in local broadcast"</span><span class="token punctuation">,</span>Toast<span class="token punctuation">.</span>LENGTH_SHORT<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>主要使用一个LocalBroadcastManager来对广播进行管理</p>
+<ol>
+<li><p>新建类LocalReceiver继承自BroadcastReceiver()</p>
+</li>
+<li><p>通过LocalBroadcastManager.getInstance(this)方法得到实例</p>
+</li>
+<li><p>调用LocalBroadcastManager的registerReceiver()方法注册广播接收器</p>
+</li>
+<li><p>调用localBroadcastManager.sendBroadcast()方法发送广播</p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>广播的最佳实例</title>
+    <url>/2021/09/14/android/AndroidDevelopment10/</url>
+    <content><![CDATA[<h2 id="创建AcitivityCollector类"><a href="#创建AcitivityCollector类" class="headerlink" title="创建AcitivityCollector类"></a>创建AcitivityCollector类</h2><p>管理所有活动</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ActivityCollector</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">static</span> List<span class="token operator">&lt;</span>Activity<span class="token operator">></span> activities <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">addActivity</span><span class="token punctuation">(</span>Activity activity<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        activities<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>activity<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">removeActivity</span><span class="token punctuation">(</span>Activity activity<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        activities<span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span>activity<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">finishAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span>Activity activity<span class="token operator">:</span>activities<span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>activities<span class="token punctuation">.</span><span class="token function">isEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                activity<span class="token punctuation">.</span><span class="token function">finish</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="创建BaseActivity作为所有活动父类"><a href="#创建BaseActivity作为所有活动父类" class="headerlink" title="创建BaseActivity作为所有活动父类"></a>创建BaseActivity作为所有活动父类</h2><pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">BaseActivity</span> <span class="token keyword">extends</span> <span class="token class-name">AppCompatActivity</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">private</span> ForceOffLineReceiver receiver<span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">onResume</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">onResume</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        IntentFilter intentFilter <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">IntentFilter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        intentFilter<span class="token punctuation">.</span><span class="token function">addAction</span><span class="token punctuation">(</span><span class="token string">"com.example.broadcastbestpractice.FORCE_OFFLINE"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        receiver <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ForceOffLineReceiver</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">registerReceiver</span><span class="token punctuation">(</span>receiver<span class="token punctuation">,</span>intentFilter<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">onPause</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">onPause</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>receiver<span class="token operator">!=</span>null<span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token function">unregisterReceiver</span><span class="token punctuation">(</span>receiver<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            receiver <span class="token operator">=</span> null<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">onCreate</span><span class="token punctuation">(</span><span class="token annotation punctuation">@Nullable</span> Bundle savedInstanceState<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">onCreate</span><span class="token punctuation">(</span>savedInstanceState<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        ActivityCollector<span class="token punctuation">.</span><span class="token function">addActivity</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">onDestroy</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">onDestroy</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        ActivityCollector<span class="token punctuation">.</span><span class="token function">removeActivity</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">class</span> <span class="token class-name">ForceOffLineReceiver</span> <span class="token keyword">extends</span> <span class="token class-name">BroadcastReceiver</span><span class="token punctuation">{</span>
+        <span class="token annotation punctuation">@Override</span>
+        <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onReceive</span><span class="token punctuation">(</span>Context context<span class="token punctuation">,</span> Intent intent<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            AlertDialog<span class="token punctuation">.</span>Builder builder <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">AlertDialog<span class="token punctuation">.</span>Builder</span><span class="token punctuation">(</span>context<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            builder<span class="token punctuation">.</span><span class="token function">setTitle</span><span class="token punctuation">(</span><span class="token string">"Warning"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            builder<span class="token punctuation">.</span><span class="token function">setMessage</span><span class="token punctuation">(</span><span class="token string">"You are forced to be offline"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            builder<span class="token punctuation">.</span><span class="token function">setCancelable</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            builder<span class="token punctuation">.</span><span class="token function">setPositiveButton</span><span class="token punctuation">(</span><span class="token string">"OK"</span><span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">DialogInterface<span class="token punctuation">.</span>OnClickListener</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token annotation punctuation">@Override</span>
+                <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onClick</span><span class="token punctuation">(</span>DialogInterface dialogInterface<span class="token punctuation">,</span> <span class="token keyword">int</span> i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    ActivityCollector<span class="token punctuation">.</span><span class="token function">finishAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    Intent intent <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Intent</span><span class="token punctuation">(</span>context<span class="token punctuation">,</span>LoginActivity<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    context<span class="token punctuation">.</span><span class="token function">startActivity</span><span class="token punctuation">(</span>intent<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            builder<span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="ForceOfflineReceiver"><a href="#ForceOfflineReceiver" class="headerlink" title="ForceOfflineReceiver"></a>ForceOfflineReceiver</h3><ol>
+<li>使用AlertDialog.Builder来构建一个对话框</li>
+<li>调用setCancelable（）方法将对话框设置为不可取消</li>
+<li>调用setPositiveButton（）方法来给对话框注册确定按钮</li>
+</ol>
+<h2 id="修改LoginActivity类"><a href="#修改LoginActivity类" class="headerlink" title="修改LoginActivity类"></a>修改LoginActivity类</h2><pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">LoginActivity</span> <span class="token keyword">extends</span> <span class="token class-name">BaseActivity</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">private</span> EditText accountEdit<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> EditText passwordEdit<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> Button login<span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">onCreate</span><span class="token punctuation">(</span>Bundle savedInstanceState<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">onCreate</span><span class="token punctuation">(</span>savedInstanceState<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">setContentView</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>layout<span class="token punctuation">.</span>activity_login<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        accountEdit <span class="token operator">=</span> <span class="token function">findViewById</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>id<span class="token punctuation">.</span>account<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        passwordEdit <span class="token operator">=</span> <span class="token function">findViewById</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>id<span class="token punctuation">.</span>password<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        login <span class="token operator">=</span> <span class="token function">findViewById</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>id<span class="token punctuation">.</span>login<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        login<span class="token punctuation">.</span><span class="token function">setOnClickListener</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">View<span class="token punctuation">.</span>OnClickListener</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token annotation punctuation">@Override</span>
+            <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onClick</span><span class="token punctuation">(</span>View view<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                String account <span class="token operator">=</span> accountEdit<span class="token punctuation">.</span><span class="token function">getText</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                String password <span class="token operator">=</span> passwordEdit<span class="token punctuation">.</span><span class="token function">getText</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token comment" spellcheck="true">//密码是123456.用户名为admin</span>
+                <span class="token keyword">if</span><span class="token punctuation">(</span>account<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span><span class="token string">"admin"</span><span class="token punctuation">)</span><span class="token operator">&amp;&amp;</span>password<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span><span class="token string">"123456"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                    Intent intent <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Intent</span><span class="token punctuation">(</span>LoginActivity<span class="token punctuation">.</span><span class="token keyword">this</span><span class="token punctuation">,</span>MainActivity<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token function">startActivity</span><span class="token punctuation">(</span>intent<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token function">finish</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
+                    Toast<span class="token punctuation">.</span><span class="token function">makeText</span><span class="token punctuation">(</span>LoginActivity<span class="token punctuation">.</span><span class="token keyword">this</span><span class="token punctuation">,</span><span class="token string">"account or password is invalid"</span><span class="token punctuation">,</span>Toast<span class="token punctuation">.</span>LENGTH_SHORT<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="修改MainActivity中的代码"><a href="#修改MainActivity中的代码" class="headerlink" title="修改MainActivity中的代码"></a>修改MainActivity中的代码</h2><pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MainActivity</span> <span class="token keyword">extends</span> <span class="token class-name">BaseActivity</span> <span class="token punctuation">{</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">onCreate</span><span class="token punctuation">(</span>Bundle savedInstanceState<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">onCreate</span><span class="token punctuation">(</span>savedInstanceState<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">setContentView</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>layout<span class="token punctuation">.</span>activity_main<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        Button forceOffline <span class="token operator">=</span> <span class="token function">findViewById</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>id<span class="token punctuation">.</span>force_offline<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        forceOffline<span class="token punctuation">.</span><span class="token function">setOnClickListener</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">View<span class="token punctuation">.</span>OnClickListener</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token annotation punctuation">@Override</span>
+            <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onClick</span><span class="token punctuation">(</span>View view<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                Intent intent <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Intent</span><span class="token punctuation">(</span><span class="token string">"com.example.broadcastbestpractice.FORCE_OFFLINE"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token function">sendBroadcast</span><span class="token punctuation">(</span>intent<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
       </tags>
   </entry>
   <entry>
@@ -1984,213 +2175,6 @@ swipeRefresh<span class="token punctuation">.</span><span class="token function"
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>app:layout_collapseMode用于指定当前空间在CollapsingToolvarLayout折叠过程中的折叠模式，Toolbar指定成pin表示折叠时位置不变，ImageView指定成parallax，表示会在折叠过程中产生一定的错位偏移。</p>
 <p>想要让背景图和系统状态栏融合，需要借助<strong>Android: fitsSystemWindows</strong>这个属性来实现。而且该部件的父布局都要设置</p>
-]]></content>
-      <categories>
-        <category>Android</category>
-      </categories>
-      <tags>
-        <tag>Android</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>广播</title>
-    <url>/2021/09/13/android/AndroidDevelopment09/</url>
-    <content><![CDATA[<h2 id="广播机制简介"><a href="#广播机制简介" class="headerlink" title="广播机制简介"></a>广播机制简介</h2><h4 id="标准广播（Normal-broadcasts）"><a href="#标准广播（Normal-broadcasts）" class="headerlink" title="标准广播（Normal broadcasts）"></a>标准广播（Normal broadcasts）</h4><p>完全异步执行的广播，广播发出后所有的广播接收器几乎在统一时刻收到这条广播信息，<strong>无法被截断</strong>。</p>
-<p><img src="/2021/09/13/android/AndroidDevelopment09/image-20210914171353061.png"></p>
-<h4 id="有序广播（Ordered-broadcasts"><a href="#有序广播（Ordered-broadcasts" class="headerlink" title="有序广播（Ordered broadcasts)"></a>有序广播（Ordered broadcasts)</h4><p>同步执行的广播，广播发出后，同一时刻只会有一个广播接收器能收到这条广播消息，当广播接收器中的逻辑执行完毕后，广播才会继续传递。</p>
-<p><img src="/2021/09/13/android/AndroidDevelopment09/1631611053996.png"></p>
-<h2 id="接收系统广播"><a href="#接收系统广播" class="headerlink" title="接收系统广播"></a>接收系统广播</h2><p>Android内置很多系统级别的广播，我们可以在应用程序中监听这些广播。这就需要广播接收器，下面将介绍其用法：</p>
-<p>广播接受器可以对自己感兴趣的广播进行注册，这样当有相应广播发出时，接收器就能够收到。</p>
-<p>注册广播的方式一般有两种，在代码中注册和在AndroidManifest.xml中注册，前者被称为动态注册，后者被称为静态注册</p>
-<h3 id="动态注册监听网络变化"><a href="#动态注册监听网络变化" class="headerlink" title="动态注册监听网络变化"></a>动态注册监听网络变化</h3><pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MainActivity</span> <span class="token keyword">extends</span> <span class="token class-name">AppCompatActivity</span> <span class="token punctuation">{</span>
-
-    <span class="token keyword">private</span> IntentFilter intentFiler<span class="token punctuation">;</span>
-
-    <span class="token keyword">private</span> NetworkChangeReceiver networkchangeReceiver<span class="token punctuation">;</span>
-
-    <span class="token annotation punctuation">@Override</span>
-    <span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">onCreate</span><span class="token punctuation">(</span>Bundle savedInstanceState<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">onCreate</span><span class="token punctuation">(</span>savedInstanceState<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token function">setContentView</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>layout<span class="token punctuation">.</span>activity_main<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        intentFiler <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">IntentFilter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        intentFiler<span class="token punctuation">.</span><span class="token function">addAction</span><span class="token punctuation">(</span><span class="token string">"android.net.conn.CONNECTIVITY_CHANGE"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        networkchangeReceiver <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">NetworkChangeReceiver</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token function">registerReceiver</span><span class="token punctuation">(</span>networkchangeReceiver<span class="token punctuation">,</span>intentFiler<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token annotation punctuation">@Override</span>
-    <span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">onDestroy</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">onDestroy</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token function">unregisterReceiver</span><span class="token punctuation">(</span>networkchangeReceiver<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token keyword">class</span> <span class="token class-name">NetworkChangeReceiver</span> <span class="token keyword">extends</span> <span class="token class-name">BroadcastReceiver</span><span class="token punctuation">{</span>
-        <span class="token annotation punctuation">@Override</span>
-        <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onReceive</span><span class="token punctuation">(</span>Context context<span class="token punctuation">,</span> Intent intent<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            Toast<span class="token punctuation">.</span><span class="token function">makeText</span><span class="token punctuation">(</span>context<span class="token punctuation">,</span><span class="token string">"network changes"</span><span class="token punctuation">,</span>Toast<span class="token punctuation">.</span>LENGTH_SHORT<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<ol>
-<li><p>定义类NetworkChangeReceiver继承自BroadcastReceiver，重写onReceive（）方法得到信息</p>
-</li>
-<li><p>在onCreat（）方法中创建IntentFiler的实例。添加监听的广播</p>
-</li>
-<li><p>创建NetworkChangeReceiver的实例</p>
-</li>
-<li><p>调用registerReceiver（）方法注册，将NetworkChangeReceive和InterFilter的实例传进去。</p>
-</li>
-<li><p>此时，NetworkChangeReceive就可以收到指定值的广播。</p>
-</li>
-<li><p>重写onDestroy（）方法，加入</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token function">unregisterReceiver</span><span class="token punctuation">(</span>networkchangeReceiver<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>取消注册</p>
-</li>
-</ol>
-<p><strong>优化代码</strong></p>
-<p>重写NetworkChangeReceiver类</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">NetworkChangeReceiver</span> <span class="token keyword">extends</span> <span class="token class-name">BroadcastReceiver</span><span class="token punctuation">{</span>
-    <span class="token annotation punctuation">@Override</span>
-    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onReceive</span><span class="token punctuation">(</span>Context context<span class="token punctuation">,</span> Intent intent<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        ConnectivityManager connectivityManager <span class="token operator">=</span> <span class="token punctuation">(</span>ConnectivityManager<span class="token punctuation">)</span>
-                <span class="token function">getSystemService</span><span class="token punctuation">(</span>Context<span class="token punctuation">.</span>CONNECTIVITY_SERVICE<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        NetworkInfo networkInfo <span class="token operator">=</span> connectivityManager<span class="token punctuation">.</span><span class="token function">getActiveNetworkInfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span>networkInfo <span class="token operator">!=</span> null <span class="token operator">&amp;&amp;</span> networkInfo<span class="token punctuation">.</span><span class="token function">isAvailable</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-            Toast<span class="token punctuation">.</span><span class="token function">makeText</span><span class="token punctuation">(</span>context<span class="token punctuation">,</span><span class="token string">"network is available"</span><span class="token punctuation">,</span>Toast<span class="token punctuation">.</span>LENGTH_SHORT<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
-            Toast<span class="token punctuation">.</span><span class="token function">makeText</span><span class="token punctuation">(</span>context<span class="token punctuation">,</span><span class="token string">"network is not available"</span><span class="token punctuation">,</span>Toast<span class="token punctuation">.</span>LENGTH_SHORT<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<ol>
-<li>通过getSystemService（）方法得到了ConnectivityManager的实例，这是一个系统服务类，专门用于管理网络连接。</li>
-<li>调用ConnectivityManager的getActiveNetworkInfo（）方法得到NetworkInfo实例</li>
-<li>接着调用NetworkInfo的isAvailable（）方法，判断是否有网络</li>
-</ol>
-<p>在AndroidManifest,xml文件中加入权限：</p>
-<pre class="line-numbers language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>uses-permission</span> <span class="token attr-name"><span class="token namespace">android:</span>name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>android.permission.ACCESS_NETWORK_STATE<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h3 id="静态注册实现开机启动"><a href="#静态注册实现开机启动" class="headerlink" title="静态注册实现开机启动"></a>静态注册实现开机启动</h3><p><strong>创建广播接收器</strong></p>
-<p><img src="/2021/09/13/android/AndroidDevelopment09/image-20210914235953016.png"></p>
-<p>Exported：是否允许广播接收器接受程序以外信息</p>
-<p>Enabled：是否启用这个广播接收器</p>
-<p><strong>修改BootCompleteReceiver中的代码</strong></p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">BootCompleteReceiver</span> <span class="token keyword">extends</span> <span class="token class-name">BroadcastReceiver</span> <span class="token punctuation">{</span>
-
-    <span class="token annotation punctuation">@Override</span>
-    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onReceive</span><span class="token punctuation">(</span>Context context<span class="token punctuation">,</span> Intent intent<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token comment" spellcheck="true">// TODO: This method is called when the BroadcastReceiver is receiving</span>
-        <span class="token comment" spellcheck="true">// an Intent broadcast.</span>
-        Toast<span class="token punctuation">.</span><span class="token function">makeText</span><span class="token punctuation">(</span>context<span class="token punctuation">,</span><span class="token string">"Boot Complete"</span><span class="token punctuation">,</span>Toast<span class="token punctuation">.</span>LENGTH_SHORT<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>添加权限</p>
-<pre class="line-numbers language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>uses-permission</span> <span class="token attr-name"><span class="token namespace">android:</span>name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>android.permission.RECEIVE_BOOT_COMPLETED<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>修改AndroidManifest.xml</p>
-<pre class="line-numbers language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>receiver</span>
-    <span class="token attr-name"><span class="token namespace">android:</span>name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>.BootCompleteReceiver<span class="token punctuation">"</span></span>
-    <span class="token attr-name"><span class="token namespace">android:</span>enabled</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span>
-    <span class="token attr-name"><span class="token namespace">android:</span>exported</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>intent-filter</span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>action</span> <span class="token attr-name"><span class="token namespace">android:</span>name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>android.intent.action.BOOT_COMPLETED<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>intent-filter</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>receiver</span><span class="token punctuation">></span></span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="发送自定义广播"><a href="#发送自定义广播" class="headerlink" title="发送自定义广播"></a>发送自定义广播</h2><ol>
-<li><p>新建广播接收器</p>
-</li>
-<li><p>在AndroidManifest.xml中</p>
-</li>
-</ol>
-<pre class="line-numbers language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>receiver</span>
-    <span class="token attr-name"><span class="token namespace">android:</span>name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>.MyBroadcastReceiver<span class="token punctuation">"</span></span>
-    <span class="token attr-name"><span class="token namespace">android:</span>enabled</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span>
-    <span class="token attr-name"><span class="token namespace">android:</span>exported</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>intent-filter</span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>action</span> <span class="token attr-name"><span class="token namespace">android:</span>name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>com.example.broadcasttest.MY_BROADCAST<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>intent-filter</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>receiver</span><span class="token punctuation">></span></span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>自定义广播名</p>
-<ol start="3">
-<li>发出对应的广播”com.example.broadcasttest.MY_BROADCAST”时接收器可以收到该广播</li>
-</ol>
-<h4 id="对于无法接收静态广播的情况（Android-8-0后）："><a href="#对于无法接收静态广播的情况（Android-8-0后）：" class="headerlink" title="对于无法接收静态广播的情况（Android 8.0后）："></a>对于无法接收静态广播的情况（Android 8.0后）：</h4><p>加入</p>
-<pre class="line-numbers language-java"><code class="language-java">intent<span class="token punctuation">.</span><span class="token function">setComponent</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">ComponentName</span><span class="token punctuation">(</span><span class="token function">getPackageName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">"包名"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h2 id="发送有序广播"><a href="#发送有序广播" class="headerlink" title="发送有序广播"></a>发送有序广播</h2><ol>
-<li>将sendBroadcast()方法改为sendOrderBroadcast()方法，接收intent和null</li>
-<li>设置优先级</li>
-</ol>
-<pre class="line-numbers language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>receiver</span>
-    <span class="token attr-name"><span class="token namespace">android:</span>name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>.MyBroadcastReceiver<span class="token punctuation">"</span></span>
-    <span class="token attr-name"><span class="token namespace">android:</span>enabled</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span>
-    <span class="token attr-name"><span class="token namespace">android:</span>exported</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>intent-filter</span> <span class="token attr-name"><span class="token namespace">android:</span>priority</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>100<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>action</span> <span class="token attr-name"><span class="token namespace">android:</span>name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>com.example.broadcasttest01.MY_BROADCAST<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>intent-filter</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>receiver</span><span class="token punctuation">></span></span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<ol start="3">
-<li>截断代码，在OnReceive()方法中添加abortBroadcast（）方法。</li>
-</ol>
-<h2 id="使用本地广播"><a href="#使用本地广播" class="headerlink" title="使用本地广播"></a>使用本地广播</h2><pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MainActivity</span> <span class="token keyword">extends</span> <span class="token class-name">AppCompatActivity</span> <span class="token punctuation">{</span>
-
-    <span class="token keyword">private</span> IntentFilter intentFilter<span class="token punctuation">;</span>
-
-    <span class="token keyword">private</span> LocalReceiver localReceiver<span class="token punctuation">;</span>
-
-    <span class="token keyword">private</span> LocalBroadcastManager localBroadcastManager<span class="token punctuation">;</span>
-
-    <span class="token annotation punctuation">@Override</span>
-    <span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">onCreate</span><span class="token punctuation">(</span>Bundle savedInstanceState<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">onCreate</span><span class="token punctuation">(</span>savedInstanceState<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token function">setContentView</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>layout<span class="token punctuation">.</span>activity_main<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        Button button <span class="token operator">=</span> <span class="token function">findViewById</span><span class="token punctuation">(</span>R<span class="token punctuation">.</span>id<span class="token punctuation">.</span>button<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        localBroadcastManager <span class="token operator">=</span> LocalBroadcastManager<span class="token punctuation">.</span><span class="token function">getInstance</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        button<span class="token punctuation">.</span><span class="token function">setOnClickListener</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">View<span class="token punctuation">.</span>OnClickListener</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token annotation punctuation">@Override</span>
-            <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onClick</span><span class="token punctuation">(</span>View view<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                Intent intent <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Intent</span><span class="token punctuation">(</span><span class="token string">"com.example.LOCAL_BROADCAST"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                localBroadcastManager<span class="token punctuation">.</span><span class="token function">sendBroadcast</span><span class="token punctuation">(</span>intent<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        intentFilter <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">IntentFilter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        intentFilter<span class="token punctuation">.</span><span class="token function">addAction</span><span class="token punctuation">(</span><span class="token string">"com.example.LOCAL_BROADCAST"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        localReceiver <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">LocalReceiver</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        localBroadcastManager<span class="token punctuation">.</span><span class="token function">registerReceiver</span><span class="token punctuation">(</span>localReceiver<span class="token punctuation">,</span>intentFilter<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token annotation punctuation">@Override</span>
-    <span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">onDestroy</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">onDestroy</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        localBroadcastManager<span class="token punctuation">.</span><span class="token function">unregisterReceiver</span><span class="token punctuation">(</span>localReceiver<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token keyword">class</span> <span class="token class-name">LocalReceiver</span> <span class="token keyword">extends</span> <span class="token class-name">BroadcastReceiver</span><span class="token punctuation">{</span>
-        <span class="token annotation punctuation">@Override</span>
-        <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onReceive</span><span class="token punctuation">(</span>Context context<span class="token punctuation">,</span> Intent intent<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            Toast<span class="token punctuation">.</span><span class="token function">makeText</span><span class="token punctuation">(</span>context<span class="token punctuation">,</span><span class="token string">"received in local broadcast"</span><span class="token punctuation">,</span>Toast<span class="token punctuation">.</span>LENGTH_SHORT<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>主要使用一个LocalBroadcastManager来对广播进行管理</p>
-<ol>
-<li><p>新建类LocalReceiver继承自BroadcastReceiver()</p>
-</li>
-<li><p>通过LocalBroadcastManager.getInstance(this)方法得到实例</p>
-</li>
-<li><p>调用LocalBroadcastManager的registerReceiver()方法注册广播接收器</p>
-</li>
-<li><p>调用localBroadcastManager.sendBroadcast()方法发送广播</p>
-</li>
-</ol>
 ]]></content>
       <categories>
         <category>Android</category>
@@ -2625,6 +2609,288 @@ tv1<span class="token punctuation">.</span><span class="token function">setOnCli
       </tags>
   </entry>
   <entry>
+    <title>关于OpenSSL SSL_connect: Connection was reset in connection to github.com:443的解决方法</title>
+    <url>/2021/12/11/git%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB/gitQuestion01/</url>
+    <content><![CDATA[<p>重新设置代理端口 </p>
+<pre><code>git config --global http.proxy 127.0.0.1:4780
+git config --global https.proxy 127.0.0.1:4780
+</code></pre>
+<p>已经设定的情况要先unset</p>
+<pre><code>git config --global --unset http.proxy
+git config --global --unset https.proxy
+</code></pre>
+]]></content>
+      <tags>
+        <tag>git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>托福学习笔记</title>
+    <url>/2021/08/29/%E6%89%98%E7%A6%8F/TOEFL/</url>
+    <content><![CDATA[<h1 id="试卷结构"><a href="#试卷结构" class="headerlink" title="试卷结构"></a>试卷结构</h1><p><img src="/2021/08/29/%E6%89%98%E7%A6%8F/TOEFL/1.png"></p>
+<h1 id="阅读"><a href="#阅读" class="headerlink" title="阅读"></a>阅读</h1><h2 id="阅读训练方法"><a href="#阅读训练方法" class="headerlink" title="阅读训练方法"></a>阅读训练方法</h2><p><img src="/2021/08/29/%E6%89%98%E7%A6%8F/TOEFL/2.png"></p>
+<h2 id="阅读技巧"><a href="#阅读技巧" class="headerlink" title="阅读技巧"></a>阅读技巧</h2><p>抓住句子主干</p>
+<p><strong>句子主干三要素：</strong></p>
+<ol>
+<li>主角是谁</li>
+<li>和谁发生关系</li>
+<li>关系导致结果</li>
+</ol>
+<p><strong>段落结构：</strong></p>
+<ol>
+<li><p>段落主旨：</p>
+<p>主旨信号：转折、对比、总结、强调、因果、定义、有问有答、顺序</p>
+</li>
+<li></li>
+</ol>
+<h2 id="难句归类"><a href="#难句归类" class="headerlink" title="难句归类"></a>难句归类</h2><p><img src="/2021/08/29/%E6%89%98%E7%A6%8F/TOEFL/1631192712318.png"></p>
+<p><img src="/2021/08/29/%E6%89%98%E7%A6%8F/TOEFL/1631192780192.png"></p>
+<p><img src="/2021/08/29/%E6%89%98%E7%A6%8F/TOEFL/1631192765470.png"></p>
+<p><img src="/2021/08/29/%E6%89%98%E7%A6%8F/TOEFL/1631192857942.png"></p>
+<h2 id="单词积累"><a href="#单词积累" class="headerlink" title="单词积累"></a>单词积累</h2><p><img src="/2021/08/29/%E6%89%98%E7%A6%8F/TOEFL/3.png"></p>
+<p><img src="/2021/08/29/%E6%89%98%E7%A6%8F/TOEFL/4.png"></p>
+<h1 id="听力"><a href="#听力" class="headerlink" title="听力"></a>听力</h1><p>看图片进入状态</p>
+<p>背单词不等同于阅读</p>
+<h2 id="Lecture"><a href="#Lecture" class="headerlink" title="Lecture"></a>Lecture</h2><p>想象自己要听课而不是在考试</p>
+<p>观察说明图例</p>
+<p><img src="/2021/08/29/%E6%89%98%E7%A6%8F/TOEFL/5.png"></p>
+<p><img src="/2021/08/29/%E6%89%98%E7%A6%8F/TOEFL/6.png"></p>
+<h2 id="Conversation"><a href="#Conversation" class="headerlink" title="Conversation"></a>Conversation</h2><br>
+
+<p><img src="/2021/08/29/%E6%89%98%E7%A6%8F/TOEFL/7.png"></p>
+<p><img src="/2021/08/29/%E6%89%98%E7%A6%8F/TOEFL/8.png"></p>
+<h2 id="训练计划："><a href="#训练计划：" class="headerlink" title="训练计划："></a>训练计划：</h2><p><img src="/2021/08/29/%E6%89%98%E7%A6%8F/TOEFL/9.png"></p>
+<p><img src="/2021/08/29/%E6%89%98%E7%A6%8F/TOEFL/10.png"></p>
+<p><img src="/2021/08/29/%E6%89%98%E7%A6%8F/TOEFL/11.png"></p>
+<p><img src="/2021/08/29/%E6%89%98%E7%A6%8F/TOEFL/12.png"></p>
+<h2 id="听力笔记要点"><a href="#听力笔记要点" class="headerlink" title="听力笔记要点"></a>听力笔记要点</h2><p><img src="/2021/08/29/%E6%89%98%E7%A6%8F/TOEFL/13.png"></p>
+<p><strong><a href="https://www.scientificamerican.com/podcast/">练习听力网址：https://www.scientificamerican.com/podcast</a></strong></p>
+<h1 id="口语"><a href="#口语" class="headerlink" title="口语"></a>口语</h1><h2 id="口语考试安排"><a href="#口语考试安排" class="headerlink" title="口语考试安排"></a>口语考试安排</h2><p><img src="/2021/08/29/%E6%89%98%E7%A6%8F/TOEFL/14.png"></p>
+<h2 id="评分标准"><a href="#评分标准" class="headerlink" title="评分标准"></a>评分标准</h2><p><img src="/2021/08/29/%E6%89%98%E7%A6%8F/TOEFL/15.png"></p>
+<p><img src="/2021/08/29/%E6%89%98%E7%A6%8F/TOEFL/16.png"></p>
+<p><img src="/2021/08/29/%E6%89%98%E7%A6%8F/TOEFL/17.png"></p>
+<h2 id="各部分内容及解题步骤"><a href="#各部分内容及解题步骤" class="headerlink" title="各部分内容及解题步骤"></a>各部分内容及解题步骤</h2><h3 id="Task1"><a href="#Task1" class="headerlink" title="Task1"></a>Task1</h3><h4 id="解题步骤"><a href="#解题步骤" class="headerlink" title="解题步骤"></a>解题步骤</h4><p><img src="/2021/08/29/%E6%89%98%E7%A6%8F/TOEFL/20.png"></p>
+<p><img src="/2021/08/29/%E6%89%98%E7%A6%8F/TOEFL/22.png"></p>
+<p><img src="/2021/08/29/%E6%89%98%E7%A6%8F/TOEFL/23.png"></p>
+<p><img src="/2021/08/29/%E6%89%98%E7%A6%8F/TOEFL/24.png"></p>
+<p><img src="/2021/08/29/%E6%89%98%E7%A6%8F/TOEFL/25.png"></p>
+<h3 id="Task2"><a href="#Task2" class="headerlink" title="Task2"></a>Task2</h3><h4 id="解题步骤-1"><a href="#解题步骤-1" class="headerlink" title="解题步骤"></a>解题步骤</h4><p><img src="/2021/08/29/%E6%89%98%E7%A6%8F/TOEFL/26.png"></p>
+<table>
+<thead>
+<tr>
+<th>Step1</th>
+<th>阅读45s</th>
+<th>阅读笔记</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>step2</td>
+<td>听力对话</td>
+<td>听力笔记：针对阅读中的主题，对话主导方是支持还是反对，以及支持或反对的理由。</td>
+</tr>
+<tr>
+<td>step3</td>
+<td>审题</td>
+<td>Task2的提问大都相似。回答时必须抓住对话主导方的立场和相应理由。答题缺少逻辑或者理由缺少细节的会被扣分。</td>
+</tr>
+<tr>
+<td>Step4</td>
+<td>30s准备；60s答题</td>
+<td>30s准备工作：标出关键词，确认答题结构，整理笔记</td>
+</tr>
+</tbody></table>
+<h4 id="常用句式"><a href="#常用句式" class="headerlink" title="常用句式"></a>常用句式</h4><p><img src="/2021/08/29/%E6%89%98%E7%A6%8F/TOEFL/32.png"></p>
+<h4 id="时间分配"><a href="#时间分配" class="headerlink" title="时间分配"></a>时间分配</h4><p><img src="/2021/08/29/%E6%89%98%E7%A6%8F/TOEFL/27.png"></p>
+<h3 id="Task3"><a href="#Task3" class="headerlink" title="Task3"></a>Task3</h3><h4 id="解题步骤-2"><a href="#解题步骤-2" class="headerlink" title="解题步骤"></a>解题步骤</h4><table>
+<thead>
+<tr>
+<th>Step1</th>
+<th>阅读45s</th>
+<th>阅读笔记：概括了解学术的原理、现象、概念</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Step2</td>
+<td>听力讲座</td>
+<td></td>
+</tr>
+<tr>
+<td>Step3</td>
+<td>审题</td>
+<td>Task3的提问大都相似，要求我们负数讲座中对学术概念的展开讲解。我们在转述时要尽量全面地输出讲座中的例证细节。</td>
+</tr>
+<tr>
+<td>Step4</td>
+<td>30s准备；60s答题</td>
+<td>30s准备工作：标出关键词，确认答题结构。笔记中几下的关键术语，努力记下发音，不要因为笔记而耽误听。</td>
+</tr>
+</tbody></table>
+<h4 id="常用句式-1"><a href="#常用句式-1" class="headerlink" title="常用句式"></a>常用句式</h4><p><img src="/2021/08/29/%E6%89%98%E7%A6%8F/TOEFL/33.png"></p>
+<h4 id="时间分配-1"><a href="#时间分配-1" class="headerlink" title="时间分配"></a>时间分配</h4><p><img src="/2021/08/29/%E6%89%98%E7%A6%8F/TOEFL/28.png"></p>
+<h3 id="Task4"><a href="#Task4" class="headerlink" title="Task4"></a>Task4</h3><h4 id="解题步骤："><a href="#解题步骤：" class="headerlink" title="解题步骤："></a>解题步骤：</h4><table>
+<thead>
+<tr>
+<th>Step1</th>
+<th>听力对话</th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Step2</td>
+<td>审题</td>
+<td>Task4的提问大都相似。要求归纳听力讲座的概念和展开细节。</td>
+</tr>
+</tbody></table>
+<p><img src="/2021/08/29/%E6%89%98%E7%A6%8F/TOEFL/29.png"></p>
+<h4 id="时间分配-2"><a href="#时间分配-2" class="headerlink" title="时间分配"></a>时间分配</h4><p><img src="/2021/08/29/%E6%89%98%E7%A6%8F/TOEFL/30.png"></p>
+<h2 id="口语训练方法"><a href="#口语训练方法" class="headerlink" title="口语训练方法"></a>口语训练方法</h2><p><img src="/2021/08/29/%E6%89%98%E7%A6%8F/TOEFL/18.png"></p>
+<h3 id="发音练习教程："><a href="#发音练习教程：" class="headerlink" title="发音练习教程："></a>发音练习教程：</h3><p><img src="/2021/08/29/%E6%89%98%E7%A6%8F/TOEFL/19.png"></p>
+<img src="/2021/08/29/%E6%89%98%E7%A6%8F/TOEFL/31.png" style="zoom: 67%;">
+
+<p><a href="https://space.bilibili.com/631186842?from=search&seid=11633573194715022155">瑞秋教程</a></p>
+<p><a href="https://www.bilibili.com/video/BV1Kb41117ud?from=search&seid=14125080769006400819">安迪教程：基础发音-&gt;句子发音</a></p>
+<h3 id="训练规划"><a href="#训练规划" class="headerlink" title="训练规划"></a>训练规划</h3><img src="/2021/08/29/%E6%89%98%E7%A6%8F/TOEFL/34.png" alt="34">
+
+<h3 id="1v5策略："><a href="#1v5策略：" class="headerlink" title="1v5策略："></a>1v5策略：</h3><p>通过核心语料一次解决多个问题，一般在20-30套核心语料</p>
+<h1 id="写作"><a href="#写作" class="headerlink" title="写作"></a>写作</h1><p><img src="/2021/08/29/%E6%89%98%E7%A6%8F/TOEFL/1630844989017.png"></p>
+<h2 id="写作布局"><a href="#写作布局" class="headerlink" title="写作布局"></a>写作布局</h2><p><img src="/2021/08/29/%E6%89%98%E7%A6%8F/TOEFL/1630852103390.png"></p>
+<h2 id="机评算法"><a href="#机评算法" class="headerlink" title="机评算法"></a>机评算法</h2><h3 id="第一项-Organization-30-20-约9分"><a href="#第一项-Organization-30-20-约9分" class="headerlink" title="第一项 Organization,30%-20%,约9分"></a>第一项 Organization,30%-20%,约9分</h3><ol>
+<li>枣核型结构【1个导入段+2或3个主题段+1个片尾总结段】</li>
+<li>是否写3个主体段：因人而异</li>
+</ol>
+<h3 id="第二项-Development，28-30-，约9分"><a href="#第二项-Development，28-30-，约9分" class="headerlink" title="第二项 Development，28%-30%，约9分"></a>第二项 Development，28%-30%，约9分</h3><ol>
+<li>篇首段两要素【背景导入+明确立场】</li>
+<li>主体段三个要素【主旨句+论证细节+总结句】</li>
+</ol>
+<p><strong>建议：偏首背景导入不要单独分成一段，偏首段直接表明立场；</strong></p>
+<p><strong>机评通过数据对比和学号定位确定分数段，请按模型写。</strong></p>
+<h3 id="第三项-Mechanics，10-，约3分"><a href="#第三项-Mechanics，10-，约3分" class="headerlink" title="第三项 Mechanics，10%，约3分"></a>第三项 Mechanics，10%，约3分</h3><h4 id="最高三大失分项："><a href="#最高三大失分项：" class="headerlink" title="最高三大失分项："></a>最高三大失分项：</h4><ol>
+<li>拼写错误</li>
+<li>缺少逗号</li>
+<li>首字母大写</li>
+</ol>
+<h3 id="第四项-Usage，7-8-，约2-5分"><a href="#第四项-Usage，7-8-，约2-5分" class="headerlink" title="第四项 Usage，7%-8%，约2.5分"></a>第四项 Usage，7%-8%，约2.5分</h3><h4 id="最高三大失分项：-1"><a href="#最高三大失分项：-1" class="headerlink" title="最高三大失分项："></a>最高三大失分项：</h4><ol>
+<li>冠词错误</li>
+<li>介词错误</li>
+<li>动名混淆</li>
+</ol>
+<h3 id="第五项Grammer，7-8-，约2-5分"><a href="#第五项Grammer，7-8-，约2-5分" class="headerlink" title="第五项Grammer，7%-8%，约2.5分"></a>第五项Grammer，7%-8%，约2.5分</h3><h4 id="最高三大失分项：-2"><a href="#最高三大失分项：-2" class="headerlink" title="最高三大失分项："></a>最高三大失分项：</h4><ol>
+<li>主谓一致</li>
+<li>动词时态错误</li>
+<li> 无法辨认</li>
+</ol>
+<h3 id="第六项-Style，3-，约1分"><a href="#第六项-Style，3-，约1分" class="headerlink" title="第六项 Style，3%，约1分"></a>第六项 Style，3%，约1分</h3><h4 id="最高三大失分项：-3"><a href="#最高三大失分项：-3" class="headerlink" title="最高三大失分项："></a>最高三大失分项：</h4><ol>
+<li>重复使用一个词</li>
+<li>过多被动语态</li>
+<li>长句或短句太多</li>
+</ol>
+<p><strong>建议：避免使用一个词反复超过3次；</strong></p>
+<p><strong>避免大于55个词和小于7个词的句子。</strong></p>
+<h3 id="提分策略"><a href="#提分策略" class="headerlink" title="提分策略"></a>提分策略</h3><ol>
+<li><p><strong>调整了词长词频：</strong>单词越长越生僻，得到点数越高</p>
+<p><a href="www.thesaurus.com/browse/synonym">同义词网站：www.thesaurus.com/browse/synonym</a></p>
+</li>
+<li><p><strong>增加用词搭配权重7%：</strong>两个次的正确搭配显示</p>
+<p><a href="https://prowritingaid.com/en/Collocation/Dictionary/?Word=">常用搭配在线词典：https://prowritingaid.com/en/Collocation/Dictionary/?Word=</a></p>
+</li>
+</ol>
+<hr>
+<p><a href="https://www.bilibili.com/video/BV1LW411v7Z6">B站原视频：【清北托福备考慕课】考托人手必备！(2020考试改革后新版)</a></p>
+]]></content>
+      <categories>
+        <category>托福</category>
+      </categories>
+      <tags>
+        <tag>托福</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>四川大学望江校区考点攻略</title>
+    <url>/2021/12/11/%E6%89%98%E7%A6%8F/%E6%89%98%E7%A6%8F%E6%94%BB%E7%95%A5/</url>
+    <content><![CDATA[<h2 id="四川大学望江校区考点攻略"><a href="#四川大学望江校区考点攻略" class="headerlink" title="四川大学望江校区考点攻略"></a>四川大学望江校区考点攻略</h2><h3 id="到达川大"><a href="#到达川大" class="headerlink" title="到达川大"></a>到达川大</h3><p>坐地铁到磨子桥站，从D口出来之后，沿着路直走</p>
+<p><img src="/2021/12/11/%E6%89%98%E7%A6%8F/%E6%89%98%E7%A6%8F%E6%94%BB%E7%95%A5/%E6%89%98%E7%A6%8FIMG_20211210_160536.jpg" alt="磨子桥 D口"></p>
+<p>一直走到第一个路口，可以看到马路对面的小米体验店</p>
+<p><img src="/2021/12/11/%E6%89%98%E7%A6%8F/%E6%89%98%E7%A6%8F%E6%94%BB%E7%95%A5/Inked%E6%89%98%E7%A6%8FIMG_20211210_160901_LI.jpg" alt="小米旗舰店"></p>
+<p>此时四川大学北门（规定入口）在你的斜对面</p>
+<p><img src="/2021/12/11/%E6%89%98%E7%A6%8F/%E6%89%98%E7%A6%8F%E6%94%BB%E7%95%A5/qq_pic_merged_1639210272939.jpg" alt="路口"></p>
+<p>到达<code>川大北门</code></p>
+<p><img src="/2021/12/11/%E6%89%98%E7%A6%8F/%E6%89%98%E7%A6%8F%E6%94%BB%E7%95%A5/%E6%89%98%E7%A6%8FIMG_20211210_161517.jpg" alt="川大北门"></p>
+<p>考试时要走左侧<code>考试通道</code></p>
+<p><img src="/2021/12/11/%E6%89%98%E7%A6%8F/%E6%89%98%E7%A6%8F%E6%94%BB%E7%95%A5/%E6%89%98%E7%A6%8FIMG_20211210_161455.jpg" alt="考试通道"></p>
+<h3 id="进入考场"><a href="#进入考场" class="headerlink" title="进入考场"></a>进入考场</h3><p><strong>ps：记得带<code>确认信</code>和<code>身份证</code>，并且有<code>48h核酸证明</code></strong></p>
+<ol>
+<li><p>在考试通道签名后有专门的电瓶车去<code>出国培训部大楼</code>。</p>
+</li>
+<li><p>在一楼大堂签名测温后拿<code>储物柜钥匙</code>、<code>检验清单</code>（一张记录人脸识别、安检那些的小纸条），到二楼。</p>
+</li>
+<li><p>储物柜处一定要看<code>储物规范</code>，主要可以带如下物品：</p>
+<ul>
+<li>身份证</li>
+<li>储物柜钥匙</li>
+<li>检验清单</li>
+<li>饮料和食品（不能拿进考场，但可以拿到候考室）</li>
+</ul>
+<p><strong>可以带饮料和食品到3楼候考室！！！</strong></p>
+<p><strong>可以带饮料和食品到3楼候考室！！！</strong></p>
+<p><strong>可以带饮料和食品到3楼候考室！！！</strong></p>
+</li>
+</ol>
+<h3 id="开始考试"><a href="#开始考试" class="headerlink" title="开始考试"></a>开始考试</h3><p>考试设备：</p>
+<ul>
+<li>普通头戴式耳机</li>
+<li>铅笔（铅笔种类见下图）</li>
+<li>机械键盘（按压力度小）</li>
+<li>3张黄色草稿纸，比A4略小，不能要求添加但可以更换</li>
+</ul>
+<img src="/2021/12/11/%E6%89%98%E7%A6%8F/%E6%89%98%E7%A6%8F%E6%94%BB%E7%95%A5/image-20211211164547272.png" alt="淘宝随便找的" style="zoom: 50%;">
+
+
+
+
+
+<ol>
+<li><p>每个人的考试开始时间不一样。你的电脑界面有一个<code>confirm按钮</code>，按下后，输入<code>耳机号码</code>（一般在耳机框上），然后等待监考人员到你的电脑<code>输入密码</code>后正式开始考试。</p>
+</li>
+<li><p>考试过程中可以听到其他人的声音，特别是别人比你先做完的情况。做好心理准备！</p>
+</li>
+<li><p>做完阅读和听力后，举手示意，中间有<code>10min强制休息</code>时间（在候考室），可以吃自己的食物和饮料。</p>
+</li>
+<li><p>口语时，可以听到别人的声音，但影响不大（主观）</p>
+</li>
+<li><p>写作时，键盘声很大，而且很快。</p>
+</li>
+<li><p>考完后，即时出阅读和听力成绩，可选择<code>report score</code>和<code>cancel score</code>，选择完毕后考试结束。</p>
+</li>
+<li><p>排队坐电瓶车去门口。</p>
+<p><strong>问清楚车去哪个门！！！</strong></p>
+<p><strong>问清楚车去哪个门！！！</strong></p>
+<p><strong>问清楚车去哪个门！！！</strong>别问我怎么知道的</p>
+</li>
+</ol>
+<h3 id="住宿（仅供参考）"><a href="#住宿（仅供参考）" class="headerlink" title="住宿（仅供参考）"></a>住宿（仅供参考）</h3><p><strong>没有恰饭！！！</strong></p>
+<p><strong>答案酒店，就在过来时的路口旁边，与地铁站同侧。</strong></p>
+<p><strong>我住的时候大概是200一晚</strong></p>
+<p><img src="/2021/12/11/%E6%89%98%E7%A6%8F/%E6%89%98%E7%A6%8F%E6%94%BB%E7%95%A5/qq_pic_merged_1639213291883.jpg" alt="答案酒店"></p>
+<p><strong>住宿环境</strong></p>
+<p><img src="/2021/12/11/%E6%89%98%E7%A6%8F/%E6%89%98%E7%A6%8F%E6%94%BB%E7%95%A5/%E6%89%98%E7%A6%8FIMG_20211210_162649.jpg"></p>
+<p><img src="/2021/12/11/%E6%89%98%E7%A6%8F/%E6%89%98%E7%A6%8F%E6%94%BB%E7%95%A5/%E6%89%98%E7%A6%8FIMG_20211210_162542.jpg"></p>
+<p><strong>优点：</strong></p>
+<p>早饭可以直接到楼下肯德基和麦当劳（但是午饭很多人）。</p>
+<p>离川大北门、地铁站近。</p>
+<p>13点退房，不耽误考试。（加试一项大概12点半考完）</p>
+<p><strong>缺点：</strong></p>
+<p>窗户隔音一般，建议让前台开背面的房间。</p>
+<p>空调控制器总是响。</p>
+<p><strong>祝考试顺利！</strong></p>
+]]></content>
+      <categories>
+        <category>托福</category>
+      </categories>
+      <tags>
+        <tag>托福</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>成电微记（一）-软件过程模型的选择</title>
     <url>/2021/09/06/%E6%88%90%E7%94%B5%E5%BE%AE%E8%AE%B0/DiaryInUESTC01/</url>
     <content><![CDATA[<p>在选择合适的软件过程模型之前，我们先了解几种常用的模型</p>
@@ -2827,6 +3093,130 @@ tv1<span class="token punctuation">.</span><span class="token function">setOnCli
 </li>
 </ol>
 <h3 id="优先级：-2"><a href="#优先级：-2" class="headerlink" title="优先级："></a>优先级：</h3><p>设置功能&gt;个人信息</p>
+]]></content>
+      <categories>
+        <category>成电微记</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>成电微记（三）创建github仓库</title>
+    <url>/2021/09/11/%E6%88%90%E7%94%B5%E5%BE%AE%E8%AE%B0/DiaryInUESTC03/</url>
+    <content><![CDATA[<h2 id="第一步：配置身份"><a href="#第一步：配置身份" class="headerlink" title="第一步：配置身份"></a>第一步：配置身份</h2><pre><code>gti config --global user.name&quot;Tony&quot;
+git config --global user.email&quot;tony@gmail.com&quot;
+</code></pre>
+<h2 id="第二步：建立代码仓库"><a href="#第二步：建立代码仓库" class="headerlink" title="第二步：建立代码仓库"></a>第二步：建立代码仓库</h2><pre><code>git init
+</code></pre>
+<h2 id="第三步：提交本地代码"><a href="#第三步：提交本地代码" class="headerlink" title="第三步：提交本地代码"></a>第三步：提交本地代码</h2><p>add 是用于把想要提交的代码先添加进来，而 commit 则是真正地去执行提交操作</p>
+<p>添加文件</p>
+<pre><code>git add AndroidManifest.xml
+</code></pre>
+<p>添加文件夹</p>
+<pre><code>git add src
+</code></pre>
+<p>添加全部文件</p>
+<pre><code>git add .
+</code></pre>
+<p>提交</p>
+<pre><code>git commit -m &quot;First commit.&quot;
+</code></pre>
+<p><strong>Tips</strong>：.gitignore文件中的说明忽略那些文件内容</p>
+<p>例</p>
+<pre><code>bin/
+gen/
+</code></pre>
+<p>表示bin、gen目录下的所有文件全部忽略</p>
+<p>查看文件修改情况</p>
+<pre><code>git status
+</code></pre>
+<p>查看修改情况</p>
+<pre><code>git diff
+git diff 文件相对路径
+</code></pre>
+<p>撤销文件修改</p>
+<pre><code>git checkout 文件相对路径
+</code></pre>
+<p>撤销文件添加</p>
+<pre><code>git reset HEAD 相对路径
+</code></pre>
+<p>查看提交记录</p>
+<pre><code>git log
+</code></pre>
+<h2 id="第四步：将代码托管到GitHub上"><a href="#第四步：将代码托管到GitHub上" class="headerlink" title="第四步：将代码托管到GitHub上"></a>第四步：将代码托管到GitHub上</h2><p>参考：<a href="https://blog.csdn.net/qq_43768946/article/details/90411154">JT.X</a></p>
+<h3 id="配置-SSH-Key"><a href="#配置-SSH-Key" class="headerlink" title="配置 SSH Key"></a>配置 SSH Key</h3><pre><code>cd ~/.ssh
+ls
+或者
+ll
+//看是否存在 id_rsa 和 id_rsa.pub文件，如果存在，说明已经有SSH Key
+</code></pre>
+<p>配置SSH Key</p>
+<pre><code>ssh-keygen -t rsa -C “这里换上你的邮箱”
+</code></pre>
+<p>然后一直回车，生成密钥在/Users/.SSH中</p>
+<p>在GitHub平台上添加SSH Key</p>
+<p>测试通不通</p>
+<pre><code>ssh -T git@github.com
+</code></pre>
+<h3 id="托管"><a href="#托管" class="headerlink" title="托管"></a>托管</h3><p>设置origin master</p>
+<pre><code>git remote add origin ssh地址
+</code></pre>
+<p>将提交内容同步到远程版本库</p>
+<pre><code>git add .
+git commit -m &quot;First commit.&quot;
+git push origin master
+</code></pre>
+<h2 id="第五步：分支的用法"><a href="#第五步：分支的用法" class="headerlink" title="第五步：分支的用法"></a>第五步：分支的用法</h2><p>在现有代码 的基础上开辟一个分叉口，使得代码可以在主干线和分支线上同时进行开发，且相互之间不 会影响。</p>
+<p>建立分支</p>
+<pre><code>git branch version1.0
+</code></pre>
+<p>检查分支</p>
+<pre><code>git branch -a
+</code></pre>
+<p>合并操作</p>
+<pre><code>git checkout master
+git merge version1.0
+</code></pre>
+<p>将分支删除</p>
+<pre><code>git branch -D version1.0
+</code></pre>
+<h2 id="第六步：与远程版本库协作"><a href="#第六步：与远程版本库协作" class="headerlink" title="第六步：与远程版本库协作"></a>第六步：与远程版本库协作</h2><p>下载代码</p>
+<pre><code>git clone 项目网址
+</code></pre>
+<p>把本地内容同步到远程版本库</p>
+<pre><code>git push origin master
+</code></pre>
+<p>将远程版本库代码同步到本地</p>
+<pre><code>git fetch origin master
+</code></pre>
+<p>同步的代码不会合并到任何分支上，而是会存放在到一个 origin/master 分支上，这时我们可以通过 diff 命 令来查看远程版本库上到底修改了哪些东西</p>
+<pre><code>git diff origin/master
+</code></pre>
+<p>之后再调用 merge 命令将 origin/master 分支上的修改合并到主分支上即可</p>
+<pre><code>git merge origin/master
+</code></pre>
+<p>而 pull 命令则是相当于将 fetch 和 merge 这两个命令放在一起执行了，它可以从远程版本库上获取最新的代码并且合并到本地，用法如下所示：</p>
+<pre><code>git pull origin master
+</code></pre>
+]]></content>
+      <categories>
+        <category>成电微记</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+        <tag>git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>成电微记（四）对模板进行修改</title>
+    <url>/2021/09/22/%E6%88%90%E7%94%B5%E5%BE%AE%E8%AE%B0/DiaryInUESTC04/</url>
+    <content><![CDATA[<p><strong>选择Bottom Navigation Activity</strong></p>
+<p><img src="/2021/09/22/%E6%88%90%E7%94%B5%E5%BE%AE%E8%AE%B0/DiaryInUESTC04/image-20210922152329323.png" alt="image-20210922152329323"> </p>
+<p>对其中的代码进行修改：</p>
+<p><img src="/2021/09/22/%E6%88%90%E7%94%B5%E5%BE%AE%E8%AE%B0/DiaryInUESTC04/image-20210922153116370.png" alt="image-20210922153116370"></p>
+<p>该模版已经将各个布局的内容分开</p>
+<p>以后的工作将在这个框架上进行</p>
 ]]></content>
       <categories>
         <category>成电微记</category>
@@ -3075,332 +3465,6 @@ tv1<span class="token punctuation">.</span><span class="token function">setOnCli
       </tags>
   </entry>
   <entry>
-    <title>成电微记（三）创建github仓库</title>
-    <url>/2021/09/11/%E6%88%90%E7%94%B5%E5%BE%AE%E8%AE%B0/DiaryInUESTC03/</url>
-    <content><![CDATA[<h2 id="第一步：配置身份"><a href="#第一步：配置身份" class="headerlink" title="第一步：配置身份"></a>第一步：配置身份</h2><pre><code>gti config --global user.name&quot;Tony&quot;
-git config --global user.email&quot;tony@gmail.com&quot;
-</code></pre>
-<h2 id="第二步：建立代码仓库"><a href="#第二步：建立代码仓库" class="headerlink" title="第二步：建立代码仓库"></a>第二步：建立代码仓库</h2><pre><code>git init
-</code></pre>
-<h2 id="第三步：提交本地代码"><a href="#第三步：提交本地代码" class="headerlink" title="第三步：提交本地代码"></a>第三步：提交本地代码</h2><p>add 是用于把想要提交的代码先添加进来，而 commit 则是真正地去执行提交操作</p>
-<p>添加文件</p>
-<pre><code>git add AndroidManifest.xml
-</code></pre>
-<p>添加文件夹</p>
-<pre><code>git add src
-</code></pre>
-<p>添加全部文件</p>
-<pre><code>git add .
-</code></pre>
-<p>提交</p>
-<pre><code>git commit -m &quot;First commit.&quot;
-</code></pre>
-<p><strong>Tips</strong>：.gitignore文件中的说明忽略那些文件内容</p>
-<p>例</p>
-<pre><code>bin/
-gen/
-</code></pre>
-<p>表示bin、gen目录下的所有文件全部忽略</p>
-<p>查看文件修改情况</p>
-<pre><code>git status
-</code></pre>
-<p>查看修改情况</p>
-<pre><code>git diff
-git diff 文件相对路径
-</code></pre>
-<p>撤销文件修改</p>
-<pre><code>git checkout 文件相对路径
-</code></pre>
-<p>撤销文件添加</p>
-<pre><code>git reset HEAD 相对路径
-</code></pre>
-<p>查看提交记录</p>
-<pre><code>git log
-</code></pre>
-<h2 id="第四步：将代码托管到GitHub上"><a href="#第四步：将代码托管到GitHub上" class="headerlink" title="第四步：将代码托管到GitHub上"></a>第四步：将代码托管到GitHub上</h2><p>参考：<a href="https://blog.csdn.net/qq_43768946/article/details/90411154">JT.X</a></p>
-<h3 id="配置-SSH-Key"><a href="#配置-SSH-Key" class="headerlink" title="配置 SSH Key"></a>配置 SSH Key</h3><pre><code>cd ~/.ssh
-ls
-或者
-ll
-//看是否存在 id_rsa 和 id_rsa.pub文件，如果存在，说明已经有SSH Key
-</code></pre>
-<p>配置SSH Key</p>
-<pre><code>ssh-keygen -t rsa -C “这里换上你的邮箱”
-</code></pre>
-<p>然后一直回车，生成密钥在/Users/.SSH中</p>
-<p>在GitHub平台上添加SSH Key</p>
-<p>测试通不通</p>
-<pre><code>ssh -T git@github.com
-</code></pre>
-<h3 id="托管"><a href="#托管" class="headerlink" title="托管"></a>托管</h3><p>设置origin master</p>
-<pre><code>git remote add origin ssh地址
-</code></pre>
-<p>将提交内容同步到远程版本库</p>
-<pre><code>git add .
-git commit -m &quot;First commit.&quot;
-git push origin master
-</code></pre>
-<h2 id="第五步：分支的用法"><a href="#第五步：分支的用法" class="headerlink" title="第五步：分支的用法"></a>第五步：分支的用法</h2><p>在现有代码 的基础上开辟一个分叉口，使得代码可以在主干线和分支线上同时进行开发，且相互之间不 会影响。</p>
-<p>建立分支</p>
-<pre><code>git branch version1.0
-</code></pre>
-<p>检查分支</p>
-<pre><code>git branch -a
-</code></pre>
-<p>合并操作</p>
-<pre><code>git checkout master
-git merge version1.0
-</code></pre>
-<p>将分支删除</p>
-<pre><code>git branch -D version1.0
-</code></pre>
-<h2 id="第六步：与远程版本库协作"><a href="#第六步：与远程版本库协作" class="headerlink" title="第六步：与远程版本库协作"></a>第六步：与远程版本库协作</h2><p>下载代码</p>
-<pre><code>git clone 项目网址
-</code></pre>
-<p>把本地内容同步到远程版本库</p>
-<pre><code>git push origin master
-</code></pre>
-<p>将远程版本库代码同步到本地</p>
-<pre><code>git fetch origin master
-</code></pre>
-<p>同步的代码不会合并到任何分支上，而是会存放在到一个 origin/master 分支上，这时我们可以通过 diff 命 令来查看远程版本库上到底修改了哪些东西</p>
-<pre><code>git diff origin/master
-</code></pre>
-<p>之后再调用 merge 命令将 origin/master 分支上的修改合并到主分支上即可</p>
-<pre><code>git merge origin/master
-</code></pre>
-<p>而 pull 命令则是相当于将 fetch 和 merge 这两个命令放在一起执行了，它可以从远程版本库上获取最新的代码并且合并到本地，用法如下所示：</p>
-<pre><code>git pull origin master
-</code></pre>
-]]></content>
-      <categories>
-        <category>成电微记</category>
-      </categories>
-      <tags>
-        <tag>Android</tag>
-        <tag>git</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>成电微记（四）对模板进行修改</title>
-    <url>/2021/09/22/%E6%88%90%E7%94%B5%E5%BE%AE%E8%AE%B0/DiaryInUESTC04/</url>
-    <content><![CDATA[<p><strong>选择Bottom Navigation Activity</strong></p>
-<p><img src="/2021/09/22/%E6%88%90%E7%94%B5%E5%BE%AE%E8%AE%B0/DiaryInUESTC04/image-20210922152329323.png" alt="image-20210922152329323"> </p>
-<p>对其中的代码进行修改：</p>
-<p><img src="/2021/09/22/%E6%88%90%E7%94%B5%E5%BE%AE%E8%AE%B0/DiaryInUESTC04/image-20210922153116370.png" alt="image-20210922153116370"></p>
-<p>该模版已经将各个布局的内容分开</p>
-<p>以后的工作将在这个框架上进行</p>
-]]></content>
-      <categories>
-        <category>成电微记</category>
-      </categories>
-      <tags>
-        <tag>Android</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>托福学习笔记</title>
-    <url>/2021/08/29/%E6%89%98%E7%A6%8F/TOEFL/</url>
-    <content><![CDATA[<h1 id="试卷结构"><a href="#试卷结构" class="headerlink" title="试卷结构"></a>试卷结构</h1><p><img src="/2021/08/29/%E6%89%98%E7%A6%8F/TOEFL/1.png"></p>
-<h1 id="阅读"><a href="#阅读" class="headerlink" title="阅读"></a>阅读</h1><h2 id="阅读训练方法"><a href="#阅读训练方法" class="headerlink" title="阅读训练方法"></a>阅读训练方法</h2><p><img src="/2021/08/29/%E6%89%98%E7%A6%8F/TOEFL/2.png"></p>
-<h2 id="阅读技巧"><a href="#阅读技巧" class="headerlink" title="阅读技巧"></a>阅读技巧</h2><p>抓住句子主干</p>
-<p><strong>句子主干三要素：</strong></p>
-<ol>
-<li>主角是谁</li>
-<li>和谁发生关系</li>
-<li>关系导致结果</li>
-</ol>
-<p><strong>段落结构：</strong></p>
-<ol>
-<li><p>段落主旨：</p>
-<p>主旨信号：转折、对比、总结、强调、因果、定义、有问有答、顺序</p>
-</li>
-<li></li>
-</ol>
-<h2 id="难句归类"><a href="#难句归类" class="headerlink" title="难句归类"></a>难句归类</h2><p><img src="/2021/08/29/%E6%89%98%E7%A6%8F/TOEFL/1631192712318.png"></p>
-<p><img src="/2021/08/29/%E6%89%98%E7%A6%8F/TOEFL/1631192780192.png"></p>
-<p><img src="/2021/08/29/%E6%89%98%E7%A6%8F/TOEFL/1631192765470.png"></p>
-<p><img src="/2021/08/29/%E6%89%98%E7%A6%8F/TOEFL/1631192857942.png"></p>
-<h2 id="单词积累"><a href="#单词积累" class="headerlink" title="单词积累"></a>单词积累</h2><p><img src="/2021/08/29/%E6%89%98%E7%A6%8F/TOEFL/3.png"></p>
-<p><img src="/2021/08/29/%E6%89%98%E7%A6%8F/TOEFL/4.png"></p>
-<h1 id="听力"><a href="#听力" class="headerlink" title="听力"></a>听力</h1><p>看图片进入状态</p>
-<p>背单词不等同于阅读</p>
-<h2 id="Lecture"><a href="#Lecture" class="headerlink" title="Lecture"></a>Lecture</h2><p>想象自己要听课而不是在考试</p>
-<p>观察说明图例</p>
-<p><img src="/2021/08/29/%E6%89%98%E7%A6%8F/TOEFL/5.png"></p>
-<p><img src="/2021/08/29/%E6%89%98%E7%A6%8F/TOEFL/6.png"></p>
-<h2 id="Conversation"><a href="#Conversation" class="headerlink" title="Conversation"></a>Conversation</h2><br>
-
-<p><img src="/2021/08/29/%E6%89%98%E7%A6%8F/TOEFL/7.png"></p>
-<p><img src="/2021/08/29/%E6%89%98%E7%A6%8F/TOEFL/8.png"></p>
-<h2 id="训练计划："><a href="#训练计划：" class="headerlink" title="训练计划："></a>训练计划：</h2><p><img src="/2021/08/29/%E6%89%98%E7%A6%8F/TOEFL/9.png"></p>
-<p><img src="/2021/08/29/%E6%89%98%E7%A6%8F/TOEFL/10.png"></p>
-<p><img src="/2021/08/29/%E6%89%98%E7%A6%8F/TOEFL/11.png"></p>
-<p><img src="/2021/08/29/%E6%89%98%E7%A6%8F/TOEFL/12.png"></p>
-<h2 id="听力笔记要点"><a href="#听力笔记要点" class="headerlink" title="听力笔记要点"></a>听力笔记要点</h2><p><img src="/2021/08/29/%E6%89%98%E7%A6%8F/TOEFL/13.png"></p>
-<p><strong><a href="https://www.scientificamerican.com/podcast/">练习听力网址：https://www.scientificamerican.com/podcast</a></strong></p>
-<h1 id="口语"><a href="#口语" class="headerlink" title="口语"></a>口语</h1><h2 id="口语考试安排"><a href="#口语考试安排" class="headerlink" title="口语考试安排"></a>口语考试安排</h2><p><img src="/2021/08/29/%E6%89%98%E7%A6%8F/TOEFL/14.png"></p>
-<h2 id="评分标准"><a href="#评分标准" class="headerlink" title="评分标准"></a>评分标准</h2><p><img src="/2021/08/29/%E6%89%98%E7%A6%8F/TOEFL/15.png"></p>
-<p><img src="/2021/08/29/%E6%89%98%E7%A6%8F/TOEFL/16.png"></p>
-<p><img src="/2021/08/29/%E6%89%98%E7%A6%8F/TOEFL/17.png"></p>
-<h2 id="各部分内容及解题步骤"><a href="#各部分内容及解题步骤" class="headerlink" title="各部分内容及解题步骤"></a>各部分内容及解题步骤</h2><h3 id="Task1"><a href="#Task1" class="headerlink" title="Task1"></a>Task1</h3><h4 id="解题步骤"><a href="#解题步骤" class="headerlink" title="解题步骤"></a>解题步骤</h4><p><img src="/2021/08/29/%E6%89%98%E7%A6%8F/TOEFL/20.png"></p>
-<p><img src="/2021/08/29/%E6%89%98%E7%A6%8F/TOEFL/22.png"></p>
-<p><img src="/2021/08/29/%E6%89%98%E7%A6%8F/TOEFL/23.png"></p>
-<p><img src="/2021/08/29/%E6%89%98%E7%A6%8F/TOEFL/24.png"></p>
-<p><img src="/2021/08/29/%E6%89%98%E7%A6%8F/TOEFL/25.png"></p>
-<h3 id="Task2"><a href="#Task2" class="headerlink" title="Task2"></a>Task2</h3><h4 id="解题步骤-1"><a href="#解题步骤-1" class="headerlink" title="解题步骤"></a>解题步骤</h4><p><img src="/2021/08/29/%E6%89%98%E7%A6%8F/TOEFL/26.png"></p>
-<table>
-<thead>
-<tr>
-<th>Step1</th>
-<th>阅读45s</th>
-<th>阅读笔记</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>step2</td>
-<td>听力对话</td>
-<td>听力笔记：针对阅读中的主题，对话主导方是支持还是反对，以及支持或反对的理由。</td>
-</tr>
-<tr>
-<td>step3</td>
-<td>审题</td>
-<td>Task2的提问大都相似。回答时必须抓住对话主导方的立场和相应理由。答题缺少逻辑或者理由缺少细节的会被扣分。</td>
-</tr>
-<tr>
-<td>Step4</td>
-<td>30s准备；60s答题</td>
-<td>30s准备工作：标出关键词，确认答题结构，整理笔记</td>
-</tr>
-</tbody></table>
-<h4 id="常用句式"><a href="#常用句式" class="headerlink" title="常用句式"></a>常用句式</h4><p><img src="/2021/08/29/%E6%89%98%E7%A6%8F/TOEFL/32.png"></p>
-<h4 id="时间分配"><a href="#时间分配" class="headerlink" title="时间分配"></a>时间分配</h4><p><img src="/2021/08/29/%E6%89%98%E7%A6%8F/TOEFL/27.png"></p>
-<h3 id="Task3"><a href="#Task3" class="headerlink" title="Task3"></a>Task3</h3><h4 id="解题步骤-2"><a href="#解题步骤-2" class="headerlink" title="解题步骤"></a>解题步骤</h4><table>
-<thead>
-<tr>
-<th>Step1</th>
-<th>阅读45s</th>
-<th>阅读笔记：概括了解学术的原理、现象、概念</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Step2</td>
-<td>听力讲座</td>
-<td></td>
-</tr>
-<tr>
-<td>Step3</td>
-<td>审题</td>
-<td>Task3的提问大都相似，要求我们负数讲座中对学术概念的展开讲解。我们在转述时要尽量全面地输出讲座中的例证细节。</td>
-</tr>
-<tr>
-<td>Step4</td>
-<td>30s准备；60s答题</td>
-<td>30s准备工作：标出关键词，确认答题结构。笔记中几下的关键术语，努力记下发音，不要因为笔记而耽误听。</td>
-</tr>
-</tbody></table>
-<h4 id="常用句式-1"><a href="#常用句式-1" class="headerlink" title="常用句式"></a>常用句式</h4><p><img src="/2021/08/29/%E6%89%98%E7%A6%8F/TOEFL/33.png"></p>
-<h4 id="时间分配-1"><a href="#时间分配-1" class="headerlink" title="时间分配"></a>时间分配</h4><p><img src="/2021/08/29/%E6%89%98%E7%A6%8F/TOEFL/28.png"></p>
-<h3 id="Task4"><a href="#Task4" class="headerlink" title="Task4"></a>Task4</h3><h4 id="解题步骤："><a href="#解题步骤：" class="headerlink" title="解题步骤："></a>解题步骤：</h4><table>
-<thead>
-<tr>
-<th>Step1</th>
-<th>听力对话</th>
-<th></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Step2</td>
-<td>审题</td>
-<td>Task4的提问大都相似。要求归纳听力讲座的概念和展开细节。</td>
-</tr>
-</tbody></table>
-<p><img src="/2021/08/29/%E6%89%98%E7%A6%8F/TOEFL/29.png"></p>
-<h4 id="时间分配-2"><a href="#时间分配-2" class="headerlink" title="时间分配"></a>时间分配</h4><p><img src="/2021/08/29/%E6%89%98%E7%A6%8F/TOEFL/30.png"></p>
-<h2 id="口语训练方法"><a href="#口语训练方法" class="headerlink" title="口语训练方法"></a>口语训练方法</h2><p><img src="/2021/08/29/%E6%89%98%E7%A6%8F/TOEFL/18.png"></p>
-<h3 id="发音练习教程："><a href="#发音练习教程：" class="headerlink" title="发音练习教程："></a>发音练习教程：</h3><p><img src="/2021/08/29/%E6%89%98%E7%A6%8F/TOEFL/19.png"></p>
-<img src="/2021/08/29/%E6%89%98%E7%A6%8F/TOEFL/31.png" style="zoom: 67%;">
-
-<p><a href="https://space.bilibili.com/631186842?from=search&seid=11633573194715022155">瑞秋教程</a></p>
-<p><a href="https://www.bilibili.com/video/BV1Kb41117ud?from=search&seid=14125080769006400819">安迪教程：基础发音-&gt;句子发音</a></p>
-<h3 id="训练规划"><a href="#训练规划" class="headerlink" title="训练规划"></a>训练规划</h3><img src="/2021/08/29/%E6%89%98%E7%A6%8F/TOEFL/34.png" alt="34">
-
-<h3 id="1v5策略："><a href="#1v5策略：" class="headerlink" title="1v5策略："></a>1v5策略：</h3><p>通过核心语料一次解决多个问题，一般在20-30套核心语料</p>
-<h1 id="写作"><a href="#写作" class="headerlink" title="写作"></a>写作</h1><p><img src="/2021/08/29/%E6%89%98%E7%A6%8F/TOEFL/1630844989017.png"></p>
-<h2 id="写作布局"><a href="#写作布局" class="headerlink" title="写作布局"></a>写作布局</h2><p><img src="/2021/08/29/%E6%89%98%E7%A6%8F/TOEFL/1630852103390.png"></p>
-<h2 id="机评算法"><a href="#机评算法" class="headerlink" title="机评算法"></a>机评算法</h2><h3 id="第一项-Organization-30-20-约9分"><a href="#第一项-Organization-30-20-约9分" class="headerlink" title="第一项 Organization,30%-20%,约9分"></a>第一项 Organization,30%-20%,约9分</h3><ol>
-<li>枣核型结构【1个导入段+2或3个主题段+1个片尾总结段】</li>
-<li>是否写3个主体段：因人而异</li>
-</ol>
-<h3 id="第二项-Development，28-30-，约9分"><a href="#第二项-Development，28-30-，约9分" class="headerlink" title="第二项 Development，28%-30%，约9分"></a>第二项 Development，28%-30%，约9分</h3><ol>
-<li>篇首段两要素【背景导入+明确立场】</li>
-<li>主体段三个要素【主旨句+论证细节+总结句】</li>
-</ol>
-<p><strong>建议：偏首背景导入不要单独分成一段，偏首段直接表明立场；</strong></p>
-<p><strong>机评通过数据对比和学号定位确定分数段，请按模型写。</strong></p>
-<h3 id="第三项-Mechanics，10-，约3分"><a href="#第三项-Mechanics，10-，约3分" class="headerlink" title="第三项 Mechanics，10%，约3分"></a>第三项 Mechanics，10%，约3分</h3><h4 id="最高三大失分项："><a href="#最高三大失分项：" class="headerlink" title="最高三大失分项："></a>最高三大失分项：</h4><ol>
-<li>拼写错误</li>
-<li>缺少逗号</li>
-<li>首字母大写</li>
-</ol>
-<h3 id="第四项-Usage，7-8-，约2-5分"><a href="#第四项-Usage，7-8-，约2-5分" class="headerlink" title="第四项 Usage，7%-8%，约2.5分"></a>第四项 Usage，7%-8%，约2.5分</h3><h4 id="最高三大失分项：-1"><a href="#最高三大失分项：-1" class="headerlink" title="最高三大失分项："></a>最高三大失分项：</h4><ol>
-<li>冠词错误</li>
-<li>介词错误</li>
-<li>动名混淆</li>
-</ol>
-<h3 id="第五项Grammer，7-8-，约2-5分"><a href="#第五项Grammer，7-8-，约2-5分" class="headerlink" title="第五项Grammer，7%-8%，约2.5分"></a>第五项Grammer，7%-8%，约2.5分</h3><h4 id="最高三大失分项：-2"><a href="#最高三大失分项：-2" class="headerlink" title="最高三大失分项："></a>最高三大失分项：</h4><ol>
-<li>主谓一致</li>
-<li>动词时态错误</li>
-<li> 无法辨认</li>
-</ol>
-<h3 id="第六项-Style，3-，约1分"><a href="#第六项-Style，3-，约1分" class="headerlink" title="第六项 Style，3%，约1分"></a>第六项 Style，3%，约1分</h3><h4 id="最高三大失分项：-3"><a href="#最高三大失分项：-3" class="headerlink" title="最高三大失分项："></a>最高三大失分项：</h4><ol>
-<li>重复使用一个词</li>
-<li>过多被动语态</li>
-<li>长句或短句太多</li>
-</ol>
-<p><strong>建议：避免使用一个词反复超过3次；</strong></p>
-<p><strong>避免大于55个词和小于7个词的句子。</strong></p>
-<h3 id="提分策略"><a href="#提分策略" class="headerlink" title="提分策略"></a>提分策略</h3><ol>
-<li><p><strong>调整了词长词频：</strong>单词越长越生僻，得到点数越高</p>
-<p><a href="www.thesaurus.com/browse/synonym">同义词网站：www.thesaurus.com/browse/synonym</a></p>
-</li>
-<li><p><strong>增加用词搭配权重7%：</strong>两个次的正确搭配显示</p>
-<p><a href="https://prowritingaid.com/en/Collocation/Dictionary/?Word=">常用搭配在线词典：https://prowritingaid.com/en/Collocation/Dictionary/?Word=</a></p>
-</li>
-</ol>
-<hr>
-<p><a href="https://www.bilibili.com/video/BV1LW411v7Z6">B站原视频：【清北托福备考慕课】考托人手必备！(2020考试改革后新版)</a></p>
-]]></content>
-      <categories>
-        <category>托福</category>
-      </categories>
-      <tags>
-        <tag>托福</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>使用bison和flex完成语法分析器</title>
-    <url>/2021/11/24/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/%E4%BD%BF%E7%94%A8bison%E5%92%8Cflex%E5%AE%8C%E6%88%90%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90%E5%99%A8/</url>
-    <content><![CDATA[<h3 id="bison的结构"><a href="#bison的结构" class="headerlink" title="bison的结构"></a>bison的结构</h3><pre><code>%&#123;
- //自定义部分，会直接输出到.c文件中
-%&#125;
- 
-/* declare tokens*/
-//声明token
-%token NUMBER
-
-%%
-//语法规则部分
-expr:    NUMBER            &#123; $$ = $1; &#125;
-    | expr &#39;+&#39; expr        &#123; $$ = $1 + $3; &#125;
-%%
- 
-//c语言部分
-</code></pre>
-<p>语法规则中，｛$$ = $1 + $3｝为语义行为，上文中$1表示前面的expr， $3表示后面的expr</p>
-]]></content>
-  </entry>
-  <entry>
     <title>成电微记（六）Bill界面的实现</title>
     <url>/2021/11/10/%E6%88%90%E7%94%B5%E5%BE%AE%E8%AE%B0/DiaryInUESTC06/</url>
     <content><![CDATA[<p>在<em>TODO界面的实现</em>中，我们对定义实体类和recyclerView已经有了一定的了解，Bill页面的基本原理也是跟TODO一样的，不过我在这里丰富了一些细节。</p>
@@ -3501,89 +3565,25 @@ expr:    NUMBER            &#123; $$ = $1; &#125;
       </tags>
   </entry>
   <entry>
-    <title>四川大学望江校区考点攻略</title>
-    <url>/2021/12/11/%E6%89%98%E7%A6%8F/%E6%89%98%E7%A6%8F%E6%94%BB%E7%95%A5/</url>
-    <content><![CDATA[<h2 id="四川大学望江校区考点攻略"><a href="#四川大学望江校区考点攻略" class="headerlink" title="四川大学望江校区考点攻略"></a>四川大学望江校区考点攻略</h2><h3 id="到达川大"><a href="#到达川大" class="headerlink" title="到达川大"></a>到达川大</h3><p>坐地铁到磨子桥站，从D口出来之后，沿着路直走</p>
-<p><img src="/2021/12/11/%E6%89%98%E7%A6%8F/%E6%89%98%E7%A6%8F%E6%94%BB%E7%95%A5/%E6%89%98%E7%A6%8FIMG_20211210_160536.jpg" alt="磨子桥 D口"></p>
-<p>一直走到第一个路口，可以看到马路对面的小米体验店</p>
-<p><img src="/2021/12/11/%E6%89%98%E7%A6%8F/%E6%89%98%E7%A6%8F%E6%94%BB%E7%95%A5/Inked%E6%89%98%E7%A6%8FIMG_20211210_160901_LI.jpg" alt="小米旗舰店"></p>
-<p>此时四川大学北门（规定入口）在你的斜对面</p>
-<p><img src="/2021/12/11/%E6%89%98%E7%A6%8F/%E6%89%98%E7%A6%8F%E6%94%BB%E7%95%A5/qq_pic_merged_1639210272939.jpg" alt="路口"></p>
-<p>到达<code>川大北门</code></p>
-<p><img src="/2021/12/11/%E6%89%98%E7%A6%8F/%E6%89%98%E7%A6%8F%E6%94%BB%E7%95%A5/%E6%89%98%E7%A6%8FIMG_20211210_161517.jpg" alt="川大北门"></p>
-<p>考试时要走左侧<code>考试通道</code></p>
-<p><img src="/2021/12/11/%E6%89%98%E7%A6%8F/%E6%89%98%E7%A6%8F%E6%94%BB%E7%95%A5/%E6%89%98%E7%A6%8FIMG_20211210_161455.jpg" alt="考试通道"></p>
-<h3 id="进入考场"><a href="#进入考场" class="headerlink" title="进入考场"></a>进入考场</h3><p><strong>ps：记得带<code>确认信</code>和<code>身份证</code>，并且有<code>48h核酸证明</code></strong></p>
-<ol>
-<li><p>在考试通道签名后有专门的电瓶车去<code>出国培训部大楼</code>。</p>
-</li>
-<li><p>在一楼大堂签名测温后拿<code>储物柜钥匙</code>、<code>检验清单</code>（一张记录人脸识别、安检那些的小纸条），到二楼。</p>
-</li>
-<li><p>储物柜处一定要看<code>储物规范</code>，主要可以带如下物品：</p>
-<ul>
-<li>身份证</li>
-<li>储物柜钥匙</li>
-<li>检验清单</li>
-<li>饮料和食品（不能拿进考场，但可以拿到候考室）</li>
-</ul>
-<p><strong>可以带饮料和食品到3楼候考室！！！</strong></p>
-<p><strong>可以带饮料和食品到3楼候考室！！！</strong></p>
-<p><strong>可以带饮料和食品到3楼候考室！！！</strong></p>
-</li>
-</ol>
-<h3 id="开始考试"><a href="#开始考试" class="headerlink" title="开始考试"></a>开始考试</h3><p>考试设备：</p>
-<ul>
-<li>普通头戴式耳机</li>
-<li>铅笔（铅笔种类见下图）</li>
-<li>机械键盘（按压力度小）</li>
-<li>3张黄色草稿纸，比A4略小，不能要求添加但可以更换</li>
-</ul>
-<img src="/2021/12/11/%E6%89%98%E7%A6%8F/%E6%89%98%E7%A6%8F%E6%94%BB%E7%95%A5/image-20211211164547272.png" alt="淘宝随便找的" style="zoom: 50%;">
+    <title>使用bison和flex完成语法分析器</title>
+    <url>/2021/11/24/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/%E4%BD%BF%E7%94%A8bison%E5%92%8Cflex%E5%AE%8C%E6%88%90%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90%E5%99%A8/</url>
+    <content><![CDATA[<h3 id="bison的结构"><a href="#bison的结构" class="headerlink" title="bison的结构"></a>bison的结构</h3><pre><code>%&#123;
+ //自定义部分，会直接输出到.c文件中
+%&#125;
+ 
+/* declare tokens*/
+//声明token
+%token NUMBER
 
-
-
-
-
-<ol>
-<li><p>每个人的考试开始时间不一样。你的电脑界面有一个<code>confirm按钮</code>，按下后，输入<code>耳机号码</code>（一般在耳机框上），然后等待监考人员到你的电脑<code>输入密码</code>后正式开始考试。</p>
-</li>
-<li><p>考试过程中可以听到其他人的声音，特别是别人比你先做完的情况。做好心理准备！</p>
-</li>
-<li><p>做完阅读和听力后，举手示意，中间有<code>10min强制休息</code>时间（在候考室），可以吃自己的食物和饮料。</p>
-</li>
-<li><p>口语时，可以听到别人的声音，但影响不大（主观）</p>
-</li>
-<li><p>写作时，键盘声很大，而且很快。</p>
-</li>
-<li><p>考完后，即时出阅读和听力成绩，可选择<code>report score</code>和<code>cancel score</code>，选择完毕后考试结束。</p>
-</li>
-<li><p>排队坐电瓶车去门口。</p>
-<p><strong>问清楚车去哪个门！！！</strong></p>
-<p><strong>问清楚车去哪个门！！！</strong></p>
-<p><strong>问清楚车去哪个门！！！</strong>别问我怎么知道的</p>
-</li>
-</ol>
-<h3 id="住宿（仅供参考）"><a href="#住宿（仅供参考）" class="headerlink" title="住宿（仅供参考）"></a>住宿（仅供参考）</h3><p><strong>没有恰饭！！！</strong></p>
-<p><strong>答案酒店，就在过来时的路口旁边，与地铁站同侧。</strong></p>
-<p><strong>我住的时候大概是200一晚</strong></p>
-<p><img src="/2021/12/11/%E6%89%98%E7%A6%8F/%E6%89%98%E7%A6%8F%E6%94%BB%E7%95%A5/qq_pic_merged_1639213291883.jpg" alt="答案酒店"></p>
-<p><strong>住宿环境</strong></p>
-<p><img src="/2021/12/11/%E6%89%98%E7%A6%8F/%E6%89%98%E7%A6%8F%E6%94%BB%E7%95%A5/%E6%89%98%E7%A6%8FIMG_20211210_162649.jpg"></p>
-<p><img src="/2021/12/11/%E6%89%98%E7%A6%8F/%E6%89%98%E7%A6%8F%E6%94%BB%E7%95%A5/%E6%89%98%E7%A6%8FIMG_20211210_162542.jpg"></p>
-<p><strong>优点：</strong></p>
-<p>早饭可以直接到楼下肯德基和麦当劳（但是午饭很多人）。</p>
-<p>离川大北门、地铁站近。</p>
-<p>13点退房，不耽误考试。（加试一项大概12点半考完）</p>
-<p><strong>缺点：</strong></p>
-<p>窗户隔音一般，建议让前台开背面的房间。</p>
-<p>空调控制器总是响。</p>
-<p><strong>祝考试顺利！</strong></p>
+%%
+//语法规则部分
+expr:    NUMBER            &#123; $$ = $1; &#125;
+    | expr &#39;+&#39; expr        &#123; $$ = $1 + $3; &#125;
+%%
+ 
+//c语言部分
+</code></pre>
+<p>语法规则中，｛$$ = $1 + $3｝为语义行为，上文中$1表示前面的expr， $3表示后面的expr</p>
 ]]></content>
-      <categories>
-        <category>托福</category>
-      </categories>
-      <tags>
-        <tag>托福</tag>
-      </tags>
   </entry>
 </search>

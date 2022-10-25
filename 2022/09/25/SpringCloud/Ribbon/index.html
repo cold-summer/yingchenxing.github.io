@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Eureka, cold fish">
+    <meta name="keywords" content="Ribbon, cold fish">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Eureka | cold fish</title>
+    <title>Ribbon | cold fish</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -312,12 +312,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/18.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Eureka</h1>
+                    <h1 class="description center-align post-title">Ribbon</h1>
                 </div>
             </div>
         </div>
@@ -449,8 +449,8 @@
                                 Spring Cloud
                             </a>
                         
-                            <a href="/categories/Spring-Cloud/Eureka/" class="post-category">
-                                Eureka
+                            <a href="/categories/Spring-Cloud/Ribbon/" class="post-category">
+                                Ribbon
                             </a>
                         
                     </div>
@@ -462,7 +462,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2022-10-25
+                    2022-09-25
                 </div>
                 
 
@@ -476,7 +476,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    167
+                    32
                 </div>
                 
 
@@ -508,84 +508,19 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Eureka"><a href="#Eureka" class="headerlink" title="Eureka"></a>Eureka</h1><p>Principle</p>
-<p><img src="/2022/10/25/SpringCloud/Eureka/image-20220922100757388.png" alt="image-20220922100757388"></p>
-<ul>
-<li>Service provide register in Eureka</li>
-<li>Eureka save the info</li>
-<li>Consumer get the info from Eureka</li>
-</ul>
-<p> <img src="/2022/10/25/SpringCloud/Eureka/image-20220922100927050.png" alt="image-20220922100927050"></p>
-<p><img src="/2022/10/25/SpringCloud/Eureka/image-20220922100948416.png" alt="image-20220922100948416"></p>
-<h3 id="Create-Eureka-Server"><a href="#Create-Eureka-Server" class="headerlink" title="Create Eureka Server"></a>Create Eureka Server</h3><p><img src="/2022/10/25/SpringCloud/Eureka/image-20220922101741934.png" alt="image-20220922101741934"></p>
-<ol>
-<li><p>Add dependency</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token operator">&lt;</span>dependencies<span class="token operator">></span>
-    <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span>eureka服务端<span class="token operator">--</span><span class="token operator">></span>
-    <span class="token operator">&lt;</span>dependency<span class="token operator">></span>
-        <span class="token operator">&lt;</span>groupId<span class="token operator">></span>org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>cloud<span class="token operator">&lt;</span><span class="token operator">/</span>groupId<span class="token operator">></span>
-        <span class="token operator">&lt;</span>artifactId<span class="token operator">></span>spring<span class="token operator">-</span>cloud<span class="token operator">-</span>starter<span class="token operator">-</span>netflix<span class="token operator">-</span>eureka<span class="token operator">-</span>server<span class="token operator">&lt;</span><span class="token operator">/</span>artifactId<span class="token operator">></span>
-    <span class="token operator">&lt;</span><span class="token operator">/</span>dependency<span class="token operator">></span>
-<span class="token operator">&lt;</span><span class="token operator">/</span>dependencies<span class="token operator">></span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
-<li><p>Add annotation</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token annotation punctuation">@EnableEurekaServer</span>
-<span class="token annotation punctuation">@SpringBootApplication</span>
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">EurekaApplication</span> <span class="token punctuation">{</span>
-    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        SpringApplication<span class="token punctuation">.</span><span class="token function">run</span><span class="token punctuation">(</span>EurekaApplication<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span>args<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
-<li><p>Add config</p>
-<pre class="line-numbers language-yaml"><code class="language-yaml"><span class="token key atrule">server</span><span class="token punctuation">:</span>
-  port<span class="token punctuation">:</span><span class="token number">10086 </span><span class="token comment" spellcheck="true"># 服务端口</span>
-<span class="token key atrule">spring</span><span class="token punctuation">:</span>
-  <span class="token key atrule">application</span><span class="token punctuation">:</span>
-    name<span class="token punctuation">:</span>eurekaserver
-<span class="token key atrule">eureka</span><span class="token punctuation">:</span>
-  <span class="token key atrule">client</span><span class="token punctuation">:</span>
-    <span class="token key atrule">service-url</span><span class="token punctuation">:</span> <span class="token comment" spellcheck="true"># eureka address</span>
-      <span class="token key atrule">defaultZone</span><span class="token punctuation">:</span> http<span class="token punctuation">:</span>//127.0.0.1<span class="token punctuation">:</span>10086/eureka
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
-</ol>
-<p><strong>Registered list</strong></p>
-<p><img src="/2022/10/25/SpringCloud/Eureka/image-20220922103733278.png" alt="image-20220922103733278"></p>
-<h3 id="Register-user-service"><a href="#Register-user-service" class="headerlink" title="Register user-service"></a>Register user-service</h3><ol>
-<li><p>Add dependency in user-service</p>
-<pre><code>&lt;dependency&gt;
-    &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;
-    &lt;artifactId&gt;spring-cloud-starter-netflix-eureka-server&lt;/artifactId&gt;
-&lt;/dependency&gt;
-</code></pre>
-</li>
-<li><p>Add config</p>
-<pre class="line-numbers language-yaml"><code class="language-yaml"><span class="token key atrule">spring</span><span class="token punctuation">:</span>
-  <span class="token key atrule">application</span><span class="token punctuation">:</span>
-    <span class="token key atrule">name</span><span class="token punctuation">:</span> eurekaserver
-<span class="token key atrule">eureka</span><span class="token punctuation">:</span>
-  <span class="token key atrule">client</span><span class="token punctuation">:</span>
-    <span class="token key atrule">service-url</span><span class="token punctuation">:</span> <span class="token comment" spellcheck="true"># eureka address</span>
-      <span class="token key atrule">defaultZone</span><span class="token punctuation">:</span> http<span class="token punctuation">:</span>//127.0.0.1<span class="token punctuation">:</span>10086/eureka
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
-</ol>
-<h3 id="Register-another-user-service"><a href="#Register-another-user-service" class="headerlink" title="Register another user-service"></a>Register another user-service</h3><p><img src="/2022/10/25/SpringCloud/Eureka/image-20220922105457158.png" alt="image-20220922105457158"></p>
-<p><img src="/2022/10/25/SpringCloud/Eureka/image-20220922105354980.png" alt="image-20220922105354980"></p>
-<p><img src="/2022/10/25/SpringCloud/Eureka/image-20220922105437188.png" alt="image-20220922105437188"></p>
-<p>start service</p>
-<p><img src="/2022/10/25/SpringCloud/Eureka/image-20220922105535492.png" alt="image-20220922105535492"></p>
-<h3 id="Get-Request-via-Eureka"><a href="#Get-Request-via-Eureka" class="headerlink" title="Get Request via Eureka"></a>Get Request via Eureka</h3><ol>
-<li><p>Change url:</p>
-<p><img src="/2022/10/25/SpringCloud/Eureka/image-20220922110646391.png" alt="image-20220922110646391"></p>
-</li>
-<li><p>Add annotation:</p>
-<p><img src="/2022/10/25/SpringCloud/Eureka/image-20220922110706021.png" alt="image-20220922110706021"></p>
-</li>
-</ol>
+                <h1 id="Ribbon-Load-Balancing"><a href="#Ribbon-Load-Balancing" class="headerlink" title="Ribbon Load Balancing"></a>Ribbon Load Balancing</h1><p><img src="/2022/09/25/SpringCloud/Ribbon/image-20220922115046874.png" alt="image-20220922115046874"></p>
+<p><img src="/2022/09/25/SpringCloud/Ribbon/image-20220922151255574.png" alt="image-20220922151255574"></p>
+<p><img src="/2022/09/25/SpringCloud/Ribbon/image-20220922151517899.png" alt="image-20220922151517899"></p>
+<h2 id="Change-balance-rule"><a href="#Change-balance-rule" class="headerlink" title="Change balance rule"></a>Change balance rule</h2><h3 id="Method1"><a href="#Method1" class="headerlink" title="Method1:"></a>Method1:</h3><p>new IRule in Application</p>
+<p><img src="/2022/09/25/SpringCloud/Ribbon/image-20220922151924523.png" alt="image-20220922151924523"></p>
+<h3 id="Method2"><a href="#Method2" class="headerlink" title="Method2:"></a>Method2:</h3><p>Add config in application.yml</p>
+<p><img src="/2022/09/25/SpringCloud/Ribbon/image-20220922152322668.png" alt="image-20220922152322668"></p>
+<h2 id="Eager-load"><a href="#Eager-load" class="headerlink" title="Eager load"></a>Eager load</h2><p><img src="/2022/09/25/SpringCloud/Ribbon/image-20220922154436721.png" alt="image-20220922154436721"></p>
+<pre class="line-numbers language-yaml"><code class="language-yaml"><span class="token key atrule">ribbon</span><span class="token punctuation">:</span>
+  <span class="token key atrule">eager-load</span><span class="token punctuation">:</span>
+    <span class="token key atrule">enabled</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+    <span class="token key atrule">clients</span><span class="token punctuation">:</span> userservice <span class="token comment" spellcheck="true">#Specify the name of the hunger load</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
                 
             </div>
@@ -612,7 +547,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://yingchenxing.github.io/2022/10/25/SpringCloud/Eureka/">https://yingchenxing.github.io/2022/10/25/SpringCloud/Eureka/</a>
+                    <a href="https://yingchenxing.github.io/2022/09/25/SpringCloud/Ribbon/">https://yingchenxing.github.io/2022/09/25/SpringCloud/Ribbon/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -1150,64 +1085,9 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
-            <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;Current
-            </div>
-            <div class="card">
-                <a href="/2022/10/25/SpringCloud/Eureka/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="Eureka">
-                        
-                        <span class="card-title">Eureka</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            Eureka register center
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-10-25
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/Spring-Cloud/" class="post-category">
-                                    Spring Cloud
-                                </a>
-                            
-                            <a href="/categories/Spring-Cloud/Eureka/" class="post-category">
-                                    Eureka
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/Spring-Cloud/">
-                        <span class="chip bg-color">Spring Cloud</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
         <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                Next&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
                 <a href="/2022/09/26/SpringCloud/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E8%BF%9C%E7%A8%8B%E8%B0%83%E7%94%A8/">
                     <div class="card-image">
@@ -1225,9 +1105,9 @@
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-26
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-09-26
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -1249,6 +1129,51 @@
                     
                     <a href="/tags/Spring-Cloud/">
                         <span class="chip bg-color">Spring Cloud</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2021/12/11/git%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB/gitQuestion01/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="关于OpenSSL SSL_connect: Connection was reset in connection to github.com:443的解决方法">
+                        
+                        <span class="card-title">关于OpenSSL SSL_connect: Connection was reset in connection to github.com:443的解决方法</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            关于OpenSSL SSL_connect: Connection was reset in connection to github.com:443的解决方法
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-12-11
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            cold fish
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/git/">
+                        <span class="chip bg-color">git</span>
                     </a>
                     
                 </div>

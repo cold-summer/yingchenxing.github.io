@@ -6,7 +6,7 @@
   <link href="https://yingchenxing.github.io/atom.xml" rel="self"/>
   
   <link href="https://yingchenxing.github.io/"/>
-  <updated>2022-10-25T15:43:48.468Z</updated>
+  <updated>2022-12-06T05:03:21.927Z</updated>
   <id>https://yingchenxing.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Two steps to make your old phone a NAS server</title>
+    <link href="https://yingchenxing.github.io/2022/12/06/nas/nas/"/>
+    <id>https://yingchenxing.github.io/2022/12/06/nas/nas/</id>
+    <published>2022-12-06T05:01:07.000Z</published>
+    <updated>2022-12-06T05:03:21.927Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;Two-steps-to-make-your-old-phone-a-NAS-server&quot;&gt;&lt;a href=&quot;#Two-steps-to-make-your-old-phone-a-NAS-server&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="NAS" scheme="https://yingchenxing.github.io/categories/NAS/"/>
+    
+    
+    <category term="NAS" scheme="https://yingchenxing.github.io/tags/NAS/"/>
+    
+  </entry>
   
   <entry>
     <title>Eureka</title>
@@ -490,33 +515,6 @@ git config --global https.proxy</summary>
         
         
     <summary type="html">&lt;h2 id=&quot;新闻内容的布局&quot;&gt;&lt;a href=&quot;#新闻内容的布局&quot; class=&quot;headerlink&quot; title=&quot;新闻内容的布局&quot;&gt;&lt;/a&gt;新闻内容的布局&lt;/h2&gt;&lt;pre class=&quot;line-numbers language-xml&quot;&gt;&lt;code</summary>
-        
-      
-    
-    
-    
-    <category term="Android" scheme="https://yingchenxing.github.io/categories/Android/"/>
-    
-    
-    <category term="Android" scheme="https://yingchenxing.github.io/tags/Android/"/>
-    
-    <category term="Fragment" scheme="https://yingchenxing.github.io/tags/Fragment/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>碎片</title>
-    <link href="https://yingchenxing.github.io/2021/09/09/android/AndroidDevelopment07/"/>
-    <id>https://yingchenxing.github.io/2021/09/09/android/AndroidDevelopment07/</id>
-    <published>2021-09-09T20:49:33.000Z</published>
-    <updated>2021-12-12T04:12:00.771Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;碎片的使用方式&quot;&gt;&lt;a href=&quot;#碎片的使用方式&quot; class=&quot;headerlink&quot; title=&quot;碎片的使用方式&quot;&gt;&lt;/a&gt;碎片的使用方式&lt;/h2&gt;&lt;h3 id=&quot;碎片的简单用法：&quot;&gt;&lt;a href=&quot;#碎片的简单用法：&quot;</summary>
         
       
     

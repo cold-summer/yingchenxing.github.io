@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>cold fish</title>
+  <title>Xi Chen</title>
   
-  <subtitle>cold fish</subtitle>
+  <subtitle>Xi Chen</subtitle>
   <link href="https://yingchenxing.github.io/atom.xml" rel="self"/>
   
   <link href="https://yingchenxing.github.io/"/>
@@ -10,7 +10,7 @@
   <id>https://yingchenxing.github.io/</id>
   
   <author>
-    <name>cold fish</name>
+    <name>Xi Chen</name>
     
   </author>
   

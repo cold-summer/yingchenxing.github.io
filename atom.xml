@@ -6,7 +6,7 @@
   <link href="https://yingchenxing.github.io/atom.xml" rel="self"/>
   
   <link href="https://yingchenxing.github.io/"/>
-  <updated>2022-12-06T05:08:18.465Z</updated>
+  <updated>2023-03-21T00:22:32.734Z</updated>
   <id>https://yingchenxing.github.io/</id>
   
   <author>
@@ -15,6 +15,48 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>PaddleClas-based-Food-Classification</title>
+    <link href="https://yingchenxing.github.io/2023/03/20/project/PaddleClas-based-Food-Classification/"/>
+    <id>https://yingchenxing.github.io/2023/03/20/project/PaddleClas-based-Food-Classification/</id>
+    <published>2023-03-21T00:19:35.000Z</published>
+    <updated>2023-03-21T00:22:32.734Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;PaddleClas-based-Food-Classification&quot;&gt;&lt;a href=&quot;#PaddleClas-based-Food-Classification&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Dining_Hall_Crowd_Detection</title>
+    <link href="https://yingchenxing.github.io/2023/03/20/project/Dining-Hall-Crowd-Detection/"/>
+    <id>https://yingchenxing.github.io/2023/03/20/project/Dining-Hall-Crowd-Detection/</id>
+    <published>2023-03-21T00:14:47.000Z</published>
+    <updated>2023-03-21T00:17:31.139Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;Dining-Hall-Crowd-Detection&quot;&gt;&lt;a href=&quot;#Dining-Hall-Crowd-Detection&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>Two steps to make your old phone a NAS server</title>
@@ -202,7 +244,7 @@ git config --global https.proxy</summary>
     <link href="https://yingchenxing.github.io/2021/11/10/%E6%88%90%E7%94%B5%E5%BE%AE%E8%AE%B0/DiaryInUESTC06/"/>
     <id>https://yingchenxing.github.io/2021/11/10/%E6%88%90%E7%94%B5%E5%BE%AE%E8%AE%B0/DiaryInUESTC06/</id>
     <published>2021-11-11T01:01:57.000Z</published>
-    <updated>2022-01-04T17:04:59.844Z</updated>
+    <updated>2023-03-21T00:17:33.804Z</updated>
     
     
       
@@ -304,7 +346,7 @@ git config --global https.proxy</summary>
     <link href="https://yingchenxing.github.io/2021/10/02/%E6%88%90%E7%94%B5%E5%BE%AE%E8%AE%B0/DiaryInUESTC05/"/>
     <id>https://yingchenxing.github.io/2021/10/02/%E6%88%90%E7%94%B5%E5%BE%AE%E8%AE%B0/DiaryInUESTC05/</id>
     <published>2021-10-02T14:33:17.000Z</published>
-    <updated>2021-11-10T12:01:07.329Z</updated>
+    <updated>2023-03-21T00:23:11.553Z</updated>
     
     
       
@@ -472,60 +514,6 @@ git config --global https.proxy</summary>
     
     
     <category term="Android" scheme="https://yingchenxing.github.io/tags/Android/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>成电微记（三）创建github仓库</title>
-    <link href="https://yingchenxing.github.io/2021/09/11/%E6%88%90%E7%94%B5%E5%BE%AE%E8%AE%B0/DiaryInUESTC03/"/>
-    <id>https://yingchenxing.github.io/2021/09/11/%E6%88%90%E7%94%B5%E5%BE%AE%E8%AE%B0/DiaryInUESTC03/</id>
-    <published>2021-09-11T17:20:08.000Z</published>
-    <updated>2021-10-04T08:15:01.046Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;第一步：配置身份&quot;&gt;&lt;a href=&quot;#第一步：配置身份&quot; class=&quot;headerlink&quot; title=&quot;第一步：配置身份&quot;&gt;&lt;/a&gt;第一步：配置身份&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;gti config --global</summary>
-        
-      
-    
-    
-    
-    <category term="成电微记" scheme="https://yingchenxing.github.io/categories/%E6%88%90%E7%94%B5%E5%BE%AE%E8%AE%B0/"/>
-    
-    
-    <category term="Android" scheme="https://yingchenxing.github.io/tags/Android/"/>
-    
-    <category term="git" scheme="https://yingchenxing.github.io/tags/git/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>碎片的实践</title>
-    <link href="https://yingchenxing.github.io/2021/09/10/android/AndroidDevelopment08/"/>
-    <id>https://yingchenxing.github.io/2021/09/10/android/AndroidDevelopment08/</id>
-    <published>2021-09-10T20:29:14.000Z</published>
-    <updated>2021-12-12T04:12:03.216Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;新闻内容的布局&quot;&gt;&lt;a href=&quot;#新闻内容的布局&quot; class=&quot;headerlink&quot; title=&quot;新闻内容的布局&quot;&gt;&lt;/a&gt;新闻内容的布局&lt;/h2&gt;&lt;pre class=&quot;line-numbers language-xml&quot;&gt;&lt;code</summary>
-        
-      
-    
-    
-    
-    <category term="Android" scheme="https://yingchenxing.github.io/categories/Android/"/>
-    
-    
-    <category term="Android" scheme="https://yingchenxing.github.io/tags/Android/"/>
-    
-    <category term="Fragment" scheme="https://yingchenxing.github.io/tags/Fragment/"/>
     
   </entry>
   
